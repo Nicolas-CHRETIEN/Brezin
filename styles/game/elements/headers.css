@@ -1,0 +1,36 @@
+/* === UI / titres badge (sections du jeu) === */
+.cards-declared-player_header,
+.cards-declared-computer_header,
+.cards-hand-player_header,
+.trick_header,
+.stack_header,
+.trump_header,
+.cards-played_h3,
+.lastrick-overlay-box h4 {
+  display: inline-block;
+  margin: 0;
+  padding: 6px 12px;
+  background: linear-gradient(var(--cardInk), rgb(250, 149, 41));
+  border: 1px solid var(--cardBorder);
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: var(--insetShadow), var(--cardShadow);
+  pointer-events: none;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.cards-played .cards-played_h3 {
+  margin-bottom: 8px;
+}
+
+/* === Jeu / harmonisation légère (espaces sous titres) === */
+.trick-piles,
+.stack,
+.trump,
+.cards-declared-player,
+.cards-declared-computer,
+.cards-hand-player {
+  --gap: 8px;
+}

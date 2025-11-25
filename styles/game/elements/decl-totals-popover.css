@@ -1,0 +1,86 @@
+/* === Jeu / popover des totaux d'annonces === */
+.decl-totals-popover {
+  position: absolute;
+  z-index: 9998;
+  min-width: 240px;
+  max-width: 320px;
+  background: linear-gradient(180deg, #c88a55, #f3d6ae);
+  color: #2b1a10;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  padding: 12px 14px;
+  transform: translateY(8px);
+}
+
+/* Titre */
+.decl-totals-popover h4 {
+  margin: 0 0 10px 0;
+  font-size: 1rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* Sections */
+.decl-totals-popover .section {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  padding: 6px 8px;
+  margin-bottom: 10px;
+}
+
+.decl-totals-popover .section:last-child {
+  margin-bottom: 0;
+}
+
+/* Lignes */
+.decl-totals-popover .row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 4px 0;
+  border-top: 1px dashed rgba(0, 0, 0, 0.14);
+}
+
+.decl-totals-popover .row:first-child {
+  border-top: none;
+  padding-top: 2px;
+}
+
+.decl-totals-popover .row.head {
+  padding-bottom: 6px;
+}
+
+/* Cellules */
+.decl-totals-popover .cell.left {
+  text-align: left;
+  font-weight: 600;
+}
+
+.decl-totals-popover .row:not(.head) .cell.left {
+  font-weight: 500;
+}
+
+.decl-totals-popover .cell.right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.decl-totals-popover .row.head .cell.left,
+.decl-totals-popover .row.head .cell.right {
+  font-weight: 800;
+}
+
+/* Texte vide */
+.decl-totals-popover .empty {
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* Conteneur déclencheur */
+.score-normal_declarations-container {
+  cursor: pointer;
+  position: relative;
+}

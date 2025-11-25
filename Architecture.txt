@@ -1,0 +1,183 @@
+/ (racine du projet)
+├─ index.html                  ← point d’entrée UI (charge tous les <script> + styles)
+├─ app.py                      ← lanceur local (ouvre index.html / sert les fichiers)
+├─ Brezin.ico                  ← icône de l’appli/exécutable (packaging)
+├─ /images/                    ← SVG (cartes, autres)
+├─ /styles/
+|   │
+|   ├─ game/
+|   │  ├─ elements/                           (composants UI du plateau)
+|   │  │  ├─ main.css                         → Structure et layout du plateau (3 zones)
+|   │  │  ├─ headers.css                      → Titres/entêtes in-game (barres, h1/h2 du jeu)
+|   │  │  ├─ stack.css                        → Pioche / paquet
+|   │  │  ├─ cards-played.css                 → Tas des cartes jouées
+|   │  │  ├─ cards-hand-player.css            → Main du joueur (carousel, tailles cartes)
+|   │  │  ├─ cards-declared.css               → Bloc “annonces” (style commun)
+|   │  │  ├─ cards-declared-player.css        → Variante “annonces joueur”
+|   │  │  ├─ declaration-computer.css         → Annonces ordinateur (spécifique)
+|   │  │  ├─ decl-totals-popover.css          → Popover des totaux d’annonces
+|   │  │  ├─ result-trick-game.css            → Résultat du pli (feedback, badges)
+|   │  │  ├─ trick.css                        → Zone “pli en cours”
+|   │  │  ├─ trump.css                        → Affichage de l’atout
+|   │  │  ├─ score-normal.css                 → Tableau score complet
+|   │  │  ├─ score-bowdlerized.css            → Tableau score réduit (“bowdlerized”)
+|   │  │  ├─ end-round.css                    → Bandeau/section fin de manche
+|   │  │  ├─ game_difficulties.css            → Boutons/indicateurs de difficulté
+|   │  │  └─ correct.css                      → Correctifs/patchs ciblés (éviter d’y empiler trop)
+|   │  │
+|   │  └─ modales/                            (UI modales du jeu)
+|   │     ├─ root.css                         → Contexte : overlay, conteneur racine
+|   │     ├─ main-modal.css                   → Gabarit modal (layout commun)
+|   │     ├─ modal_box.css                    → Boîte/modèle (padding, largeur, responsive)
+|   │     ├─ modal_actions.css                → Footer boutons (valider/passer)
+|   │     ├─ difficulty-modal.css             → Modal choix difficulté
+|   │     ├─ decl-modal.css                   → Modal sélection d’annonces
+|   │     ├─ player-decl-modal.css            → Modal annonces côté joueur
+|   │     ├─ trick-result.css                 → Modal résultat de pli
+|   │     ├─ end-of-round.css                 → Modal fin de manche
+|   │     ├─ end-of-game.css                  → Modal fin de partie
+|   │     ├─ mini-overlay.css                 → Mini-overlay contextuel
+|   │     └─ mini-info-bar.css                → Barre affichage info en écran réduit
+|   │
+|   └─ pages/                                 (autres pages hors écran de jeu)
+|      ├─ home.css                            → Page d’accueil
+|      ├─ home-table.css                      → Variantes tableaux page accueil
+|      ├─ rules.css                           → Règles du jeu (typographie, sections)
+|      ├─ charts.css                          → Cartes/diagrammes (Chart.js, grilles)
+|      └─ boutons.css                         → Styles génériques de boutons (site) 
+│   
+│   
+└─ /scripts/
+   ├─ graphiques/				                           ← Scripts gérant la création et la mise a jour des graphiques à partir des données du .xlsx
+   │  ├─ chart.umd.min.js                                                 ← Chart.js (lib)
+   │  └─ graphiques.js                                                    ← logique de graphes (lit S et/ou XLSX)
+   │
+   └─ game/
+      ├─ main.js                                                           ← bootstrap front : init, branchements, démarrage partie
+      │
+      ├─ core/
+      │  ├─ initSituation.js                                               ← construit l’état global S (pioche, mains, scores…)
+      │  ├─ IA/
+      │  │  ├─ computerPlayFirst.js
+      │  │  ├─ computerPlayFirstEndGame.js
+      │  │  ├─ computerPlaySecond.js
+      │  │  ├─ computerPlaySecondEndGame.js
+      │  │  ├─ playFirstCardToLose.js
+      │  │  ├─ playFirstCardToWinForSure.js
+      │  │  ├─ playFirstCardToWinMaybe.js
+      │  │  ├─ trickGameSimulation.js
+      │  │  ├─ consequences/consequencesCard.js                            ← calcule les conséquences d'une carte a jouer pour l'IA
+      │  │  └─ value/                                                      ← calcule la valeur d'une carte (probabilité de tirer les cartes manquantes, gain de l'annonce)
+      │  │     ├─ brezinValue.js
+      │  │     ├─ coupleValue.js
+      │  │     ├─ fourValue.js
+      │  │     ├─ littleBrezinValue.js
+      │  │     └─ twoFiftyValue.js
+      │  └─ listeners/							    ← actions directes déclenchées par une interaction du joueur
+      │     ├─ listenerChoiceDifficulty.js
+      │     ├─ listenerComputerPlayFirst.js
+      │     ├─ listenerDeal.js
+      │     ├─ listenerDeclare.js
+      │     ├─ listenerDraw.js
+      │     ├─ listenerEndRound.js
+      │     ├─ listenerInit.js
+      │     ├─ listenerNewRound.js
+      │     ├─ listenerPlayerPlayFirst.js
+      │     ├─ listenerPlayerPlaySecond.js
+      │     ├─ listenerPlayerWonTrick.js
+      │     ├─ listenerShowDeclarationComputer.js
+      │     └─ listenerShowSecondDeclarationComputer.js
+      │
+      ├─ responsive/responsive.js    					    ← règles JS côté responsive (classes, mesures…)
+      │
+      ├─ ui/
+      │  ├─ modales/	  						    ← Ecrans temporaires affichant des informations
+      │  │  ├─ showComputerDeclarationModal.js
+      │  │  ├─ showDifficultyChoiceModal.js
+      │  │  ├─ showEndOfGameModal.js
+      │  │  ├─ showEndOfRoundModal.js
+      │  │  ├─ showPlayerDeclarationModal.js
+      │  │  └─ showTrickModal.js
+      │  └─ renders/ 							    ← Affichage des éléments de l'écran principal du jeu
+      │     ├─ renderCards.js
+      │     ├─ renderCardsInto.js
+      │     ├─ renderCardsLikeHand.js
+      │     ├─ renderDeclaration.js
+      │     ├─ renderDeclarationTotals.js
+      │     ├─ renderDeclaredZones.js
+      │     ├─ renderGame.js
+      │     ├─ renderHand.js
+      │     ├─ renderPlayed.js
+      │     ├─ renderScores.js
+      │     ├─ renderStack.js
+      │     ├─ renderStackPile.js
+      │     ├─ renderTricks.js
+      │     ├─ renderTrump.js
+      │     └─ wireLastTrickPopover.js
+      │
+      └─ utils/ 							    ← Pre fonctions, outils servant au fonctionnement du reste du code
+         ├─ actions_jeu/ 						    ← Modifications de l'état de la partie, actions principales
+         │  ├─ computerChooseDeclaration.js
+         │  ├─ computerDeclare.js
+         │  ├─ computerDrawCard.js
+         │  ├─ computerPlayCard.js
+         │  ├─ drawLastTurn.js
+         │  ├─ playerDeclare.js
+         │  ├─ playerDrawCard.js
+         │  ├─ playerPlayCard.js
+         │  └─ playTrickGame.js
+         ├─ aides_jeu/ 				   			     ← Outils élémentaires au fonctionnement du jeu
+         │  ├─ $.js
+         │  ├─ arrayAny.js
+         │  ├─ arraySort.js
+         │  ├─ byNumberOrName.js
+         │  ├─ getRankNum.js
+         │  ├─ has.js
+         │  ├─ playableCards.js
+         │  ├─ playerSortCards.js
+         │  ├─ playerSortCardsEndGame.js
+         │  ├─ safeScore.js
+         │  ├─ scoreCard.js
+         │  ├─ SCREENS.js
+         │  └─ setActive.js
+         ├─ aides_modales/ 						      ← Aides au fonctionnement des modales
+         │  ├─ applyAuroraTheme.js
+         │  ├─ closeModal.js
+         │  ├─ ensureModalRoot.js
+         │  └─ showModal.js
+         ├─ aides_renders/ 						      ← Aides au fonctionnement des renders
+         │  ├─ cardNode.js
+         │  ├─ decidePlayerMode.js
+         │  ├─ el.js
+         │  ├─ ensureAnnouncedPlayerContainer.js
+         │  ├─ ensureContainer.js
+         │  ├─ namesFromScoreDeclarations.js
+         │  ├─ partitionHandByAnnouncements.js
+         │  ├─ qsAny.js
+         │  ├─ renderCache.js
+         │  ├─ setText.js
+         │  ├─ sig.js
+         │  ├─ taille_pioche.js
+         │  └─ updateEndgameFlag.js
+         ├─ annonces/ 						     	      ← Aides au fonctionnement des annonces
+         │  ├─ brezinDeclarations.js
+         │  ├─ couples.js
+         │  ├─ findWithIdAndAddDeclaration.js
+         │  ├─ fours.js
+         │  ├─ isDeclared.js
+         │  ├─ isNotDeclaredFor.js
+         │  ├─ isSevenDecl.js
+         │  ├─ possibleDeclarations.js
+         │  ├─ returnCardIds.js
+         │  ├─ selectedCardsCouple.js
+         │  ├─ selectedCardsFour.js
+         │  ├─ selectedCardsLittleBrezin.js
+         │  ├─ selectedCardTwoFifty.js
+         │  ├─ sevenTrump.js
+         │  ├─ twoFifty.js
+         │  └─ undeclareCards.js
+         └─ probabilites/ 						       ← Aides au fonctionnement des calculs de probabilité
+            ├─ binomialCoefficient.js
+            ├─ equalProb.js
+            ├─ probability250Gain.js
+            └─ probabilityGain.js

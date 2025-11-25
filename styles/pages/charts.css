@@ -1,0 +1,30 @@
+/* === Accueil / graphiques et schémas === */
+.charts-grid,
+.diagrams-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.chart-card,
+.diagram-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+}
+
+.chart-card h3,
+.diagram-card h3 {
+  margin: 4px 0 10px;
+  color: #374151;
+}
+
+.chart-area,
+.diagram-area {
+  min-height: 240px;
+  background: #fafafa;
+  border: 2px dashed #e5e7eb;
+  border-radius: 10px;
+}

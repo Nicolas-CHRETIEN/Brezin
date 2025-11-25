@@ -1,0 +1,16 @@
+/* === Jeu / atout === */
+.trump {
+  min-width: 200px;
+  text-align: center;
+  height: 200px;
+}
+
+.trump_header {
+  margin: 5px 0;
+}
+
+.trump_img {
+  width: 50%;
+  max-width: 200px;
+  margin: auto 0;
+}

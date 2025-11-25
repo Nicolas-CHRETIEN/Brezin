@@ -1,0 +1,32 @@
+/* === Jeu / cartes jouées joueur ordinateur === */
+.cards-played {
+  margin-top: 0;
+  height: 182px;
+  text-align: center;
+}
+
+.cards-played_box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cards-played_img {
+  height: 140px;
+  margin: auto 0;
+}
+
+.cards-played_computer {
+  height: 250px;
+}
+
+.cards-played_h3 {
+  display: block;
+  margin: 0 0 20px 0;
+  font-weight: bold;
+}
+
+/* === Jeu / cartes jouées (ajustement joueur) === */
+.cards-played_player {
+  margin-left: 10px;
+  min-width: 60px;
+}

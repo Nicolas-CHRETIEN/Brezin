@@ -1,0 +1,118 @@
+/* === Modale / Annonce (alignement cartes) === */
+.decl-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.decl-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.decl-block_title {
+  font-weight: 600;
+  color: var(--wood-ink);
+}
+
+.decl-cards {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.decl-cards .card {
+  transition: transform 0.15s ease;
+}
+
+.decl-cards .card:hover {
+  transform: translateY(-4px);
+}
+
+/* === Modale / annonces (conteneurs) === */
+.decl-modal,
+.announce-modal,
+.declare-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.decl-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.decl-block_title {
+  font-weight: 700;
+  color: var(--retro-ink);
+}
+
+.decl-cards {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* === Boutons d’annonce (unifiés) === */
+.btn.decl-btn {
+  appearance: none;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  background: linear-gradient(180deg, #fff8f2, #ffe8cf);
+  color: #3b2a1a;
+  border-radius: 12px;
+  padding: 0.55rem 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.08s ease, box-shadow 0.12s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.btn.decl-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.14);
+  background: linear-gradient(180deg, #fff3e5, #ffdfb9);
+}
+
+.btn.decl-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn.decl-btn:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+.decl-btn.is-selected {
+  background: #2563eb;
+  color: #fff;
+  border-color: #1d4ed8;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+  transform: translateY(-1px) scale(1.03);
+}
+
+.decl-anim-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.decl-anim-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.decl-anim-gif {
+  max-width: 80%;
+  height: auto;
+}

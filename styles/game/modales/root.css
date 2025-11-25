@@ -1,0 +1,85 @@
+/* === Base / variables (thème général) === */
+:root {
+  --brezin-bg: #255f3f;
+  --panel: #ffffff;
+  --ink: #0f172a;
+  --muted: #475569;
+  --line: #e5e7eb;
+  --accent: #2563eb;
+  --glass: rgba(255, 255, 255, 0.08);
+  --glow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+/* === Modale / thème bois (variables) === */
+:root {
+  --wood-100: #f5ecd8;
+  --wood-200: #ecdcbc;
+  --wood-300: #e2cfa7;
+  --wood-400: #c8a871;
+  --wood-ink: #412f1b;
+  --wood-accent: #8b5e2b;
+  --wood-accent-2: #b07a36;
+}
+
+/* === Modale / variables thème rétro === */
+:root {
+  --retro-ink: #2b1a10;
+  --retro-ink-muted: #4b3624;
+  --retro-dark: #603a21;
+  --retro-med: #784a26;
+  --retro-light: #c88a55;
+  --retro-cream: #d3c497;
+  --retro-line: rgba(0, 0, 0, 0.15);
+  --retro-shadow: 0 26px 64px rgba(0, 0, 0, 0.35);
+  --btn-bg: #8c4b1f;
+  --btn-bg-hover: #723b17;
+  --btn-ink: #fff;
+}
+
+/* === Base / variables “parchemin” (nouvelle palette locale) === */
+:root {
+  --card1: #ffe3c4;
+  --card2: #f6cfac;
+  --cardBorder: #c4875a;
+  --cardInk: #3b2a19;
+  --cardLine: #e4b998;
+  --cardShadow: 0 12px 26px rgba(0, 0, 0, 0.25);
+  --insetShadow: 0 2px 0 rgba(0, 0, 0, 0.06) inset;
+}
+
+/* === Base / variables “parchemin” (popover Totaux) === */
+:root {
+  --card1: #ffe3c4;
+  --card2: #d08c50;
+  --cardBorder: #c4875a;
+  --cardInk: #3b2a19;
+  --cardLine: #e4b998;
+  --cardShadow: 0 12px 26px rgba(0, 0, 0, 0.25);
+  --insetShadow: 0 2px 0 rgba(0, 0, 0, 0.06) inset;
+}
+
+/* === Base / variables “felt” (table verte & cuivre) === */
+:root {
+  --felt-1: #52b97c;
+  --felt-2: #48af74;
+  --panel: #63c689;
+  --panel-2: #6acf91;
+  --ink: #13281b;
+  --badge1: #dd8a2b;
+  --badge2: #c96f22;
+  --edge: #cc7b27;
+  --edge-soft: #e6a866;
+  --shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+}
+
+:root {
+  --brz-green:       #4fbf9f;
+  --brz-green-700:   #2e7e6a;
+  --brz-cream:       #fff7e6;
+  --brz-cream-2:     #fcf3de;
+  --brz-orange:      #d97706;
+  --brz-orange-700:  #b45309;
+  --brz-ink:         #1f2937;
+  --brz-muted:       #6b7280;
+  --brz-border:      #e5e7eb;
+}

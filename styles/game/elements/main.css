@@ -1,0 +1,268 @@
+/* === Jeu / général === */
+.flash {
+  display: none;
+}
+
+.view {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.game {
+  background-color: rgb(90, 188, 118);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  align-self: center;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.main_table {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: start;
+  max-width: 1500px;
+}
+
+.main_game_screen {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.stack_full-screen {
+  background-color: rgb(90, 188, 118);
+  min-height: calc(100vh - 80px);
+}
+
+.main_top-screen {
+  margin-top: 0;
+  display: flex;
+  width: 100%;
+  min-height: 256px;
+  justify-content: space-around;
+}
+
+.deal_link {
+  text-decoration: none;
+  min-width: 200px;
+  align-self: center;
+}
+
+.drop-down {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 0;
+}
+
+.button {
+  margin: 20px;
+  padding: 5%;
+  background-color: rgb(211, 0, 0);
+  border-radius: 40%;
+  color: #fff;
+  text-align: center;
+}
+
+.game_hidden {
+  display: none;
+}
+
+.main_hidden {
+  display: none;
+}
+
+.main_elements-player {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+}
+
+.card {
+  width: 70px;
+}
+
+/* === Jeu / général === */
+.game {
+  background-color: rgb(90, 188, 118);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  align-self: center;
+  overflow: hidden;
+  height: 100vh;
+  max-width: 1500px;
+  min-width: 60%;
+}
+
+.main_game_screen {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+}
+
+.main_top-screen {
+  display: flex;
+  width: 100%;
+  height: 160px;
+  justify-content: space-around;
+  margin: auto;
+}
+
+.main_elements-player {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  height: 350px;
+}
+
+.main_middle-screen {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: auto;
+  height: 200px;
+}
+
+.card {
+  width: 110px;
+}
+
+/* === Base / structure === */
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main {
+  background-color: rgb(249, 202, 140);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: static;
+  height: 100vh;
+  max-width: 1500px;
+  min-height: 100vh;
+  text-align: center;
+  width: 100%;
+}
+
+/* === Base === */
+body {
+  background: #383434;
+}
+
+/* === Jeu / panneau principal === */
+.main_table {
+  padding: 16px;
+}
+
+/* === Jeu / 3 zones (haut / milieu / bas) === */
+.main_top-screen,
+.main_middle-screen,
+.main_elements-player {
+  background: linear-gradient(180deg, var(--panel), var(--panel-2));
+  border: 2px solid var(--edge);
+  box-shadow: var(--shadow);
+  border-radius: 18px;
+  padding: 16px;
+  position: relative;
+}
+
+.main_top-screen::after,
+.main_middle-screen::after,
+.main_elements-player::after {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border-radius: 12px;
+  border: 1px solid var(--edge-soft);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* === Jeu / cartouches internes (jouées, pioche, atout, annoncées, main) === */
+.cards-played {
+  width: 300px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.06));
+  border: 2px solid var(--edge);
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.cards-played::before,
+.trump::before,
+.cards-declared-computer::before,
+.cards-declared-player::before,
+.cards-hand-player::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 10px;
+  border: 1px dashed var(--edge-soft);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.main_top-screen > *,
+.main_middle-screen > *,
+.main_elements-player > * {
+  margin-bottom: 10px;
+}
+
+/* === Jeu / profondeur (z-index) === */
+.main_table {
+  position: relative;
+  isolation: isolate;
+}
+
+.main_top-screen {
+  position: relative;
+  z-index: 30;
+}
+
+.main_middle-screen {
+  position: relative;
+  z-index: 20;
+}
+
+.main_elements-player {
+  position: relative;
+  z-index: 10;
+}
+
+.main_top-screen::after,
+.main_middle-screen::after,
+.main_elements-player::after {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* === Jeu / contraintes dimensionnelles & largeurs === */
+.main_middle-screen,
+.main_top-screen {
+  min-height: fit-content;
+  margin-bottom: 20px;
+  max-width: -webkit-fill-available;
+}
+
+.main_elements-player {
+  max-width: -webkit-fill-available;
+  min-height: fit-content;
+  margin-bottom: 0;
+}

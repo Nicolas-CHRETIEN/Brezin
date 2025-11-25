@@ -1,0 +1,44 @@
+/* === Modale / actions (bas) === */
+.modal_actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 12px 14px;
+  background: linear-gradient(180deg, var(--retro-cream), var(--retro-light));
+  border-top: 1px solid var(--retro-line);
+}
+
+/* === Boutons “Passer / Valider” (CTA) === */
+.modal_actions .modal_btn,
+.btn.validate,
+.btn.pass {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  padding: 0.55rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(180deg, #b56a2c 0%, #8b4b18 100%);
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.15s ease;
+}
+
+.modal_actions .modal_btn:hover,
+.btn.validate:hover,
+.btn.pass:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.modal_actions .modal_btn:active,
+.btn.validate:active,
+.btn.pass:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* === Espacements === */
+.decl-block + .modal_actions,
+.decl-buttons + .modal_actions {
+  margin-top: 10px;
+}

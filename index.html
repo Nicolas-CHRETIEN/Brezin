@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jeu</title>
+  <!-- Styles éléments du jeu -->
+  <link rel="stylesheet" href="styles/game/elements/cards-declared.css">
+  <link rel="stylesheet" href="styles/game/elements/cards-declared-player.css">
+  <link rel="stylesheet" href="styles/game/elements/cards-hand-player.css">
+  <link rel="stylesheet" href="styles/game/elements/cards-played.css">
+  <link rel="stylesheet" href="styles/game/elements/declaration-computer.css">
+  <link rel="stylesheet" href="styles/game/elements/decl-totals-popover.css">
+  <link rel="stylesheet" href="styles/game/elements/end-round.css">
+  <link rel="stylesheet" href="styles/game/elements/game_difficulties.css">
+  <link rel="stylesheet" href="styles/game/elements/main.css">
+  <link rel="stylesheet" href="styles/game/elements/result-trick-game.css">
+  <link rel="stylesheet" href="styles/game/elements/score-bowdlerized.css">
+  <link rel="stylesheet" href="styles/game/elements/score-normal.css">
+  <link rel="stylesheet" href="styles/game/elements/stack.css">
+  <link rel="stylesheet" href="styles/game/elements/trick.css">
+  <link rel="stylesheet" href="styles/game/elements/trump.css">
+  <link rel="stylesheet" href="styles/game/elements/headers.css">
+  <link rel="stylesheet" href="styles/game/elements/correct.css">
+  <link rel="stylesheet" href="styles/game/elements/ai-emotion.css">
+
+  <!-- Styles modales du jeu -->
+  <link rel="stylesheet" href="styles/game/modales/difficulty-modal.css">
+  <link rel="stylesheet" href="styles/game/modales/main-modal.css">
+  <link rel="stylesheet" href="styles/game/modales/root.css">
+  <link rel="stylesheet" href="styles/game/modales/modal_box.css">
+  <link rel="stylesheet" href="styles/game/modales/trick-result.css">
+  <link rel="stylesheet" href="styles/game/modales/decl-modal.css">
+  <link rel="stylesheet" href="styles/game/modales/modal_actions.css">
+  <link rel="stylesheet" href="styles/game/modales/player-decl-modal.css">
+  <link rel="stylesheet" href="styles/game/modales/end-of-round.css">
+  <link rel="stylesheet" href="styles/game/modales/end-of-game.css">
+  <link rel="stylesheet" href="styles/game/modales/mini-info-bar.css">
+  <link rel="stylesheet" href="styles/game/modales/mini-overlay.css">
+  <link rel="stylesheet" href="styles/game/modales/session-modal.css">
+
+  <!-- Styles autres pages -->
+  <link rel="stylesheet" href="styles/pages/rules.css">
+  <link rel="stylesheet" href="styles/pages/home.css">
+  <link rel="stylesheet" href="styles/pages/home-table.css">
+  <link rel="stylesheet" href="styles/pages/charts.css">
+  <link rel="stylesheet" href="styles/pages/boutons.css">
+</head>
+<body class="body">
+  <!-- Pistes musicales (on cache les contrôles natifs) -->
+  <audio id="musicAccueil" src="./sons/musiques/accueil.mp3" preload="auto" loop></audio>
+  <audio id="musicJeu"     src="./sons/musiques/jeu.mp3"     preload="auto" loop></audio>
+
+  <!-- Panneau audio custom -->
+  <div class="audio-panel">
+    <button id="btnMusicToggle" title="Play/Pause">⏯</button>
+    <label>Musique
+      <input id="rngMusic" type="range" min="0" max="1" step="0.01">
+    </label>
+    <label>Bruitages
+      <input id="rngSfx" type="range" min="0" max="1" step="0.01">
+    </label>
+  </div>
+
+  <!-- Indicateur connexion -->
+  <div id="session-indicator" class="session-indicator">
+    <span class="session-indicator_label">Session :</span>
+    <span id="session-indicator_name" class="session-indicator_name">Invité</span>
+  </div>
+
+  <!-- Modal loggin -->
+  <div id="session-modal" class="modal-root">
+    <div class="modal session-modal">
+      <header class="session-modal_header">
+        <h2 class="session-modal_title">Choisir une session</h2>
+        <p class="session-modal_subtitle">
+          Sélectionne un joueur enregistré ou crée une nouvelle session.
+        </p>
+      </header>
+
+      <!-- Liste des sessions existantes (boutons générés en JS) -->
+      <div id="session-modal_list" class="session-modal_list">
+        <!--
+        Exemple de rendu JS :
+
+        <button type="button" class="session-btn" data-username="Nicolas">
+          <span class="session-btn_name">Nicolas</span>
+          <span class="session-btn_hint">Cliquer pour rejoindre</span>
+        </button>
+        -->
+      </div>
+
+      <!-- Zone de création de nouvelle session -->
+      <div class="session-modal_new">
+        <button
+          id="session-modal_newBtn"
+          type="button"
+          class="btn validate session-create-btn"
+        >
+          + Créer une nouvelle session
+        </button>
+
+        <div id="session-modal_newForm" class="session-modal_newForm">
+          <label for="session-modal_newName" class="session-modal_label">
+            Nom de la nouvelle session
+          </label>
+          <div class="session-modal_newRow">
+            <input
+              id="session-modal_newName"
+              type="text"
+              class="session-modal_input"
+              placeholder="Nom du joueur"
+            >
+            <button
+              id="session-modal_confirmNew"
+              type="button"
+              class="btn validate"
+            >
+              Valider
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Adversaire -->
+  <div id="ai-emotion-box" class="ai-emotion-box">
+    <img id="ai-emotion-img"
+        class="ai-emotion-img"
+        src="images/adversaires/emotions/Perrot_joie.svg"
+        alt="Humeur de l'adversaire">
+    <p id="ai-emotion-text" class="ai-emotion-text">
+      Allons-y, je suis prêt à jouer !
+    </p>
+  </div>
+
+  <!-- ÉCRAN 1 : ACCUEIL (par défaut) -->
+  <section id="screen-home" class="screen screen--active">
+    <div class="home wrap">
+      <!-- HERO -->
+      <header class="home__header">
+        <h1 id="home-title">Jeu du Brézin</h1>
+        <p class="home__subtitle">Un jeu traditionnel du Berry, pensé pour 2 joueurs</p>
+
+        <div class="home__cta">
+          <button class="btn" data-goto="game">Jouer une partie</button>
+          <a class="btn-link" data-goto="rules" id="btn-open-rules">Voir les règles</a>
+          <button id="btn-session-switch" class="btn validate session-switch-btn">
+            Changer de session
+          </button>
+        </div>
+      </header>
+
+      <!-- RÉSUMÉ HISTORIQUE -->
+      <section class="home__block" aria-labelledby="home-origin">
+        <h2 id="home-origin">Origine et transmission</h2>
+        <p class="home__lead">
+          Le Brézin est un ancien jeu de cartes originaire du Berry, province historique centrée autour de Bourges.
+          Bien que l’entité administrative ait disparu après la Révolution, sa culture a perduré, et le Brézin en est un témoignage.
+        </p>
+        <p>
+          Dans ma famille, une branche a vécu près de Levroux et Châteauroux. Sans avoir grandi sur place, j’ai reçu ce jeu
+          par transmission orale, de génération en génération. Le Brézin se distingue par un atout rare&nbsp;: il se joue à deux,
+          tout en restant un jeu “évolué”. Aujourd’hui il n’est presque plus pratiqué et ses règles se sont diffusées surtout par récits.
+        </p>
+        <p>
+          Ce jeu a pour objectif de préserver et partager ces règles de manière ludique&nbsp;: en y jouant.
+        </p>
+      </section>
+
+      <!-- STAT CARDS / KPI -->
+      <section class="home__block" aria-labelledby="home-kpi">
+        <h2 id="home-kpi">Aperçu des résultats</h2>
+        <div class="diff-tabs" role="tablist" aria-label="Niveau de difficulté">
+          <button class="diff-tab" role="tab" data-diff="easy"   aria-selected="false">Facile</button>
+          <button class="diff-tab" role="tab" data-diff="normal" aria-selected="true">Normal</button>
+          <button class="diff-tab" role="tab" data-diff="hard"   aria-selected="false">Difficile</button>
+          <button class="diff-tab" role="tab" data-diff="expert" aria-selected="false">Expert</button>
+        </div>
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-label">Parties jouées</div>
+            <div class="kpi-value" id="kpi-games-played">0</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Taux de victoire</div>
+            <div class="kpi-value" id="kpi-winrate-player">0%</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Score moyen</div>
+            <div class="kpi-value" id="kpi-avgscore-player">0</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Écart moyen</div>
+            <div class="kpi-value" id="kpi-avg-gap">0</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHARTS -->
+      <section class="home__block" aria-labelledby="home-charts">
+        <h2 id="home-charts">Graphiques</h2>
+
+        <div class="charts-grid">
+          <!-- Répartition des issues (camembert) -->
+          <article class="chart-card" aria-labelledby="chart-outcomes-title">
+            <h3 id="chart-outcomes-title">Issues des parties</h3>
+            <div class="chart-area" id="chart-outcomes" role="img" aria-label="Répartition victoires joueur / ordinateur / égalités">
+              <!-- Canvas ou SVG injecté en JS -->
+            </div>
+          </article>
+
+          <!-- Progression des scores (courbe) -->
+          <article class="chart-card" aria-labelledby="chart-scores-title">
+            <h3 id="chart-scores-title">Scores finaux au fil du temps</h3>
+            <div class="chart-area" id="chart-scores" role="img" aria-label="Courbes des scores finaux des parties">
+              <!-- Canvas ou SVG injecté en JS -->
+            </div>
+          </article>
+
+          <!-- Histogramme écarts -->
+          <article class="chart-card" aria-labelledby="chart-gap-title">
+            <h3 id="chart-gap-title">Distribution des écarts</h3>
+            <div class="chart-area" id="chart-gap" role="img" aria-label="Histogramme des écarts de score">
+              <!-- Canvas ou SVG injecté en JS -->
+            </div>
+          </article>
+
+          <!-- Radar annonces -->
+          <article class="chart-card" aria-labelledby="chart-decls-title">
+            <h3 id="chart-decls-title">Annonces les plus fréquentes</h3>
+            <div class="chart-area" id="chart-declarations" role="img" aria-label="Répartition des annonces (Couples, Carrés, 7 d'atout, 250, Brézin, Grand Brézin)">
+              <!-- Canvas ou SVG injecté en JS -->
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- DERNIÈRES PARTIES -->
+      <section class="home__block" aria-labelledby="home-recent">
+        <h2 id="home-recent">Dernières parties</h2>
+        <div class="table-scroll">
+          <table class="home-table" id="table-recent-games">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Vainqueur</th>
+                <th>Score Joueur</th>
+                <th>Score Ordinateur</th>
+                <th>Écart</th>
+                <th>Annonces Joueur</th>
+                <th>Annonces Ordinateur</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Lignes injectées en JS à partir du CSV / stockage -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- ÉCRAN 2 : RÈGLES -->
+  <section id="screen-rules" class="screen">
+    <div class="rules wrap">
+      <button class="btn" data-goto="game">Lancer le jeu</button>
+      <button class="btn alt" data-goto="home">Retour accueil</button>
+      <header class="rules__header">
+        <h1 id="rules-title">Règles du jeu – Le Brézin</h1>
+        <p class="rules__subtitle">Deux joueurs – Deux jeux de 32 cartes – Objectif 1000 points</p>
+      </header>
+
+      <section class="rules__block" aria-labelledby="rules-objectif">
+        <h2 id="rules-objectif">Objectif</h2>
+        <p>Le vainqueur est le premier joueur qui atteint ou dépasse <strong>1000 points</strong> à la fin d’une partie.</p>
+      </section>
+
+      <section class="rules__block" aria-labelledby="rules-donne-atout">
+        <h2 id="rules-donne-atout">Donne et atout</h2>
+        <ul>
+          <li>On utilise <strong>deux jeux de 32 cartes</strong>.</li>
+          <li>On distribue <strong>9 cartes</strong> à chaque joueur, <strong>trois par trois</strong>.</li>
+          <li>La <strong>19<sup>e</sup> carte</strong> est <strong>retournée face visible</strong> : elle détermine la <strong>couleur d’atout</strong> puis est placée <strong>sous le talon</strong> (la pioche).</li>
+          <li>Seule cette carte d’atout est visible au début de la partie.</li>
+          <li><strong>Qui commence :</strong> le joueur qui n’a pas distribué. À la donne suivante, on inverse les rôles.</li>
+        </ul>
+      </section>
+
+      <section class="rules__block" aria-labelledby="rules-phases">
+        <h2 id="rules-phases">Phases du jeu</h2>
+        <ol>
+          <li><a href="#rules-plis">Le jeu des plis</a></li>
+          <li><a href="#rules-annonces">Les annonces</a></li>
+        </ol>
+      </section>
+
+      <section class="rules__block" aria-labelledby="rules-plis">
+        <h2 id="rules-plis">1) Le jeu des plis</h2>
+
+        <h3>Déroulement d’un tour</h3>
+        <ol>
+          <li>Le premier joueur <strong>pioche une carte</strong> dans le talon, puis <strong>joue une carte</strong> de son choix.</li>
+          <li>Le second joueur <strong>pioche</strong> à son tour, puis <strong>répond</strong> avec une carte.</li>
+        </ol>
+
+        <h3>Attribution du pli</h3>
+        <ul>
+          <li>Si les deux cartes sont de la <strong>même couleur</strong>, la <strong>plus forte</strong> remporte le pli.</li>
+          <li>Si deux cartes indentiques sont jouées, la première jouée remporte le pli.</li>
+          <li>Si le second joueur <strong>change de couleur</strong>, il perd le pli, sauf s’il <strong>coupe à l’atout</strong> (dans ce cas il gagne le pli).</li>
+          <li>Le <strong>vainqueur du pli</strong> entame le tour suivant.</li>
+        </ul>
+
+        <h3>Ordre des cartes (de la plus faible à la plus forte)</h3>
+        <p><code>7 – 8 – 9 – Valet – Dame – Roi – 10 – As</code></p>
+
+        <p>Les cartes jouées sont placées face cachée dans le <strong>tas de plis</strong> du joueur qui les a remportées.</p>
+      </section>
+
+      <section class="rules__block" aria-labelledby="rules-annonces">
+        <h2 id="rules-annonces">2) Les annonces</h2>
+
+        <p>Lorsqu’un joueur <strong>remporte un pli</strong>, il peut <strong>immédiatement</strong> faire <strong>une annonce</strong> (une seule à la fois, sauf mention contraire).</p>
+
+        <!-- ==================== COUPLES ==================== -->
+        <h3>Couples (Dame + Roi de même couleur)</h3>
+        <ul>
+          <li><strong>20 points</strong></li>
+          <li><strong>40 points</strong> si c’est un <strong>couple d’atout</strong></li>
+        </ul>
+
+        <div class="rules__example">
+          <p class="rules__example-title">Exemples de couples :</p>
+
+          <!-- Couple simple -->
+          <figure class="rules__example-figure">
+            <figcaption>Couple simple (20 points)&nbsp;: Dame et Roi de Cœur</figcaption>
+            <div class="rules__cards-row">
+              <img class="rules__card" src="images/dame_de_coeur.svg" alt="Dame de Cœur">
+              <img class="rules__card" src="images/roi_de_coeur.svg" alt="Roi de Cœur">
+            </div>
+          </figure>
+
+          <!-- Couple d'atout -->
+          <figure class="rules__example-figure">
+            <figcaption>Couple d’atout (40 points)&nbsp;: Dame et Roi d’atout (ici Trèfle)</figcaption>
+            <div class="rules__cards-row">
+              <img class="rules__card" src="images/dame_de_trèfle.svg" alt="Dame de Trèfle">
+              <img class="rules__card" src="images/roi_de_trèfle.svg" alt="Roi de Trèfle">
+            </div>
+          </figure>
+        </div>
+
+        <!-- ==================== CARRES ==================== -->
+        <h3>Carrés (4 cartes de même rang)</h3>
+        <table class="rules__table">
+          <thead>
+            <tr><th>Rang</th><th>Points</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Valets</td><td>40</td></tr>
+            <tr><td>Dames</td><td>60</td></tr>
+            <tr><td>Rois</td><td>80</td></tr>
+            <tr><td>As</td><td>100</td></tr>
+          </tbody>
+        </table>
+        <p>Les autres carrés ne rapportent <strong>aucun point</strong>.</p>
+
+        <div class="rules__example">
+          <p class="rules__example-title">Exemple de carré&nbsp;: Carré de Dames (60 points)</p>
+          <div class="rules__cards-row">
+            <img class="rules__card" src="images/dame_de_pique.svg"   alt="Dame de Pique">
+            <img class="rules__card" src="images/dame_de_coeur.svg"  alt="Dame de Cœur">
+            <img class="rules__card" src="images/dame_de_carreau.svg" alt="Dame de Carreau">
+            <img class="rules__card" src="images/dame_de_trèfle.svg" alt="Dame de Trèfle">
+          </div>
+          <p class="rules__example-title">Un autre exemple&nbsp;: Carré de Rois (80 points)</p>
+          <div class="rules__cards-row">
+            <img class="rules__card" src="images/roi_de_coeur.svg"   alt="Dame de Pique">
+            <img class="rules__card" src="images/roi_de_coeur.svg"  alt="Dame de Cœur">
+            <img class="rules__card" src="images/roi_de_carreau.svg" alt="Dame de Carreau">
+            <img class="rules__card" src="images/roi_de_trèfle.svg" alt="Dame de Trèfle">
+          </div>
+        </div>
+
+        <!-- ==================== 7 D'ATOUT ==================== -->
+        <h3>Les 7 d’atout</h3>
+        <ul>
+          <li>Chaque <strong>7 d’atout</strong> vaut <strong>10 points</strong>.</li>
+          <li>Un 7 d’atout peut être <strong>échangé</strong> contre la <strong>carte visible d’atout</strong> (celle sous le talon), qui rejoint alors les cartes d’annonces <strong>face visible</strong>.</li>
+          <li>Si le <strong>distributeur retourne un 7 d’atout à la donne</strong>, il marque <strong>automatiquement 10 points</strong>.</li>
+        </ul>
+
+        <div class="rules__example">
+          <p class="rules__example-title">Exemple de 7 d’atout&nbsp;: ici l’atout est Trèfle</p>
+          <div class="rules__cards-row">
+            <img class="rules__card" src="images/7_de_trèfle.svg" alt="7 de Trèfle">
+            <img class="rules__card" src="images/trèfle.svg"      alt="Symbole d’atout Trèfle">
+          </div>
+        </div>
+
+        <!-- ==================== 250 ==================== -->
+        <h3>Le 250 (10, Valet, Dame, Roi, As d’atout)</h3>
+        <p><strong>250 points</strong>.</p>
+
+        <div class="rules__example">
+          <p class="rules__example-title">Exemple de 250&nbsp;: Valet, Dame, Roi, 10 et As d’atout (ici Carreau)</p>
+          <div class="rules__cards-row">
+            <img class="rules__card" src="images/valet_de_carreau.svg" alt="Valet de Carreau">
+            <img class="rules__card" src="images/dame_de_carreau.svg"  alt="Dame de Carreau">
+            <img class="rules__card" src="images/roi_de_carreau.svg"   alt="Roi de Carreau">
+            <img class="rules__card" src="images/10_de_carreau.svg"    alt="10 de Carreau">
+            <img class="rules__card" src="images/as_de_carreau.svg"    alt="As de Carreau">
+          </div>
+        </div>
+
+        <!-- ==================== 40 DE BREZIN ==================== -->
+        <h3>Le 40 de Brézin</h3>
+        <p><strong>Valet de Pique + Dame de Carreau</strong> : <strong>40 points</strong>.</p>
+
+        <div class="rules__example">
+          <p class="rules__example-title">Exemple de 40 de Brézin</p>
+          <div class="rules__cards-row">
+            <img class="rules__card" src="images/valet_de_pique.svg"   alt="Valet de Pique">
+            <img class="rules__card" src="images/dame_de_carreau.svg" alt="Dame de Carreau">
+          </div>
+        </div>
+
+        <!-- ==================== BREZIN ==================== -->
+        <h3>Le Brézin</h3>
+        <p><strong>Deux Valets de Pique</strong> et <strong>deux Dames de Carreau</strong> : <strong>500 points</strong>.</p>
+
+        <div class="rules__example">
+          <p class="rules__example-title">Exemple de Brézin</p>
+          <div class="rules__cards-row">
+            <!-- on affiche simplement deux fois chaque carte -->
+            <img class="rules__card" src="images/valet_de_pique.svg"   alt="Valet de Pique">
+            <img class="rules__card" src="images/valet_de_pique.svg"   alt="Valet de Pique">
+            <img class="rules__card" src="images/dame_de_carreau.svg" alt="Dame de Carreau">
+            <img class="rules__card" src="images/dame_de_carreau.svg" alt="Dame de Carreau">
+          </div>
+        </div>
+
+        <p>Il est possible d’annoncer d’abord un <strong>Brézin</strong>, puis un <strong>Grand Brézin</strong>, à condition de <strong>n’avoir joué aucune carte</strong> appartenant au Brézin annoncé.</p>
+
+        <!-- ==================== CARTES EXPOSEES ==================== -->
+        <h3>Cartes exposées et cumul</h3>
+        <ul>
+          <li>Les cartes ayant servi à une annonce sont <strong>exposées face visible</strong> et restent jouables plus tard.</li>
+          <li>On ne peut faire <strong>qu’une annonce à la fois</strong>, sauf si l’annonce comporte aussi le <strong>10 d’atout</strong> (cumul autorisé).</li>
+          <li>Les cartes d’un <strong>couple</strong> ne peuvent pas former un autre couple, mais peuvent servir à un <strong>carré</strong>, au <strong>250</strong> ou au <strong>Brézin</strong>, et inversement.</li>
+          <li>Une <strong>carte exposée</strong> peut participer à une nouvelle annonce seulement si <strong>au moins une carte provient de la main du joueur</strong>.</li>
+          <li><strong>Une seule</strong> carte d’un carré annoncé peut être réutilisée pour refaire un carré.</li>
+          <li>Une <strong>carte déjà jouée</strong> ne peut plus être utilisée pour une annonce.</li>
+        </ul>
+      </section>
+
+      <section class="rules__block" aria-labelledby="rules-fin">
+        <h2 id="rules-fin">Fin de partie et obligations</h2>
+        <ul>
+          <li>Quand le <strong>talon est épuisé</strong>, les joueurs reprennent leurs cartes exposées en main et la partie se poursuit <strong>sans pioche</strong>.</li>
+          <li>À partir de ce moment, les <strong>annonces ne sont plus autorisées</strong>.</li>
+          <li>On doit <strong>fournir la couleur demandée</strong> si possible ; sinon, on doit <strong>couper à l’atout</strong>.</li>
+          <li>En atout, on est <strong>obligé de monter</strong> (jouer une carte d’atout plus forte si possible).</li>
+        </ul>
+      </section>
+
+      <section class="rules__block" aria-labelledby="rules-scoring">
+        <h2 id="rules-scoring">Comptage des points</h2>
+        <ul>
+          <li>Chaque <strong>10</strong> et chaque <strong>As</strong> remporté dans les plis vaut <strong>10 points</strong>.</li>
+          <li>On y ajoute les <strong>points des annonces</strong>.</li>
+          <li>Le premier joueur qui atteint ou dépasse <strong>1000 points</strong> remporte la partie.</li>
+        </ul>
+      </section>
+    </div>
+  </section>
+
+  <!-- ÉCRAN 3 : JEU (ton écran collé, sans boutons de nav) -->
+  <section id="screen-game" class="screen">
+    <main class="main">
+      <div class="game">
+        <!-- Barre compacte (hidden par défaut, visible en petit écran via CSS) -->
+        <nav id="mini-info-bar" class="mini-info-bar" aria-label="Infos rapides">
+          <button type="button" class="mini-info-btn" data-target="decl">Cartes annoncées</button>
+          <button type="button" id="showtrick" class="mini-info-btn" data-target="trick">Dernier pli</button>
+        </nav>
+
+        <!-- Overlay réutilisable -->
+        <div id="mini-overlay" class="mini-overlay" aria-hidden="true">
+          <div class="mini-overlay_backdrop" data-close="1"></div>
+          <div class="mini-overlay_panel" role="dialog" aria-modal="true" aria-labelledby="mini-overlay-title">
+            <div class="mini-overlay_header">
+              <h3 id="mini-overlay-title" class="mini-overlay_title">Aperçu</h3>
+              <button type="button" class="mini-overlay_close" title="Fermer" data-close="1">✕</button>
+            </div>
+            <div class="mini-overlay_body" id="mini-overlay-body"></div>
+          </div>
+        </div>
+        <div class="main_table">
+
+          <!-- Bandeau du haut : scores, carte(s) jouée(s), pioche, atout -->
+          <div class="main_top-screen">
+
+            <!-- Score "normal" -->
+            <div class="score-normal scoreNormal" id="score-normal">
+              <div class="score-normal_result-box">
+                <div class="score-normal_cards-in-stack">
+                  <h2 class="score-normal_h2">Cartes dans le talon:</h2>
+                  <h2 class="score-normal_h2" id="stack-count">0</h2>
+                </div>
+                <div class="score-normal_score">
+                  <div class="score-normal_result score-normal_result-player">
+                    <h3 class="score-normal_h3">Score joueur</h3>
+                    <p class="score-normal_result_p" id="score-player">0</p>
+                  </div>
+                  <div class="score-normal_result score-normal_result-computer">
+                    <h3 class="score-normal_h3">Score ordinateur</h3>
+                    <p class="score-normal_result_p" id="score-computer">0</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Déclarations -->
+              <div class="score-normal_declarations-container">
+                <div class="score-normal_declarations scoreNormalDeclarations">
+                  <div class="score-normal_declarations-box">
+                    <h2 class="score-normal_h2">Annonces</h2>
+                    <div class="score-normal_declarations_player" id="decl-computer"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Score “compact” -->
+            <div class="score-bowdlerized" id="score-compact">
+              <h2 class="score-bowdlerized_header">Score:</h2>
+              <div class="score-bowdlerized_player">
+                <h3 class="score-bowdlerized_header">J:</h3>
+                <h3 class="score-bowdlerized_score" id="score-compact-player">0</h3>
+              </div>
+              <div class="score-bowdlerized_player">
+                <h3 class="score-bowdlerized_header">O:</h3>
+                <h3 class="score-bowdlerized_score" id="score-compact-computer">0</h3>
+              </div>
+              <h4 class="score-bowdlerized_turn">Talon: <span id="score-compact-stack">0</span></h4>
+            </div>
+
+            <!-- Carte(s) jouée(s) -->
+            <div class="cards-played" id="cards-played">
+              <div class="cards-played_box">
+                <div class="cards-played_computer">
+                  <h3 class="cards-played_h3">Carte ordinateur</h3>
+                  <div class="cards-played_slot" id="played-computer"></div>
+                </div>
+                <div class="cards-played_player">
+                  <h3 class="cards-played_h3">Carte joueur</h3>
+                  <div class="cards-played_slot" id="played-player"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pioche -->
+            <div class="stack">
+              <h2 id="stack-header" class="stack_header">Pioche</h2>
+              <div id="stack_div" class="">
+                <img id="stack-img" src="images/stack10.svg" alt="tas de la pioche" class="stack_img">
+              </div>
+            </div>
+
+            <!-- Atout -->
+            <div class="trump" id="trump">
+              <h3 class="trump_header">Atout</h3>
+              <div class="trump_slot" id="trump-card"><!-- carte d'atout injectée ici --></div>
+            </div>
+
+          </div>
+
+          <!-- Bandeau milieu : cartes annoncées ordinateur + plis -->
+          <div class="main_middle-screen">
+            <!-- 10 cartes annoncées par l’ordinateur -->
+            <div class="cards-declared-computer">
+              <h3 class="cards-declared-computer_header">Cartes annoncées par l'ordinateur</h3>
+              <div class="cards-declared-computer_cards" id="declared-computer">
+                <!-- cartes annoncées ordi (0..10) -->
+              </div>
+            </div>
+
+            <!-- Plis -->
+            <div class="trick-piles">
+              <h3 class="trick_header">Plis</h3>
+              <div class="trick-stock LastTrickDesktop" id="trick-stacks"></div>
+
+              <div class="trick-list-hidden trickListDesktop" id="last-trick">
+                <h3 class="trick_h3">Dernier pli</h3>
+                <ul class="trick_list" id="last-trick-list"></ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zone joueur : 10 annoncées + 10 en main -->
+          <div class="main_elements-player">
+            <!-- 10 cartes annoncées par le joueur -->
+            <div class="cards-declared-player">
+              <h3 class="cards-declared-player_header">Cartes annoncées par le joueur</h3>
+              <div class="cards-declared-player_cards-box" id="declared-player"></div>
+            </div>
+
+            <!-- 10 cartes en main du joueur -->
+            <div class="cards-hand-player">
+              <h2 class="cards-hand-player_header">Cartes en main</h2>
+              <div class="cards-hand-player_carousel">
+                <div class="cards-hand-player_ribon" id="hand-player"></div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.main_table -->
+      </div><!-- /.game -->
+    </main>
+  </section>
+
+  <!-- Inclusion des scripts du jeu --> 
+
+  <!-- scripts fonctionnement graphiques --> 
+  <script src="./scripts/graphiques/chart.umd.min.js"></script>
+  <script src="./scripts/graphiques/graphiques.js"></script>
+  <script src="./scripts/graphiques/filterByDifficulty.js"></script>
+
+  <!-- scripts outils --> 
+  <!-- scripts actions primaires du jeu --> 
+  <script src="./scripts/game/utils/actions_jeu/computerChooseDeclaration.js"></script>
+  <script src="./scripts/game/utils/actions_jeu/computerDeclare.js"></script>
+  <script src="./scripts/game/utils/actions_jeu/computerDrawCard.js"></script>
+  <script src="./scripts/game/utils/actions_jeu/computerPlayCard.js"></script>
+  <script src="./scripts/game/utils/actions_jeu/drawLastTurn.js"></script>
+  <script src="./scripts/game/utils/actions_jeu/playerDeclare.js"></script>
+  <script src="./scripts/game/utils/actions_jeu/playerDrawCard.js"></script>
+  <script src="./scripts/game/utils/actions_jeu/playerPlayCard.js"></script>
+  <script src="./scripts/game/utils/actions_jeu/playTrickGame.js"></script>
+  <!-- scripts aides générales -->
+  <script src="./scripts/game/utils/aides_jeu/$.js"></script>
+  <script src="./scripts/game/utils/aides_jeu/arrayAny.js"></script>
+  <script src="./scripts/game/utils/aides_jeu/arraySort.js"></script>
+  <script src="./scripts/game/utils/aides_jeu/byNumberOrName.js"></script>
+  <script src="./scripts/game/utils/aides_jeu/getRankNum.js"></script>
+  <script src="./scripts/game/utils/aides_jeu/has.js"></script>
+  <script src="./scripts/game/utils/aides_jeu/playableCards.js"></script>
+  <script src="./scripts/game/utils/aides_jeu/playerSortCards.js"></script>
+  <script src="./scripts/game/utils/aides_jeu/playerSortCardsEndGame.js"></script>
+  <script src="./scripts/game/utils/aides_jeu/safeScore.js"></script>
+  <script src="./scripts/game/utils/aides_jeu/scoreCard.js"></script>
+  <script src="./scripts/game/utils/aides_jeu/SCREENS.js"></script>
+  <script src="./scripts/game/utils/aides_jeu/setActive.js"></script>
+  <script src="./scripts/game/utils/aides_jeu/shuffleDeck.js"></script>
+  <!-- scripts aides modales --> 
+  <script src="./scripts/game/utils/aides_modales/applyAuroraTheme.js"></script>
+  <script src="./scripts/game/utils/aides_modales/closeModal.js"></script>
+  <script src="./scripts/game/utils/aides_modales/ensureModalRoot.js"></script>
+  <script src="./scripts/game/utils/aides_modales/showModal.js"></script>
+  <script src="./scripts/game/utils/aides_modales/showEndGif.js"></script>
+  <!-- scripts aides renders --> 
+  <script src="./scripts/game/utils/aides_renders/cardNode.js"></script>
+  <script src="./scripts/game/utils/aides_renders/decidePlayerMode.js"></script>
+  <script src="./scripts/game/utils/aides_renders/el.js"></script>
+  <script src="./scripts/game/utils/aides_renders/ensureAnnouncedPlayerContainer.js"></script>
+  <script src="./scripts/game/utils/aides_renders/ensureContainer.js"></script>
+  <script src="./scripts/game/utils/aides_renders/namesFromScoreDeclarations.js"></script>
+  <script src="./scripts/game/utils/aides_renders/partitionHandByAnnouncements.js"></script>
+  <script src="./scripts/game/utils/aides_renders/qsAny.js"></script>
+  <script src="./scripts/game/utils/aides_renders/renderCache.js"></script>
+  <script src="./scripts/game/utils/aides_renders/setText.js"></script>
+  <script src="./scripts/game/utils/aides_renders/sig.js"></script>
+  <script src="./scripts/game/utils/aides_renders/taille_pioche.js"></script>
+  <script src="./scripts/game/utils/aides_renders/updateEndgameFlag.js"></script>
+  <!-- scripts aides annonces --> 
+  <script src="./scripts/game/utils/annonces/brezinDeclarations.js"></script>
+  <script src="./scripts/game/utils/annonces/couples.js"></script>
+  <script src="./scripts/game/utils/annonces/findWithIdAndAddDeclaration.js"></script>
+  <script src="./scripts/game/utils/annonces/fours.js"></script>
+  <script src="./scripts/game/utils/annonces/isDeclared.js"></script>
+  <script src="./scripts/game/utils/annonces/isNotDeclaredFor.js"></script>
+  <script src="./scripts/game/utils/annonces/isNotDeclaredForSmthLike.js"></script>
+  <script src="./scripts/game/utils/annonces/isDeclaredForSmthLike.js"></script>
+  <script src="./scripts/game/utils/annonces/isSevenDecl.js"></script>
+  <script src="./scripts/game/utils/annonces/possibleDeclarations.js"></script>
+  <script src="./scripts/game/utils/annonces/returnCardIds.js"></script>
+  <script src="./scripts/game/utils/annonces/selectedCardsCouple.js"></script>
+  <script src="./scripts/game/utils/annonces/selectedCardsFour.js"></script>
+  <script src="./scripts/game/utils/annonces/selectedCardsLittleBrezin.js"></script>
+  <script src="./scripts/game/utils/annonces/selectedCardTwoFifty.js"></script>
+  <script src="./scripts/game/utils/annonces/sevenTrump.js"></script>
+  <script src="./scripts/game/utils/annonces/twoFifty.js"></script>
+  <script src="./scripts/game/utils/annonces/undeclareCards.js"></script>
+  <!-- scripts aides probabilités --> 
+  <script src="./scripts/game/utils/probabilites/binomialCoefficient.js"></script>
+  <script src="./scripts/game/utils/probabilites/equalProb.js"></script>
+  <script src="./scripts/game/utils/probabilites/probability250Gain.js"></script>
+  <script src="./scripts/game/utils/probabilites/probabilityGain.js"></script>
+
+  <!-- script lancement du jeu --> 
+  <script src="./scripts/game/main.js"></script>
+
+  <!-- scripts fonctionnement de l'IA --> 
+  <script src="./scripts/game/core/IA/computerPlayFirst.js"></script>
+  <script src="./scripts/game/core/IA/computerPlayFirstEndGame.js"></script>
+  <script src="./scripts/game/core/IA/computerPlaySecond.js"></script>
+  <script src="./scripts/game/core/IA/computerPlaySecondEndGame.js"></script>
+  <script src="./scripts/game/core/IA/playFirstCardToLose.js"></script>
+  <script src="./scripts/game/core/IA/playFirstCardToWinForSure.js"></script>
+  <script src="./scripts/game/core/IA/playFirstCardToWinMaybe.js"></script>
+  <script src="./scripts/game/core/IA/trickGameSimulation.js"></script>
+  <!-- scripts calacul des consequences d'une carte --> 
+  <script src="./scripts/game/core/IA/consequences/consequencesCard.js"></script>
+  <!-- scripts calcul de la valeur d'une carte --> 
+  <script src="./scripts/game/core/IA/value/brezinValue.js"></script>
+  <script src="./scripts/game/core/IA/value/coupleValue.js"></script>
+  <script src="./scripts/game/core/IA/value/fourValue.js"></script>
+  <script src="./scripts/game/core/IA/value/littleBrezinValue.js"></script>
+  <script src="./scripts/game/core/IA/value/twoFiftyValue.js"></script>
+  <script src="./scripts/game/core/IA/value/valueCard.js"></script>
+  <!-- scripts listeners --> 
+  <script src="./scripts/game/core/listeners/listenerChoiceDifficulty.js"></script>
+  <script src="./scripts/game/core/listeners/listenerComputerPlayFirst.js"></script>
+  <script src="./scripts/game/core/listeners/listenerDeal.js"></script>
+  <script src="./scripts/game/core/listeners/listenerDeclare.js"></script>
+  <script src="./scripts/game/core/listeners/listenerDraw.js"></script>
+  <script src="./scripts/game/core/listeners/listenerEndRound.js"></script>
+  <script src="./scripts/game/core/listeners/listenerInit.js"></script>
+  <script src="./scripts/game/core/listeners/listenerNewRound.js"></script>
+  <script src="./scripts/game/core/listeners/listenerPlayerPlayFirst.js"></script>
+  <script src="./scripts/game/core/listeners/listenerPlayerPlaySecond.js"></script>
+  <script src="./scripts/game/core/listeners/listenerPlayerWonTrick.js"></script>
+  <script src="./scripts/game/core/listeners/listenerShowDeclarationComputer.js"></script>
+  <script src="./scripts/game/core/listeners/listenerShowSecondDeclarationComputer.js"></script>
+
+  
+  <!-- Scripts Dialogues-->
+  <script src="./scripts/game/utils/dialogues/dialogues.js"></script>
+  <script src="./scripts/game/utils/dialogues/AI_BY_DIFF.js"></script>
+  <script src="./scripts/game/utils/dialogues/estimatePossibleEqual.js"></script>
+  <script src="./scripts/game/utils/dialogues/calculateSituationRate.js"></script>
+  <script src="./scripts/game/utils/dialogues/AIPersonality.js"></script>
+  
+  <!-- script gestion du responsive du jeu --> 
+  <script src="./scripts/game/responsive/responsive.js"></script>
+
+  <!-- scripts affichage des éléments à l'écran --> 
+  <!-- scripts affichage des modales --> 
+  <script src="./scripts/game/ui/modales/showComputerDeclarationModal.js"></script>
+  <script src="./scripts/game/ui/modales/showDifficultyChoiceModal.js"></script>
+  <script src="./scripts/game/ui/modales/showEndOfGameModal.js"></script>
+  <script src="./scripts/game/ui/modales/showEndOfRoundModal.js"></script>
+  <script src="./scripts/game/ui/modales/showPlayerDeclarationModal.js"></script>
+  <script src="./scripts/game/ui/modales/showTrickModal.js"></script>
+  <!-- scripts affichage des éléments de l'écran principal du jeu --> 
+  <script src="./scripts/game/ui/renders/renderCards.js"></script>
+  <script src="./scripts/game/ui/renders/renderCardsInto.js"></script>
+  <script src="./scripts/game/ui/renders/renderCardsLikeHand.js"></script>
+  <script src="./scripts/game/ui/renders/renderDeclaration.js"></script>
+  <script src="./scripts/game/ui/renders/renderDeclarationTotals.js"></script>
+  <script src="./scripts/game/ui/renders/renderDeclaredZones.js"></script>
+  <script src="./scripts/game/ui/renders/renderGame.js"></script>
+  <script src="./scripts/game/ui/renders/renderHand.js"></script>
+  <script src="./scripts/game/ui/renders/renderPlayed.js"></script>
+  <script src="./scripts/game/ui/renders/renderScores.js"></script>
+  <script src="./scripts/game/ui/renders/renderStack.js"></script>
+  <script src="./scripts/game/ui/renders/renderStackPile.js"></script>
+  <script src="./scripts/game/ui/renders/renderTricks.js"></script>
+  <script src="./scripts/game/ui/renders/renderTrump.js"></script>
+  <script src="./scripts/game/ui/renders/wireLastTrickPopover.js"></script>
+  <script src="./scripts/game/ui/renders/addingPointAnimation.js"></script>
+  <script src="./scripts/game/ui/renders/scoreAnimator.js"></script>
+  <script src="./scripts/game/ui/renders/setAiEmotion.js"></script>
+
+  <script src="./scripts/audio/audioManager.js"></script>
+  <script src="./scripts/audio/playSound.js"></script>
+</body>
+</html>

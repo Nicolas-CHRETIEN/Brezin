@@ -1,0 +1,62 @@
+/* === Jeu / plis === */
+.trick-list-hidden {
+  display: none;
+}
+
+.narrow-screen_trick {
+  align-self: center;
+  width: 60%;
+}
+
+.trick-list-visible {
+  border-color: #000;
+  border-style: solid;
+  border-width: 2px;
+  background-color: rgb(255, 213, 159);
+  position: absolute;
+  z-index: 2;
+}
+
+.trick_list {
+  display: flex;
+  justify-content: space-around;
+  width: auto;
+  padding: 0;
+}
+
+.trick_last-card {
+  margin: 10px;
+}
+
+.trick-list-active {
+  background-color: rgb(255, 213, 159);
+  color: #000;
+}
+
+.trick_header {
+  margin: 0;
+  text-align: center;
+}
+
+.trick_img {
+  width: 100%;
+}
+
+.trick_img:hover {
+  cursor: pointer;
+}
+
+.trick-piles {
+  max-height: 175px;
+  margin: 0 30px;
+  width: 15%;
+}
+
+.trick_h3 {
+  position: absolute;
+  margin: 0 10px;
+}
+
+.trick-stock {
+  height: 190px;
+}

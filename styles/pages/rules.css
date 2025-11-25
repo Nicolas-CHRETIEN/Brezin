@@ -1,0 +1,224 @@
+/* === Règles du jeu (panneau clair) === */
+.rules.wrap {
+  background: #fff;
+  color: #111827;
+  width: 1100px;
+  padding: 40px 50px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.rules h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.25em;
+  color: #1f2937;
+}
+
+.rules h2 {
+  font-size: 1.3rem;
+  margin-top: 1.8em;
+  color: #1e3a8a;
+}
+
+.rules h3 {
+  font-size: 1.1rem;
+  margin-top: 1em;
+  color: #374151;
+}
+
+.rules__subtitle {
+  font-style: italic;
+  color: #6b7280;
+  margin-bottom: 1.5em;
+}
+
+.rules__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 20px;
+}
+
+.rules__table th,
+.rules__table td {
+  border: 1px solid #d1d5db;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.rules__table th {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.rules a {
+  color: #1d4ed8;
+  text-decoration: none;
+}
+
+.rules a:hover {
+  text-decoration: underline;
+}
+
+.rules p,
+.rules ul,
+.rules ol {
+  margin-bottom: 1em;
+}
+
+.rules ul,
+.rules ol {
+  padding-left: 1.5em;
+}
+
+/* Bandeau boutons */
+#screen-rules .btn.alt {
+  background: linear-gradient(180deg, var(--brz-orange), var(--brz-orange-700));
+  margin-left: 6px;
+}
+
+/* En-tête règles */
+#screen-rules .rules__header {
+  position: relative;
+  margin: 12px 0 18px;
+  padding: 22px 18px 18px 86px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(79,191,159,0.18), rgba(217,119,6,0.14));
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+#screen-rules .rules__header::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  width: 56px;
+  height: 56px;
+  background: url("../../images/Brezin.svg") center/contain no-repeat, #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12), inset 0 1px 0 #fff;
+}
+
+#screen-rules #rules-title {
+  margin: 0 0 6px 0;
+  font-size: 30px;
+  color: #0f172a;
+}
+
+#screen-rules .rules__subtitle {
+  color: var(--brz-muted);
+  margin: 0;
+}
+
+/* Sections de règles */
+#screen-rules .rules__block {
+  background: #fff;
+  border: 1px solid var(--brz-border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin: 16px 0;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+#screen-rules .rules__block > h2 {
+  margin: 0 0 10px 0;
+  color: var(--brz-orange-700);
+}
+
+#screen-rules .rules__block::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 12px 0 0 12px;
+  background: linear-gradient(180deg, var(--brz-green), var(--brz-orange));
+  opacity: 0.6;
+}
+
+/* Table des carrés */
+#screen-rules .rules__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 4px;
+  border: 1px solid var(--brz-border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+}
+
+#screen-rules .rules__table thead th {
+  background: linear-gradient(180deg, rgba(79,191,159,0.16), rgba(79,191,159,0.10));
+  color: #111827;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+#screen-rules .rules__table td {
+  border-top: 1px solid #f0f0f0;
+  padding: 10px 12px;
+  color: #1f2937;
+}
+
+/* Liens internes & ancrages */
+#screen-rules a {
+  color: var(--brz-green-700);
+  font-weight: 600;
+}
+
+#screen-rules a:hover {
+  text-decoration: underline;
+}
+
+/* Listes lisibles */
+#screen-rules ul,
+#screen-rules ol {
+  margin: 8px 0 0 20px;
+}
+
+#screen-rules li {
+  margin: 4px 0;
+}
+
+/* Blocs d'exemples visuels (annonces) */
+#screen-rules .rules__example {
+  margin: 10px 0 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px dashed var(--brz-border);
+  background: #f9fafb;
+}
+
+#screen-rules .rules__example-title {
+  font-weight: 600;
+  margin: 0 0 6px 0;
+  color: #374151;
+}
+
+#screen-rules .rules__example-figure {
+  margin: 6px 0;
+}
+
+#screen-rules .rules__example-figure figcaption {
+  font-size: 0.9rem;
+  color: #4b5563;
+  margin-bottom: 4px;
+}
+
+#screen-rules .rules__cards-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: flex-end;
+}
+
+#screen-rules .rules__card {
+  width: 52px;
+  max-width: 16%;
+  height: auto;
+  display: block;
+}

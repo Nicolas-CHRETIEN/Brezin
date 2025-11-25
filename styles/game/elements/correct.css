@@ -1,0 +1,109 @@
+.cards-hand-player_carousel,
+.cards-hand-player_ribon,
+.cards-hand-player {
+  max-width: 1500px;
+}
+
+.cards-hand-player {
+  min-width: 1300px;
+}
+
+/* === Jeu / ordre de couches pour sous-zones === */
+.cards-played,
+.stack,
+.trump,
+.cards-declared-computer,
+.cards-declared-player,
+.cards-hand-player {
+  position: relative;
+  z-index: 1;
+}
+
+.cards-declared-player_header,
+.cards-declared-computer_header,
+.cards-hand-player_header,
+.trick_header,
+.stack_header,
+.trump_header,
+.cards-played_h3,
+.score-normal_result-box,
+.score-normal_declarations-container {
+  position: relative;
+  z-index: 0;
+}
+
+.cards-hand-player_ribon img,
+.cards-declared-player_cards-box img,
+.cards-declared-computer_cards img,
+.trump_slot img,
+.stack_img,
+.trick-stock img {
+  position: relative;
+  z-index: 5;
+}
+
+/* === Jeu / popovers & z-index (score, dernier pli) === */
+.decl-totals-popover {
+  position: absolute;
+  z-index: 9998;
+}
+
+.trick-piles {
+  position: relative;
+}
+
+.lasttrick-popover {
+  position: absolute;
+  z-index: 10000;
+  min-width: 220px;
+  pointer-events: auto;
+}
+
+/* === Jeu / main joueur : interactions cartes === */
+.cards-hand-player_card {
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cards-hand-player_card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+}
+
+.diff-btn {
+  cursor: pointer;
+}
+
+/* === Jeu / états fin de partie === */
+.is-endgame .cards-hand-player_card.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  filter: grayscale(100%) brightness(0.8);
+  transform: none !important;
+  box-shadow: none !important;
+  pointer-events: none;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+#declared-computer img.cards-hand-player_card {
+  cursor: default;
+  transform: none !important;
+  box-shadow: none !important;
+  z-index: auto;
+  transition: none !important;
+}
+
+#declared-computer img.cards-hand-player_card:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  cursor: default;
+}
+
+.is-endgame-unplayable {
+  filter: grayscale(100%) brightness(60%);
+  cursor: not-allowed;
+  opacity: 0.6;
+  pointer-events: none;
+  transition: 0.2s ease;
+}

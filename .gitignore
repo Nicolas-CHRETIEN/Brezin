@@ -1,0 +1,22 @@
+# --- Builds PyInstaller / exécutables ---
+dist/
+build/
+*.exe
+*.pkg
+
+# --- Python environment ---
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+
+# --- VS Code ---
+.vscode/
+
+# --- Fichiers générés par l'application ---
+brezin_scores.xlsx
+
+# --- Système Windows ---
+Thumbs.db
+desktop.ini

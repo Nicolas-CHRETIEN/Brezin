@@ -1,0 +1,84 @@
+/* === Jeu / cartes annoncées par joueur === */
+.cards-declared-player {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-self: center;
+  height: 170px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.cards-declared-player_hidden {
+  display: none;
+}
+
+.cards-declared-player_header {
+  align-self: center;
+  margin: 0 0 0 4%;
+}
+
+.cards-declared-player_cards-box {
+  display: flex;
+  justify-content: center;
+  margin-left: 2%;
+  align-self: center;
+}
+
+.cards-declared-player_card {
+  width: 95%;
+}
+
+.cards-declared-player_card:hover {
+  transform: scale(110%);
+}
+
+.cards-declared-player_card-box {
+  width: 130px;
+}
+
+/* === Jeu / cartes annoncées par joueur === */
+.cards-declared-player {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.cards-declared-player_header {
+  margin: 0 0 10px 0;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.cards-declared-player_cards-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: var(--decl-card-h, 120px);
+  padding: 6px 0 4px;
+}
+
+.cards-declared-computer .card,
+.cards-declared-player .card {
+  position: static !important;
+  transform: none !important;
+  margin: 0 !important;
+  top: auto !important;
+  left: auto !important;
+  display: block;
+  height: var(--decl-card-h, 120px);
+  width: auto;
+  z-index: 1;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+.cards-declared-player .cards-hand-player_card-box {
+  position: static !important;
+  margin: 0 !important;
+  padding: 0;
+}
+
+.cards-declared-player + * {
+  margin-top: 8px;
+}

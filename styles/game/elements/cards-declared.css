@@ -1,0 +1,29 @@
+/* === Jeu / cartes annoncées par ordinateur === */
+.cards-declared-computer {
+  margin-top: 0 !important;
+  max-height: 178px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  height: 210px;
+  width: 100%;
+}
+
+.cards-declared-computer_header {
+  align-self: start;
+  margin: 0 0 0 20px;
+}
+
+.cards-declared-computer_cards {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 2%;
+}
+
+.cards-declared-computer_card-box {
+  width: 100px;
+}
+
+.cards-declared-computer_card {
+  width: 90px;
+}

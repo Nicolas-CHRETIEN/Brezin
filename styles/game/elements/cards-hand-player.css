@@ -1,0 +1,90 @@
+/* === Jeu / main joueur === */
+.unPlayable {
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0.5;
+}
+
+.cards-hand-player {
+  width: 100%;
+  text-align: center;
+  align-self: center;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0;
+}
+
+.cards-hand-player_hidden,
+.cards-hand-player_card-box_hidden,
+.cards-hand-player_card-hidden {
+  display: none;
+}
+
+.cards-hand-player_carousel {
+  display: flex;
+  margin: 0;
+  height: 300px;
+  width: 95vw;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.cards-hand-player_ribon {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  left: 3%;
+  width: 100%;
+}
+
+.cards-hand-player_header {
+  margin: 0;
+  z-index: 0;
+  width: 220px;
+}
+
+.cards-hand-player_card-box {
+  position: relative;
+  width: 130px;
+}
+
+.cards-hand-player_card {
+  position: absolute;
+  z-index: 0;
+  right: 0%;
+}
+
+.cards-hand-player_card:hover {
+  transform: translateY(-110px) scale(1.8);
+  z-index: 1;
+}
+
+.cards-hand-player_stamp {
+  position: absolute;
+  top: 50%;
+  width: 43%;
+  font-size: 230%;
+  color: #fff;
+  background-color: red;
+}
+
+.unPlayable:hover {
+  transform: none;
+}
+
+/* Carte qui vient d'apparaître dans la main */
+.card--new {
+  animation: cardPop .45s ease-out both, cardGlow .9s ease-out;
+  z-index: 2; /* passe devant ses voisines pendant l'anim */
+}
+
+@keyframes cardPop {
+  0%   { transform: scale(.72) translateY(10px); opacity: 0; }
+  60%  { transform: scale(1.06) translateY(0);   opacity: 1; }
+  100% { transform: scale(1)    translateY(0);   opacity: 1; }
+}
+@keyframes cardGlow {
+  0%   { filter: drop-shadow(0 0 0 rgba(255,215,90,0)); }
+  100% { filter: drop-shadow(0 0 10px rgba(255,215,90,.5)); }
+}

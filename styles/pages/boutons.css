@@ -1,0 +1,94 @@
+/* === UI / boutons génériques === */
+.btn-primary {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #8d4524;
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn-link {
+  color: #1d4ed8;
+  text-decoration: none;
+  padding: 10px 6px;
+  cursor: pointer;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+/* Main player carousel */
+.cards-hand-player_carousel {
+  min-height: 200px;
+}
+
+.cards-hand-player_card-box {
+  margin-top: 20px;
+}
+
+/* EoG table */
+.eog-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.eog-table th,
+.eog-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.eog-right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.eog-table col.c-name {
+  width: 40%;
+}
+
+.eog-table col.c-nb {
+  width: 8ch;
+}
+
+.eog-table col.c-pts {
+  width: 10ch;
+}
+
+.eog-th-sub {
+  font-weight: 600;
+  color: #666;
+}
+
+/* Home table header */
+.home.wrap thead {
+  background-color: #d1e2e7 !important;
+}
+
+/* === Jeu / titres badges cuivrés (conservés) === */
+.cards-declared-player_header,
+.cards-declared-computer_header,
+.cards-hand-player_header,
+.trick_header,
+.stack_header,
+.trump_header,
+.cards-played_h3 {
+  display: inline-block;
+  margin: 0 0 10px 0;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: #fff;
+  background: linear-gradient(180deg, var(--badge1), var(--badge2));
+  box-shadow: 0 8px 20px rgba(201, 111, 34, 0.35);
+  border: 1px solid #a95f1c;
+}

@@ -1,0 +1,18 @@
+/* === Jeu / résultat du pli === */
+.result-trick-game_h3 {
+  text-align: center;
+}
+
+.result-trick-game_cards {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.result-trick-game_card {
+  width: 25%;
+}
+
+.result-trick-game_img {
+  width: 90%;
+}

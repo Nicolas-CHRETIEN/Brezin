@@ -1,0 +1,150 @@
+/* === Modale / Résultat du pli === */
+.trick-result {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.trick-result_row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding: 8px 0;
+}
+
+.trick-result_col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 160px;
+}
+
+.trick-result_col h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--wood-ink);
+}
+
+.trick-result_col .card {
+  border-radius: 12px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+}
+
+.trick-result_winner {
+  margin: 6px 0 0 0;
+  font-weight: 700;
+  color: var(--wood-ink);
+  background: linear-gradient(180deg, #fff, #fff7ea);
+  border: 1px solid rgba(139, 94, 43, 0.25);
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  display: inline-block;
+  align-self: center;
+}
+
+/* === Modale / résultat du pli === */
+.trick-result {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.trick-result_row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.trick-result_col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 160px;
+}
+
+.trick-result_col h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--retro-ink);
+}
+
+.trick-result_col .card {
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.25);
+}
+
+.trick-result_winner {
+  margin: 4px auto 0;
+  font-weight: 800;
+  color: var(--retro-ink);
+  background: #fff6ed;
+  border: 1px solid var(--retro-line);
+  padding: 0.5rem 0.85rem;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* === Résultat de pli : animation gagnant === */
+.trick-result_card {
+  position: relative;
+  display: inline-block;
+  transform-origin: center;
+  transition: transform .35s ease, filter .35s ease, opacity .35s ease;
+}
+
+.trick-result_card.is-dim {
+  filter: grayscale(.4) brightness(.8);
+  opacity: .6;
+}
+
+/* Pop + glow sur la carte gagnante */
+@keyframes trk-pop-glow {
+  0%   { transform: scale(.88); box-shadow: 0 0 0 rgba(255,200,80,0); }
+  60%  { transform: scale(1.08); box-shadow: 0 0 32px rgba(255,200,80,.55); }
+  100% { transform: scale(1.0);  box-shadow: 0 0 18px rgba(255,200,80,.35); }
+}
+.trick-result_card.is-winner {
+  animation: trk-pop-glow .7s ease-out both;
+  z-index: 2;
+}
+
+/* Balayage “reveal” */
+.trick-result_card.is-winner::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg,
+      transparent 0%,
+      rgba(255,255,255,.45) 20%,
+      transparent 40%);
+  transform: translateX(-120%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: trk-sheen .65s .15s ease-out both;
+}
+@keyframes trk-sheen {
+  to { transform: translateX(120%); }
+}
+
+/* Badge trophée */
+.trick-result_badge {
+  position: absolute; top: -10px; right: -10px;
+  padding: 6px 10px; border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #ffd86b, #ffac33);
+  color: #5b3a00; font-weight: 800; font-size: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.25);
+  transform: scale(.8);
+  opacity: 0;
+  animation: trk-badge .35s .35s ease-out forwards;
+}
+@keyframes trk-badge {
+  0%   { transform: scale(.6); opacity: 0; }
+  100% { transform: scale(1);  opacity: 1; }
+}

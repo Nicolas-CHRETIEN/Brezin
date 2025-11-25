@@ -1,0 +1,248 @@
+/* === Jeu / tableau score (normal) === */
+.score-normal {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.score-normal:hover {
+  cursor: pointer;
+}
+
+.score-normal_result-box {
+  background: #835923;
+  border: 1px solid #000;
+  border-radius: 3px;
+  padding: 8px 14px;
+  width: 260px;
+  box-sizing: border-box;
+}
+
+.score-normal_cards-in-stack,
+.score-normal_result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score-normal_cards-in-stack {
+  margin: 0;
+}
+
+.score-normal_result {
+  height: 25px;
+}
+
+.score-normal_declarations-container {
+  background: #d09037;
+  border: 1px solid #000;
+  border-radius: 3px;
+  padding: 4px 7px;
+  width: 260px;
+  box-sizing: border-box;
+}
+
+.score-normal_declarations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.score-normal_declarations-hidden {
+  display: none;
+}
+
+.score-normal_h2 {
+  margin: 0 0 6px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.score-normal_result_p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.score-normal_h3,
+.score-normal_h4,
+.score-normal_declaration-gain {
+  margin: 0;
+}
+
+.score-normal_declaration {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* === Jeu / tableau score (cadres annonces) === */
+.score-normal_declarations {
+  display: flex;
+  gap: 10px;
+}
+
+/* === Jeu / tableau score — cadre 1 (talon / score) === */
+.score-normal_result-box {
+  background: linear-gradient(var(--card1), var(--card2));
+  border: 1px solid var(--cardBorder);
+  border-radius: 12px;
+  box-shadow: var(--cardShadow);
+  color: var(--cardInk);
+  padding: 5px 6px;
+}
+
+.score-normal_cards-in-stack,
+.score-normal_score {
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px dashed var(--cardLine);
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.score-normal_result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px dashed var(--cardLine);
+  border-radius: 8px;
+  padding: 4px 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.score-normal_h2,
+.score-normal_h3 {
+  margin: 0;
+  color: var(--cardInk);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+/* === Jeu / tableau score — cadre 2 (annonces joueur/ordi) === */
+.score-normal_declarations-container {
+  margin-top: 0;
+  background: linear-gradient(var(--card1), var(--card2));
+  border: 1px solid var(--cardBorder);
+  border-radius: 12px;
+  box-shadow: var(--cardShadow);
+  color: var(--cardInk);
+  padding: 5px 6px;
+}
+
+.score-normal_declarations {
+  display: flex;
+  gap: 12px;
+}
+
+.score-normal_declarations-box > .score-normal_h2 {
+  margin: 0;
+  font-weight: 600;
+  text-align: center;
+  color: var(--cardInk);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+/* === Jeu / “parchemin” harmonisé sur cadres score === */
+.score-normal_result-box,
+.score-normal_declarations-container {
+  background: linear-gradient(180deg, #ffdcb6, #f6cda1);
+  border: 2px solid var(--edge);
+  border-radius: 14px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  color: #3b2a19;
+}
+
+.score-normal_cards-in-stack {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--edge-soft);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.score-normal_score {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.score-normal_result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--edge-soft);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.score-normal_declarations {
+  display: flex;
+  gap: 12px;
+}
+
+.score-normal_declarations-box {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid var(--edge-soft);
+  border-radius: 10px;
+  padding: 0.05vh 1vh 0 1vh;
+}
+
+.score-normal_declarations_player {
+  border: 1px dashed var(--edge-soft);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.score-normal, .score-normal_declarations-container {
+  position: relative;
+  z-index: 40;
+}
+
+.score-normal_declarations-container {
+  padding: 10px;
+}
+
+/* Met en valeur la cellule de score pendant l'animation */
+.score-bump {
+  position: relative;
+  animation: scorePulse .20s ease-in-out infinite alternate;
+}
+@keyframes scorePulse {
+  from { filter: brightness(1.0); transform: scale(1.0); }
+  to   { filter: brightness(1.15); transform: scale(1.035); }
+}
+
+.score-gain {
+  position: absolute;
+  margin-left: 100px;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #000000;
+  pointer-events: none;
+  opacity: 0;
+  animation: score-pop 1.2s ease-out forwards;
+}
+
+.trick-stock .score-gain{
+  margin-left: -150px;
+}
+
+@keyframes score-pop {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  20% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
