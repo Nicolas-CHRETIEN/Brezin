@@ -33,20 +33,6 @@ function showComputerDeclarationModal({ onOk } = {}) {
         );
     });
 
-    // --- Réaction de l’IA selon le résultat / gain ---
-        
-    BDD();
-    let gainP1 = 0;
-    let gainP2 = 0;
-
-    const decl = S.score?.lastDeclaration;
-
-    if (Array.isArray(decl) && decl.length > 0) {
-    const gain = decl[0]?.gain ?? 0;
-
-    if (S.playFirst === "player") gainP1 += gain;
-    else gainP2 += gain;
-    }
     const reaction = AIGenerateDialogue();
     setAiEmotion(reaction[0], reaction[1]);
 

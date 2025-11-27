@@ -51,8 +51,6 @@ function listenerDeal() {
   if (getRankNum(trumpCard) === 1) {
     (S.playFirst === "player") ? S.score.player1 += 10 : S.score.player2 += 10;
   }
-  
-  BDD();
 
   // 8) Étape suivante et rendu.
   (S.playFirst === "player") ? S.stage = "draw" : listenerComputerPlayFirst();

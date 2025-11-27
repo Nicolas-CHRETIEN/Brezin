@@ -220,10 +220,7 @@ function showPlayerDeclarationModal() {
       if (S.playFirst === "player") gainP1 += gain;
       else gainP2 += gain;
     }
-    const win   = S.score.player1 + gainP1 > S.score.player2 + gainP2;
-    let reaction = [];
     
-    BDD();  
     // Attendre la fin de l'animation pour lancer la réaction de l'IA
     setTimeout(() => {
       const reaction = AIGenerateDialogue();
