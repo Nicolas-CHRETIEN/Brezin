@@ -1,7 +1,9 @@
 function calculateSituationRate() {
-  const scoreIA     = Number(S.score.scoreP2) || 0; 
-  const scorePlayer = Number(S.score.scoreP1) || 0;
-  const diff        = scoreIA - scorePlayer;
+  let scoreIA = Number(S.score.scoreP2) || 0; 
+  let scorePlayer = Number(S.score.scoreP1) || 0;
+  if (S.score.lastDeclaration && S.score.lastDeclaration.lenght && playFirst === "computer") scoreIA += S.score.lastDeclaration[0];
+  if (S.score.lastDeclaration && S.score.lastDeclaration.lenght && playFirst === "player") scorePlayer += S.score.lastDeclaration[0];
+  const diff = scoreIA - scorePlayer;
 
   let note = 0;
 

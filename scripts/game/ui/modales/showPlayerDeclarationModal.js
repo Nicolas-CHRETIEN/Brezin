@@ -226,26 +226,12 @@ function showPlayerDeclarationModal() {
     BDD();  
     // Attendre la fin de l'animation pour lancer la réaction de l'IA
     setTimeout(() => {
-      if (mainAnimGain >= 100) { // Si l'annonce est forte.
-        if (!win) { // Que l'IA gagne.
-          reaction = IAReaction("JAForteV");
-        }
-        if (win) { // Que l'IA perd.
-          reaction = IAReaction("JAForteD");
-        }
-      } else { // Si l'annonce est faible.
-        if (!win) { // Que l'IA gagne.
-          reaction = IAReaction("JAFaibleV");
-        }
-        if (win) { // Que l'IA perd.
-          reaction = IAReaction("JAFaibleD");
-        }
-      }
-      
-      // Supprimer annonce pour éviter que l'ordinateur annonce aussi.
-      S.score.lastDeclaration = null;
-      
+      const reaction = AIGenerateDialogue();
       setAiEmotion(reaction[0], reaction[1]);
+
+      // Suppreimer l'annonce effectuée pour éviter que buildDialogueContexte l'attribue au prochain appel.
+      S.score.lastDeclaration = null;
+      S.score.lastDeclaration = [];
     }, 4000);
 
   }

@@ -47,24 +47,7 @@ function showComputerDeclarationModal({ onOk } = {}) {
     if (S.playFirst === "player") gainP1 += gain;
     else gainP2 += gain;
     }
-    const win   = S.score.player1 + gainP1 > S.score.player2 + gainP2;
-    let reaction = [];
-    if (S.score.lastDeclaration.gain >= 100) { // Si l'annonce est forte.
-        if (!win) { // Que l'IA gagne.
-          reaction = IAReaction("OAForteV");
-        }
-        if (win) { // Que l'IA perd.
-          reaction = IAReaction("OAForteD");
-        }
-    } else { // Si l'annonce est faible.
-        if (!win) { // Que l'IA gagne.
-          reaction = IAReaction("OAFaibleV");
-        }
-        if (win) { // Que l'IA perd.
-          reaction = IAReaction("OAFaibleD");
-        }
-    }
-    
+    const reaction = AIGenerateDialogue();
     setAiEmotion(reaction[0], reaction[1]);
 
     showModal({
@@ -92,6 +75,9 @@ function showComputerDeclarationModal({ onOk } = {}) {
                 listenerComputerPlayFirst();
             }
             
+            // Suppreimer l'annonce effectuée pour éviter que buildDialogueContexte l'attribue au prochain appel.
+            S.score.lastDeclaration = null;
+            S.score.lastDeclaration = [];
             
         }
     });

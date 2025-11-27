@@ -137,21 +137,9 @@ function showEndOfRoundModal() {
     const win = S.score.player2 > S.score.player1;
     const ecart = S.score.player2 - S.score.player1 > 200;
     const ecart2 = S.score.player1 - S.score.player2 > 200;
-    let reaction = [];
 
-    if (win) {
-      if (ecart) {
-        reaction = IAReaction("OEcartImportant");
-      } else {
-        reaction = IAReaction("EcartFaible");
-      }
-    } else {
-      if (ecart2) {
-        reaction = IAReaction("JEcartImportant");
-      } else {
-        reaction = IAReaction("EcartFaible");
-      }
-    }
+    const reaction = AIGenerateDialogue();
+    setAiEmotion(reaction[0], reaction[1]);
 
     if (ecart || ecart2) setAiEmotion(reaction[0], reaction[1]);
   };

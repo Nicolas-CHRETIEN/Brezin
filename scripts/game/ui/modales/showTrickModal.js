@@ -49,21 +49,8 @@ function showTrickModal({ onOk }) {
       if (id !== "ok") return;
       
       // Prise de parole de l'IA si le joueur lui prend un atout.
-      if (
-        S.playFirst === "player" &&
-        (S.computerCardPlayed.rang === "10" || S.computerCardPlayed.rang === "as")
-      ) {
-        const reaction = IAReaction("vol10As");
-        setAiEmotion(reaction[0], reaction[1]);
-      }
-      // Prise de parole de l'IA si elle prend un atout au joueur.
-      if (
-        S.playFirst === "computer" &&
-        (S.playerCardPlayed.rang === "10" || S.playerCardPlayed.rang === "as")
-      ) {
-        const reaction = IAReaction("prise10As");  
-        setAiEmotion(reaction[0], reaction[1]);
-      }
+      const reaction = AIGenerateDialogue();
+      setAiEmotion(reaction[0], reaction[1]);
 
       // 3) Nettoyage immédiat, callback, et détection fin de main.
       closeModal();

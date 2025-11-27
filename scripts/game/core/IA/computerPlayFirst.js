@@ -59,12 +59,6 @@ function computerPlayFirst() {
   } else {
     selectedCard = card_to_lose;
   }
-
-  // Message dans le cas ou l'IA possède vraiment beaucoup d'atouts.
-  let reaction = [];
-  const hand = S.handComputer;
-  const many = hand.filter(c => c.couleur === suitTrump);
-  if (many.length >= 8) reaction = IAReaction("OToutAtout");
   
   // 5) Nettoyage et retour.
   delete selectedCard.declarable;

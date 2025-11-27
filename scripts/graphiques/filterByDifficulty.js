@@ -22,6 +22,56 @@
 
 // ============== A) État & utilitaires =================
 // État local Home.
+const AI_HOME_SUMMARY = {
+  easy: {
+    id: "Radegonde",
+    img: "./images/adversaires/emotions/Radegonde_joie.svg",
+    name: "Radegonde, guérisseuse du Berry",
+    subtitle: "Niveau facile · Adversaire indulgente et bavarde",
+    desc: "Radegonde joue pour le plaisir plus que pour la gagne. Elle commet des bourdes, rit de ses erreurs et commente chaque pli avec des expressions berrichonnes savoureuses."
+  },
+  normal: {
+    id: "Perrot",
+    img: "./images/adversaires/emotions/Perrot_joie.svg",
+    name: "Perrot, paysan du Boischaut",
+    subtitle: "Niveau normal · Rusé mais bon vivant",
+    desc: "Perrot connaît bien les cartes et n’hésite pas à chambrer le joueur. Il laisse parfois passer une occasion, mais il est loin d’être naïf : idéal pour des parties équilibrées."
+  },
+  hard: {
+    id: "Jehanne",
+    img: "./images/adversaires/emotions/Jehanne_fierte.svg",
+    name: "Jehanne, noble dame du Berry",
+    subtitle: "Niveau difficile · Exigeante et orgueilleuse",
+    desc: "Jehanne a l’habitude de gagner. Elle calcule froidement ses annonces et supporte mal d’être renversée. Attendez-vous à des parties tendues où chaque erreur se paye."
+  },
+  expert: {
+    id: "Andry",
+    img: "./images/adversaires/emotions/Andry_fierte.svg",
+    name: "Andry, maître du Brézin",
+    subtitle: "Niveau expert · Stratège impitoyable",
+    desc: "Andry ne laisse presque rien passer. Il anticipe les annonces, guette chaque 10 et chaque As, et ne lâche jamais sa proie. À affronter seulement si vous aimez souffrir."
+  }
+};
+
+function updateAISummary(diff) {
+  const data = AI_HOME_SUMMARY[diff];
+  if (!data) return;
+
+  const imgEl   = document.getElementById("ai-profile-img");
+  const nameEl  = document.getElementById("ai-profile-name");
+  const subEl   = document.getElementById("ai-profile-subtitle");
+  const descEl  = document.getElementById("ai-profile-desc");
+
+  if (!imgEl || !nameEl || !subEl || !descEl) return;
+
+  imgEl.src = data.img;
+  imgEl.alt = data.name;
+  nameEl.textContent = data.name;
+  subEl.textContent  = data.subtitle;
+  descEl.textContent = data.desc;
+}
+
+
 const DASH = {
   diff: (localStorage.getItem("brezin:homeDiff") || "normal"),
   user: (localStorage.getItem("brezin:userName") || ""), // nom de session courant
@@ -209,6 +259,8 @@ async function refreshHomeDashboard(){
     const subset = filterRows(DASH.rowsAll, DASH.diff, DASH.user);
     renderFromRows(subset);
     applyDiffUI(DASH.diff);
+    //  garde la carte IA en phase avec la diff actuelle
+    updateAISummary(DASH.diff);
   } catch(e){
     console.error(e);
   }
@@ -253,6 +305,8 @@ function selectDifficulty(nextDiff){
   DASH.diff = d;
   localStorage.setItem("brezin:homeDiff", d);
   applyDiffUI(d);
+  //  MAJ de la carte IA
+  updateAISummary(d);
 
   if (Array.isArray(DASH.rowsAll) && DASH.rowsAll.length){
     const subset = filterRows(DASH.rowsAll, d, DASH.user);
@@ -376,6 +430,9 @@ function updateSessionIndicator() {
 document.addEventListener("DOMContentLoaded", () => {
   // Applique l’état de la difficulté au chargement.
   applyDiffUI(DASH.diff);
+
+  //  Initialise la carte IA avec la diff actuelle
+  updateAISummary(DASH.diff);
 
   // Configure le bouton "Changer de session"
   wireSessionSwitchButton();
