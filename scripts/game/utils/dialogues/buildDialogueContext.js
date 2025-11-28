@@ -1,5 +1,4 @@
 function buildDialogueContext() {
-  console.trace("ici");
   
   // Scores bruts affichés (avant prise en compte du gain de l'annonce en cours).
   const rawScoreIA     = Number(S.score.player2) || 0;

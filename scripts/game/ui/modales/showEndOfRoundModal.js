@@ -134,14 +134,10 @@ function showEndOfRoundModal() {
     // Ferme la modale puis lance la nouvelle manche.
     try { closeModal?.(); } catch {}
     if (typeof listenerNewRound === "function") listenerNewRound();
-    const win = S.score.player2 > S.score.player1;
-    const ecart = S.score.player2 - S.score.player1 > 200;
-    const ecart2 = S.score.player1 - S.score.player2 > 200;
 
     const reaction = AIGenerateDialogue();
-    setAiEmotion(reaction[0], reaction[1]);
 
-    if (ecart || ecart2) setAiEmotion(reaction[0], reaction[1]);
+    if (reaction) setAiEmotion(reaction[0], reaction[1]);
   };
   
 

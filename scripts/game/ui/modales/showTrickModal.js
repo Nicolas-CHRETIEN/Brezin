@@ -50,7 +50,7 @@ function showTrickModal({ onOk }) {
       
       // Prise de parole de l'IA si le joueur lui prend un atout.
       const reaction = AIGenerateDialogue();
-      setAiEmotion(reaction[0], reaction[1]);
+      if (reaction) setAiEmotion(reaction[0], reaction[1]);
 
       // 3) Nettoyage immédiat, callback, et détection fin de main.
       closeModal();

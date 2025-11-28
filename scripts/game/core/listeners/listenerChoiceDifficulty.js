@@ -11,7 +11,7 @@
 function listenerChoiceDifficulty(difficulty) {
   S.difficulty = difficulty; // Enregistre la difficulté choisie.
   
-  setAiEmotion("joie", "C'est parti!");
+  if (showComments) setAiEmotion("joie", "C'est parti!");
   S.stage = 'deal';          // Passe à l’étape de distribution.
   renderGame();              // Rafraîchit l’interface du jeu.
 }

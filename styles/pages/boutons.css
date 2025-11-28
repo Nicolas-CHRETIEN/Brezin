@@ -92,3 +92,29 @@
   box-shadow: 0 8px 20px rgba(201, 111, 34, 0.35);
   border: 1px solid #a95f1c;
 }
+
+#btnCommentsToggle {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+}
+
+#btnCommentsToggle img {
+  width: 24px;     /* ajuste si tu veux */
+  height: 24px;
+  vertical-align: middle;
+}
+
+#btnCommentsToggle .icon-off {
+  display: none;
+}
+
+/* Quand commentaires désactivés */
+#btnCommentsToggle.is-off .icon-on {
+  display: none;
+}
+
+#btnCommentsToggle.is-off .icon-off {
+  display: inline;
+}

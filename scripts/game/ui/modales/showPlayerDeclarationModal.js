@@ -224,7 +224,7 @@ function showPlayerDeclarationModal() {
     // Attendre la fin de l'animation pour lancer la réaction de l'IA
     setTimeout(() => {
       const reaction = AIGenerateDialogue();
-      setAiEmotion(reaction[0], reaction[1]);
+      if (reaction) setAiEmotion(reaction[0], reaction[1]);
 
       // Suppreimer l'annonce effectuée pour éviter que buildDialogueContexte l'attribue au prochain appel.
       S.score.lastDeclaration = null;

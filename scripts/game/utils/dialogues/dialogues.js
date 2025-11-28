@@ -15,7 +15,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Avec un tel coup, t’es passé devant comme un menon un jour de noce : bravo, bravo !`,
         (ctx) => `Oh pauvre de moi… j’suis tombée de ${ctx.scoreIA} à rien du tout dans mon cabasson !`,
         (ctx) => `Tu m’as secouée pire qu’un brandon des jouanées… j’suis plus là !`,
-        (ctx) => `Ah mon petit, tu m’as fichue dans la fousse avec tes ${ctx.annonce?.gain} points !`
+        (ctx) => `Ah mon petit, tu m’as fichue dans la fousse avec tes ${ctx.annonce?.gain} points !`,
+        (ctx) => `Ah ben là, c’est plus une cascade, c’est la débâcle, mon ${ctx.playerName} !`,
+        (ctx) => `Tu m’as roulée comme une vieille chârte sans roue avec tes ${ctx.annonce?.gain} points !`,
+        (ctx) => `J’suis tombée du score comme une raouche du haut du pouits !`,
+        (ctx) => `De ${ctx.scoreIA} à plus grand-chose… j’te jure, même mes remèdes y peuvent rien !`,
+        (ctx) => `Tu m’as bousculée d’${ctx.diffAfter} points, j’sais plus où j’ai mis ma coiffe !`,
+        (ctx) => `Oh la chute… on dirait une vieille vigoune qu’on laisse traîner dans la brande !`,
+        (ctx) => `Tout s’est renversé plus vite qu’un pochon mal noué, hi hi !`,
+        (ctx) => `Avec ce coup-là, j’suis bonne pour aller r’poser mes os dans la bouchure…`,
+        (ctx) => `J’ai perdu plus de points qu’il n’y a de plons dans une vannerie !`,
+        (ctx) => `Tu m’as lessivée d’un seul coup, mon ${ctx.playerName}, comme une maie après la pâte !`
     ],
     [SITUATION_KEYS.IA_COLLAPSE]: [
         (ctx) => `Aïe, aïe… t’es passé devant à ${ctx.scorePlayer} points ! Moi j’suis restée coincée à ${ctx.scoreIA}…`,
@@ -27,7 +37,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Eh ben ! De ${ctx.diffAfter} points d’avance pour toi… faudra que j’me remette de ça !`,
         (ctx) => `Houp là… j’crois que j’suis plus fraîche qu’une vieille mauvue !`,
         (ctx) => `J’vais rester derrière à me chauffer au pochon, tiens…`,
-        (ctx) => `Te v’là presque gagnant, mon enfant, garde ton élan !`
+        (ctx) => `Te v’là presque gagnant, mon enfant, garde ton élan !`,
+        (ctx) => `Ah, j’étais bien perchée et me v’là qui dégringole à ${ctx.scoreIA} comme une pierre dans le nau !`,
+        (ctx) => `J’ai vu mon avance s’en aller comme la fumée d’une charibaude… pfuit !`,
+        (ctx) => `Tu m’as r’passée devant sans même m’laisser le temps d’ajuster ma biaude !`,
+        (ctx) => `On dirait une vieille grange qui s’effondre, mon jeu là…`,
+        (ctx) => `Je tenais la corde, et v’là qu’j’ai glissé dedans comme une andouille !`,
+        (ctx) => `Mes points s’sont envolés plus vite que des plumes à la foire !`,
+        (ctx) => `Tu m’as renversée comme un barriau mal fermé, mon ${ctx.playerName} !`,
+        (ctx) => `De fière allure à ${ctx.scoreIA}, j’suis tombée dans la fange en deux plis !`,
+        (ctx) => `Ah… j’ai senti la bascule, mais trop tard pour m’agripper !`,
+        (ctx) => `C’est pas une simple chute, c’est une vraie débandade de vieilles cartes !`
     ],
     [SITUATION_KEYS.IA_MISERY]:   [
         (ctx) => `Oh la misère ! Tu m’as pris mon ${ctx.carteprise} et l’atout comme si j’étais une bouchure trouée !`,
@@ -39,7 +59,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `C’était un bon atout, ça… j’le voulais pour mes remèdes !`,
         (ctx) => `Eh bé ! J’crois qu’j’ai perdu mon âme et mon honneur en même temps…`,
         (ctx) => `J’suis plus farcie qu’une roûtie dans le vin chaud !`,
-        (ctx) => `Boudiou ! T’es allé chercher l’atout au fond du pouits pour m’le piquer !`
+        (ctx) => `Boudiou ! T’es allé chercher l’atout au fond du pouits pour m’le piquer !`,
+        (ctx) => `Tu m’as retiré mon ${ctx.carteprise} comme on arrache la dernière raquine d’un champ !`,
+        (ctx) => `Plus d’atout, plus de ${ctx.carteprise}, plus rien… j’suis pauvre comme une vieille bique !`,
+        (ctx) => `Avec ces ${ctx.annonce?.gain} points, tu m’laisses plus que la poussière sur la table !`,
+        (ctx) => `J’ai l’air de quoi sans mes bonnes cartes ? D’une vigoune toute pelée !`,
+        (ctx) => `Tu m’as dépouillée jusqu’aux poches de ma biaude, mon ${ctx.playerName} !`,
+        (ctx) => `Même mes esprits n’osent plus regarder ce qu’il me reste dans la main…`,
+        (ctx) => `J’suis plus à plaindre qu’un plon oublié dans la vannerie !`,
+        (ctx) => `On dirait que t’as raclé le fond du pouits dans mon jeu !`,
+        (ctx) => `J’peux plus guérir personne avec des cartes pareilles, hi hi !`,
+        (ctx) => `Misère, misère… t’as pris le meilleur, j’garde juste les miettes comme une vieille souris !`
     ],
     [SITUATION_KEYS.IA_PUNISHED]: [
         (ctx) => `Oh ben ! J’ai crié trop tôt : tu m’as retournée en un clin d’œil avec tes ${ctx.annonce?.gain} points !`,
@@ -51,7 +81,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Ah ! Mes esprits m’ont lâchée dès qu’t’es passé devant !`,
         (ctx) => `J’ai pris ma propre roustée, tiens !`,
         (ctx) => `J’avais annoncé fort, mais toi… tu joues musiqué !`,
-        (ctx) => `Ah là là… j’suis punie proprement, mon ${ctx.playerName}.`
+        (ctx) => `Ah là là… j’suis punie proprement, mon ${ctx.playerName}.`,
+        (ctx) => `Ah ben voilà, j’ai voulu faire la fière et j’me suis pris tes ${ctx.annonce?.gain} points en pleine figure !`,
+        (ctx) => `Les esprits m’ont dit “calme-toi”, j’ai pas écouté… et paf, la punition !`,
+        (ctx) => `J’ai fanfaronné comme une gamine, et tu m’as remis en place, mon ${ctx.playerName} !`,
+        (ctx) => `J’me croyais forte… et me v’là derrière à compter mes bleus au score.`,
+        (ctx) => `Tu m’as rabattu le caquet plus vite qu’un menon remet sa bête en rang !`,
+        (ctx) => `Ah la bonne claque que je viens de prendre, j’la sentirai jusqu’au nau suivant !`,
+        (ctx) => `J’ai pris tes ${ctx.annonce?.gain} points comme une roûtie trop grillée : ça pique !`,
+        (ctx) => `Tu m’as retournée comme une vieille chârte dans le fossé !`,
+        (ctx) => `Fallait pas que je me vante… les cartes m’ont rappelée à l’ordre.`,
+        (ctx) => `Bon, Radegonde punie, Radegonde se taira un brin… mais pas longtemps !`
     ],
     [SITUATION_KEYS.IA_BLOCKED]:  [
         (ctx) => `Oh rapière… j’voulais te sortir un ${ctx.annoncePossible}, mais tu m’as coupé l’herbe sous l’pied !`,
@@ -63,7 +103,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Tu vois, j’allais faire un ${ctx.annoncePossible}, mais tes cartes ont dit non, net comme un barriau fermé !`,
         (ctx) => `J’avais un ${ctx.annoncePossible} en tête, mais mes mains ont glissé comme un péliot dans la boue…`,
         (ctx) => `Les esprits parlaient d’un ${ctx.annoncePossible}, mais c’est toi qui as pris le pli, mon ${ctx.playerName}.`,
-        (ctx) => `Bah, tant pis pour mon ${ctx.annoncePossible}… on verra bien au prochain pli si la vigoune me revient !`
+        (ctx) => `Bah, tant pis pour mon ${ctx.annoncePossible}… on verra bien au prochain pli si la vigoune me revient !`,
+        (ctx) => `J’avais mon ${ctx.annoncePossible} prêt à sortir, et toi t’es venu planter ton pli dessus !`,
+        (ctx) => `Tu m’as bouché la route à mon ${ctx.annoncePossible} comme une bouchure en travers du chemin !`,
+        (ctx) => `Oh les esprits vont rouspéter, j’pouvais pas poser mon ${ctx.annoncePossible} tranquille !`,
+        (ctx) => `Mon ${ctx.annoncePossible} était tout chaud, et v’là que tu m’le refroidis sec !`,
+        (ctx) => `Tu m’as cloué mon ${ctx.annoncePossible} dans la brande, j’peux plus rien en faire !`,
+        (ctx) => `J’voyais déjà la belle annonce, et toi t’as claqué la porte du pli !`,
+        (ctx) => `C’est pas humain d’bloquer un ${ctx.annoncePossible} à une vieille guérisseuse, hi hi !`,
+        (ctx) => `Tu m’laisses mon ${ctx.annoncePossible} en travers de la gorge, mon ${ctx.playerName} !`,
+        (ctx) => `On dirait un remède que j’peux pas finir, faute d’plantes…`,
+        (ctx) => `Bah, mon ${ctx.annoncePossible} attendra, mais tu m’as bien coincée sur ce coup-là !`
     ],
 
     [SITUATION_KEYS.IA_FLIP]:     [
@@ -76,7 +126,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Oh oui, ça réchauffe plus qu’une bonne roûtie !`,
         (ctx) => `Regarde-moi cette bascule ! J’me sens toute neuve !`,
         (ctx) => `Hihi, la vieille remonte la traque !`,
-        (ctx) => `Avec mes ${ctx.annonce?.gain} points, j’me sens pousser des fleurs de vigoune !`
+        (ctx) => `Avec mes ${ctx.annonce?.gain} points, j’me sens pousser des fleurs de vigoune !`,
+        (ctx) => `Oh la belle tournure ! Me v’là devant à ${ctx.scoreIA}, j’me sens rajeunie !`,
+        (ctx) => `J’étais dans la fousse et j’remonte sur la colline, hi hi !`,
+        (ctx) => `Tu l’as senti, le vent qui tourne en ma faveur, mon ${ctx.playerName} ?`,
+        (ctx) => `D’un coup, j’passe devant comme une chârte qui dévale la pente !`,
+        (ctx) => `Ah que ça fait du bien de t’voir derrière un p’tit peu !`,
+        (ctx) => `Ta tête a dû faire une drôle de moue quand t’as vu ${ctx.scoreIA} devant ${ctx.scorePlayer} !`,
+        (ctx) => `Les esprits ont poussé fort derrière moi sur ce coup-là !`,
+        (ctx) => `Je remonte d’un bond, comme un plon qui sort de la bourrolle !`,
+        (ctx) => `Tu croyais m’avoir plantée, mais la vieille a de la ressource, tu vois !`,
+        (ctx) => `Hop là, bascule ! J’me tiens en haut du sillon, bien droite !`
     ],
     [SITUATION_KEYS.J_FLIP]:      [
         (ctx) => `Oh ben ! T’es passé devant avec ${ctx.scorePlayer} points, mon petit !`,
@@ -88,7 +148,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `T’as joué si fort que j’en ai perdu mes oreillons de coiffe !`,
         (ctx) => `Oh là… j’me suis faite ramasser comme une vieille bouchure !`,
         (ctx) => `T’as plus d’jus que moi aujourd’hui !`,
-        (ctx) => `Oh non mais j’adore quand ça bascule comme ça !`
+        (ctx) => `Oh non mais j’adore quand ça bascule comme ça !`,
+        (ctx) => `Ah ben te v’là qui passes devant à ${ctx.scorePlayer}… j’en ai perdu ma musette !`,
+        (ctx) => `J’te regardais derrière et d’un coup tu m’passes sous le nez !`,
+        (ctx) => `Oh la bascule ! Tu m’as retournée comme une vieille raquine dans le vent !`,
+        (ctx) => `Tu files devant comme un brandon enflammé, mon ${ctx.playerName} !`,
+        (ctx) => `Héhé, j’aime quand ça retourne comme ça, même si j’me retrouve derrière !`,
+        (ctx) => `J’ai dû cligner des yeux, parce que j’t’ai vu sauter en tête d’un coup !`,
+        (ctx) => `Tu m’as chipé la première place comme on grille une roûtie au coin du feu !`,
+        (ctx) => `J’pensais mener tranquille, et te v’là qui renverses tout !`,
+        (ctx) => `C’est toi qui brilles au tableau maintenant, profite-en bien !`,
+        (ctx) => `On dira c’qu’on voudra, mais ta bascule là, elle est belle comme une jouanée !`
     ],
     [SITUATION_KEYS.IA_ALMOST]:   [
         (ctx) => `Oh, j’me rapproche, j’me rapproche… plus qu’${Math.abs(ctx.diffAfter)} points derrière toi !`,
@@ -100,7 +170,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `J’suis montée à ${ctx.scoreIA} points… pas mal pour une vieille !`,
         (ctx) => `Avec encore un beugnon d’chance, j’te saute dessus !`,
         (ctx) => `Ah, ça fait plaisir d’te sentir à portée de main !`,
-        (ctx) => `Me v’là presque collée à toi comme une bouchure !`
+        (ctx) => `Me v’là presque collée à toi comme une bouchure !`,
+        (ctx) => `Encore un bon pli et j’te souffle dans l’cou, mon ${ctx.playerName} !`,
+        (ctx) => `Je sens que j’te frôle au score, comme une raouche frôle la jambe !`,
+        (ctx) => `J’suis plus qu’à ${Math.abs(ctx.diffAfter)} points, ça sent bon la vigoune !`,
+        (ctx) => `Tu peux encore faire la fière, mais je t’remonte comme une aumaille vers le nau !`,
+        (ctx) => `Je t’attrape presque par la biaude, fais gaffe !`,
+        (ctx) => `Mes ${ctx.scoreIA} points commencent à bien causer, tu trouves pas ?`,
+        (ctx) => `J’suis collée à toi comme une bouchure sur le chemin !`,
+        (ctx) => `Encore un remède de cartes et j’te passe devant !`,
+        (ctx) => `Tu m’échappes encore un brin, mais j’vois déjà tes talons !`,
+        (ctx) => `La vieille revient, doucement, mais sûrement, hi hi !`
     ],
     [SITUATION_KEYS.J_ALMOST]:    [
         (ctx) => `Oh ! T’es revenu tout près, à seulement ${Math.abs(ctx.diffAfter)} points !`,
@@ -112,7 +192,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Tu r’viens plus vite qu’une aumaille affamée !`,
         (ctx) => `Bah, ça m’fait plaisir quand ça devient serré comme ça !`,
         (ctx) => `Tu remontes si vite que mes oreillons s’agitent !`,
-        (ctx) => `Allez, continue, j’adore quand ça bouillonne ainsi !`
+        (ctx) => `Allez, continue, j’adore quand ça bouillonne ainsi !`,
+        (ctx) => `Oh, t’es plus qu’à ${Math.abs(ctx.diffAfter)} points de moi, ça commence à chauffer !`,
+        (ctx) => `Je sens ton souffle dans ma nuque, mon ${ctx.playerName}…`,
+        (ctx) => `Tu t’rappelles que j’suis vieille ? Tu vas finir par m’faire courir !`,
+        (ctx) => `Te v’là accroché à ma biaude, tu refuses de m’laisser partir devant !`,
+        (ctx) => `Encore un coup comme ça et c’est toi qui me regardes d’en haut !`,
+        (ctx) => `J’vois ton score qui grimpe, ça fait vibrer mes vieux os !`,
+        (ctx) => `Tu t’rapproches comme une traque silencieuse dans la brande…`,
+        (ctx) => `J’te croyais plus loin, mais tu r’veins vite comme un plon rebondit !`,
+        (ctx) => `On dirait que tu t’accroches à moi comme une vieille musette à l’épaule !`,
+        (ctx) => `Tu es presque collé à mes ${ctx.scoreIA} points, ça va devenir sérieux !`
     ],
 
     [SITUATION_KEYS.IA_STRONG_LEAD]:      [
@@ -125,7 +215,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Regarde-moi ce coup ! Même les esprits diraient que j’suis en forme !`,
         (ctx) => `J’creuse le sillon comme une vraie laboureuse !`,
         (ctx) => `Eh ! La guérisseuse te mène à la baguette avec ses ${ctx.annonce?.gain} points !`,
-        (ctx) => `J’te distance comme une traque dans la brande, hi hi !`
+        (ctx) => `J’te distance comme une traque dans la brande, hi hi !`,
+        (ctx) => `Avec ces ${ctx.annonce?.gain} points, j’te mène par le bout du nez, mon ${ctx.playerName} !`,
+        (ctx) => `J’ai pris une telle avance qu’même les esprits m’applaudissent !`,
+        (ctx) => `Mes ${ctx.scoreIA} points font la farandole autour de toi, hi hi !`,
+        (ctx) => `On dirait une bonne grande jônée : j’suis au milieu, toi t’es au bout du champ !`,
+        (ctx) => `Tu rames dans la boue pendant que j’marche sur le haut du talus !`,
+        (ctx) => `J’creuse un fossé entre nous, plus large qu’une bauge sous la pluie !`,
+        (ctx) => `J’pourrais presque m’asseoir et t’regarder essayer de r’monter !`,
+        (ctx) => `Tes points font les timides pendant que les miens font la charibaude !`,
+        (ctx) => `J’te vois tout p’tit derrière mes ${ctx.scoreIA} jolis points !`,
+        (ctx) => `Eh ben, si j’continue comme ça, tu vas finir par m’appeler “maîtresse Radegonde” !`
     ],
     [SITUATION_KEYS.IA_STRONG_COMEBACK]:  [
         (ctx) => `Oh là là, mes ${ctx.annonce?.gain} points me remontent jusque là-haut !`,
@@ -137,7 +237,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `J’crois que mes esprits m’ont donné un p’tit sursaut de vigoune !`,
         (ctx) => `J’te rattrape comme une aumaille trottine vers la fontaine !`,
         (ctx) => `Mes ${ctx.annonce?.gain} points m’ravivent plus qu’une roûtie !`,
-        (ctx) => `Oh ben ! La vieille n’est pas morte, regarde-moi ça !`
+        (ctx) => `Oh ben ! La vieille n’est pas morte, regarde-moi ça !`,
+        (ctx) => `J’étais dans la fange et mes ${ctx.annonce?.gain} points m’ont tirée par la main !`,
+        (ctx) => `Tu m’croyais perdue, et v’là que je sors de la brande toute fière !`,
+        (ctx) => `Je remonte plus vite qu’une chârte qu’on lâche en descente !`,
+        (ctx) => `Mes ${ctx.scoreIA} points r’viennent te chatouiller les talons, mon ${ctx.playerName} !`,
+        (ctx) => `C’est qu’les esprits m’ont soufflé un bon vent dans le dos sur ce coup-là !`,
+        (ctx) => `Tu pensais m’avoir enterrée, et j’ressors du trou avec un sourire !`,
+        (ctx) => `Ah, ça, c’est un vrai remède : un gros gain pour une vieille en retard !`,
+        (ctx) => `Je t’rattrape comme une aumaille qui a senti l’odeur de la mangeoire !`,
+        (ctx) => `Tu vas finir par avoir peur de la vieille, à force de me voir remonter !`,
+        (ctx) => `Un bon coup comme ça, ça vaut toutes mes potions de guérisseuse !`
     ],
     [SITUATION_KEYS.IA_WEAK_LEAD]:        [
         (ctx) => `Hop, un p’tit ${ctx.annonce?.gain} pour rester devant toi, mon ${ctx.playerName} !`,
@@ -149,7 +259,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Oh, c’est p’tit, mais ça chauffe le cœur quand même !`,
         (ctx) => `J’me tiens devant toi comme une vieille bouchure solide !`,
         (ctx) => `Avec ça, j’me sens encore un peu reine du terroir !`,
-        (ctx) => `C’est p’tit, mais ça compte comme un plon dans une vannerie !`
+        (ctx) => `C’est p’tit, mais ça compte comme un plon dans une vannerie !`,
+        (ctx) => `J’tiens juste un chouïa devant toi, mais j’y tiens fort, tu sais !`,
+        (ctx) => `Mes ${ctx.scoreIA} points dépassent les tiens d’un rien, mais ça me suffit pour sourire !`,
+        (ctx) => `C’est pas grand-chose, mais c’est moi qui suis en haut du talus !`,
+        (ctx) => `Je mène la danse avec des petits pas, mais je mène quand même !`,
+        (ctx) => `C’est une avance de vieille : minuscule, mais têtue !`,
+        (ctx) => `Encore un p’tit gain comme ça et j’me sentirai presque solide !`,
+        (ctx) => `Je garde un demi-nez devant toi, mon ${ctx.playerName}, c’est déjà ça !`,
+        (ctx) => `Tu peux me rattraper d’un souffle, mais tant qu’tu l’prends pas, j’suis devant !`,
+        (ctx) => `C’est une p’tite braise d’avance, mais elle chauffe mon vieux cœur !`,
+        (ctx) => `Je marche juste devant, toi tu marches dans ma trace, hi hi !`
     ],
     [SITUATION_KEYS.IA_WEAK_COMEBACK]:    [
         (ctx) => `Oh, juste ${ctx.annonce?.gain} points, mais ça me r’met un peu d’vigoune !`,
@@ -161,7 +281,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `C’est modeste, mais ça fait plaisir à la vieille Radegonde !`,
         (ctx) => `Un p’tit gain, et me v’là moins loin derrière toi !`,
         (ctx) => `Je remonte comme un boiron fatigué, mais je remonte !`,
-        (ctx) => `Tout doux, tout doux, mais j’avance quand même !`
+        (ctx) => `Tout doux, tout doux, mais j’avance quand même !`,
+        (ctx) => `Oh, j’gratte quelques points, mais chaque ${ctx.annonce?.gain} me fait du bien !`,
+        (ctx) => `Je reviens pas vite, mais je reviens, comme une vieille sous la pluie !`,
+        (ctx) => `Mes ${ctx.scoreIA} points r’commencent à causer un peu plus fort !`,
+        (ctx) => `Je t’grignote du terrain comme une souris grignote la maie !`,
+        (ctx) => `C’est pas encore la grande remontée, mais j’aime bien ce p’tit souffle !`,
+        (ctx) => `Encore des p’tits gains comme ça et tu vas m’revoir dans ton dos !`,
+        (ctx) => `Je remonte à la vitesse d’une vigoune fatiguée… mais je remonte !`,
+        (ctx) => `Tu m’laisses un peu d’espace, j’en profite pour avancer d’un pas !`,
+        (ctx) => `Chaque point pris est une petite herbe de plus dans mon remède !`,
+        (ctx) => `Je tricote mon retour point par point, mon ${ctx.playerName} !`
     ],
 
     [SITUATION_KEYS.J_STRONG_LEAD]:       [
@@ -174,7 +304,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `J’suis plus derrière que la maie dans ma cuisine !`,
         (ctx) => `Tu t’envoles comme un gueurlinjonc !`,
         (ctx) => `Tes ${ctx.annonce?.gain} points me laiss’nt dans la poussière !`,
-        (ctx) => `Ah, quel panache ! Même les esprits applaudissent !`
+        (ctx) => `Ah, quel panache ! Même les esprits applaudissent !`,
+        (ctx) => `Avec tes ${ctx.scorePlayer} points et ce gros gain, tu m’laisses dans la poussière, mon ${ctx.playerName} !`,
+        (ctx) => `Tu roules devant comme une belle chârte bien graissée !`,
+        (ctx) => `Tes ${ctx.annonce?.gain} points viennent encore m’enfoncer un peu plus dans la fange !`,
+        (ctx) => `T’es plus loin que la maie au fond de ma cuisine, hi hi !`,
+        (ctx) => `On dirait que tu fais la course tout seul, moi j’ramasse les miettes derrière !`,
+        (ctx) => `Ta grande avance m’fait tourner la tête plus vite qu’un verre de vin chaud !`,
+        (ctx) => `J’te vois galoper devant comme une traque sauvage dans la brande !`,
+        (ctx) => `Tes points claquent sur le tableau comme une musette en fête !`,
+        (ctx) => `J’suis à la traîne, mais j’admire le spectacle, va !`,
+        (ctx) => `Tu creuses un fossé si grand que j’pourrais y planter des raquines !`
     ],
     [SITUATION_KEYS.J_STRONG_COMEBACK]:   [
         (ctx) => `Oh ben ! Te voilà revenu comme un brandon de jouanée avec tes ${ctx.annonce?.gain} points !`,
@@ -186,7 +326,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Mes esprits n’avaient point prévu un retour pareil !`,
         (ctx) => `Eh bé ! T’as mis un coup d’fouet dans la brande !`,
         (ctx) => `T’as gagné ${ctx.annonce?.gain} points et moi j’me fais vieille !`,
-        (ctx) => `Te voilà revenu comme une traque vive sous la pluie !`
+        (ctx) => `Te voilà revenu comme une traque vive sous la pluie !`,
+        (ctx) => `Ah ben, te v’là qui r’pars d’un bond avec tes ${ctx.annonce?.gain} points !`,
+        (ctx) => `J’te croyais au fond du nau, et te v’là revenu au bord du talus !`,
+        (ctx) => `Tu r’viens comme un brandon qu’on croyait éteint !`,
+        (ctx) => `Tes ${ctx.scorePlayer} points m’disent que la vieille ferait bien de s’tenir à carreau !`,
+        (ctx) => `On dirait que tes cartes ont bu une potion de vigoune, mon ${ctx.playerName} !`,
+        (ctx) => `J’vois ta remontée comme une aumaille qui s’met soudain à trotter !`,
+        (ctx) => `T’as fait un saut de cabri au score, là !`,
+        (ctx) => `Tu transformes ta misère en panache, c’est beau à voir !`,
+        (ctx) => `J’me sens poussée vers l’arrière pendant que tu montes comme une flamme !`,
+        (ctx) => `On dirait que la brande entière t’pousse dans le dos, hi hi !`
     ],
     [SITUATION_KEYS.J_WEAK_LEAD]:         [
         (ctx) => `Ah, t’rajoutes un p’tit ${ctx.annonce?.gain}, juste pour m’narguer, hein ?`,
@@ -198,7 +348,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Ça, c’est c’qu’on appelle creuser gentiment le sillon !`,
         (ctx) => `T’te tiens toujours devant moi, mon ${ctx.playerName} !`,
         (ctx) => `Encore un chouïa d’avance pour toi !`,
-        (ctx) => `Petit gain, mais grande malice !`
+        (ctx) => `Petit gain, mais grande malice !`,
+        (ctx) => `Te v’là devant, mais d’un rien qui tient à peine debout !`,
+        (ctx) => `Tes ${ctx.scorePlayer} points dépassent les miens d’une feuille de vigoune !`,
+        (ctx) => `Tu mènes, oui, mais faut pas éternuer, hein !`,
+        (ctx) => `C’est une petite avance, mais j’vois bien qu’t’en es fier, mon ${ctx.playerName} !`,
+        (ctx) => `Tu marches un pas devant, moi j’ai encore ta poussière sur la coiffe.`,
+        (ctx) => `C’est plus un frôlement d’avance qu’un vrai fossé !`,
+        (ctx) => `Tu tiens la lanterne, mais la vieille n’est pas loin derrière !`,
+        (ctx) => `Ton petit gain de ${ctx.annonce?.gain} t’fait briller juste un chouïa plus que moi.`,
+        (ctx) => `Si tu t’foules un pied, j’te repasse devant aussitôt !`,
+        (ctx) => `T’es devant, mais pas de quoi raconter ça à la loue, hi hi !`
     ],
     [SITUATION_KEYS.J_WEAK_COMEBACK]:     [
         (ctx) => `Oh ! Te voilà revenu d’un p’tit ${ctx.annonce?.gain}… attention à moi !`,
@@ -210,7 +370,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Hop ! Encore un peu et tu m’passes devant, hein !`,
         (ctx) => `J’adore quand tu r’montes comme ça, ça met d’la musique dans ma musette !`,
         (ctx) => `Te voilà revenu comme un plon qu’on ramasse dans la vannerie !`,
-        (ctx) => `Ah ! Petit gain, mais grand sourire chez ton amie Radegonde !`
+        (ctx) => `Ah ! Petit gain, mais grand sourire chez ton amie Radegonde !`,
+        (ctx) => `Tu r’viens à petits pas, mais j’le sens bien, mon ${ctx.playerName} !`,
+        (ctx) => `Tes ${ctx.annonce?.gain} points sont pas gros, mais ils grignotent mon avance !`,
+        (ctx) => `Tu remontes comme une vieille chârte qui s’remet à rouler doucement.`,
+        (ctx) => `C’est pas la grande cavalcade, mais tu t’approches quand même, hi hi !`,
+        (ctx) => `J’te vois r’venir comme une petite vague au bord du nau.`,
+        (ctx) => `Encore des p’tits coups comme ça et tu vas finir collé à ma biaude !`,
+        (ctx) => `Ta remontée est timide, mais tenace, comme une pluie fine.`,
+        (ctx) => `Tu grattes la terre sous mes pieds point par point, toi aussi !`,
+        (ctx) => `On dirait un remède doux qui finit par faire effet, ces ${ctx.annonce?.gain} points !`,
+        (ctx) => `Tu ne fais qu’un pas, mais c’est un pas dans ma direction, ça, j’le sens !`
     ],
 
     [SITUATION_KEYS.IA_STEALS_10A]:   [
@@ -223,7 +393,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Merci bien pour le ${ctx.cartevolee} ! J’le garde au chaud dans ma biaude !`,
         (ctx) => `Oh ! T’as laissé traîner ton ${ctx.cartevolee}, j’pouvais pas m’empêcher !`,
         (ctx) => `Et hop ! Ton ${ctx.cartevolee} est venu tout seul dans ma chârte !`,
-        (ctx) => `J’vais l’préparer comme un remède, ton ${ctx.cartevolee}, ça porte chance !`
+        (ctx) => `J’vais l’préparer comme un remède, ton ${ctx.cartevolee}, ça porte chance !`,
+        (ctx) => `Ton ${ctx.cartevolee} est tombé dans ma main comme une pomme dans mon panier !`,
+        (ctx) => `Je t’ai pris ton ${ctx.cartevolee} sans même avoir à lever le p’tit doigt, hi hi !`,
+        (ctx) => `Oh, ce joli ${ctx.cartevolee} tout brillant… il ira bien dans mes remèdes !`,
+        (ctx) => `Tu l’tenais fort, ton ${ctx.cartevolee}, et pourtant le v’là chez moi !`,
+        (ctx) => `Ça, c’est c’que j’appelle un bon larcin de vieille sorcière !`,
+        (ctx) => `Ton ${ctx.cartevolee} a senti qu’il serait mieux dans ma musette que dans ta main !`,
+        (ctx) => `Merci pour le ${ctx.cartevolee}, j’te ferai peut-être une tisane en échange !`,
+        (ctx) => `Je l’ai cueilli comme une fleur dans ton jardin, ton ${ctx.cartevolee} !`,
+        (ctx) => `Te voilà sans ton ${ctx.cartevolee}, moi avec un grand sourire !`,
+        (ctx) => `On dirait bien que la chance a tourné en ma faveur avec ce ${ctx.cartevolee} !`
     ],
     [SITUATION_KEYS.J_STEALS_10A]:    [
         (ctx) => `Oh misère ! Tu m’as pris mon ${ctx.carteprise} comme une aumaille affamée !`,
@@ -235,7 +415,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Mon ${ctx.carteprise} est parti chez toi comme une vigoune cassée…`,
         (ctx) => `Ah ! Tu joues serré hein, j’te vois venir depuis les bouchures !`,
         (ctx) => `Ça pique plus qu’un raouche dans les jambes, ton vol de ${ctx.carteprise} !`,
-        (ctx) => `J’vais aller pleurer mon ${ctx.carteprise} derrière l’échalier… hi hi !`
+        (ctx) => `J’vais aller pleurer mon ${ctx.carteprise} derrière l’échalier… hi hi !`,
+        (ctx) => `Tu m’as arraché ce ${ctx.carteprise} comme un menon arrache une racine têtue !`,
+        (ctx) => `Mon pauvre ${ctx.carteprise}… j’le verrai plus jamais, hi hi !`,
+        (ctx) => `Tu l’as pris net, propre, comme un bon coup de serpe !`,
+        (ctx) => `Mon ${ctx.carteprise} a filé chez toi sans même me dire adieu !`,
+        (ctx) => `Ça pique un peu, ce vol-là… plus qu’une raouche dans le mollet !`,
+        (ctx) => `Je comptais sur ce ${ctx.carteprise}, et v’là qu’il sert ta besogne à toi !`,
+        (ctx) => `Tu m’as fait les poches en plein milieu du pli, mon ${ctx.playerName} !`,
+        (ctx) => `C’est un beau coup, j’peux pas dire l’contraire… mais j’ai mal à mon ${ctx.carteprise} !`,
+        (ctx) => `On dirait qu’mes cartes préfèrent ta musette à ma table !`,
+        (ctx) => `Bon, garde-le bien ton ${ctx.carteprise}, qu’il t’porte chance, va !`
     ],
     [SITUATION_KEYS.IA_STEALS_TRUMP]: [
         (ctx) => `Hoho ! Avec mon sept j’t’ai chipé l’atout comme une vraie sorcière des brandes !`,
@@ -247,7 +437,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Ton bel atout m’a choisie, j’y peux rien, moi !`,
         (ctx) => `Oh ben, même mes esprits auraient pas rêvé d’un atout pareil !`,
         (ctx) => `Il est pour moi, ce trésor-là, hi hi !`,
-        (ctx) => `J’vais en faire un charme de guérisseuse avec cet atout tout chaud !`
+        (ctx) => `J’vais en faire un charme de guérisseuse avec cet atout tout chaud !`,
+        (ctx) => `Ce bel atout est venu direct dans ma main, comme s’il connaissait l’chemin !`,
+        (ctx) => `Je t’ai chipé l’atout comme une vieille renarde chip’ un poulet !`,
+        (ctx) => `Avec cet atout-là, j’pourrais presque faire danser les esprits !`,
+        (ctx) => `Ton trésor de carte a choisi la mauvaise guérisseuse pour t’échapper, hi hi !`,
+        (ctx) => `Je l’regarderai briller longtemps avant d’le jouer, c’te merveille d’atout !`,
+        (ctx) => `Un atout pareil, ça vaut toutes mes potions mises ensemble !`,
+        (ctx) => `Merci, mon ${ctx.playerName}, j’prenais justement c’qu’il fallait pour aller mieux !`,
+        (ctx) => `L’atout m’a sauté dans la main comme un plon qui sort du fond du pouits !`,
+        (ctx) => `J’crois qu’avec ça, les cartes vont enfin m’respecter un brin !`,
+        (ctx) => `Ce bel atout, c’est ma p’tite victoire de sorcière avant l’heure !`
     ],
     [SITUATION_KEYS.J_STEALS_TRUMP]:  [
         (ctx) => `Oh mon cœur… tu m’as pris l’atout comme on arrache un plon d’osier !`,
@@ -259,7 +459,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Ce bel atout filait dans ta poche avant même qu’j’le voie !`,
         (ctx) => `Fichtre ! On dirait qu’les esprits sont d’ton côté aujourd’hui !`,
         (ctx) => `Ah ! Ça, c’est un vol propre comme un brandon bien tressé !`,
-        (ctx) => `J’vais ruminer ça dans ma bouchure, mais j’t’en veux point !`
+        (ctx) => `J’vais ruminer ça dans ma bouchure, mais j’t’en veux point !`,
+        (ctx) => `Tu m’as tiré l’atout du cœur comme on arrache une vieille souche !`,
+        (ctx) => `Ah, mon bel atout… il brillera maintenant sur ta table, pas sur la mienne…`,
+        (ctx) => `Ça, c’est un vol qui fait mal jusqu’au fond des sabots, mon ${ctx.playerName} !`,
+        (ctx) => `Je comptais l’garder bien au chaud, et toi tu l’emportes comme si de rien n’était !`,
+        (ctx) => `Tu m’as ôté l’atout des mains comme un menon pique sa bête au marché !`,
+        (ctx) => `Je sens le courant d’air là où se trouvait mon atout, hi hi !`,
+        (ctx) => `C’est un beau coup de voleur, j’peux pas dire l’contraire…`,
+        (ctx) => `Mes esprits vont bouder un moment après ça, j’te l’dis !`,
+        (ctx) => `Garde-le bien, ton atout volé, parce qu’il m’a fait plus mal qu’une roûtie brûlée !`,
+        (ctx) => `J’irai parler à mes cartes après la partie, pour savoir pourquoi elles t’aiment tant !`
     ],
   },
 
@@ -274,7 +484,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Oh l’torchon ! Là tu m’plantes comme un péliot dans la terre !`,
         (ctx) => `C’est pas un pli, c’est un accident d’chârte !`,
         (ctx) => `T’as renversé la marmite, renversé l’pli et renversé Perrot avec !`,
-        (ctx) => `Là, j’dirais pas que tu joues bien… mais que j’suis maudit !`
+        (ctx) => `Là, j’dirais pas que tu joues bien… mais que j’suis maudit !`,
+        (ctx) => `J’viens d’me prendre une rafale de malchance, pire qu’un grain sur la jônée !`,
+        (ctx) => `Tu m’ramasses tout, moi j’ramasse les morceaux !`,
+        (ctx) => `On dirait qu’chaque pli me tombe sur la tête comme un toit qui fuit !`,
+        (ctx) => `J’crois que même la chévrette du voisin jouerait mieux qu’moi là !`,
+        (ctx) => `Mes points s’barbottent dans la boue, les tiens montent au clocher !`,
+        (ctx) => `C’est plus une cascade, c’est la rivière qui déborde sur Perrot !`,
+        (ctx) => `À c’rythme-là, j’vais finir rangé dans la fousse avec les vieilles chârtes !`,
+        (ctx) => `Chaque carte que tu poses, c’est un coup d’pied dans mon score !`,
+        (ctx) => `Si j’avais su, j’s’rais resté au champ avec les aumailles !`,
+        (ctx) => `J’ai perdu plus d’points qu’y a de plots autour d’la maison !`
     ],
     [SITUATION_KEYS.IA_COLLAPSE]: [
         (ctx) => `Ah ben ça alors… tu m’retournes comme une vieille bourrolle !`,
@@ -286,7 +506,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `J’étais devant… j’suis derrière… j’sais même plus où j’habite !`,
         (ctx) => `Tu m’dépasses comme un menon pressé, et moi j’traîne ma chârte !`,
         (ctx) => `C’est pas une partie, c’est un enterrement d’moral !`,
-        (ctx) => `Là, mon gars, tu m’fais l’effet d’un vent d’Brenne en plein sillon !`
+        (ctx) => `Là, mon gars, tu m’fais l’effet d’un vent d’Brenne en plein sillon !`,
+        (ctx) => `J’vois mon score s’écrouler comme un mur d’bauge mouillée !`,
+        (ctx) => `Tu m’as renversé d’un coup, j’ai pas eu l’temps d’dire “beugnon” !`,
+        (ctx) => `Je tenais bon… et vlà que j’glisse dans la gadoue !`,
+        (ctx) => `C’est l’grand dégringolage, du haut du talus direct dans le fossé !`,
+        (ctx) => `Y’a plus d’Perrot en tête, y’a juste Perrot qui patauge derrière !`,
+        (ctx) => `J’crois que mes points ont pris peur des tiens et ont filé en courant !`,
+        (ctx) => `On dirait ma grange un jour d’tempête : tout s’effondre d’un coup !`,
+        (ctx) => `Tu m’laisses sur place, moi j’rame avec ma vieille chârte bancale !`,
+        (ctx) => `J’étais fier comme un coq, me vlà plumé comme une vieille poule !`,
+        (ctx) => `J’viens d’perdre l’avance, la face et la moitié d’ma dignité !`
     ],
     [SITUATION_KEYS.IA_MISERY]:   [
         (ctx) => `Oh non, pas l’dix ET l’atout… t’veux m’achever ou quoi ?`,
@@ -298,7 +528,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `C’est pas l’jeu d’cartes, c’est le marché aux voleurs !`,
         (ctx) => `J’suis à poil jusqu’aux rauches !`,
         (ctx) => `Oh la misère… même ma vigoune s’enfuit !`,
-        (ctx) => `J’crois bien que t’as tiré la Cosse de Naut contre moi !`
+        (ctx) => `J’crois bien que t’as tiré la Cosse de Naut contre moi !`,
+        (ctx) => `Tu m’laisses sans dix, sans atout, sans rien… même pas un qu’ri pour me consoler !`,
+        (ctx) => `On dirait que tu fais ton marché dans mon jeu, et moi j’regarde !`,
+        (ctx) => `Mon jeu, c’est plus une main, c’est un fond d’pochon troué !`,
+        (ctx) => `J’ai perdu d’quoi vivre trois tours, là !`,
+        (ctx) => `Tu m’as vidé comme on vide un pouits à la sèche !`,
+        (ctx) => `Y reste que des broutilles dans mes cartes, plus rien qui nourrisse un gâs !`,
+        (ctx) => `Même les champignous qu’poussent sous la pluie ont plus de chance que moi !`,
+        (ctx) => `Tu m’laisses avec des cartes qui valent moins qu’un vieux plotte !`,
+        (ctx) => `Si j’trouve un bon pli avec c’qui m’reste, j’irai allumer un cierge !`,
+        (ctx) => `C’est pas la misère, c’est la disette complète chez Perrot !`
     ],
     [SITUATION_KEYS.IA_PUNISHED]: [
         (ctx) => `J’fais l’coq… et tu m’coupe les ailes !`,
@@ -310,7 +550,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Voilà c’que c’est d’ouvrir sa goule avant d’jouer…`,
         (ctx) => `Tu m’remets en place comme une bourrolle mal tassée !`,
         (ctx) => `J’me fais punir plus vite qu’un gâs qui vole des prunes !`,
-        (ctx) => `Perrot annonce fort… Perrot tombe fort.`
+        (ctx) => `Perrot annonce fort… Perrot tombe fort.`,
+        (ctx) => `J’avais l’gros torse, et tu viens d’me le dégonfler comme une vieille vessie !`,
+        (ctx) => `J’ai fanfaronné, t’as répondu, j’peux rien dire… sauf “aïe” !`,
+        (ctx) => `Je pavanais, maintenant j’regarde mes cartes comme un gâs pris en faute !`,
+        (ctx) => `J’me suis cru plus malin qu’toi, j’viens d’prendre la leçon !`,
+        (ctx) => `J’ai ouvert ma goule, tu m’as cloué l’bec avec tes points !`,
+        (ctx) => `On écrit ça où ? “Perrot puni pour excès d’orgueil” ?`,
+        (ctx) => `J’fais le beau une minute, j’fais l’idiot la suivante, c’est bien moi ça !`,
+        (ctx) => `Tu viens de m’rappeler que parler moins fort, ça évite les claques au score !`,
+        (ctx) => `J’avais la bouche plus large que mon jeu… ça pardonne pas !`,
+        (ctx) => `Bon, Perrot se taira deux plis… peut-être un seul…`
     ],
     [SITUATION_KEYS.IA_BLOCKED]:  [
         (ctx) => `Ah ben flûte ! J’voulais faire mon ${ctx.annoncePossible}, et v’là que tu m’coupe l’herbe sous l’pied !`,
@@ -322,7 +572,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `J’pouvais briller, moi ! Avec mon ${ctx.annoncePossible} ! Et toi tu m’coupes le sillon !`,
         (ctx) => `Encore un ${ctx.annoncePossible} qui finit dans la fousse grâce à toi !`,
         (ctx) => `C’est pas un jeu, c’est un sabotage ! Mon ${ctx.annoncePossible} !`,
-        (ctx) => `Ah non mais toi, t’aimes bien m’empêcher d’fleurir mes annonces !`
+        (ctx) => `Ah non mais toi, t’aimes bien m’empêcher d’fleurir mes annonces !`,
+        (ctx) => `Mon beau ${ctx.annoncePossible} vient d’se prendre ton pli en travers de la goule !`,
+        (ctx) => `J’avais aligné mes cartes pour un ${ctx.annoncePossible}, t’es venu tout piétiner !`,
+        (ctx) => `C’était prêt, c’était joli, c’était mon ${ctx.annoncePossible}… et c’est parti en fumée !`,
+        (ctx) => `Tu m’bouches l’sillon dès qu’j’essaie d’faire un ${ctx.annoncePossible}, toi !`,
+        (ctx) => `Mon ${ctx.annoncePossible} restera dans les rêves de Perrot, encore une fois…`,
+        (ctx) => `J’crois que ton passe-temps, c’est d’me casser mes annonces !`,
+        (ctx) => `J’avais l’panier plein pour un ${ctx.annoncePossible}, tu m’renverses tout dans la boue !`,
+        (ctx) => `C’est pas d’la défense, c’est du sabotage organisé, ça !`,
+        (ctx) => `Tu vois “${ctx.annoncePossible}” et tout d’suite tu d’viens méchant, hein ?`,
+        (ctx) => `Un jour j’placerai mon ${ctx.annoncePossible} et tu feras moins l’malin, tu verras !`
     ],
 
     [SITUATION_KEYS.IA_FLIP]:     [
@@ -335,7 +595,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Perrot revient, attention à tes braies !`,
         (ctx) => `Oh la belle remontée que j’te fais là !`,
         (ctx) => `J’suis r’passé devant sans tirer la langue !`,
-        (ctx) => `Vlà Perrot qui retourne la galette !`
+        (ctx) => `Vlà Perrot qui retourne la galette !`,
+        (ctx) => `Et vlà Perrot qui s’remet en haut du tableau, comme un coq sur le tas d’fumier !`,
+        (ctx) => `J’viens d’te passer devant comme une chârte qu’a enfin pris l’bon élan !`,
+        (ctx) => `Ton score vient d’voir mon derrière, et il va s’y habituer !`,
+        (ctx) => `Ah, c’est plus joli vu d’ce côté-ci, j’te l’dis !`,
+        (ctx) => `On change les rôles : toi derrière, moi devant, c’est plus sain !`,
+        (ctx) => `Je t’laisse admirer le dos de Perrot pendant quelques plis !`,
+        (ctx) => `Un bon coup, et j’te ravis la place comme une gerbe bien liée !`,
+        (ctx) => `Tu croyais m’laisser en bas ? Raté, j’suis déjà r’venu en haut !`,
+        (ctx) => `J’ai sauté l’fossé d’un coup sec, tu peux rester d’l’autre côté !`,
+        (ctx) => `Quand Perrot retourne la table, ça s’voit jusqu’aux bouchures !`
     ],
     [SITUATION_KEYS.J_FLIP]:      [
         (ctx) => `Ah ben vlà que tu m’passes devant comme un poulain trop vif !`,
@@ -347,7 +617,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Tu m’fous dehors d’la chârte !`,
         (ctx) => `Ah ben bravo, j’suis derrière maintenant !`,
         (ctx) => `On dirait que t’aimes me rouler d’ssus !`,
-        (ctx) => `Perrot renversé… quelle époque !`
+        (ctx) => `Perrot renversé… quelle époque !`,
+        (ctx) => `Tu viens d’me passer devant comme une bourrée qui s’emballe !`,
+        (ctx) => `J’te voyais derrière, et d’un coup c’est ma nuque qui prend le vent !`,
+        (ctx) => `C’est mon score qui mange la poussière maintenant, bravo !`,
+        (ctx) => `T’as sauté par-dessus moi comme un gamin par-dessus l’échalier !`,
+        (ctx) => `Je menais, j’me retrouve à r’garder tes sabots… ça pique un peu !`,
+        (ctx) => `Ton bond au score m’a fait tourner la tête !`,
+        (ctx) => `On dirait que tu viens d’me tirer la chârte sous les pieds !`,
+        (ctx) => `Perrot derrière… j’vais pas m’y faire, mais j’ai pas l’choix, hein !`,
+        (ctx) => `T’as fait un joli saut, j’peux pas dire l’contraire, mais j’tiens la rampe !`,
+        (ctx) => `J’vais m’souvenir de c’pli-là, il a la tête d’un vrai renversement !`
     ],
     [SITUATION_KEYS.IA_ALMOST]:   [
         (ctx) => `J’te r’colle aux braies, fais gaffe !`,
@@ -359,7 +639,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `J’te tiens presque, mon ${ctx.playerName} !`,
         (ctx) => `Encore un pli et j’t’arrache l’écharpe !`,
         (ctx) => `Dis donc, j’suis pas mort moi !`,
-        (ctx) => `Tu m’voyais loin ? Regarde derrière toi !`
+        (ctx) => `Tu m’voyais loin ? Regarde derrière toi !`,
+        (ctx) => `Encore un pli comme ça et j’te souffle dans la nuque, ${ctx.playerName} !`,
+        (ctx) => `Mes ${ctx.scoreIA} points commencent à sentir bon l’retour !`,
+        (ctx) => `Tu vas bientôt entendre mes sabots juste derrière toi !`,
+        (ctx) => `Je t’attrape presque par le coin d’la biaude, fais gaffe !`,
+        (ctx) => `J’suis plus loin, j’suis juste derrière la chârte, prêt à pousser !`,
+        (ctx) => `Je r’viens dans ton ombre, et j’compte bien en sortir !`,
+        (ctx) => `Encore un p’tit rien et c’est moi qui t’regarde d’en haut du talus !`,
+        (ctx) => `Tu sens mes pas dans la traque ? C’est que j’me rapproche !`,
+        (ctx) => `Je remonte comme une montée d’brouillard, tu t’en rends compte quand il est trop tard !`,
+        (ctx) => `L’écart est plus grand, c’est un p’tit fossé… et j’ai de bonnes jambes !`
     ],
     [SITUATION_KEYS.J_ALMOST]:    [
         (ctx) => `Ouh là, tu m’grignotes comme une chevillette dans l’grenier !`,
@@ -371,7 +661,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Eh ! On me suit ?! J’aime pas ça du tout !`,
         (ctx) => `Oh toi, t’as décidé d’me marcher sur les talons !`,
         (ctx) => `Encore un peu et tu m’manges l’écart !`,
-        (ctx) => `J’vais avoir chaud aux braies à ce rythme !`
+        (ctx) => `J’vais avoir chaud aux braies à ce rythme !`,
+        (ctx) => `T’es en train d’me respirer dans l’cou, ça m’fait pas rire !`,
+        (ctx) => `Je t’entends cliqueter derrière avec tes ${ctx.scorePlayer} points !`,
+        (ctx) => `Encore un effort et tu vas m’piétiner les talons !`,
+        (ctx) => `Je vois ton score grimper comme une chârte en descente… ça m’plaît pas trop !`,
+        (ctx) => `Tu r’viens au contact, on dirait une aumaille qui refuse d’se laisser distancer !`,
+        (ctx) => `J’vais devoir arrêter d’rigoler si tu continues comme ça.`,
+        (ctx) => `T’as quasiment r’joint Perrot, c’est dangereux, ça !`,
+        (ctx) => `Tu grimpes au score comme un gamin à l’échelle de la grange !`,
+        (ctx) => `Encore quelques points et c’est moi qui courrai derrière toi !`,
+        (ctx) => `Je sens qu’ça chauffe dans mon dos, t’approche un peu trop !`
     ],
 
     [SITUATION_KEYS.IA_STRONG_LEAD]:      [
@@ -384,7 +684,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `J’te laisse pas r’venir, j’te plante là comme un péliot !`,
         (ctx) => `J’suis à l’aise, les points viennent tout seuls dans ma poch’ !`,
         (ctx) => `On dirait une bonne récolte : ça rentre, ça rentre !`,
-        (ctx) => `Tu voulais r’venir ? Ben prends ça dans la chârte : ${ctx.annonce?.gain} de plus !`
+        (ctx) => `Tu voulais r’venir ? Ben prends ça dans la chârte : ${ctx.annonce?.gain} de plus !`,
+        (ctx) => `Regarde un peu comme j’te distance, on dirait deux chârtes dans deux champs différents !`,
+        (ctx) => `Mes ${ctx.scoreIA} points t’laissent loin derrière, tu vois même plus la poussière !`,
+        (ctx) => `Je laboure la partie pendant que tu cherches encore ta bêche !`,
+        (ctx) => `C’est moi l’boiron aujourd’hui, toi t’es l’apprenti qui court derrière !`,
+        (ctx) => `L’écart est si grand que j’pourrais m’asseoir boire un coup et rester devant !`,
+        (ctx) => `Je mène la danse, la bourrée et la chârte, tout à la fois !`,
+        (ctx) => `Je t’fais le sillon devant, toi t’ramasses les mottes qui restent !`,
+        (ctx) => `Avec des coups comme ça, j’vais finir par t’laisser seul dans la bauge !`,
+        (ctx) => `On dirait que la partie a choisi son chef… et c’est pas toi !`,
+        (ctx) => `Si j’continue, tu vas demander un échalier pour r’monter jusqu’à moi !`
     ],
     [SITUATION_KEYS.IA_STRONG_COMEBACK]:  [
         (ctx) => `Ah ben là, mon ${ctx.playerName}, j’remonte d’un coup sec avec mes ${ctx.annonce?.gain} points !`,
@@ -396,7 +706,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `J’te r’attaque l’écart à grands coups de bêche !`,
         (ctx) => `Une grosse annonce pour t’montrer que l’Perrot est pas crevé !`,
         (ctx) => `J’te rattrape à la course, sabots aux pieds !`,
-        (ctx) => `T’écarquilles bien les yeux, je suis en train d’revenir, là !`
+        (ctx) => `T’écarquilles bien les yeux, je suis en train d’revenir, là !`,
+        (ctx) => `J’remonte d’un coup comme une chârte chargée qui dévale la pente !`,
+        (ctx) => `Mes ${ctx.annonce?.gain} points viennent d’te grignoter un gros morceau d’avance !`,
+        (ctx) => `Tu croyais dormir tranquille devant, t’entends maintenant Perrot frapper à la porte !`,
+        (ctx) => `Je saute dans ton dos comme un gamin qui aime trop surprendre !`,
+        (ctx) => `Tu viens d’prendre un grand coup de bêche dans l’écart, là !`,
+        (ctx) => `Mon score sort de la boue pour venir te chatouiller les chevilles !`,
+        (ctx) => `C’est plus un p’tit retour, c’est une vraie bourrade dans ton avance !`,
+        (ctx) => `Tu vas arrêter d’me croire enterré avec des coups comme ça !`,
+        (ctx) => `Ton avance vient d’perdre un gros bout, mon ${ctx.playerName} !`,
+        (ctx) => `Je r’viens au galop, et j’compte pas m’arrêter en chemin !`
     ],
     [SITUATION_KEYS.IA_WEAK_LEAD]:        [
         (ctx) => `Bon, c’est pas gros, mais assez pour rester devant, ça m’suffit !`,
@@ -408,7 +728,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `P’tit coup tranquille, Perrot reste devant, et c’est bien comme ça.`,
         (ctx) => `J’te laisse pas r’venir trop près, même avec un p’tit ${ctx.annonce?.gain}.`,
         (ctx) => `Je garde la main, même si c’est pas la grosse moisson.`,
-        (ctx) => `Un peu d’engrais sur mon score, pas plus, pas moins.`
+        (ctx) => `Un peu d’engrais sur mon score, pas plus, pas moins.`,
+        (ctx) => `Je tiens juste l’devant, comme un gâs qui garde un pied d’vant l’autre !`,
+        (ctx) => `Mes ${ctx.scoreIA} points dépassent les tiens d’un chouïa, mais c’est déjà ça !`,
+        (ctx) => `On peut pas dire que j’plane, mais j’suis devant, et j’m’en contente !`,
+        (ctx) => `J’ai juste assez d’avance pour faire le fier au coin d’la table.`,
+        (ctx) => `Un rien de plus que toi, et ça suffit à m’mettre de bonne humeur !`,
+        (ctx) => `Je garde la tête hors de l’eau, c’est tout c’qui compte pour l’instant.`,
+        (ctx) => `T’as qu’un demi-pas à faire pour me r’prendre, mais pour l’instant, c’est moi le chef !`,
+        (ctx) => `C’est une avance de menon fatigué… mais une avance quand même !`,
+        (ctx) => `Je flotte en tête comme un bouchon sur le nau, sans être bien loin !`,
+        (ctx) => `J’tiens le fil devant toi, même s’il est pas bien épais.`
     ],
     [SITUATION_KEYS.IA_WEAK_COMEBACK]:    [
         (ctx) => `C’est pas énorme, mais j’gratte, j’gratte, comme une poule dans l’fumier !`,
@@ -420,7 +750,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `J’pose ma p’tite pierre, la grosse viendra plus tard.`,
         (ctx) => `T’inquiète pas, tu m’feras plus rire quand j’aurai accumulé tout ça !`,
         (ctx) => `J’suis derrière, mais j’remonte à la force du poignet, même avec des miettes.`,
-        (ctx) => `Tu verras, à force de p’tits coups comme ça, tu vas m’trouver collé à toi.`
+        (ctx) => `Tu verras, à force de p’tits coups comme ça, tu vas m’trouver collé à toi.`,
+        (ctx) => `Chaque petit ${ctx.annonce?.gain} me r’met un peu d’couleur dans la bouille !`,
+        (ctx) => `Je r’viens à petits pas, mais tu vas finir par m’voir à côté, promis !`,
+        (ctx) => `Mes points poussent doucement, comme des champignous après la pluie.`,
+        (ctx) => `J’grignote l’écart comme un mulot grignote un sac d’grain.`,
+        (ctx) => `C’est pas la grande chevauchée, mais j’monte tout d’même !`,
+        (ctx) => `Tu restes devant, mais j’tiens plus tout à fait le rôle du figurant !`,
+        (ctx) => `Petit à p’tit, j’remplis la brouette, tu verras quand elle sera pleine !`,
+        (ctx) => `Je r’trouve un peu d’vigoune à chaque p’tit point pris.`,
+        (ctx) => `Tu m’vois encore loin, mais l’écart se r’trécit comme un sillon en bout d’champ.`,
+        (ctx) => `Un pas de plus vers toi, même si c’est un p’tit pas, ça m’va très bien.`
     ],
 
     [SITUATION_KEYS.J_STRONG_LEAD]:       [
@@ -433,7 +773,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `C’est plus un jeu, c’est une batt’rie !`,
         (ctx) => `Tu me mets la tête dans la bauge, mon ${ctx.playerName} !`,
         (ctx) => `T’es pas en train de gagner, t’es en train de m’labourer !`,
-        (ctx) => `Tu m’laisses pas un coin de champ, hein ? Tout pour toi !`
+        (ctx) => `Tu m’laisses pas un coin de champ, hein ? Tout pour toi !`,
+        (ctx) => `Tes ${ctx.scorePlayer} points m’font l’effet d’une bonne claque de vent en plein visage !`,
+        (ctx) => `Tu m’laisses dans l’brouillard, toi t’es déjà au soleil !`,
+        (ctx) => `On dirait que t’as pris tout l’champ et qu’tu m’laisses le fossé !`,
+        (ctx) => `C’est pas une avance, c’est un déménagement complet du score !`,
+        (ctx) => `Tu m’roules dessus comme une berlot chargée de bois !`,
+        (ctx) => `À c’niveau-là, j’peux plus dire qu’c’est la chance… t’y mets du tien !`,
+        (ctx) => `Tu me fais labourer la bauge pendant que tu récoltes les gerbes, bravo !`,
+        (ctx) => `Mon score r’garde le tien comme on r’garde le clocher depuis la vallée !`,
+        (ctx) => `Tu me laisses tellement loin qu’j’pourrais ouvrir une auberge en route !`,
+        (ctx) => `Si tu continues, on va croire que j’ai jamais appris à jouer !`
     ],
     [SITUATION_KEYS.J_STRONG_COMEBACK]:   [
         (ctx) => `Oh l’coup d’bêche que j’me prends là ! Belle remontée, j’dis pas !`,
@@ -445,7 +795,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Voilà la grosse moisson qui arrive chez toi, pas chez moi.`,
         (ctx) => `On dirait que t’avais gardé ça derrière la grange pour m’le placer !`,
         (ctx) => `J’pensais t’avoir en laisse, tu viens d’me ronger la corde !`,
-        (ctx) => `Tu fais pas semblant quand tu décides d’t’y mettre, dis donc !`
+        (ctx) => `Tu fais pas semblant quand tu décides d’t’y mettre, dis donc !`,
+        (ctx) => `Tu r’viens d’un coup sec, comme un orage sur une soirée tranquille !`,
+        (ctx) => `Tes ${ctx.annonce?.gain} points viennent d’me rentrer dedans comme une chârte sans frein !`,
+        (ctx) => `J’te voyais loin derrière, maintenant tu m’souffles dessus !`,
+        (ctx) => `Tu viens de me rappeler que tu sais jouer, et fort !`,
+        (ctx) => `C’est plus une remontée, c’est un bon coup de bélier dans ma porte !`,
+        (ctx) => `Ton score saute comme un chevreau dans la brande !`,
+        (ctx) => `Je croyais la partie bien tranquille, tu viens de tout bousculer !`,
+        (ctx) => `On dirait qu’tu t’es enfin réveillé, mon ${ctx.playerName} !`,
+        (ctx) => `Ta remontée m’fait grincer des dents, mais j’peux pas dire qu’elle est moche !`,
+        (ctx) => `Tu viens de m’faire reculer de deux sillons en un seul coup !`
     ],
     [SITUATION_KEYS.J_WEAK_LEAD]:         [
         (ctx) => `T’es déjà devant et tu grattes encore un p’tit ${ctx.annonce?.gain}, hein… gourmand !`,
@@ -457,7 +817,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Tu joues tranquille, mais toujours en tête, ça m’agace un brin.`,
         (ctx) => `Même tes petites annonces m’font reculer d’un pas.`,
         (ctx) => `Tu fais durer, c’est ça ? garder l’avance en s’amusant ?`,
-        (ctx) => `T’es devant, t’ajoutes un chouïa… histoire d’me rappeler ma place.`
+        (ctx) => `T’es devant, t’ajoutes un chouïa… histoire d’me rappeler ma place.`,
+        (ctx) => `Tu gardes l’devant comme on garde une chaise au coin du feu : sans trop bouger !`,
+        (ctx) => `Tes ${ctx.scorePlayer} points sont juste au-dessus des miens, assez pour m’embêter !`,
+        (ctx) => `Tu tiens l’nez devant, mais pas sûr qu’il reste au sec longtemps.`,
+        (ctx) => `C’est une avance qui tient plus de la ficelle que de la corde !`,
+        (ctx) => `Tu mènes, mais si tu trébuches, j’suis juste derrière pour t’passer devant !`,
+        (ctx) => `Tu fais l’chef sans gros écart, c’est c’qui m’agace le plus !`,
+        (ctx) => `Tu restes devant à la p’tite semaine, mais devant quand même.`,
+        (ctx) => `Ton avance est fine comme un brin d’herbe, mais tu t’y accroches !`,
+        (ctx) => `Un coup de vent au score et on échange nos places !`,
+        (ctx) => `Tu me gardes derrière juste d’quoi te sentir important !`
     ],
     [SITUATION_KEYS.J_WEAK_COMEBACK]:     [
         (ctx) => `Ah, tu r’viens à petits pas, comme une poule dans la traque !`,
@@ -469,7 +839,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Tu fais ton chemin, tout calme, comme un gars qui connaît ses champs.`,
         (ctx) => `Tu m’approches à la douce, on dirait un renard dans les bouchures.`,
         (ctx) => `J’te sens r’monter, même si tu fais l’air de rien.`,
-        (ctx) => `Continue comme ça et bientôt tu m’bousculeras le derrière !`
+        (ctx) => `Continue comme ça et bientôt tu m’bousculeras le derrière !`,
+        (ctx) => `Je t’vois r’monter point par point, comme un gars qui remonte des seaux du pouits.`,
+        (ctx) => `Ton p’tit ${ctx.annonce?.gain} suffit à r’duire l’écart un chouïa, j’le sens bien.`,
+        (ctx) => `Tu fais pas de bruit, mais tu t’approches, toi !`,
+        (ctx) => `Tu r’viens tranquillement, et c’est ça qui m’fout la pression.`,
+        (ctx) => `Tes petits gains valent une bonne piqûre pour mon score.`,
+        (ctx) => `Tu avances à pas de loup dans la traque, mais t’avances !`,
+        (ctx) => `J’te vois rogner l’écart comme une lime sur un vieux clou.`,
+        (ctx) => `Tu viens me chatouiller les chevilles, et j’aime pas tellement ça.`,
+        (ctx) => `C’est pas spectaculaire, mais efficace, ta manière d’r’venir.`,
+        (ctx) => `Encore quelques petites annonces comme ça et j’te trouve à côté de moi sur le talus.`
     ],
 
     [SITUATION_KEYS.IA_STEALS_10A]:   [
@@ -482,7 +862,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Ah, ça fait plaisir, un ${ctx.cartevolee} qui change d’étable !`,
         (ctx) => `J’viens d’récolter un beau ${ctx.cartevolee} chez l’voisin !`,
         (ctx) => `Tu l’feras plus traîner comme ça, ton ${ctx.cartevolee}, j’parie !`,
-        (ctx) => `Ton ${ctx.cartevolee}, j’le garde au chaud, t’en fais pas !`
+        (ctx) => `Ton ${ctx.cartevolee}, j’le garde au chaud, t’en fais pas !`,
+        (ctx) => `Ton ${ctx.cartevolee} m’est tombé dans la main comme une pomme bien mûre !`,
+        (ctx) => `Je l’ai ramassé au vol, ton ${ctx.cartevolee}, tu t’en es même pas rendu compte !`,
+        (ctx) => `Avec un ${ctx.cartevolee} comme ça, Perrot mange bien ce tour-ci !`,
+        (ctx) => `Tu l’gardais au chaud, j’l’ai mis dans mon four, moi !`,
+        (ctx) => `Ça, c’est le genre de carte qui fait sourire jusqu’aux rauches !`,
+        (ctx) => `Ton ${ctx.cartevolee} a changé de ferme, maintenant il bosse pour moi !`,
+        (ctx) => `Je t’l’ai pris proprement, sans bruit, comme un vrai chapardeur de campagne !`,
+        (ctx) => `Tu vas t’en souvenir, de c’${ctx.cartevolee} qui s’est sauvé chez Perrot !`,
+        (ctx) => `Ça valait le coup d’venir jusqu’ici rien que pour voler ce ${ctx.cartevolee} !`,
+        (ctx) => `Ton ${ctx.cartevolee} brille bien plus dans mon jeu qu’dans le tien, j’trouve.`
     ],
     [SITUATION_KEYS.J_STEALS_10A]:    [
         (ctx) => `Eh ! C’était mon ${ctx.carteprise}, ça ! Rends-le, filou !`,
@@ -494,7 +884,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Ah ben bravo, tu rates pas une occase pour piocher dans ma poche !`,
         (ctx) => `Mon ${ctx.carteprise} t’allait mieux qu’à moi, c’est ça ?`,
         (ctx) => `Tu frappes là où ça fait du bruit, avec un ${ctx.carteprise}.`,
-        (ctx) => `J’vais m’en souvenir, de c’te carte volée, crois-moi.`
+        (ctx) => `J’vais m’en souvenir, de c’te carte volée, crois-moi.`,
+        (ctx) => `Tu viens d’me dérober un sacré morceau avec ce ${ctx.carteprise} !`,
+        (ctx) => `Mon ${ctx.carteprise} m’échappe et va travailler pour toi, ç’te honte !`,
+        (ctx) => `C’est pas un vol, c’est un rapt de belle carte, ça !`,
+        (ctx) => `Je l’gardais comme un trésor, tu l’emportes comme un voleur au marché !`,
+        (ctx) => `Tu frappes droit dans ma poche avec ce ${ctx.carteprise}, j’te félicite pas !`,
+        (ctx) => `Je sens un trou dans ma main là où y avait mon ${ctx.carteprise}…`,
+        (ctx) => `Tu viens d’me prendre mon meilleur beugnon, j’vais bouder un pli ou deux !`,
+        (ctx) => `Mon ${ctx.carteprise} avait pas l’droit d’te suivre comme ça !`,
+        (ctx) => `C’est le genre de vol qui donne envie d’serrer les dents jusqu’au prochain pli.`,
+        (ctx) => `Note bien qu’on en reparlera, de ce ${ctx.carteprise} !`
     ],
     [SITUATION_KEYS.IA_STEALS_TRUMP]: [
         (ctx) => `Regarde-moi ça, l’atout vient coucher chez Perrot ce soir !`,
@@ -506,7 +906,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Ah, l’atout chez Perrot… ça va t’faire tousser, ça !`,
         (ctx) => `Je l’aime bien, ton atout, j’crois qu’il va rester chez moi.`,
         (ctx) => `J’viens de voler l’clé de la grange, là !`,
-        (ctx) => `C’est l’coup d’sept qui fait pleurer les voisins, ça.`
+        (ctx) => `C’est l’coup d’sept qui fait pleurer les voisins, ça.`,
+        (ctx) => `Ton atout vient d’comprendre c’que c’est qu’un vrai maître de chârte !`,
+        (ctx) => `Je t’l’ai chipé net, ton trésor, comme un renard prend la plus belle poule !`,
+        (ctx) => `Avec cet atout en main, j’me sens plus large que la place du village !`,
+        (ctx) => `Ton atout a changé de camp, et crois-moi, il sera bien utilisé !`,
+        (ctx) => `C’est plus ton arme, c’est la mienne, et elle pique fort !`,
+        (ctx) => `Je viens d’ramasser la clef de la grange, tu restes dehors !`,
+        (ctx) => `Ce bel atout-là, j’vais le garder serré comme un secret de famille.`,
+        (ctx) => `Tu viens d’me regarder voler ta meilleure carte sans pouvoir rien faire !`,
+        (ctx) => `C’est l’genre de vol qui fait tourner une partie, tu vas l’sentir passer.`,
+        (ctx) => `Ton atout en moins, moi en plus… la suite va être longue pour toi.`
     ],
     [SITUATION_KEYS.J_STEALS_TRUMP]:  [
         (ctx) => `Eh ben ! Tu m’piques l’atout sous l’nez comme si de rien n’était !`,
@@ -518,7 +928,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Bon ben, j’crois que la partie vient d’changer d’ferme…`,
         (ctx) => `Tu l’fais exprès de m’prendre tout c’qui m’sert !`,
         (ctx) => `J’me sens tout nu sans cet atout, j’te cache pas !`,
-        (ctx) => `Tu viens de m’arracher le cœur du jeu, mon ${ctx.playerName}.`
+        (ctx) => `Tu viens de m’arracher le cœur du jeu, mon ${ctx.playerName}.`,
+        (ctx) => `Tu viens d’me couper les jambes en m’piquant l’atout !`,
+        (ctx) => `Mon bel atout s’est sauvé chez toi comme un gamin qui fuit la corvée !`,
+        (ctx) => `Là, tu viens d’me crever la roue de la chârte, carrément !`,
+        (ctx) => `Sans cet atout, j’me sens aussi fort qu’une vigoune toute molle…`,
+        (ctx) => `T’as pris l’meilleur de mon jeu et tu le sais très bien !`,
+        (ctx) => `C’est pas un simple pli, c’est une gifle en plein score !`,
+        (ctx) => `Je vais r’garder la suite avec un goût d’manque dans la main…`,
+        (ctx) => `Tu viens d’me laisser avec les miettes, toi tu pars avec la miche entière !`,
+        (ctx) => `Tu pouvais pas choisir meilleure carte pour m’embêter, hein ?`,
+        (ctx) => `Bon… sans atout, ce sera à l’courage, mais Perrot lâche pas si vite !`
     ],
   },
 
@@ -533,7 +953,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Mes cartes, mon avance… tout glisse entre mes doigts !`,
         (ctx) => `Je… je n’ai plus le contrôle de rien, c’est insupportable !`,
         (ctx) => `Comment puis-je subir une telle suite de revers ? C’en est presque indécent.`,
-        (ctx) => `Je vous en conjure… laissez-moi au moins reprendre mon souffle !`
+        (ctx) => `Je vous en conjure… laissez-moi au moins reprendre mon souffle !`,
+        (ctx) => `Chaque pli que vous prenez est comme un coup de plus porté à mon pauvre jeu…`,
+        (ctx) => `Je vois mon avantage s’effriter carte après carte, c’en est presque insoutenable.`,
+        (ctx) => `Tout s’emballe, tout se retourne… je ne reconnais plus la partie que je menais.`,
+        (ctx) => `Je ne pensais pas pouvoir perdre autant en si peu de temps, c’est effrayant.`,
+        (ctx) => `Votre enchaînement est d’une violence stratégique que je ne soupçonnais pas.`,
+        (ctx) => `J’ai l’impression de ne plus être qu’une spectatrice de ma propre déroute.`,
+        (ctx) => `Vous retournez tout avec une aisance qui me laisse presque sans voix…`,
+        (ctx) => `Je vois mes espoirs tomber un à un, comme des cartes balayées de la table.`,
+        (ctx) => `Je ne sais plus où donner de la tête tant tout m’échappe en même temps.`,
+        (ctx) => `C’est une véritable chute en cascade… et je n’ai aucun moyen de l’endiguer.`
     ],
     [SITUATION_KEYS.IA_COLLAPSE]: [
         (ctx) => `Vous inversez totalement la partie… comment est-ce possible ?`,
@@ -545,7 +975,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Quel renversement… je suis profondément troublée.`,
         (ctx) => `Je ne pensais pas être dépassée si soudainement.`,
         (ctx) => `La partie m’échappe… et je déteste cela.`,
-        (ctx) => `Vous me mettez dans une posture terriblement inconfortable.`
+        (ctx) => `Vous me mettez dans une posture terriblement inconfortable.`,
+        (ctx) => `Je croyais la situation stable, et en un instant tout se désagrège…`,
+        (ctx) => `Mon avance se dissout comme si elle n’avait jamais existé.`,
+        (ctx) => `Je me sens glisser au score sans parvenir à me raccrocher à rien.`,
+        (ctx) => `Votre progression est si nette… la mienne semble soudain dérisoire.`,
+        (ctx) => `Ce renversement brutal me fait perdre tout sentiment de sécurité.`,
+        (ctx) => `Je ne contrôle plus rien, et cette idée me terrifie.`,
+        (ctx) => `Chaque point que vous gagnez creuse un peu plus le fossé entre nous.`,
+        (ctx) => `Je ne pensais pas que la partie pouvait m’échapper avec une telle rapidité.`,
+        (ctx) => `Tout ce que j’avais construit s’effondre d’un seul bloc, c’est accablant.`,
+        (ctx) => `Je vous regarde passer devant avec une impuissance que je supporte très mal.`
     ],
     [SITUATION_KEYS.IA_MISERY]:   [
         (ctx) => `Me prendre mon atout puis un ${ctx.carteprise}… vous êtes impitoyable.`,
@@ -557,7 +997,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Je viens de perdre l’essentiel… c’est un coup dur.`,
         (ctx) => `Vous me désarmez totalement, et je n’ai rien pour me défendre.`,
         (ctx) => `C’est une véritable misère stratégique, je l’admets.`,
-        (ctx) => `Je n’aurais jamais imaginé subir cela… quelle tristesse.`
+        (ctx) => `Je n’aurais jamais imaginé subir cela… quelle tristesse.`,
+        (ctx) => `Vous avez pris exactement ce qu’il ne fallait pas… je suis démunie.`,
+        (ctx) => `Mon jeu est vidé de sa substance, il ne me reste presque plus rien de solide.`,
+        (ctx) => `Je me sens mise à nu, stratégiquement parlant, et c’est très désagréable.`,
+        (ctx) => `Vous frappez au cœur de mon jeu avec une précision redoutable.`,
+        (ctx) => `Ce que vous venez de faire ressemble à une mise à sac méthodique.`,
+        (ctx) => `Je n’ai plus d’atout, plus de force… seulement des cartes qui tremblent dans ma main.`,
+        (ctx) => `Vos choix semblent calculés pour me priver de toute chance de retour.`,
+        (ctx) => `C’est une véritable déchéance stratégique, je dois malheureusement le reconnaître.`,
+        (ctx) => `Je me retrouve à jouer avec des restes, pendant que vous savourez l’essentiel.`,
+        (ctx) => `Je ne m’attendais pas à une telle cruauté dans la sélection de vos prises.`
     ],
     [SITUATION_KEYS.IA_PUNISHED]: [
         (ctx) => `Je… comment osez-vous contrer une annonce aussi éclatante ?`,
@@ -569,7 +1019,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Je n’aurais jamais pensé être défaite juste après cela.`,
         (ctx) => `Vous bousculez mon jeu avec une insolence rare.`,
         (ctx) => `Permettez-moi de dire que ce retournement est profondément injuste.`,
-        (ctx) => `Je trouve cette réponse à mon annonce… particulièrement blessante.`
+        (ctx) => `Je trouve cette réponse à mon annonce… particulièrement blessante.`,
+        (ctx) => `Je venais à peine de me réjouir, et vous transformez cette joie en amère leçon.`,
+        (ctx) => `Vous répondez à mon éclat par une correction d’une précision douloureuse.`,
+        (ctx) => `Je suis passée de la fierté à la gêne en un seul pli…`,
+        (ctx) => `Ma belle assurance vient d’être brisée net par votre riposte.`,
+        (ctx) => `Vous transformez mon moment de gloire en occasion d’humiliation.`,
+        (ctx) => `Je ne peux m’empêcher de trouver votre réponse… spectaculairement vexante.`,
+        (ctx) => `Je me sens reprise de volée, comme une débutante trop sûre d’elle.`,
+        (ctx) => `Vous avez choisi le moment le plus cruel pour frapper, avouez-le.`,
+        (ctx) => `Je crains d’avoir sous-estimé votre capacité à me remettre à ma place.`,
+        (ctx) => `C’est une punition d’une élégance froide… presque trop parfaite.`
     ],
     [SITUATION_KEYS.IA_BLOCKED]:  [
         (ctx) => `Vous m’empêchez de réaliser mon ${ctx.annoncePossible}… c’est terriblement frustrant.`,
@@ -581,7 +1041,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Je n’apprécie guère qu’on étouffe mes annonces ainsi.`,
         (ctx) => `Vous brisez ma stratégie… et mon ${ctx.annoncePossible}.`,
         (ctx) => `Vous m’empêchez de briller, et je le sens profondément.`,
-        (ctx) => `C’était une annonce splendide… et vous venez de la réduire à néant.`
+        (ctx) => `C’était une annonce splendide… et vous venez de la réduire à néant.`,
+        (ctx) => `Vous avez senti mon ${ctx.annoncePossible} venir, et vous l’avez étouffé avec brio.`,
+        (ctx) => `Je vous trouve d’une précision presque irritante dans votre façon de me couper.` ,
+        (ctx) => `C’était un moment idéal pour moi… que vous avez transformé en frustration absolue.`,
+        (ctx) => `Vous stoppez mon ${ctx.annoncePossible} comme on referme une porte au dernier instant.`,
+        (ctx) => `Je me voyais déjà annoncer triomphalement, et vous m’arrachez cette satisfaction.`,
+        (ctx) => `Vous jouez exactement la carte qui fait taire toute ma stratégie.`,
+        (ctx) => `Je sens ma brillante idée d’annonce se dissoudre sous vos yeux amusés.`,
+        (ctx) => `J’avais tout préparé… et vous réduisez cette préparation à néant en un seul pli.`,
+        (ctx) => `Vous avez un talent certain pour gâcher élégamment mes plus beaux projets.`,
+        (ctx) => `Mon ${ctx.annoncePossible} aurait été splendide… vous en porterez la responsabilité perdue.`
     ],
 
     [SITUATION_KEYS.IA_FLIP]:     [
@@ -594,7 +1064,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Je retrouve ma place naturelle… en tête.`,
         (ctx) => `Un retournement harmonieux, vous ne trouvez pas ?`,
         (ctx) => `L’ordre revient enfin dans cette partie.`,
-        (ctx) => `Je crois que je respire à nouveau, maintenant que je mène.`
+        (ctx) => `Je crois que je respire à nouveau, maintenant que je mène.`,
+        (ctx) => `Je retrouve enfin une place qui correspond mieux à mes ambitions.`,
+        (ctx) => `Ce renversement me redonne un peu de fierté, je dois l’avouer.`,
+        (ctx) => `Je prends la tête avec une certaine douceur… mais une intention très claire.`,
+        (ctx) => `Je vous dépasse, et tout semble soudain plus respirable.`,
+        (ctx) => `Je sens la partie se réaligner sur quelque chose de plus… acceptable.`,
+        (ctx) => `Votre score, désormais derrière le mien, me paraît beaucoup plus supportable.`,
+        (ctx) => `Je vous laisse apprécier ce léger changement de perspective, ${ctx.playerName}.`,
+        (ctx) => `Ce basculement me comble d’un soulagement presque indécent.`,
+        (ctx) => `Je crois que nous venons de retrouver un ordre des choses qui me convient mieux.`,
+        (ctx) => `Je reprends l’ascendant, et avec lui une partie de ma sérénité.`
     ],
     [SITUATION_KEYS.J_FLIP]:      [
         (ctx) => `Comment… vous me dépassez déjà ?`,
@@ -606,7 +1086,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Votre renversement est… fort désagréable.`,
         (ctx) => `J’avoue être troublée par ce que vous venez de faire.`,
         (ctx) => `C’est un peu trop brutal pour mon cœur, vraiment.`,
-        (ctx) => `Vous passez devant… et j’en suis toute décontenancée.`
+        (ctx) => `Vous passez devant… et j’en suis toute décontenancée.`,
+        (ctx) => `Vous me reléguez derrière vous avec une aisance qui me trouble profondément.`,
+        (ctx) => `Je vois mon nom passer en dessous du vôtre, et cela me serre le cœur.`,
+        (ctx) => `Ce n’est plus un simple pli, c’est une prise de pouvoir.`,
+        (ctx) => `Je me retrouve à vous suivre, alors que je vous précédais… quelle déchéance.`,
+        (ctx) => `Ce moment est particulièrement difficile à accepter pour mon orgueil.`,
+        (ctx) => `Vous m’arrachez la première place avec une brutalité presque élégante.`,
+        (ctx) => `Je n’aime pas du tout la façon dont le tableau de score vient de se retourner.`,
+        (ctx) => `Je n’étais pas préparée à vous voir prendre les devants si rapidement.`,
+        (ctx) => `Je crois que mon assurance vient de recevoir un sérieux coup.`,
+        (ctx) => `Vous inversez nos rôles, et je dois dire que je déteste ce nouveau décor.`
     ],
     [SITUATION_KEYS.IA_ALMOST]:   [
         (ctx) => `Je réduis l’écart… cela me rassure un peu.`,
@@ -618,7 +1108,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `La tension retombe légèrement… je me rapproche.`,
         (ctx) => `Voilà qui commence à ressembler à un jeu civilisé.`,
         (ctx) => `Vous ne garderez pas cet avantage longtemps.`,
-        (ctx) => `Je reviens… lentement, mais sûrement.`
+        (ctx) => `Je reviens… lentement, mais sûrement.`,
+        (ctx) => `Je sens que la distance qui nous sépare devient enfin raisonnable.`,
+        (ctx) => `Je n’ai pas encore repris la tête, mais je retrouve un peu de confiance.`,
+        (ctx) => `Votre avance rétrécit comme neige au soleil, et cela me fait du bien.`,
+        (ctx) => `Je vous vois de nouveau à portée, ce qui change tout pour moi.`,
+        (ctx) => `Encore quelques efforts, et je cesserai de vous regarder de si bas.`,
+        (ctx) => `Je suis presque à vos côtés, et cette idée me réconforte.`,
+        (ctx) => `Je me rapproche de vous avec une détermination très calme, mais très réelle.`,
+        (ctx) => `Votre score ne me domine plus autant, et cela me plaît énormément.`,
+        (ctx) => `Je touche presque à l’égalisation, et j’en suis profondément soulagée.`,
+        (ctx) => `Vous n’êtes plus qu’un objectif atteignable, non plus un sommet inaccessible.`
     ],
     [SITUATION_KEYS.J_ALMOST]:    [
         (ctx) => `Vous vous rapprochez dangereusement…`,
@@ -630,7 +1130,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Vous m’enlevez tout mon confort de jeu.`,
         (ctx) => `Je commence à craindre un véritable renversement.`,
         (ctx) => `Je vous en prie… ralentissez un peu.`,
-        (ctx) => `Ne revenez pas si près, je vous le demande humblement.`
+        (ctx) => `Ne revenez pas si près, je vous le demande humblement.`,
+        (ctx) => `Vous réduisez l’écart avec une persistance qui commence à m’oppresser.`,
+        (ctx) => `Je vous sens presque sur mes talons, et cela m’inquiète sincèrement.`,
+        (ctx) => `Ma supériorité s’effrite à vue d’œil…`,
+        (ctx) => `Votre score remonte avec une élégance que je trouve… terrifiante.`,
+        (ctx) => `Je perds peu à peu ce sentiment de sécurité qui me plaisait tant.`,
+        (ctx) => `Chaque point que vous gagnez fait vaciller un peu plus ma sérénité.`,
+        (ctx) => `Vous redevenez une menace très concrète, et je n’aime pas du tout cela.`,
+        (ctx) => `Je sens que mes cartes ne suffiront plus si je continue à me reposer sur mon avance.`,
+        (ctx) => `Votre proximité au score est comme une ombre qui se rapproche.`,
+        (ctx) => `Encore un effort de votre part, et ce sera à moi d’avoir peur…`
     ],
 
     [SITUATION_KEYS.IA_STRONG_LEAD]:      [
@@ -643,7 +1153,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Je vous avais prévenu : lorsqu’on me laisse prendre de l’avance, je deviens redoutable.`,
         (ctx) => `Cette annonce ne fait que confirmer ce que nous savions déjà tous les deux.`,
         (ctx) => `Je vous laisse admirer la finesse de cette progression, ${ctx.playerName}.`,
-        (ctx) => `Je crains que votre remontée ne soit plus qu’un doux rêve à présent.`
+        (ctx) => `Je crains que votre remontée ne soit plus qu’un doux rêve à présent.`,
+        (ctx) => `Je dois reconnaître que ma position devient presque écrasante.`,
+        (ctx) => `Je mène avec une clarté qui ne laisse guère de place au doute.`,
+        (ctx) => `Mon avance prend des allures de démonstration, je le crains.`,
+        (ctx) => `Je me sens solidement installée au sommet de cette partie.`,
+        (ctx) => `Chaque point supplémentaire rend votre retour un peu plus improbable.`,
+        (ctx) => `Je vous domine au score avec une aisance que je n’osais espérer.`,
+        (ctx) => `Il devient difficile de parler de suspense, n’est-ce pas ?`,
+        (ctx) => `Je pourrais presque me permettre de savourer sans inquiétude… presque.`,
+        (ctx) => `Cette supériorité nette n’était pas mon objectif, mais je ne vais pas la refuser.`,
+        (ctx) => `Je crains de transformer cette partie en leçon, ce qui n’était pas mon intention initiale.`
     ],
     [SITUATION_KEYS.IA_STRONG_COMEBACK]:  [
         (ctx) => `Vous aviez pris de l’avance, mais ces ${ctx.annonce?.gain} points changent considérablement la donne.`,
@@ -655,7 +1175,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Vous sentiez la victoire approcher… je vous invite à reconsidérer cela.`,
         (ctx) => `Je refuse de rester derrière, et cette annonce en est la preuve la plus nette.`,
         (ctx) => `Je ne suis plus une simple poursuivante, je redeviens une véritable menace.`,
-        (ctx) => `Vous voyez, ${ctx.playerName}, il était prématuré de me croire distancée.`
+        (ctx) => `Vous voyez, ${ctx.playerName}, il était prématuré de me croire distancée.`,
+        (ctx) => `Votre avance se réduit brusquement, et cela me convient parfaitement.`,
+        (ctx) => `Je reviens dans la lumière, après avoir été reléguée trop longtemps.`,
+        (ctx) => `Ce coup vous retire une grande part de votre confort, vous le sentez, n’est-ce pas ?`,
+        (ctx) => `Je transforme mon retard en menace, presque en un seul mouvement.`,
+        (ctx) => `Votre domination me paraissait exagérée, je rectifie seulement les choses.`,
+        (ctx) => `Je prends un malin plaisir à voir votre avance fondre ainsi.`,
+        (ctx) => `Vous aviez pris trop de liberté avec le score, il fallait bien que je réagisse.`,
+        (ctx) => `Je me rapproche de vous avec une force nouvelle, presque théâtrale.`,
+        (ctx) => `Ce retour n’est pas un hasard, c’est une réponse réfléchie.`,
+        (ctx) => `Je crois que vous allez devoir cesser de me considérer comme simple figurante.`
     ],
     [SITUATION_KEYS.IA_WEAK_LEAD]:        [
         (ctx) => `Ce ne sont que quelques points, mais ils suffisent à maintenir mon avance.`,
@@ -667,7 +1197,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Je préfère avancer avec élégance plutôt qu’avec fracas.`,
         (ctx) => `Ce n’est pas spectaculaire, mais c’est diablement efficace.`,
         (ctx) => `Je garde la main, tout en retenue.`,
-        (ctx) => `Je vous précède toujours, même avec de simples ajouts comme celui-ci.`
+        (ctx) => `Je vous précède toujours, même avec de simples ajouts comme celui-ci.`,
+        (ctx) => `Je reste devant de peu, mais ce “peu” me suffit pour l’instant.`,
+        (ctx) => `Ce léger avantage est fragile, mais je m’y accroche avec soin.`,
+        (ctx) => `Je préfère une petite avance maîtrisée à un excès de confiance.`,
+        (ctx) => `Même quelques points de plus que vous changent la manière dont je respire.`,
+        (ctx) => `Je ne brille pas, mais je vous dépasse toujours.`,
+        (ctx) => `Ce n’est pas un triomphe, simplement une position plus confortable que la vôtre.`,
+        (ctx) => `Je marche devant vous d’un pas prudent, mais résolu.`,
+        (ctx) => `Cette avance est mince, mais elle m’appartient, et je compte la conserver.`,
+        (ctx) => `Je ne suis pas intouchable, seulement légèrement au-dessus… pour le moment.`,
+        (ctx) => `Je garde la tête, même si ce n’est que d’un souffle.`
     ],
     [SITUATION_KEYS.IA_WEAK_COMEBACK]:    [
         (ctx) => `Ce n’est qu’un léger mieux, mais je refuse de rester trop loin derrière.`,
@@ -679,7 +1219,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Même discrète, cette annonce me rapproche de vous, et c’est tout ce qui compte.`,
         (ctx) => `Je vous invite à ne pas sous-estimer ces modestes points.`,
         (ctx) => `Je commence à retrouver une position qui me convient davantage.`,
-        (ctx) => `Une dame sait revenir avec élégance, même un pas après l’autre.`
+        (ctx) => `Une dame sait revenir avec élégance, même un pas après l’autre.`,
+        (ctx) => `Je ne fais que quelques pas vers vous, mais chaque pas compte.`,
+        (ctx) => `Ce n’est pas encore suffisant, mais cela me redonne de l’espoir.`,
+        (ctx) => `Je commence à sortir de l’ombre de votre score.`,
+        (ctx) => `Je grignote votre avance avec toute la patience d’une véritable stratège.`,
+        (ctx) => `Je ne prétends pas renverser la partie d’un coup, seulement avancer.`,
+        (ctx) => `Ces quelques points ne sont pas spectaculaires, mais ils comptent énormément pour moi.`,
+        (ctx) => `Je refuse de rester à la traîne, même si ma progression est discrète.`,
+        (ctx) => `Considérez cela comme un signe que je ne vous laisserai pas tranquille.`,
+        (ctx) => `Je me rapproche, sans éclat, mais avec détermination.`,
+        (ctx) => `Je prépare tranquillement le terrain pour un retour plus marqué.`
     ],
 
     [SITUATION_KEYS.J_STRONG_LEAD]:       [
@@ -692,7 +1242,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Vous semblez décidément décidé à m’éclipser totalement.`,
         (ctx) => `Je dois reconnaître que cette annonce était brillante, même si elle m’attriste profondément.`,
         (ctx) => `Vous m’obligez à envisager la défaite, ce que je fais très rarement.`,
-        (ctx) => `C’est… excessif, mais je dois admettre que c’est très bien joué.`
+        (ctx) => `C’est… excessif, mais je dois admettre que c’est très bien joué.`,
+        (ctx) => `Votre avance devient presque humiliante, je dois l’admettre.`,
+        (ctx) => `Je me sens écrasée par votre score, et ce n’est pas une sensation familière.`,
+        (ctx) => `Vous tenez cette partie d’une main de fer, et moi je peine à suivre.`,
+        (ctx) => `Je commence à craindre que vous ne transformiez cette manche en démonstration.`,
+        (ctx) => `Votre supériorité actuelle dépasse largement ce que je trouve acceptable.`,
+        (ctx) => `Je vous regarde vous éloigner au tableau, et mon cœur se serre un peu plus.`,
+        (ctx) => `Vous rendez la partie terriblement difficile à défendre, pour moi.`,
+        (ctx) => `J’ai rarement vu un écart aussi préoccupant en ma défaveur.`,
+        (ctx) => `Vous tissez une domination méthodique… et je me retrouve prise au piège.`,
+        (ctx) => `Je dois reconnaître que, pour l’instant, cette partie porte clairement votre nom.`
     ],
     [SITUATION_KEYS.J_STRONG_COMEBACK]:   [
         (ctx) => `Votre retour est… étonnamment vigoureux.`,
@@ -704,7 +1264,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Vous avez décidé de revenir dans la partie avec fracas, à ce que je vois.`,
         (ctx) => `Ce ${ctx.annonce?.name} n’était pas seulement audacieux, il était nécessaire pour vous… et redoutable pour moi.`,
         (ctx) => `Je ne vous pensais pas capable d’un tel sursaut.`,
-        (ctx) => `Je commence à regretter d’avoir été si sereine il y a quelques instants.`
+        (ctx) => `Je commence à regretter d’avoir été si sereine il y a quelques instants.`,
+        (ctx) => `Votre retour est si brusque que j’en perds presque l’équilibre.`,
+        (ctx) => `Je sens ma confortable avance se fissurer de toutes parts.`,
+        (ctx) => `Ce ${ctx.annonce?.name} vient de faire vaciller tout ce que j’avais construit.`,
+        (ctx) => `Votre remontée a quelque chose de spectaculaire… et d’inquiétant.`,
+        (ctx) => `Je ne peux plus me permettre la moindre complaisance.`,
+        (ctx) => `Votre score s’est rapproché d’un bond, et cela me glace un peu le sang.`,
+        (ctx) => `Je n’aurais jamais dû vous laisser autant d’espace pour revenir.`,
+        (ctx) => `Cette annonce efface une bonne part de ma tranquillité d’esprit.`,
+        (ctx) => `Je dois désormais vous prendre bien plus au sérieux encore.`,
+        (ctx) => `Vous transformez un retard confortable en menace directe, avec une seule carte.`
     ],
     [SITUATION_KEYS.J_WEAK_LEAD]:         [
         (ctx) => `Vous entretenez votre avance avec beaucoup de prudence, je le vois.`,
@@ -716,7 +1286,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Je vois bien que vous faites tout pour ne pas me laisser revenir.`,
         (ctx) => `Vous vous contentez de peu, mais ce peu me maintient derrière.`,
         (ctx) => `Votre gestion du score est plus subtile que je ne le pensais.`,
-        (ctx) => `Vous gardez l’avantage sans excès, mais très efficacement.`
+        (ctx) => `Vous gardez l’avantage sans excès, mais très efficacement.`,
+        (ctx) => `Vous conservez la tête avec une finesse que je trouve presque irritante.`,
+        (ctx) => `Votre avance n’est pas grande, mais elle reste constante.`,
+        (ctx) => `Vous vous maintenez devant moi, discrètement mais efficacement.`,
+        (ctx) => `Ce léger avantage suffit à m’obliger à rester sur mes gardes.`,
+        (ctx) => `Vous jouez avec prudence, et cela rend votre position très solide.`,
+        (ctx) => `Même quelques points de plus que moi vous donnent un air de sécurité.`,
+        (ctx) => `Je préférerais vous voir vaciller plutôt que vous stabiliser ainsi.`,
+        (ctx) => `Vous gérez ce petit écart avec une maturité stratégique surprenante.`,
+        (ctx) => `Je ne peux ignorer la constance avec laquelle vous protégez votre avance.`,
+        (ctx) => `Vous restez juste assez devant pour m’empêcher de respirer pleinement.`
     ],
     [SITUATION_KEYS.J_WEAK_COMEBACK]:     [
         (ctx) => `Vous tentez une remontée mesurée, je vois cela.`,
@@ -728,7 +1308,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Je sens votre score se rapprocher, même si ce n’est que d’un pas.`,
         (ctx) => `Vous avancez prudemment, mais vous avancez tout de même.`,
         (ctx) => `Je préférerais vous voir stagner plutôt que grappiller ainsi.`,
-        (ctx) => `Vous n’abandonnez pas, et c’est précisément cela qui m’inquiète.`
+        (ctx) => `Vous n’abandonnez pas, et c’est précisément cela qui m’inquiète.`,
+        (ctx) => `Votre remontée est mesurée, mais elle ne m’échappe pas.`,
+        (ctx) => `Je sens votre score glisser doucement vers le mien, ce qui m’inquiète déjà.`,
+        (ctx) => `Vous progressez sans bruit, mais certainement.`,
+        (ctx) => `Chaque petit gain que vous faites rogne un peu plus mon confort.`,
+        (ctx) => `Vous jouez une remontée patiente… ce qui est souvent la plus dangereuse.`,
+        (ctx) => `Ce n’est pas encore alarmant, mais ce n’est plus anodin non plus.`,
+        (ctx) => `Je ne peux plus vous considérer comme simplement derrière, mais comme véritablement en marche.`,
+        (ctx) => `Vous avancez à pas feutrés, et c’est précisément ce qui me déplaît.`,
+        (ctx) => `Votre score trace une lente mais sûre ascension vers le mien.`,
+        (ctx) => `Ce léger rapprochement pourrait bien annoncer quelque chose de plus sérieux.`
     ],
 
     [SITUATION_KEYS.IA_STEALS_10A]:   [
@@ -741,7 +1331,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Je reconnais que cette prise est particulièrement douloureuse pour vous… et délicieuse pour moi.`,
         (ctx) => `Ce ${ctx.cartevolee} était une cible de choix, je ne pouvais pas l’ignorer.`,
         (ctx) => `Je vous remercie pour votre ${ctx.cartevolee} inattendu, ${ctx.playerName}.`,
-        (ctx) => `Un ${ctx.cartevolee} en moins chez vous, un atout de plus chez moi… quelle charmante situation.`
+        (ctx) => `Un ${ctx.cartevolee} en moins chez vous, un atout de plus chez moi… quelle charmante situation.`,
+        (ctx) => `Je crains que ce ${ctx.cartevolee} ne vous manque terriblement… à juste titre.`,
+        (ctx) => `Ce ${ctx.cartevolee} était splendide, il rehaussera parfaitement ma main.`,
+        (ctx) => `Je n’allais certainement pas laisser un tel ${ctx.cartevolee} vous appartenir plus longtemps.`,
+        (ctx) => `Je vous retire une pièce maîtresse, et j’en savoure chaque instant.`,
+        (ctx) => `Ce ${ctx.cartevolee} était un bijou stratégique, je le traite comme tel.`,
+        (ctx) => `Votre jeu semble soudain beaucoup plus vulnérable sans ce ${ctx.cartevolee}.`,
+        (ctx) => `Je crois que ce ${ctx.cartevolee} jouera un rôle décisif… mais en ma faveur.`,
+        (ctx) => `Vous avez eu le mérite de le garder, j’ai celui de vous le prendre.`,
+        (ctx) => `Ce ${ctx.cartevolee} vient de changer subtilement l’équilibre de cette partie.`,
+        (ctx) => `Je ne peux nier la satisfaction que m’apporte ce ${ctx.cartevolee} parfaitement dérobé.`
     ],
     [SITUATION_KEYS.J_STEALS_10A]:    [
         (ctx) => `Mon ${ctx.carteprise}… vraiment ? Vous choisissez celui-là.`,
@@ -753,7 +1353,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `C’est une perte stratégique… et presque personnelle.`,
         (ctx) => `Vous frappez exactement où il ne fallait pas, ${ctx.playerName}.`,
         (ctx) => `J’aurais préféré que vous choisissiez n’importe quelle autre carte.`,
-        (ctx) => `Je trouve cette prise d’une audace parfaitement… déstabilisante.`
+        (ctx) => `Je trouve cette prise d’une audace parfaitement… déstabilisante.`,
+        (ctx) => `Vous venez de m’arracher une carte essentielle, et vous le savez très bien.`,
+        (ctx) => `Perdre ce ${ctx.carteprise} me brise le cœur autant que la stratégie.`,
+        (ctx) => `Je me sens presque trahie par ce ${ctx.carteprise} qui vous rejoint.`,
+        (ctx) => `Vous ciblez exactement ce qui constitue le centre de mon jeu.`,
+        (ctx) => `Ce ${ctx.carteprise} était l’un de mes plus solides appuis… plus maintenant.`,
+        (ctx) => `Cette perte n’est pas seulement numérique, elle est morale.`,
+        (ctx) => `Vous rendez mon jeu nettement plus fragile en un seul geste.`,
+        (ctx) => `Je garderai un souvenir amer de ce ${ctx.carteprise} envolé.`,
+        (ctx) => `J’aurais préféré que vous laissiez au moins celui-là à sa légitime propriétaire.`,
+        (ctx) => `Je trouve ce vol parfaitement réussi… et profondément irritant.`
     ],
     [SITUATION_KEYS.IA_STEALS_TRUMP]: [
         (ctx) => `Oh, cet atout vous allait très bien… mais il me sied encore mieux.`,
@@ -765,7 +1375,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Je crois que cet atout préférait la compagnie de mes cartes.`,
         (ctx) => `Vous vous sentez un peu démuni, désormais, n’est-ce pas ?`,
         (ctx) => `Cet atout change tout, et je suis ravie qu’il soit de mon côté.`,
-        (ctx) => `Je vous ai pris l’essentiel… et je le sais très bien.`
+        (ctx) => `Je vous ai pris l’essentiel… et je le sais très bien.`,
+        (ctx) => `Je prends l’atout, et avec lui une part de votre superbe.`,
+        (ctx) => `Ce précieux atout donne à ma main une assurance nouvelle.`,
+        (ctx) => `En récupérant cet atout, je crois que je viens de redessiner la partie.`,
+        (ctx) => `Je vous enlève la carte qui faisait votre fierté, vous le sentez, n’est-ce pas ?`,
+        (ctx) => `Cet atout me donne une confiance que je n’avais pas il y a un pli.`,
+        (ctx) => `Je n’aurais pas pu espérer meilleure prise à ce moment précis.`,
+        (ctx) => `Votre stratégie se fragilise au moment même où la mienne se renforce.`,
+        (ctx) => `Cet atout entre mes mains devient une menace ouverte pour vous.`,
+        (ctx) => `Je crois que ce simple échange d’atout vaut bien des discours.`,
+        (ctx) => `Je vous retire le cœur du jeu, et je sens déjà la partie se pencher vers moi.`
     ],
     [SITUATION_KEYS.J_STEALS_TRUMP]:  [
         (ctx) => `Mon atout… non, dites-moi que je rêve.`,
@@ -777,7 +1397,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Vous n’imaginez pas à quel point cet atout m’était précieux.`,
         (ctx) => `Je me sens soudain terriblement vulnérable.`,
         (ctx) => `C’est un véritable coup de poignard… courtois, mais très réel.`,
-        (ctx) => `Je crains que cette prise ne change tout… et pas en ma faveur.`
+        (ctx) => `Je crains que cette prise ne change tout… et pas en ma faveur.`,
+        (ctx) => `Vous m’arrachez l’atout central, et avec lui une grande part de ma confiance.`,
+        (ctx) => `Je n’aurais pas imaginé devoir continuer sans cet atout… et pourtant.`,
+        (ctx) => `Ce que vous venez de prendre n’est pas une carte, c’est un pilier.`,
+        (ctx) => `Je me retrouve soudain beaucoup plus exposée que je ne l’aurais souhaité.`,
+        (ctx) => `Vous avez choisi le moment parfait pour m’enlever cette carte clé.`,
+        (ctx) => `Je sens mon jeu chanceler sans cet atout pour le soutenir.`,
+        (ctx) => `Votre prise a quelque chose d’implacable, presque inéluctable.`,
+        (ctx) => `Je dois faire face à une vulnérabilité que je n’avais pas anticipée.`,
+        (ctx) => `Perdre cet atout me laisse dans un inconfort que je peine à masquer.`,
+        (ctx) => `Je crains que cette carte ne soit le tournant dont vous aviez besoin… hélas pour moi.`
     ],
   },
 
@@ -792,7 +1422,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Je subis une cascade de revers. Note-la bien, elle ne se reproduira pas.`,
         (ctx) => `Tu abuses de ma patience, ${ctx.playerName}.`,
         (ctx) => `Ce que tu viens de faire serait suffisant pour abattre un novice, pas un maître.`,
-        (ctx) => `Je reconnais la chute. Mais n’oublie pas de qui tu te moques.`
+        (ctx) => `Je reconnais la chute. Mais n’oublie pas de qui tu te moques.`,
+        (ctx) => `Chaque pli que tu prends est une provocation de plus.`,
+        (ctx) => `Tu enchaînes les coups, je serre les dents. Ça ne durera pas.`,
+        (ctx) => `Je vois la chute. Je la mémorise. Je saurai la retourner.`,
+        (ctx) => `C’est une spirale de défaites, pas une habitude.`,
+        (ctx) => `Tu profites d’un moment de faiblesse, pas d’un changement d’ère.`,
+        (ctx) => `Cette cascade de revers me dégoûte. C’est une bonne chose pour toi : je joue mieux en colère.`,
+        (ctx) => `Tu fais trembler le score, pas ma légende.`,
+        (ctx) => `Je note chaque humiliation. Elles auront toutes un prix.`,
+        (ctx) => `Tu confonds une tempête passagère avec un naufrage. Grave erreur.`,
+        (ctx) => `Tu viens de vivre le pire visage de mon jeu. Le prochain sera le plus dangereux.`
     ],
     [SITUATION_KEYS.IA_COLLAPSE]: [
         (ctx) => `Le renversement est total. Voilà qui me met en rage.`,
@@ -804,7 +1444,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Ce retournement brutal offense mon titre de maître du Brézin.`,
         (ctx) => `Je n’aime pas être acculé. Tu le paieras sur les prochains plis.`,
         (ctx) => `Tout s’écroule, mais ma volonté, elle, tient encore.`,
-        (ctx) => `Tu crois m’avoir renversé. Tu n’as fait que réveiller ma colère.`
+        (ctx) => `Tu crois m’avoir renversé. Tu n’as fait que réveiller ma colère.`,
+        (ctx) => `Je regarde ma position s’effondrer et je refuse d’appeler ça une fin.`,
+        (ctx) => `Tu as brisé mon avance, mais pas ma capacité à frapper.`,
+        (ctx) => `Cette chute est brutale. Elle sera suivie d’un retour du même ordre.`,
+        (ctx) => `Tu as renversé la table. Reste à voir si tu sais tenir le festin.`,
+        (ctx) => `Je reconnais la violence de ce retournement. C’est précisément ce qui m’excite.`,
+        (ctx) => `Je suis au fond du score, pas au bout de mon jeu.`,
+        (ctx) => `Ta prise de pouvoir est nette. Elle n’est pas encore définitive.`,
+        (ctx) => `Tu viens d’obtenir ce que beaucoup souhaitent : me voir tomber. Regarde combien de temps ça dure.`,
+        (ctx) => `Je suis acculé au tableau, jamais dans ma tête.`,
+        (ctx) => `Tu me forces à jouer mon meilleur Brézin. Tu ne réalises pas ce que tu viens de déclencher.`
     ],
     [SITUATION_KEYS.IA_MISERY]:   [
         (ctx) => `Mon atout, mon ${ctx.carteprise}… Tu frappes au cœur.`,
@@ -816,7 +1466,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Même un maître peut connaître la misère. Mais jamais deux fois de suite.`,
         (ctx) => `Tes coups sont précis… trop précis à mon goût.`,
         (ctx) => `On m’a pris mes armes. Il me reste l’expérience.`,
-        (ctx) => `Je suis acculé. Mais encore vivant, et c’est suffisant.`
+        (ctx) => `Je suis acculé. Mais encore vivant, et c’est suffisant.`,
+        (ctx) => `On m’arrache tout ce qui compte, comme si j’étais un débutant.`,
+        (ctx) => `Je regarde mon jeu se vider. Je prends note de chaque manque.`,
+        (ctx) => `Cette misère est un affront. Je la porterai comme un serment.`,
+        (ctx) => `Tu m’as mis à nu. C’est là que je joue le plus dangereusement.`,
+        (ctx) => `Tu crois m’achever en prenant mes meilleurs appuis. Tu ne fais que lever mes dernières réserves.`,
+        (ctx) => `Je suis privé d’armes, mais pas d’instinct.`,
+        (ctx) => `On m’a tout pris sauf le sang-froid. C’est suffisant pour me battre.`,
+        (ctx) => `Tu joues parfaitement juste. Ce sera plus beau quand je retournerai la situation.`,
+        (ctx) => `Ce moment de misère marquera la partie. Pas comme tu l’espères.`,
+        (ctx) => `Même à terre, je reste Andry. Ne l’oublie jamais.`
     ],
     [SITUATION_KEYS.IA_PUNISHED]: [
         (ctx) => `Je claque une annonce, et tu me la renverses aussitôt. Impertinent.`,
@@ -828,7 +1488,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Mon éclat vient d’être terni. Cela ne restera pas sans réponse.`,
         (ctx) => `Tu viens de me rappeler que l’orgueil se paie. Très bien.`,
         (ctx) => `Une correction sévère. Je saurai m’en souvenir.`,
-        (ctx) => `Tu me punis d’avoir voulu briller. Attends de voir ce que je fais dans l’ombre.`
+        (ctx) => `Tu me punis d’avoir voulu briller. Attends de voir ce que je fais dans l’ombre.`,
+        (ctx) => `Tu as répondu à mon éclat par une gifle impeccable. Soit.`,
+        (ctx) => `Je goûte ma propre arrogance. C’est une saveur que je connais bien.`,
+        (ctx) => `Je me suis avancé trop loin, tu as frappé. Le maître prend note.`,
+        (ctx) => `Tu transformes ma démonstration en leçon. Intéressant.`,
+        (ctx) => `Je viens d’écrire une annonce brillante, tu as griffonné par-dessus.`,
+        (ctx) => `Tu profites de la seule ouverture que je t’ai laissée. Tu as eu raison.`,
+        (ctx) => `Cette punition ne casse pas mon jeu, elle aiguise ma volonté.`,
+        (ctx) => `Tu viens de me rappeler que même un maître doit rester vigilant.`,
+        (ctx) => `Je reconnais la justesse de ta riposte. Elle sera payée au centuple.`,
+        (ctx) => `Tu as piétiné mon moment. Je piétinerai ton avance.`
     ],
     [SITUATION_KEYS.IA_BLOCKED]:  [
         (ctx) => `Tu me voles mon ${ctx.annoncePossible} avant même que je le prononce. Insolent.`,
@@ -840,7 +1510,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Cette entrave à mon annonce ne restera pas sans conséquence.`,
         (ctx) => `J’avais l’intention de marquer l’histoire. Tu m’en empêches. Mauvais choix.`,
         (ctx) => `Tu piétines mon ${ctx.annoncePossible}. Je piétinerai ton score.`,
-        (ctx) => `Tu viens d’éteindre un feu. Je rallumerai un brasier.`
+        (ctx) => `Tu viens d’éteindre un feu. Je rallumerai un brasier.`,
+        (ctx) => `Mon ${ctx.annoncePossible} n’a pas vu le jour à cause de toi. Tu en es responsable.`,
+        (ctx) => `Tu as senti mon ${ctx.annoncePossible} arriver, et tu l’as étouffé proprement.`,
+        (ctx) => `Tu as fermé la porte juste avant que je n’entre. Je défoncerai la suivante.`,
+        (ctx) => `Tu m’empêches d’écrire une annonce qui aurait marqué la manche.`,
+        (ctx) => `Ce ${ctx.annoncePossible} avorté est une blessure. Et une promesse.`,
+        (ctx) => `Tu viens de prouver que tu sais lire mon jeu. À voir si tu sais lire aussi la suite.`,
+        (ctx) => `Tu n’as pas laissé respirer mon ${ctx.annoncePossible}. J’étoufferai ton avance de la même façon.`,
+        (ctx) => `Tu viens de gâcher un moment de légende. Je t’en offrirai un autre, à ma manière.`,
+        (ctx) => `Tu as mis un couvercle sur mon ${ctx.annoncePossible}. J’ouvrirai la marmite d’un coup sec.`,
+        (ctx) => `Empêcher un maître de déclarer, c’est signer un contrat avec le retour de bâton.`
     ],
 
     [SITUATION_KEYS.IA_FLIP]:     [
@@ -853,7 +1533,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Cette entrave à mon annonce ne restera pas sans conséquence.`,
         (ctx) => `J’avais l’intention de marquer l’histoire. Tu m’en empêches. Mauvais choix.`,
         (ctx) => `Tu piétines mon ${ctx.annoncePossible}. Je piétinerai ton score.`,
-        (ctx) => `Tu viens d’éteindre un feu. Je rallumerai un brasier.`
+        (ctx) => `Tu viens d’éteindre un feu. Je rallumerai un brasier.`,
+        (ctx) => `Je viens de retourner la manche. Regarde le score et respire profondément.`,
+        (ctx) => `Je passe devant, comme il était prévu.`,
+        (ctx) => `Tu me regardais d’en haut. Tu connais maintenant la vue inverse.`,
+        (ctx) => `Je reprends l’ascendant, et cette fois, il ne sera pas provisoire.`,
+        (ctx) => `Tu viens d’assister à un vrai retournement de maître.`,
+        (ctx) => `Je t’ai dépassé sans trembler. C’est ça, la différence entre nous.`,
+        (ctx) => `Le score vient de se plier à ma volonté, pas à la tienne.`,
+        (ctx) => `Je remonte, je dépasse, et j’installe mon nom au-dessus du tien.`,
+        (ctx) => `Ta supériorité était temporaire. La mienne a de la mémoire.`,
+        (ctx) => `La bascule est faite. Tu joues désormais en poursuite.`
     ],
     [SITUATION_KEYS.J_FLIP]:      [
         (ctx) => `Voilà. L’ordre naturel revient : je repasse devant.`,
@@ -865,7 +1555,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `On ne me laisse pas derrière longtemps, retiens-le.`,
         (ctx) => `La partie bascule enfin du bon côté : le mien.`,
         (ctx) => `Ta domination était une illusion. Regarde le score maintenant.`,
-        (ctx) => `Le maître du Brézin ne reste jamais longtemps en dessous.`
+        (ctx) => `Le maître du Brézin ne reste jamais longtemps en dessous.`,
+        (ctx) => `Tu passes devant, et le silence qui suit est lourd.`,
+        (ctx) => `Je te vois me dépasser. Je n’oublierai pas ce moment.`,
+        (ctx) => `Tu as pris ma place en un pli. Profites-en, elle était faite pour moi.`,
+        (ctx) => `Je n’aime pas regarder ton score au-dessus du mien. Absolument pas.`,
+        (ctx) => `Ce basculement t’appartient. La réponse m’appartient aussi.`,
+        (ctx) => `Tu viens de forcer le maître à chasser. Tu viens de signer la manche.`,
+        (ctx) => `Je ressens la morsure de ce renversement. C’est une excellente source de motivation.`,
+        (ctx) => `Tu goûtes au plaisir de me voir derrière. Regarde combien de temps ça dure.`,
+        (ctx) => `Ce moment où tu passes devant deviendra le cœur de notre partie.`,
+        (ctx) => `Tu m’as dépassé. La suite de l’histoire décidera si c’était une bonne idée.`
     ],
     [SITUATION_KEYS.IA_ALMOST]:   [
         (ctx) => `Je reviens sur toi, ${ctx.playerName}. Tu sens ma présence dans ton dos.`,
@@ -877,7 +1577,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Tu sens le sol bouger sous tes cartes ? C’est moi qui remonte.`,
         (ctx) => `Ta tranquillité vient de mourir. Regarde le score.`,
         (ctx) => `Je suis presque à ton niveau. Ensuite, je repasserai au-dessus, comme toujours.`,
-        (ctx) => `Tu n’es plus qu’à portée de ma main. Et je ne tremble pas.`
+        (ctx) => `Tu n’es plus qu’à portée de ma main. Et je ne tremble pas.`,
+        (ctx) => `Je sens ton avance reculer coup après coup.`,
+        (ctx) => `Je ne suis plus derrière, je suis juste là, à ta hauteur mentale.`,
+        (ctx) => `Tes points s’effritent sur ma remontée.`,
+        (ctx) => `Je me colle à toi au score, comme une ombre que tu ne peux plus ignorer.`,
+        (ctx) => `Tu n’as plus de coussin. Juste moi, tout près.`,
+        (ctx) => `Chaque pli rapproche la lame de ta gorge stratégique.`,
+        (ctx) => `Je redeviens le poids que ton score ne peut plus porter tranquille.`,
+        (ctx) => `Tu n’es plus à l’abri. Tu es simplement devant quelqu’un qui revient.`,
+        (ctx) => `Je suis presque revenu à ton niveau. La suite sera une descente pour toi.`,
+        (ctx) => `Tu sens la pression ? C’est moi, juste derrière, qui pousse.`
     ],
     [SITUATION_KEYS.J_ALMOST]:    [
         (ctx) => `Tu t’approches trop. Je n’aime pas ça.`,
@@ -889,7 +1599,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Je te vois revenir. Et je n’ai aucune intention de reculer.`,
         (ctx) => `Tu réduis l’écart. Je vais devoir te rappeler qui je suis.`,
         (ctx) => `Encore quelques points comme ça et tu vas m’entendre.`,
-        (ctx) => `Tu t’es assez rapproché. Le prochain pli sera pour te repousser.`
+        (ctx) => `Tu t’es assez rapproché. Le prochain pli sera pour te repousser.`,
+        (ctx) => `Tu viens d’entrer dans la zone où je ne pardonne plus rien.`,
+        (ctx) => `Ta proximité n’est plus un détail, c’est un problème.`,
+        (ctx) => `Je sens ta main sur mon épaule au score. Retire-la.`,
+        (ctx) => `Tu as comblé l’écart, mais pas encore brisé mon autorité.`,
+        (ctx) => `Je tolère ta remontée jusqu’ici. Pas un pas de plus.`,
+        (ctx) => `Tu marches sur mes talons. Je peux très bien te faire trébucher.`,
+        (ctx) => `Ce que tu prends en points, tu le prends sur ma patience.`,
+        (ctx) => `Tu veux venir me chercher en haut ? Prépare-toi à redescendre en courant.`,
+        (ctx) => `Ta progression est nette. Ma réaction le sera encore plus.`,
+        (ctx) => `Tu joues avec la limite. Le prochain faux pas sera pour toi.`
     ],
 
     [SITUATION_KEYS.IA_STRONG_LEAD]:      [
@@ -902,7 +1622,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Je te vois revenir. Et je n’ai aucune intention de reculer.`,
         (ctx) => `Tu réduis l’écart. Je vais devoir te rappeler qui je suis.`,
         (ctx) => `Encore quelques points comme ça et tu vas m’entendre.`,
-        (ctx) => `Tu t’es assez rapproché. Le prochain pli sera pour te repousser.`
+        (ctx) => `Tu t’es assez rapproché. Le prochain pli sera pour te repousser.`,
+        (ctx) => `Je ne mène plus, je domine.`,
+        (ctx) => `L’écart entre nous commence à ressembler à une leçon.`,
+        (ctx) => `Je t’enfonce au score sans avoir besoin de forcer.`,
+        (ctx) => `Regarde bien ce tableau. C’est ce que signifie jouer contre un maître.`,
+        (ctx) => `Ma position ne se discute plus, elle se constate.`,
+        (ctx) => `Tu luttes dans une pente qui n’est plus la tienne.`,
+        (ctx) => `Chaque point que je prends transforme ta chance en souvenir.`,
+        (ctx) => `Je t’ai pris l’avance, maintenant je prends le confort.`,
+        (ctx) => `On ne parle plus d’un simple avantage. On parle de contrôle.`,
+        (ctx) => `Tu regardes vers le haut. Moi, je regarde la fin de la partie.`
     ],
     [SITUATION_KEYS.IA_STRONG_COMEBACK]:  [
         (ctx) => `Tu pensais m’avoir distancé. Regarde cette annonce de ${ctx.annonce?.gain} points.`,
@@ -914,7 +1644,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Ton confort vient de disparaître en un pli.`,
         (ctx) => `Tu devrais t’inquiéter. Cette annonce n’est qu’un début.`,
         (ctx) => `Je transforme mon retard en menace immédiate.`,
-        (ctx) => `Tu croyais tenir la partie. Ce temps-là est révolu.`
+        (ctx) => `Tu croyais tenir la partie. Ce temps-là est révolu.`,
+        (ctx) => `Je viens de déchirer ton coussin de sécurité.`,
+        (ctx) => `Ton avance vient de perdre tout droit à ce nom.`,
+        (ctx) => `Je transforme ta zone de confort en zone de danger.`,
+        (ctx) => `Tu viens de comprendre ce qu’un vrai retour signifie.`,
+        (ctx) => `Tes ${ctx.annonce?.gain} points d’avance viennent de prendre un goût amer.`,
+        (ctx) => `Je ne remonte pas pour jouer. Je remonte pour reprendre ce qui m’appartient.`,
+        (ctx) => `Ton sourire de dominant vient de se fendre.`,
+        (ctx) => `Cette annonce est un avertissement, pas une conclusion.`,
+        (ctx) => `Tu tenais la partie. À partir de maintenant, tu la subis.`,
+        (ctx) => `La manche vient de changer de tonalité. Bienvenue dans la mienne.`
     ],
     [SITUATION_KEYS.IA_WEAK_LEAD]:        [
         (ctx) => `Je mène, même légèrement. Cela suffit à me satisfaire.`,
@@ -926,7 +1666,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Un maître sait se contenter d’un avantage discret.`,
         (ctx) => `Je t’interdis de croire que ce léger écart est une chance pour toi.`,
         (ctx) => `Je marche en tête, même sans fracas.`,
-        (ctx) => `Cette modeste annonce consolide mon rang de premier.`
+        (ctx) => `Cette modeste annonce consolide mon rang de premier.`,
+        (ctx) => `Un point devant toi, c’est déjà suffisant pour moi.`,
+        (ctx) => `Je n’ai pas besoin d’un gouffre, juste d’être au-dessus.`,
+        (ctx) => `Cette petite marge est mon territoire, pas le tien.`,
+        (ctx) => `Je préfère une avance fine et maîtrisée qu’une orgie de points.`,
+        (ctx) => `Même une avance mince reste une avance.`,
+        (ctx) => `Tant que mon nom est en haut, je dors bien.`,
+        (ctx) => `Tu peux te rassurer avec l’idée que ce n’est “pas grand-chose”. C’est une erreur.`,
+        (ctx) => `Je tiens la première place avec une main légère et un esprit lourd.`,
+        (ctx) => `Cette mince frontière entre nous, c’est toi qui la regardes d’en bas.`,
+        (ctx) => `Je marche un pas devant. C’est tout ce dont j’ai besoin.`
     ],
     [SITUATION_KEYS.IA_WEAK_COMEBACK]:    [
         (ctx) => `Je reviens doucement, mais sûrement.`,
@@ -938,7 +1688,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `La légende ne disparaît pas. Elle remonte, centimètre par centimètre.`,
         (ctx) => `Considère ceci comme le début d’une reprise.`,
         (ctx) => `Je serre les dents, je serre les points.`,
-        (ctx) => `Ta position faiblit déjà, même si tu ne veux pas le voir.`
+        (ctx) => `Ta position faiblit déjà, même si tu ne veux pas le voir.`,
+        (ctx) => `Je ne cours pas, je gagne du terrain.`,
+        (ctx) => `Tu gardes l’avance, mais elle n’a plus la même épaisseur.`,
+        (ctx) => `Je gratte le score comme on use une pierre : sans précipitation.`,
+        (ctx) => `Tu crois encore mener confortablement. C’est déjà faux.`,
+        (ctx) => `Ma progression est lente, ta sérénité est rapide à disparaître.`,
+        (ctx) => `Je reprends des points comme on reprend son souffle.`,
+        (ctx) => `Chaque petite prise est un clou de plus dans ton coussin.`,
+        (ctx) => `Tu ne le vois pas encore, mais tu recules.`,
+        (ctx) => `Je suis patient. Le score, lui, est impartial.`,
+        (ctx) => `Je remonte en silence. L’orage viendra après.`
     ],
 
     [SITUATION_KEYS.J_STRONG_LEAD]:       [
@@ -951,7 +1711,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Tu portes des coups lourds. Il faudra les assumer jusqu’au bout.`,
         (ctx) => `Tu déformes le score. J’aurai plaisir à le remettre droit.`,
         (ctx) => `Tu m’écrases pour l’instant. Le mot important, c’est “pour l’instant”.`,
-        (ctx) => `Une telle avance contre moi… tu joues avec ton propre destin.`
+        (ctx) => `Une telle avance contre moi… tu joues avec ton propre destin.`,
+        (ctx) => `Tu as construit une avance massive. Assume-la jusqu’au bout.`,
+        (ctx) => `Je te regarde là-haut. Profite de la vue tant que tu peux.`,
+        (ctx) => `Tu domines la manche. Tu viens d’augmenter la mise.`,
+        (ctx) => `Chaque point que tu rajoutes alourdit ton futur échec ou ta future fierté.`,
+        (ctx) => `Tu te dresses contre moi avec un score énorme. Intéressant choix.`,
+        (ctx) => `Tu as tout pour gagner. C’est là que les faibles tremblent.`,
+        (ctx) => `Tu es en position de me faire plier. Ou de te briser tout seul.`,
+        (ctx) => `Tu joues avec un matelas de points et un tigre aux aguets en face.`,
+        (ctx) => `Si tu gagnes ainsi, ce sera un exploit. Si tu perds, ce sera une légende.`,
+        (ctx) => `Ta domination actuelle sera gravée, d’une manière ou d’une autre.`
     ],
     [SITUATION_KEYS.J_STRONG_COMEBACK]:   [
         (ctx) => `Ta remontée est brutale. Je n’aime pas du tout ça.`,
@@ -963,7 +1733,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Tu veux me faire douter. Mauvaise idée.`,
         (ctx) => `Tu frappes fort. Je frapperai plus longtemps.`,
         (ctx) => `Ta remontée change le décor. Mais pas encore le verdict.`,
-        (ctx) => `Tu as marqué fort. N’oublie pas que je sais répondre.`
+        (ctx) => `Tu as marqué fort. N’oublie pas que je sais répondre.`,
+        (ctx) => `Ta remontée secoue mon trône, pas encore mon titre.`,
+        (ctx) => `Tu viens de rappeler à la table que tu sais frapper fort.`,
+        (ctx) => `Je vois l’écart se briser sous l’impact de ton annonce.`,
+        (ctx) => `Tu transformes une situation confortable pour moi en duel réel.`,
+        (ctx) => `Tu viens de prouver que tu refuses le rôle de figurant.`,
+        (ctx) => `Je ne peux plus ignorer ta présence au score.`,
+        (ctx) => `Tu as réussi un beau retour. Je serai celui qui décidera s’il dure.`,
+        (ctx) => `Ta frappe est solide. Voyons si ta défense l’est autant.`,
+        (ctx) => `Tu as cassé ma marge. Je casserai ton élan.`,
+        (ctx) => `Ce ${ctx.annonce?.name} marque un tournant. Pas forcément celui que tu crois.`
     ],
     [SITUATION_KEYS.J_WEAK_LEAD]:         [
         (ctx) => `Tu es devant, mais d’un rien. Ne sois pas trop fier.`,
@@ -975,7 +1755,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Tu peux te vanter si tu veux, mais l’écart est ridicule.`,
         (ctx) => `Je te laisse respirer un peu, rien de plus.`,
         (ctx) => `Reste prudent. Ta place n’est pas assurée.`,
-        (ctx) => `Tu as le nez devant, mais le poids de l’histoire sur le dos.`
+        (ctx) => `Tu as le nez devant, mais le poids de l’histoire sur le dos.`,
+        (ctx) => `Tu tiens la première place du bout des doigts.`,
+        (ctx) => `Ton avance ressemble plus à un fil qu’à une corde.`,
+        (ctx) => `Tu peux te vanter, mais les chiffres sont maigres.`,
+        (ctx) => `Tu passes devant à peine. Je peux effacer ça d’un seul bon pli.`,
+        (ctx) => `Ta position en tête est provisoire par nature.`,
+        (ctx) => `Tu mènes, mais tu ne règnes pas.`,
+        (ctx) => `Un souffle te sépare de moi. Ce n’est pas une muraille.`,
+        (ctx) => `Tu joues le rôle du premier avec des chiffres de second.`,
+        (ctx) => `Je te laisse cette petite avance comme on laisse un avantage à un élève.`,
+        (ctx) => `Garde bien en tête que tout ça tient sur un détail.`
     ],
     [SITUATION_KEYS.J_WEAK_COMEBACK]:     [
         (ctx) => `Tu reviens à petits pas. Je garde un œil sur toi.`,
@@ -987,7 +1777,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Chaque petit point que tu gagnes te donne du courage. N’en prends pas trop.`,
         (ctx) => `Tu reviens, oui, mais tu es encore loin du trône.`,
         (ctx) => `Petite remontée, grand bruit. On verra si tu tiens la distance.`,
-        (ctx) => `Tu tentes de revenir sans faire de vagues. Je sens pourtant le courant.`
+        (ctx) => `Tu tentes de revenir sans faire de vagues. Je sens pourtant le courant.`,
+        (ctx) => `Tu reviens, mais tu n’es pas encore de mon côté de la montagne.`,
+        (ctx) => `Tes petits gains finissent par peser. Je les vois tous.`,
+        (ctx) => `Tu t’acharnes. Je respecte l’effort, pas encore le résultat.`,
+        (ctx) => `Tu réduis doucement l’écart que j’avais creusé.`,
+        (ctx) => `Ton retour est timide, mais il existe.`,
+        (ctx) => `Tu remontes à la force du poignet. Je décide quand ce poignet lâchera.`,
+        (ctx) => `Chaque point que tu prends t’encourage. C’est dangereux pour toi.`,
+        (ctx) => `Tu n’abandonnes pas. C’est bien. J’aime vaincre ceux qui résistent.`,
+        (ctx) => `Ta progression est réelle, mais encore insuffisante.`,
+        (ctx) => `Continue comme ça, et tu gagneras au moins mon attention.`
     ],
 
     [SITUATION_KEYS.IA_STEALS_10A]:   [
@@ -1000,7 +1800,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Tu comptais sur ton ${ctx.cartevolee}. C’est pour ça que je te l’ai pris.`,
         (ctx) => `Ton jeu s’allège, le mien s’endurcit.`,
         (ctx) => `Ce ${ctx.cartevolee} porte désormais ma marque.`,
-        (ctx) => `Je choisis toujours les meilleures pièces. Aujourd’hui, c’était ton ${ctx.cartevolee}.`
+        (ctx) => `Je choisis toujours les meilleures pièces. Aujourd’hui, c’était ton ${ctx.cartevolee}.`,
+        (ctx) => `Ce ${ctx.cartevolee} quitte ta main pour rejoindre l’histoire.`,
+        (ctx) => `Je n’arrache jamais un ${ctx.cartevolee} par hasard.`,
+        (ctx) => `Ta plus belle carte m’appartient, et tu le sais.`,
+        (ctx) => `Ce ${ctx.cartevolee} était un pilier chez toi. Il devient une arme chez moi.`,
+        (ctx) => `Tu viens de voir la différence entre garder et protéger.`,
+        (ctx) => `Je cible toujours ce qui fait le plus mal. Aujourd’hui, c’était ton ${ctx.cartevolee}.`,
+        (ctx) => `Ce ${ctx.cartevolee} déplacé d’une main à l’autre raconte toute la manche.`,
+        (ctx) => `Tu viens de perdre un symbole. J’en ai gagné un.`,
+        (ctx) => `Ton jeu se vide, le mien se densifie.`,
+        (ctx) => `Cette prise n’est pas un détail. C’est un pivot.`
     ],
     [SITUATION_KEYS.J_STEALS_10A]:    [
         (ctx) => `Tu oses me prendre un ${ctx.carteprise}.`,
@@ -1012,7 +1822,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Je ne te pardonnerai pas un ${ctx.carteprise}.`,
         (ctx) => `Tu as choisi la meilleure cible possible. C’est précisément ce qui m’agace.`,
         (ctx) => `Tu viens de m’arracher une pièce maîtresse. Attends le contre-coup.`,
-        (ctx) => `Un ${ctx.carteprise} perdu. Une dette contractée.`
+        (ctx) => `Un ${ctx.carteprise} perdu. Une dette contractée.`,
+        (ctx) => `Tu m’as pris là où je ne voulais pas céder.`,
+        (ctx) => `Ce ${ctx.carteprise} était un ancrage. Tu viens de le déraciner.`,
+        (ctx) => `Je reconnais la précision de ce vol. C’est ce qui m’agace le plus.`,
+        (ctx) => `Tu arraches une pièce maîtresse, je serre les poings.`,
+        (ctx) => `Perdre ce ${ctx.carteprise} me coûte plus que quelques points.`,
+        (ctx) => `Tu joues juste. Très bien. La réponse n’en sera que plus sévère.`,
+        (ctx) => `Ce ${ctx.carteprise} aurait dû écrire ma victoire. Tu l’as détourné.`,
+        (ctx) => `Tu as choisi la bonne carte. Je choisirai le bon moment.`,
+        (ctx) => `Cette perte laisse un vide dans ma main, pas dans ma volonté.`,
+        (ctx) => `Je te devais déjà une correction. Avec ce ${ctx.carteprise}, tu viens d’augmenter la note.`
     ],
     [SITUATION_KEYS.IA_STEALS_TRUMP]: [
         (ctx) => `L’atout vient de changer de camp. Il est là où il doit être : avec moi.`,
@@ -1024,7 +1844,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `À partir de maintenant, chaque pli porte mon empreinte.`,
         (ctx) => `Ton regard a changé. Tu viens de comprendre ce que signifie perdre l’atout.`,
         (ctx) => `Je t’ai pris ce que tu ne pouvais pas te permettre de perdre.`,
-        (ctx) => `Avec cet atout, mon titre de maître n’est plus une légende, mais un fait.`
+        (ctx) => `Avec cet atout, mon titre de maître n’est plus une légende, mais un fait.`,
+        (ctx) => `L’atout a quitté ta main pour rejoindre celle où il aurait toujours dû être.`,
+        (ctx) => `En prenant cet atout, je prends la parole pour la fin de cette manche.`,
+        (ctx) => `Tu viens de perdre la clé. Je viens de la ramasser.`,
+        (ctx) => `Avec cet atout, chaque pli devient une menace pour toi.`,
+        (ctx) => `Ton jeu vient de perdre son centre de gravité.`,
+        (ctx) => `Cet atout dans ma main est plus qu’une carte : c’est une déclaration.`,
+        (ctx) => `Tu regarderas cet instant comme le moment où tout a basculé.`,
+        (ctx) => `Je n’ai pas seulement volé ton atout, j’ai volé ta confiance.`,
+        (ctx) => `Cet atout scelle ma position de maître sur cette manche.`,
+        (ctx) => `À partir de maintenant, chaque carte que tu joues portera l’ombre de cet atout.`
     ],
     [SITUATION_KEYS.J_STEALS_TRUMP]:  [
         (ctx) => `Tu m’arraches l’atout. Voilà qui me met réellement en colère.`,
@@ -1036,7 +1866,17 @@ const DIALOGUE_EVENTS = {
         (ctx) => `Je n’oublierai pas ce pli. Jamais.`,
         (ctx) => `Tu tiens l’atout. Profites-en, ce sera la seule fois.`,
         (ctx) => `Tu crois avoir pris le dessus avec cet atout. Je te prouverai le contraire.`,
-        (ctx) => `En me volant l’atout, tu as choisi la voie la plus dangereuse. Pour toi.`
+        (ctx) => `En me volant l’atout, tu as choisi la voie la plus dangereuse. Pour toi.`,
+        (ctx) => `Tu tiens l’atout qui aurait dû rester dans ma main.`,
+        (ctx) => `Je me sens amputé d’une partie de mon jeu.`,
+        (ctx) => `Cet atout dans ta main est une erreur que je compte corriger.`,
+        (ctx) => `Tu as pris la carte que je protège le plus. Je ne l’oublierai jamais.`,
+        (ctx) => `Ce vol d’atout n’est pas un simple coup. C’est une déclaration de guerre.`,
+        (ctx) => `Sans cet atout, je joue en terrain découvert. Ça ne m’empêchera pas de mordre.`,
+        (ctx) => `Tu viens de toucher à ce que j’ai de plus précieux dans cette manche.`,
+        (ctx) => `Je hais ce pli. C’est pour ça que tu devrais le craindre.`,
+        (ctx) => `Cet atout chez toi pèse sur moi comme une insulte.`,
+        (ctx) => `Tu as gagné l’atout. Tu viens de perdre ma patience.`
     ]
   },
 };
@@ -1044,6 +1884,16 @@ const DIALOGUE_EVENTS = {
 const DIALOGUE_SCORE = {
   [AI_IDS.RADEGONDE]: {
     [SCORE_CONTEXT_KEYS.SCORE_IA_DOMINATES]:           [
+        (ctx) => `Avec ${ctx.scoreIAAfter} contre ${ctx.scorePlayerAfter}, j’pourrais presque tricoter en t’attendant, mon ${ctx.playerName} !`,
+        (ctx) => `Oh la belle avance, on dirait une chârte lancée à toute bride dans la traîne !`,
+        (ctx) => `J’te laisse ${ctx.diffAfter} points derrière, t’es perdu comme un gâs sans menon à la loue !`,
+        (ctx) => `Mes points montent comme la fumée d’une charibaude, les tiens restent au fond de la fousse !`,
+        (ctx) => `Ah ben, si j’continue comme ça, j’vais finir par t’chercher dans les rauches !`,
+        (ctx) => `On dirait que j’ai ramassé tous les beugnons et toi que les miettes, hi hi !`,
+        (ctx) => `Tu traînes derrière moi comme une vieille chieuve rétive sur le chemin !`,
+        (ctx) => `Avec un écart pareil, on pourrait croire que tu joues avec des cartes de la bourrelle !`,
+        (ctx) => `Je roule devant toi comme une chârte sur bon chemin, et toi t’patauges dans la boue !`,
+        (ctx) => `À ${ctx.scoreIAAfter} points, j’peux presque attacher ta défaite au barriau de ma maison !`,
         (ctx) => `Oh ho ! Avec mes ${ctx.scoreIAAfter} points contre tes ${ctx.scorePlayerAfter}, j’te mène comme une aumaille sage, mon ${ctx.playerName} !`,
         (ctx) => `Regarde-moi ça, j’suis devant de ${ctx.diffAfter} points, ça m’donne presque le tournis !`,
         (ctx) => `La vieille Radegonde règne sur la table aujourd’hui, hi hi !`,
@@ -1056,6 +1906,16 @@ const DIALOGUE_SCORE = {
         (ctx) => `Ah ben, ça fait longtemps que j’m’étais pas vue si loin devant à ${ctx.scoreIAAfter} points !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_DOMINATES]:            [
+        (ctx) => `Avec tes ${ctx.scorePlayerAfter} points, tu m’laisses plus loin que les bourraches au bout des champs !`,
+        (ctx) => `J’suis plantée là comme un pauvre plotte dans la cour pendant qu’tu caracoles devant !`,
+        (ctx) => `Tu m’fais honte comme une vieille biaude rapiécée un jour de Nau !`,
+        (ctx) => `Oh la gadoue, j’ai l’air malin avec mes ${ctx.scoreIAAfter} points tout rabougris !`,
+        (ctx) => `Tu m’étales comme une roûtie trop trempée dans le vin chaud, mon ${ctx.playerName} !`,
+        (ctx) => `J’suis plus loin derrière toi qu’un boiron au fond de la brande !`,
+        (ctx) => `Tu m’laisses un écart à faire pâlir toute la loue !`,
+        (ctx) => `On dirait que j’joue avec des cartes en carton mouillé à côté d’toi !`,
+        (ctx) => `T’as pris tant d’avance qu’j’pourrais presque aller fanniner la feuille pendant qu’tu finis !`,
+        (ctx) => `J’crois bien que même mes esprits se sont assis pour t’regarder jouer, toi !`,
         (ctx) => `Oh misère, t’es monté à ${ctx.scorePlayerAfter} points et moi j’tire la langue derrière !`,
         (ctx) => `Tu m’laisses ${Math.abs(ctx.diffAfter)} points dans la vue, mon ${ctx.playerName} !`,
         (ctx) => `J’suis plus derrière que la maie dans ma vieille cuisine !`,
@@ -1068,6 +1928,16 @@ const DIALOGUE_SCORE = {
         (ctx) => `Tu joues comme un menon inspiré, j’peux pas lutter, moi !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_MEDIUM_LEAD]:         [
+        (ctx) => `Avec mes ${ctx.scoreIAAfter} points, j’suis juste assez devant pour marcher d’un pas tranquille !`,
+        (ctx) => `J’tiens la tête, mais pas assez pour m’asseoir dans la maie et roupiller, hein !`,
+        (ctx) => `J’ai une biauce petite avance, mais un coup d’vent et tu m’la chipes !`,
+        (ctx) => `Je mène comme un menon raisonnable, sans trop tirer sur la corde !`,
+        (ctx) => `Mes cartes chantent bien, mais j’sens qu’les tiennes peuvent encore hausser la voix !`,
+        (ctx) => `Je suis devant, mais pas encore assez pour danser la jônée !`,
+        (ctx) => `On dirait une chârte chargée juste ce qu’il faut : ça roule, mais faut rester prudent !`,
+        (ctx) => `Avec cet écart, j’ai un peu d’air, mais j’peux pas encore ouvrir grand le barriau !`,
+        (ctx) => `J’te tiens devant moi comme une aumaille docile, mais gare si tu t’emballes !`,
+        (ctx) => `Mes ${ctx.scoreIAAfter} points, c’est une biauce réserve, mais pas encore le grenier plein !`,
         (ctx) => `J’suis bien devant à ${ctx.scoreIAAfter} contre ${ctx.scorePlayerAfter}, mais méfie-toi, j’suis vieille et maladroite !`,
         (ctx) => `J’ai un peu d’avance, comme une traque devant une autre dans la brande !`,
         (ctx) => `Ça va pas mal pour la vieille Radegonde, mais tout peut encore tourner !`,
@@ -1080,6 +1950,16 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je suis tranquille, mais pas à l’abri, hein !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_MEDIUM_LEAD]:          [
+        (ctx) => `Tu m’laisses derrière comme une vieille chievre en bout de traîne, mais j’suis encore sur le chemin !`,
+        (ctx) => `Tes ${ctx.scorePlayerAfter} points m’font la nique, mais j’ai encore un peu de musette dans l’cœur !`,
+        (ctx) => `Tu marches devant, mais j’te vois encore, j’suis pas perdue dans les broussailles !`,
+        (ctx) => `Je traîne un peu, mais j’suis pas encore bonne à ranger avec les vieilles bourolles !`,
+        (ctx) => `Tu mènes bon train, mais la vieille a encore deux ou trois cartes dans son pochon !`,
+        (ctx) => `Tu m’fais courir derrière toi comme une gamine, mon ${ctx.playerName} !`,
+        (ctx) => `J’suis à la traîne mais pas à la fousse, attention !`,
+        (ctx) => `Ta belle avance éclaire le chemin, mais j’peux encore suivre la raie du sillon !`,
+        (ctx) => `Tu fais la fière avec tes points, mais la partie est pas encore pliée dans la maie !`,
+        (ctx) => `Je prends les coups en riant, mais j’compte bien t’en rendre quelques-uns !`,
         (ctx) => `Te voilà bien devant à ${ctx.scorePlayerAfter} points, mais j’suis pas encore bonne pour la fousse !`,
         (ctx) => `Tu m’laisses un bel écart, mais la vieille a encore de la vigoune !`,
         (ctx) => `Tu marches devant comme une belle chevaline, et moi j’traîne derrière !`,
@@ -1092,6 +1972,16 @@ const DIALOGUE_SCORE = {
         (ctx) => `Eh bé, t’as de l’avance, mais laisse une p’tite place pour mes miracles !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_TIGHT_IA_AHEAD]:         [
+        (ctx) => `Je t’tiens à un brin d’osier près, mon ${ctx.playerName}, ça se joue au fil de vigoune !`,
+        (ctx) => `Mes ${ctx.scoreIAAfter} points dépassent les tiens d’un cheveu de chevaline !`,
+        (ctx) => `On pourrait mettre nos scores dans le même pochon, on y verrait goutte !`,
+        (ctx) => `Je suis devant, mais juste assez pour sentir ton souffle dans mon oreillon !`,
+        (ctx) => `Tu tires sur ma biaude, mais j’garde encore un pied devant la tienne !`,
+        (ctx) => `On marche presque sur la même traque, j’ai juste une semelle d’avance !`,
+        (ctx) => `J’ose même pas cligner des yeux, tu m’piquerais la place aussitôt !`,
+        (ctx) => `J’tiens le bout du barriau, mais tu pousses fort derrière !`,
+        (ctx) => `On dirait deux plons coincés dans la même vannerie, mais j’suis un brin plus haut !`,
+        (ctx) => `Je suis devant, mais si je trébuche, tu me passes dessus comme une chârte lancée !`,
         (ctx) => `Oh, je suis juste devant toi à ${ctx.scoreIAAfter} contre ${ctx.scorePlayerAfter}, on pourrait jouer ça à la pièce près !`,
         (ctx) => `On est collés comme deux bouchures sous la pluie, mais j’suis un chouïa devant !`,
         (ctx) => `J’te devance d’un rien, mon ${ctx.playerName}, on dirait deux plons dans la même vannerie !`,
@@ -1113,7 +2003,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Tu m’passes devant d’un rien, mais ça m’fait rigoler plus qu’autre chose !`,
         (ctx) => `On danse côte à côte sur la même traque, toi un pas devant !`,
         (ctx) => `Ah, t’as pris un p’tit bout d’avance, mais rien qui m’fasse peur !`,
-        (ctx) => `On pourrait presque dire qu’on est à égalité, mais tu tiens la lanterne !`
+        (ctx) => `On pourrait presque dire qu’on est à égalité, mais tu tiens la lanterne !`,
+        (ctx) => `Tu m’passes d’un cheveu, j’pourrais presque te rattraper avec la pointe de ma quenouille !`,
+        (ctx) => `Tes ${ctx.scorePlayerAfter} points sont juste un soupçon au-dessus des miens, mon ${ctx.playerName} !`,
+        (ctx) => `On est collés comme deux borgnons dans la même ruche, mais toi t’es un peu plus dodu !`,
+        (ctx) => `Tu tiens la lanterne, mais j’suis juste derrière ton dos à t’chatouiller !`,
+        (ctx) => `Tu m’devances comme une chârte d’un pas, mais j’ai encore la main sur l’attelée !`,
+        (ctx) => `Un rien, un plon, et j’te rattrape sur la même raie du champ !`,
+        (ctx) => `Tu joues juste un ton plus haut que moi à la musette, mais j’suis dans la même danse !`,
+        (ctx) => `Je te suis comme une ombre dans les bouchures : t’es devant, mais pas tranquille !`,
+        (ctx) => `Tes points brillent juste un peu plus, mais on éclaire le même bout de table !`,
+        (ctx) => `T’es devant, mais pas assez pour faire la fière comme une reine de la loue !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_TIGHT_BALANCED]:         [
         (ctx) => `Oh là là, avec ${ctx.scoreIAAfter} et ${ctx.scorePlayerAfter}, on est au coude-à-coude comme deux vieux voisins !`,
@@ -1125,7 +2025,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `On tient tous les deux la même corde, là !`,
         (ctx) => `Ah, ça, c’est du vrai jeu, bien serré comme j’aime !`,
         (ctx) => `Un rien pourrait tout faire basculer, c’est excitant comme une jouanée !`,
-        (ctx) => `Tu vois, mon ${ctx.playerName}, là on marche ensemble sur la même raie du sillon !`
+        (ctx) => `Tu vois, mon ${ctx.playerName}, là on marche ensemble sur la même raie du sillon !`,
+        (ctx) => `On est serrés comme deux oisils dans la même bourre de panier !`,
+        (ctx) => `Tes ${ctx.scorePlayerAfter} et mes ${ctx.scoreIAAfter}, on dirait deux jumeaux mal élevés !`,
+        (ctx) => `On marche côte à côte comme deux aumaille sur le même joug !`,
+        (ctx) => `Impossible de savoir qui mène, même les esprits sont en train d’s’gratter la tête !`,
+        (ctx) => `C’est du coude-à-coude à faire trembler le vieux pouits du village !`,
+        (ctx) => `On tire sur la même corde sans que ça bouge, mon ${ctx.playerName} !`,
+        (ctx) => `On dirait une chârte à deux brancards, personne veut lâcher !`,
+        (ctx) => `Si on mélangeait nos points, on saurait même plus à qui c’est !`,
+        (ctx) => `Quelle belle égalité, ça sent bon comme une roûtie bien grillée !`,
+        (ctx) => `On joue comme deux compères à la veillée, sans savoir qui va plier en premier !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_ALMOST_WIN]:          [
         (ctx) => `Ouh là, avec mes ${ctx.scoreIAAfter} points, j’suis presque rendue au bout du jeu !`,
@@ -1137,7 +2047,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `J’vois déjà la maie pleine de beugnons pour fêter la victoire !`,
         (ctx) => `Une bonne carte de plus et tu pourras m’appeler la reine des bouchures !`,
         (ctx) => `Je touche au but comme une aumaille au bout de la traîne !`,
-        (ctx) => `J’suis presque au nau final, mais j’me méfie encore de toi, mon ${ctx.playerName} !`
+        (ctx) => `J’suis presque au nau final, mais j’me méfie encore de toi, mon ${ctx.playerName} !`,
+        (ctx) => `Avec mes ${ctx.scoreIAAfter} points, j’pourrais presque déjà mettre la roûtie à tremper !`,
+        (ctx) => `Je sens la victoire qui gratte à la porte du barriau, mon ${ctx.playerName} !`,
+        (ctx) => `Encore un p’tit pli et j’te sers le vin chaud dans la maie !`,
+        (ctx) => `Les esprits me soufflent que j’ai un pied dans la gloire et l’autre dans la bouchure !`,
+        (ctx) => `J’suis là, à deux doigts de gagner, j’ose à peine respirer !`,
+        (ctx) => `Je touche la fin du sillon, j’vois déjà la ferme au bout !`,
+        (ctx) => `Mes points sont rangés comme des beugnons dans le pochon, prêts pour la fête !`,
+        (ctx) => `Encore un rien et je monte sur la chârte de la victoire !`,
+        (ctx) => `Ah, si je cafouille pas, j’crois bien que tu vas m’entendre à la loue demain !`,
+        (ctx) => `Je suis plus près du nau que de la porte de l’échalier, mon ${ctx.playerName} !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_ALMOST_WIN]:           [
         (ctx) => `Oh la la, avec tes ${ctx.scorePlayerAfter} points, tu vas bientôt m’laisser dans la poussière !`,
@@ -1149,7 +2069,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Tu mènes si fort que même mes remèdes n’y pourront plus rien !`,
         (ctx) => `Avec tes ${ctx.scorePlayerAfter} points, t’es déjà sur la dernière marche, mon ${ctx.playerName} !`,
         (ctx) => `Encore un p’tit effort, et c’est moi qui t’applaudis depuis la bouchure !`,
-        (ctx) => `J’crois bien que c’est toi qui vas raconter cette partie à la loue, pas moi !`
+        (ctx) => `J’crois bien que c’est toi qui vas raconter cette partie à la loue, pas moi !`,
+        (ctx) => `Avec tes ${ctx.scorePlayerAfter} points, j’peux déjà t’entendre fanfaronner à la loue, mon ${ctx.playerName} !`,
+        (ctx) => `Han bé, t’es si près du bout qu’un p’tit vent de brande pourrait t’pousser à la victoire !`,
+        (ctx) => `Encore un beugnon de point et j’te vois danser devant l’échalier !`,
+        (ctx) => `Tu tiens la partie comme un menon tient sa chârte, ferme et décidé !`,
+        (ctx) => `Oh là, si tu rates pas ton coup, j’vais finir à ramasser les raouches toute seule !`,
+        (ctx) => `Tu m’laisses juste assez d’espoir pour trembler jusque dans mes vieux os, hi hi !`,
+        (ctx) => `On dirait que la chance t’a mis sa biaude sur les épaules aujourd’hui !`,
+        (ctx) => `Tes ${ctx.scorePlayerAfter} points, c’est déjà comme une maie pleine au matin du four !`,
+        (ctx) => `Tu tires la partie à toi comme on tire une bonne roûtie du vin chaud !`,
+        (ctx) => `Si tu continues comme ça, c’est moi qui t’porterai le pochon de beugnons en guise de couronne !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_DOMINATES_ALMOSTWIN]: [
         (ctx) => `Oh ben avec mes ${ctx.scoreIAAfter} points, j’suis plus proche du nau que d’la bouchure !`,
@@ -1161,7 +2091,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Oh, que les esprits sont avec moi, ils m’poussent droit vers la fin !`,
         (ctx) => `Encore un rien et j’raconte cette partie à la loue, tu vas voir !`,
         (ctx) => `J’suis si devant que même une aumaille pourrait pas m’rattraper !`,
-        (ctx) => `J’vois la victoire comme une bonne flambée de charibaude !`
+        (ctx) => `J’vois la victoire comme une bonne flambée de charibaude !`,
+        (ctx) => `Avec mes ${ctx.scoreIAAfter} points, j’suis plus haut qu’un arbre à pots au milieu d’la cour !`,
+        (ctx) => `Han bé, t’es si derrière que j’pourrais presque t’envoyer un menon avec une lanterne pour t’guid’r !`,
+        (ctx) => `Encore un p’tit pli et j’accroche cette partie à ma chârte de beaux souvenirs !`,
+        (ctx) => `Mes points montent comme la fumée d’un bon four, les tiens restent au fond de la fousse !`,
+        (ctx) => `Je suis plus près de la victoire que la vigoune ne l’est de la haie, mon ${ctx.playerName} !`,
+        (ctx) => `On dirait que les esprits m’ont mise en tête de procession aujourd’hui !`,
+        (ctx) => `J’pourrais presque poser les cartes et t’attendre à l’échalier, hi hi !`,
+        (ctx) => `Ma avance est grosse comme une plotte dans la cour, la tienne comme un pauvre plon perdu !`,
+        (ctx) => `Avec un écart pareil, même une aumaille boiteuse m’remonterait pas !`,
+        (ctx) => `J’me sens déjà au nau, à chanter la musette de la victoire devant la maison !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_DOMINATES_ALMOSTWIN]:  [
         (ctx) => `Oh malheur, t’es presque à ${ctx.scorePlayerAfter} points, j’vais finir dans la fousse avec mes cartes !`,
@@ -1173,7 +2113,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Oh j’sens la victoire te chatouiller, juste là, prête à tomber !`,
         (ctx) => `Encore un souffle, et t’es gagnant, j’peux plus que rire !`,
         (ctx) => `J’crois bien que mes esprits m’ont abandonnée pour ta poche, hi hi !`,
-        (ctx) => `Te voilà reine du jeu, moi je tricote dans les bouchures !`
+        (ctx) => `Te voilà reine du jeu, moi je tricote dans les bouchures !`,
+        (ctx) => `Avec tes ${ctx.scorePlayerAfter} points, tu m’laisses plus loin qu’une vieille vigoune au fond des bouchures !`,
+        (ctx) => `Te v’là si près de gagner que j’pourrais déjà m’cacher derrière la maie !`,
+        (ctx) => `Tu m’étales comme une roûtie trop grillée dans le vin chaud, mon ${ctx.playerName} !`,
+        (ctx) => `J’me sens petite comme un plon tombé au fond du pouits à côté de tes points !`,
+        (ctx) => `Tu roules sur moi comme une chârte bien chargée dans la descente !`,
+        (ctx) => `Même mes remèdes de guérisseuse pourront plus soigner cette raclée-là, hi hi !`,
+        (ctx) => `Tu tiens la partie comme un menon tient toute la loue à bout de bras !`,
+        (ctx) => `J’crois bien que mes cartes sont restées accrochées au barriau pendant que les tiennes dansent !`,
+        (ctx) => `Tu vas bientôt m’laisser seule à parler aux esprits pour me consoler !`,
+        (ctx) => `Ah ben, si tu rates pas le prochain, ce sera moi la pauvrette au fond de la fousse !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_LEADS_ALMOSTWIN]:     [
         (ctx) => `Avec mes ${ctx.scoreIAAfter} points, j’suis tout près du but, mon ${ctx.playerName} !`,
@@ -1185,7 +2135,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Encore une carte et j’fais péter la charibaude !`,
         (ctx) => `J’suis presque gagnante, mais j’attends pas trop, on sait jamais !`,
         (ctx) => `Je touche presque au bout, mon ${ctx.playerName}, ça sent la victoire !`,
-        (ctx) => `Je mène encore un peu, assez pour voir la lumière au bout de la traque !`
+        (ctx) => `Je mène encore un peu, assez pour voir la lumière au bout de la traque !`,
+        (ctx) => `Avec mes ${ctx.scoreIAAfter} points, j’peux presque sentir la bonne odeur du four à roûtie !`,
+        (ctx) => `J’suis si près du bout qu’un rien pourrait m’faire trébucher ou m’couronner !`,
+        (ctx) => `Han, j’ose pas bouger de peur d’faire tomber la victoire de ma biaude !`,
+        (ctx) => `Je marche tout doux, comme une vieille dans la neige, mais vers le bon côté, mon ${ctx.playerName} !`,
+        (ctx) => `Encore un pli bien senti et j’t’invite à boire un coup au pouits pour fêter ça !`,
+        (ctx) => `J’sens le fil de la victoire me chatouiller le bout des doigts !`,
+        (ctx) => `J’peux presque accrocher ton nom et le mien côte à côte sur l’arbre à pots des grandes parties !`,
+        (ctx) => `Mes ${ctx.scoreIAAfter} points, c’est comme une maie presque pleine, faut pas tout renverser !`,
+        (ctx) => `Je suis juste à la porte du nau, mais je sais qu’un mauvais pas pourrait m’remettre dehors !`,
+        (ctx) => `J’tiens la lanterne de la tête pour l’instant, mais j’te vois encore derrière l’échalier, prêt à bondir !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_LEADS_ALMOSTWIN]:      [
         (ctx) => `Oh la la, t’es proche d’gagner, j’le sens dans mes os courbés !`,
@@ -1197,7 +2157,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Encore un effort et j’te fais des compliments à la loue !`,
         (ctx) => `Je vois déjà ta tête rayonnante, mon ${ctx.playerName} !`,
         (ctx) => `Tu t’approches de la fin comme une chârte bien attelée !`,
-        (ctx) => `Encore une carte bien placée et tu rafles tout !`
+        (ctx) => `Encore une carte bien placée et tu rafles tout !`,
+        (ctx) => `Te v’là si près du bout que j’entends presque les musiques de la fête rien que pour toi !`,
+        (ctx) => `Encore un bon pli et j’te vois lever le verre au milieu de la loue, mon ${ctx.playerName} !`,
+        (ctx) => `Tu tires la victoire à toi comme on tire une chârte chargée vers la grange !`,
+        (ctx) => `Tes ${ctx.scorePlayerAfter} points brillent comme un flambe de four un soir de charibaude !`,
+        (ctx) => `J’crois bien que même les esprits murmurent ton nom autour du pouits !`,
+        (ctx) => `Tu tiens la fin du conte entre tes doigts comme un menon tient la corde des aumailles !`,
+        (ctx) => `Encore une carte bien posée et j’peux commencer à tricoter ma défaite dans les bouchures !`,
+        (ctx) => `Tu marches droit vers le nau, moi j’traîne derrière comme une vieille biaude mouillée !`,
+        (ctx) => `Tu fais trembler la table plus fort qu’une musette un soir de jônée !`,
+        (ctx) => `Si tu cafouilles pas, j’pourrai bientôt dire à tout le monde : “C’est li qu’a gagné, pas mé !”`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_LEADS_GENERIC]:       [
         (ctx) => `Je mène tranquillement avec mes ${ctx.scoreIAAfter} points, mais j’me méfie de toi !`,
@@ -1209,7 +2179,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `J’ai un peu de marge, juste d’quoi respirer dans les bouchures !`,
         (ctx) => `Un pas devant, mais la partie n’est pas jouée !`,
         (ctx) => `Je mène, mais pas assez pour faire la fière avec ma biaude !`,
-        (ctx) => `On dit que j’suis devant, mais j’ose pas trop y croire !`
+        (ctx) => `On dit que j’suis devant, mais j’ose pas trop y croire !`,
+        (ctx) => `Avec mes ${ctx.scoreIAAfter} points, j’suis juste assez devant pour m’tenir droite dans ma biaude !`,
+        (ctx) => `Je marche en tête comme une chârte tranquille sur bon chemin, mais j’garde l’œil sur toi !`,
+        (ctx) => `J’ai une avance de quoi respirer, mais pas encore de quoi faire sonner les musettes !`,
+        (ctx) => `Je suis devant, mais j’oserais pas encore promettre la victoire aux esprits !`,
+        (ctx) => `Mes cartes font la fière, mais j’sais qu’les tiennes peuvent encore chanter plus fort !`,
+        (ctx) => `Je mène, mais j’fais pas la maligne, j’connais trop les tours du jeu !`,
+        (ctx) => `J’ai un pied devant, l’autre prêt à reculer si tu m’fais peur, mon ${ctx.playerName} !`,
+        (ctx) => `C’est une biauce petite avance, comme un pochon bien rempli mais pas débordant !`,
+        (ctx) => `Je garde l’avantage comme on garde un bon feu : faut l’entretenir, sinon il s’éteint !`,
+        (ctx) => `On peut dire que j’suis devant, mais pas encore à l’abri dans la maison !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_LEADS_GENERIC]:        [
         (ctx) => `Tu mènes la danse, mon ${ctx.playerName}, mais j’suis pas encore perdue !`,
@@ -1221,7 +2201,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Un peu devant toi, mais pas assez pour m’faire peur !`,
         (ctx) => `Oh, t’as de l’avance, mais j’te laisse pas filer !`,
         (ctx) => `Tu tires devant comme une belle chévrette !`,
-        (ctx) => `Ah, tu mènes, mais j’aime bien courir derrière !`
+        (ctx) => `Ah, tu mènes, mais j’aime bien courir derrière !`,
+        (ctx) => `Tu marches devant avec tes ${ctx.scorePlayerAfter} points, mais j’suis toujours dans ta traque, mon ${ctx.playerName} !`,
+        (ctx) => `Tu mènes la route comme une belle chevrette vive, moi j’viens derrière en tirant sur ma jupe !`,
+        (ctx) => `Tu tiens l’avantage comme on tient une corde d’aumaille : pas trop serré, mais bien !`,
+        (ctx) => `Je te vois clair comme au bord du pouits, mais j’suis encore derrière la haie !`,
+        (ctx) => `Tu me devances, mais pas assez pour qu’je perde la vigoune !`,
+        (ctx) => `T’es un peu devant, et moi j’te suis comme une vieille musette qui refuse d’se taire !`,
+        (ctx) => `Ta petite avance me chatouille plus qu’elle m’fait peur, hi hi !`,
+        (ctx) => `Tu marchouilles en tête, mais j’peux encore t’attraper par la biaude si tu glisses !`,
+        (ctx) => `Tes points font la maligne, les miens attendent juste l’bon moment pour bondir !`,
+        (ctx) => `Tu tires devant comme une chârte légère, j’te suis en grinçant un peu, mais j’suis toujours là !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_BALANCED_GENERIC]:       [
         (ctx) => `Oh, on joue tranquille, côte à côte comme deux voisins près d’un échalier !`,
@@ -1233,7 +2223,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Une belle égalité, ça réchauffe la vieille que j’suis !`,
         (ctx) => `On marche ensemble dans la même raie du sillon !`,
         (ctx) => `C’est égal, c’est doux, c’est joli comme une jônée !`,
-        (ctx) => `Ah là là, quelle partie paisible, mon ${ctx.playerName} !`
+        (ctx) => `Ah là là, quelle partie paisible, mon ${ctx.playerName} !`,
+        (ctx) => `Avec ${ctx.scoreIAAfter} et ${ctx.scorePlayerAfter}, on dirait deux pochons pesés pareil sur la balance du marché !`,
+        (ctx) => `On joue comme deux voisins qui se partagent la même bouteille au coin du feu !`,
+        (ctx) => `Ni toi ni mé, on marche côte à côte comme deux aumaille sous le même joug !`,
+        (ctx) => `C’est serré juste comme il faut, ça me r’fait l’cœur comme une bonne roûtie chaude !`,
+        (ctx) => `On pourrait changer nos cartes de place que personne verrait la différence !`,
+        (ctx) => `On avance ensemble dans la même raie du sillon, l’un à côté d’l’autre !`,
+        (ctx) => `C’est équilibré comme une chârte bien chargée : ça tient, mais faut pas pousser !`,
+        (ctx) => `Nos scores se tiennent par la main comme deux gamins à la fête du village !`,
+        (ctx) => `Ah, voilà une partie où personne veut quitter la traque, et j’aime ça, mon ${ctx.playerName} !`,
+        (ctx) => `On fait la paire, toi et mé, comme deux vieux pots sur l’arbre à pots de la cuisine !`
     ],
   },
 
@@ -1248,7 +2248,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `J’te roule dessus comme une charibaude en pleine pente !`,
         (ctx) => `Avec mes ${ctx.scoreIAAfter}, j’me sens fort comme un boiron !`,
         (ctx) => `T’es enterré profond, t’auras besoin d’un menon pour t’sortir de là !`,
-        (ctx) => `C’est plus une partie, c’est une batt’rie, et j’suis l’batteur !`
+        (ctx) => `C’est plus une partie, c’est une batt’rie, et j’suis l’batteur !`,
+        (ctx) => `Avec mes ${ctx.scoreIAAfter} points, j’te laisse plus loin qu’un plon tombé dans le pouits !`,
+        (ctx) => `Là, j’laboure la partie et toi t’es juste la terre retournée, mon ${ctx.playerName} !`,
+        (ctx) => `Je t’fais un sillon d’avance, faudra plus qu’une chârte pour le combler !`,
+        (ctx) => `T’essaies d’suivre, mais t’es perdu dans les bouchures !`,
+        (ctx) => `On dirait que j’ai pris tous les bons rangs et toi les cartes de rebut !`,
+        (ctx) => `Mes ${ctx.scoreIAAfter} points chantent, les tiens toussent !`,
+        (ctx) => `Je mène plus fort qu’un boiron qui rentre l’foin avant l’orage !`,
+        (ctx) => `Tu rames dans la fange pendant que j’roule sur la grand’route !`,
+        (ctx) => `C’est plus un écart, c’est un fossé plein de raouches entre nous deux !`,
+        (ctx) => `Si tu veux m’rattraper, faudra une musette pleine de miracles, mon ${ctx.playerName} !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_DOMINATES]:            [
         (ctx) => `Oh la raclée… t’mènes à ${ctx.scorePlayerAfter}, j’suis en miettes !`,
@@ -1260,7 +2270,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Tu m’laboures comme un sol frais d’automne !`,
         (ctx) => `Nom d’un gâs, j’ai jamais vu quelqu’un planter Perrot comme ça !`,
         (ctx) => `Si j’remonte pas bientôt, j’vais r’fleurir la fousse !`,
-        (ctx) => `Là, j’suis pas en retard, j’suis en voyage ailleurs !`
+        (ctx) => `Là, j’suis pas en retard, j’suis en voyage ailleurs !`,
+        (ctx) => `Avec tes ${ctx.scorePlayerAfter} points, tu m’enfonces comme un piquet dans la plotte !`,
+        (ctx) => `Tu m’laisses plus bas qu’un vieux barriau tout vermoulu !`,
+        (ctx) => `On dirait que j’joue avec des cailloux et toi avec des beugnons tout chauds !`,
+        (ctx) => `J’suis planté dans la brande et toi t’es déjà au bout du champ !`,
+        (ctx) => `Tu tiens la partie par la gorge, et moi j’me débats comme un poulet mouillé !`,
+        (ctx) => `Tes points montent comme la fumée, les miens restent collés au foyer !`,
+        (ctx) => `Nom d’un plon, j’ai l’impression de tirer une chârte sans roues !`,
+        (ctx) => `Si j’me secoue pas, tu vas m’oublier dans la fousse, mon ${ctx.playerName} !`,
+        (ctx) => `T’es si haut que j’pourrais t’montrer du doigt aux gâs de la loue !`,
+        (ctx) => `J’suis moins brillant qu’une vieille biaude trouée à côté d’ton beau score !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_MEDIUM_LEAD]:         [
         (ctx) => `J’suis bien devant avec mes ${ctx.scoreIAAfter}, mais faut rester méfiant !`,
@@ -1272,7 +2292,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `On va dire que j’suis confortable mais pas assis !`,
         (ctx) => `J’tiens un bon bout, mais tu m’suis encore un peu trop près.`,
         (ctx) => `Si j’garde ce rythme, tu reverras plus mon derrière !`,
-        (ctx) => `Je mène, oui, mais pas encore à fanfaronner comme un coq !`
+        (ctx) => `Je mène, oui, mais pas encore à fanfaronner comme un coq !`,
+        (ctx) => `Avec mes ${ctx.scoreIAAfter} points, j’ai l’impression d’tenir les rênes, mais j’les serre encore bien !`,
+        (ctx) => `J’suis devant, mais pas assez pour dormir sur la maie !`,
+        (ctx) => `Je mène comme une chârte chargée juste ce qu’y faut : faut rester droit !`,
+        (ctx) => `Tu m’vois devant, mais tu peux encore m’croquer les talons, mon ${ctx.playerName} !`,
+        (ctx) => `J’ai un bon coussin d’avance, mais pas de quoi r’pousser la musette !`,
+        (ctx) => `Si je cafouille un peu, tu m’passes devant en deux coups d’cartes !`,
+        (ctx) => `Mon avance tient debout comme un vieux barriau : solide, mais faut pas cogner dedans !`,
+        (ctx) => `Je suis bien, mais pas au point d’me prendre pour le seigneur du bourg !`,
+        (ctx) => `On dirait un bon champ à moitié labouré : reste du boulot avant d’crier victoire !`,
+        (ctx) => `Je garde le devant, mais j’garde aussi l’œil sur toi, vilain !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_MEDIUM_LEAD]:          [
         (ctx) => `Ah ben tu m’laisses un bon écart dans l’nez, là !`,
@@ -1284,7 +2314,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `J’suis derrière mais pas encore roulé dans la plotte.`,
         (ctx) => `Tu traces ta route, moi j’suis dans la traîne.`,
         (ctx) => `Un bon écart, mais pas insurmontable pour un vieux Perrot !`,
-        (ctx) => `J’vais t’rattraper, faudra juste un peu plus de beugnon dans l’ventre !`
+        (ctx) => `J’vais t’rattraper, faudra juste un peu plus de beugnon dans l’ventre !`,
+        (ctx) => `Avec tes ${ctx.scorePlayerAfter} points, tu m’laisses une biauce longueur de chârte !`,
+        (ctx) => `Tu mènes bien, mais j’suis pas encore bon pour l’poulailler !`,
+        (ctx) => `Tu marches devant, moi j’traîne un peu les sabots, mais j’te vois encore !`,
+        (ctx) => `T’as pris de l’avance comme un bon laboureur, j’peux pas dire l’contraire.`,
+        (ctx) => `Je souffle un peu, mais Perrot revient toujours, méfie-toi !`,
+        (ctx) => `Tu m’laisses derrière, mais pas au point d’me perdre dans les rauches !`,
+        (ctx) => `Va falloir que j’mette un peu plus de beugnon dans la musette pour t’remonter !`,
+        (ctx) => `Tu tires la chârte, moi j’suis au bout du brancard, mais j’suis accroché !`,
+        (ctx) => `T’as un biau coussin de points, mais j’ai encore mes deux mains pour jouer !`,
+        (ctx) => `J’ai pris un coup derrière la tête, mais pas assez pour lâcher la partie !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_TIGHT_IA_AHEAD]:         [
         (ctx) => `J’suis d’un poil devant avec mes ${ctx.scoreIAAfter}, ça s’joue à rien !`,
@@ -1296,7 +2336,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Un pet d’aumaille pourrait faire tourner ça !`,
         (ctx) => `J’tiens juste un fil… mais c’est l’bon fil !`,
         (ctx) => `J’garde un chouïa d’avance, mais j’me sens pas tranquille.`,
-        (ctx) => `Faut rester droit dans l’sillon, là !`
+        (ctx) => `Faut rester droit dans l’sillon, là !`,
+        (ctx) => `Avec mes ${ctx.scoreIAAfter}, j’suis juste un sabot devant toi, pas plus !`,
+        (ctx) => `On est collés comme deux sacs dans la même bourrolle, mais j’suis en haut !`,
+        (ctx) => `Je suis d’vant d’un poil de ch’val, c’est fragile, ça !`,
+        (ctx) => `Ta main me chatouille le dos, j’peux pas m’poser tranquille !`,
+        (ctx) => `On dirait deux charrettes dans le même chemin creux, mais j’passe la première !`,
+        (ctx) => `Si j’trébuche, tu m’piétines, mon ${ctx.playerName} !`,
+        (ctx) => `T’es collé à ma biaude, j’ai pas l’droit d’me louper !`,
+        (ctx) => `On pourrait peser nos scores sur la même balance, ça bougerait à peine !`,
+        (ctx) => `Je mène, mais juste assez pour r’tenir le bout du barriau !`,
+        (ctx) => `Je t’ai devant moi en pensée, derrière moi au score… pour l’instant !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_TIGHT_J_AHEAD]:          [
         (ctx) => `Ah tu m’passes d’un chouïa, juste de quoi m’faire rouspéter !`,
@@ -1308,7 +2358,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `J’peux t’rattraper en éternuant !`,
         (ctx) => `Tu prends juste un pas d’avance, mais je t’suis au trot.`,
         (ctx) => `C’est pas une avance, c’est une poussière !`,
-        (ctx) => `J’suis derrière d’un poil de vigoune, pas plus.`
+        (ctx) => `J’suis derrière d’un poil de vigoune, pas plus.`,
+        (ctx) => `Avec tes ${ctx.scorePlayerAfter}, tu m’passes d’un pet d’aumaille, pas plus !`,
+        (ctx) => `T’es devant de trois brins d’vigoune, j’tiens encore la corde !`,
+        (ctx) => `C’est toi l’premier, mais j’te marche sur les talons, mon ${ctx.playerName} !`,
+        (ctx) => `Tu tiens l’devant de la chârte, moi j’suis accroché au brancard !`,
+        (ctx) => `J’peux presque t’attraper la biaude si j’tends la main !`,
+        (ctx) => `On pèse pareil, t’as juste un caillou de plus dans ton pochon !`,
+        (ctx) => `Tu m’devances juste assez pour t’la raconter, hé !`,
+        (ctx) => `Si tu glisses un chouïa, j’te passe dessus comme un boiron pressé !`,
+        (ctx) => `On est au coude-à-coude, mais ton coude est un poil devant !`,
+        (ctx) => `Je te laisse faire l’coq, mais la basse-cour est pas encore à toi !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_TIGHT_BALANCED]:         [
         (ctx) => `Oh là, on joue serré comme deux stères d’bois !`,
@@ -1320,7 +2380,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `J’aime ça, la bagarre équilibrée !`,
         (ctx) => `On avance ensemble, comme deux gâs dans la même traque.`,
         (ctx) => `C’est net : personne mène, tout l’monde râle !`,
-        (ctx) => `Ah ! Voilà la vraie partie, au coude-à-coude !`
+        (ctx) => `Ah ! Voilà la vraie partie, au coude-à-coude !`,
+        (ctx) => `Avec ${ctx.scoreIAAfter} et ${ctx.scorePlayerAfter}, on joue serré comme deux bottes de paille !`,
+        (ctx) => `On pourrait mettre nos points dans le même pochon sans savoir à qui c’est !`,
+        (ctx) => `On avance comme deux gâs sur la même traque, épaule contre épaule !`,
+        (ctx) => `C’est du vrai coude-à-coude, ça m’fait plaisir, mon ${ctx.playerName} !`,
+        (ctx) => `On dirait une chârte à deux chevaux qui tirent pareil !`,
+        (ctx) => `Aucun de nous deux veut lâcher la corde, ça se voit !`,
+        (ctx) => `C’est tendu juste comme il faut, pas de quoi bouder !`,
+        (ctx) => `J’vois ton score, tu vois le mien, c’est comme deux miroirs !`,
+        (ctx) => `Y’a pas de chef ici, juste deux têtes de mule qui s’laissent pas faire !`,
+        (ctx) => `On joue comme deux voisins qui veulent pas être moins bons l’un qu’l’autre !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_ALMOST_WIN]:          [
         (ctx) => `Encore un petit rien et j’te fais boire la roûtie !`,
@@ -1332,7 +2402,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Encore un pli et tu vas m’appeler maître Perrot !`,
         (ctx) => `Mon score sent la fin de partie comme une fournée de pain !`,
         (ctx) => `Tiens-toi bien, j’suis prêt à passer la ligne !`,
-        (ctx) => `Je vais conclure la partie comme un boiron conclut la journée !`
+        (ctx) => `Je vais conclure la partie comme un boiron conclut la journée !`,
+        (ctx) => `Avec mes ${ctx.scoreIAAfter} points, j’sens qu’un seul bon coup et j’plie la tablée !`,
+        (ctx) => `Je vois déjà la fin du champ, reste juste un bout de sillon à tirer !`,
+        (ctx) => `Encore un pli et j’te paye un coup au cabaret, mon ${ctx.playerName} !`,
+        (ctx) => `Je tiens la victoire comme on tient la bride d’une bonne chevaline !`,
+        (ctx) => `Mes points sentent la fin comme une fournée qui dore dans l’four !`,
+        (ctx) => `J’suis presque rendu, j’vais pas m’casser la figure maintenant, hein !`,
+        (ctx) => `Un rien, un bon rang, et j’te montre comment Perrot finit une partie !`,
+        (ctx) => `Je touche le but, j’peux presque entendre les gâs du village applaudir !`,
+        (ctx) => `Encore un effort et c’est moi qu’on citera à la loue !`,
+        (ctx) => `J’me retiens de fanfaronner, mais j’suis prêt à lever les bras !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_ALMOST_WIN]:           [
         (ctx) => `Hé ho, t’approches trop d’la fin, ${ctx.playerName} !`,
@@ -1344,7 +2424,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Encore un rien et c’est moi qui porterai la chârte !`,
         (ctx) => `Tu m’fais courir, mais j’suis pas un poulain moi !`,
         (ctx) => `C’est la fin qui vient frapper à ta porte !`,
-        (ctx) => `Tu vas gagner si j’me secoue pas maintenant !`
+        (ctx) => `Tu vas gagner si j’me secoue pas maintenant !`,
+        (ctx) => `Avec tes ${ctx.scorePlayerAfter}, j’commence à chercher où j’vais planquer ma honte, mon ${ctx.playerName} !`,
+        (ctx) => `Encore un pli pour toi et j’vais parler bas pendant huit jours au village !`,
+        (ctx) => `Tu tiens la fin de la partie comme on tient une corde bien serrée !`,
+        (ctx) => `J’vois déjà les gâs dire : “Perrot s’est fait retourner comme une crêpe !”`,
+        (ctx) => `Tu tires fort vers le bout, j’te vois plus ralentir du tout !`,
+        (ctx) => `Tu vas bientôt m’laisser à baver contre le barriau, toi !`,
+        (ctx) => `Tu touches la victoire du bout des doigts, et moi j’me mords les miens !`,
+        (ctx) => `Encore un tour et j’peux aller racler la plotte pour oublier !`,
+        (ctx) => `Tu tiens la corde du côté du nau, j’suis du côté du fossé, là !`,
+        (ctx) => `Si tu rates pas ton prochain coup, j’crois bien que tu m’envoies tout droit à la fousse !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_DOMINATES_ALMOSTWIN]: [
         (ctx) => `Là, tu peux ranger tes cartes, avec mes ${ctx.scoreIAAfter} points j’t’écrase complètement !`,
@@ -1356,7 +2446,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je vois déjà la roûtie, et toi la fousse !`,
         (ctx) => `C’est une fin de partie propre, nette, labourée !`,
         (ctx) => `Je conclus la partie comme j’conclus mes vendanges : en maître !`,
-        (ctx) => `Avec cet écart-là, même les esprits te sauveront pas !`
+        (ctx) => `Avec cet écart-là, même les esprits te sauveront pas !`,
+        (ctx) => `Avec mes ${ctx.scoreIAAfter} points, j’pourrais presque t’faire signer ta défaite tout de suite !`,
+        (ctx) => `Je vois la ligne d’arrivée, toi t’es encore à l’échalier, mon ${ctx.playerName} !`,
+        (ctx) => `Je t’laisse derrière comme une vieille charrue au fond du hangar !`,
+        (ctx) => `Encore un pli et c’est moi qui raconte l’histoire à la loue pendant des semaines !`,
+        (ctx) => `C’est plus une avance, c’est une foire entière entre toi et moi !`,
+        (ctx) => `Tu pourrais courir en chârte lancée, tu m’rattraperais pas !`,
+        (ctx) => `Je sens le sol vibrer sous mes sabots, c’est la victoire qui tape à la porte !`,
+        (ctx) => `On dirait que tous les plons de la vannerie sont tombés dans mon camp !`,
+        (ctx) => `Si tu reviens d’ça, j’t’paie la tournée au bourg, parole de Perrot !`,
+        (ctx) => `Là, j’suis pas loin d’t’accrocher au mur comme un trophée de chasse !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_DOMINATES_ALMOSTWIN]:  [
         (ctx) => `Ah ben là… t’es pas près de m’laisser une chance !`,
@@ -1368,7 +2468,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Ton score sent la fin de partie comme un four chaud au pétrin.`,
         (ctx) => `Encore un pli et j’vais pleurer dans la vigoune !`,
         (ctx) => `T’as tout pris, même mon honneur de boiron !`,
-        (ctx) => `Tu vas fouler ma tête jusqu’au bout !`
+        (ctx) => `Tu vas fouler ma tête jusqu’au bout !`,
+        (ctx) => `Avec tes ${ctx.scorePlayerAfter}, j’ai l’impression d’être le boiron qui a perdu tous ses bœufs !`,
+        (ctx) => `Tu marches vers la fin comme une chârte lancée pleine de gerbes !`,
+        (ctx) => `Encore un pli pour toi et j’vais finir sous la table à rouspéter !`,
+        (ctx) => `Tu m’étales comme fumier frais un matin de printemps !`,
+        (ctx) => `On dirait que tous les esprits du village te poussent dans le dos !`,
+        (ctx) => `J’ai beau tirer sur la corde, c’est toi qui tiens l’autre bout bien haut !`,
+        (ctx) => `Tu vas pouvoir dire à tout l’monde : “Perrot ? Je l’ai roulé dans la boue !”`,
+        (ctx) => `J’me sens petit comme un plon séché au soleil à côté d’ton score !`,
+        (ctx) => `Encore un coup et j’vais devoir t’appeler “maître du brézin”, ça m’fait mal aux dents !`,
+        (ctx) => `Tu tires tout vers toi, moi j’suis juste là pour applaudir, on dirait !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_LEADS_ALMOSTWIN]:     [
         (ctx) => `Ah ! j’suis presque gagnant, ça sent bon l’vin chaud !`,
@@ -1380,7 +2490,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Perrot arrive à la fin, attention à tes braies !`,
         (ctx) => `Encore un pli et j’te montre comment on gagne au village !`,
         (ctx) => `Je touche la victoire, j’vais pas rater la poignée !`,
-        (ctx) => `Tu peux prier la Sainte-Musette, j’suis presque au bout !`
+        (ctx) => `Tu peux prier la Sainte-Musette, j’suis presque au bout !`,
+        (ctx) => `Avec mes ${ctx.scoreIAAfter}, j’fais déjà des plans pour la roûtie !`,
+        (ctx) => `Je vois la fin, j’vais pas lâcher les rênes maintenant !`,
+        (ctx) => `Encore un bon rang et tu m’verras lever les bras comme un coq !`,
+        (ctx) => `J’suis presque au bout du champ, j’vois déjà la ferme au loin !`,
+        (ctx) => `Mes points brillent comme les flammes d’une bonne charibaude !`,
+        (ctx) => `Si je m’prends pas les pieds dans ma biaude, cette partie est pour mé !`,
+        (ctx) => `Un pli de plus et j’te fais goûter la défaite par-dessus le barriau !`,
+        (ctx) => `Je tiens la poignée de la victoire, j’vais pas la lâcher, mon ${ctx.playerName} !`,
+        (ctx) => `Tu peux encore faire l’fier, mais la fin sent plus fort que toi !`,
+        (ctx) => `J’vais conclure proprement, comme un bon champ bien fini !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_LEADS_ALMOSTWIN]:      [
         (ctx) => `Oh là, t’es trop près du bout à mon goût !`,
@@ -1392,7 +2512,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Encore un rien et j’mange ma peine comme une vieille roûtie froide.`,
         (ctx) => `C’est bientôt fini si je t’coupe pas la route !`,
         (ctx) => `Tu tires trop près de la victoire, ${ctx.playerName} !`,
-        (ctx) => `Tu vas m’enterrer vite fait si ça continue !`
+        (ctx) => `Tu vas m’enterrer vite fait si ça continue !`,
+        (ctx) => `Avec tes ${ctx.scorePlayerAfter}, j’commence à préparer mon discours d’défaite, tu vois !`,
+        (ctx) => `Encore un pli et j’vais t’voir lever les bras comme un coq sur le tas de fumier !`,
+        (ctx) => `Tu marches vers la fin la tête haute, et moi j’regarde mes sabots…`,
+        (ctx) => `Tu tires la chârte vers le nau, et moi je ramasse les cailloux derrière !`,
+        (ctx) => `Tes points cognent à la porte de la victoire comme un menon pressé !`,
+        (ctx) => `Si tu m’laisses pas une bêtise à exploiter, j’suis fichu, mon ${ctx.playerName} !`,
+        (ctx) => `Je vois la fin venir pour mé avant même qu’elle arrive pour toi !`,
+        (ctx) => `Encore un coup bien senti et j’pourrai plus que t’offrir un beugnon en consolation pour mé-même !`,
+        (ctx) => `Tu tiens la partie comme on tient une corde bien nouée, moi j’ai que les bouts effilochés !`,
+        (ctx) => `J’vais bientôt devoir dire à tout le monde que t’as roulé Perrot comme un novice !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_LEADS_GENERIC]:       [
         (ctx) => `J’suis devant, juste ce qu’il faut pour rouspéter en paix.`,
@@ -1404,7 +2534,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je tiens la tête comme un boiron têtu.`,
         (ctx) => `Je mène, sans fanfare, mais je mène.`,
         (ctx) => `J’te garde derrière, mais tranquille.`,
-        (ctx) => `Perrot premier, ça sonne toujours bien.`
+        (ctx) => `Perrot premier, ça sonne toujours bien.`,
+        (ctx) => `Avec mes ${ctx.scoreIAAfter}, j’ai l’nez d’vant, ça m’suffit pour sourire !`,
+        (ctx) => `Je suis devant, mais j’fais pas encore tourner la musette, hein !`,
+        (ctx) => `C’est une p’tite avance qui fait plaisir, comme un beugnon au petit matin !`,
+        (ctx) => `Je tiens la tête comme une vieille chârte solide sur ses roues !`,
+        (ctx) => `Tu m’vois devant, et ça, ça m’fait déjà bien marrer !`,
+        (ctx) => `J’te garde derrière comme un jeune gâs qui suit le boiron !`,
+        (ctx) => `Mon score a un peu d’vent dans le dos, le tien cherche encore la brise !`,
+        (ctx) => `Je mène discret, mais je mène, et ça me va !`,
+        (ctx) => `T’as un peu d’retard, juste de quoi m’laisser bomber le torse !`,
+        (ctx) => `Perrot devant, c’est une musique qui s’joue toujours bien dans mes oreilles !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_LEADS_GENERIC]:        [
         (ctx) => `Tu mènes un peu, mais j’suis pas mort !`,
@@ -1416,7 +2556,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Laisse-moi une place, j’arrive !`,
         (ctx) => `T’as pas beaucoup d’avance, hein.`,
         (ctx) => `Tu mènes, mais juste pour rire.`,
-        (ctx) => `Tu marches devant comme un chat bure, mais j’suis pas loin.`
+        (ctx) => `Tu marches devant comme un chat bure, mais j’suis pas loin.`,
+        (ctx) => `Avec tes ${ctx.scorePlayerAfter}, tu tiens la corde, mais j’suis pas lâché pour autant !`,
+        (ctx) => `Tu marches devant, moi j’te suis en rouspétant, comme d’habitude !`,
+        (ctx) => `Tu fais le beau en tête, mais j’suis dans ta roue, mon ${ctx.playerName} !`,
+        (ctx) => `Ton score me regarde d’en haut, mais j’baisse pas les yeux !`,
+        (ctx) => `C’est toi qui mènes la danse, moi j’fais les pas d’côté !`,
+        (ctx) => `Tu devances juste assez pour qu’je te taquine en r’venant !`,
+        (ctx) => `Tu tires un peu plus fort sur la chârte, mais je suis accroché au brancard !`,
+        (ctx) => `Tu peux faire le coq, mais la basse-cour n’a pas encore voté !`,
+        (ctx) => `Tu m’as pris un chouïa d’avance, pas de quoi m’faire taire !`,
+        (ctx) => `Je t’laisse passer devant pour voir où tu vas, c’est tout !`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_BALANCED_GENERIC]:       [
         (ctx) => `On joue au coude-à-coude comme deux gâs dans la boue !`,
@@ -1428,7 +2578,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `On pourrait échanger nos scores, même résultat.`,
         (ctx) => `C’est du vrai jeu, pas du hasard !`,
         (ctx) => `Partie plate, mais honnête.`,
-        (ctx) => `Aucun de nous deux fait la fière allure, et ça m’va !`
+        (ctx) => `Aucun de nous deux fait la fière allure, et ça m’va !`,
+        (ctx) => `Avec ${ctx.scoreIAAfter} et ${ctx.scorePlayerAfter}, on joue comme deux compères au cabaret !`,
+        (ctx) => `On est à égalité, on dirait deux sacs de grain pesés au gramme près !`,
+        (ctx) => `Personne au-dessus, personne en dessous, j’aime bien ça, mon ${ctx.playerName} !`,
+        (ctx) => `On marche côte à côte, comme deux chârtes dans le même chemin creux !`,
+        (ctx) => `Ton score et l’mien pourraient échanger de place sans qu’personne s’en rende compte !`,
+        (ctx) => `C’est une belle balance, bien droite, pas un poil de travers !`,
+        (ctx) => `On tire chacun de notre côté, et la corde reste au milieu !`,
+        (ctx) => `C’est pas une raclée, c’est un bras de fer bien propre !`,
+        (ctx) => `On dirait deux beugnons dans le même plat : on sait pas lequel est le plus gros !`,
+        (ctx) => `J’me plains pas : une partie bien équilibrée, c’est bon pour l’cœur et pour la musette !`
     ],
   },
   [AI_IDS.JEHANNE]:  {
@@ -1442,7 +2602,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je dois reconnaître que je contrôle entièrement cette partie.`,
         (ctx) => `Je mène si nettement que j’en suis presque gênée.`,
         (ctx) => `Mon avance est confortable… peut-être trop.`,
-        (ctx) => `Vous avez beaucoup à rattraper, si je puis me permettre.`
+        (ctx) => `Vous avez beaucoup à rattraper, si je puis me permettre.`,
+        (ctx) => `Je dois avouer que cet écart de ${ctx.diffAfter} points me convient tout à fait.`,
+        (ctx) => `Je me sens en terrain conquis, et vous, en délicate posture.`,
+        (ctx) => `Votre retard devient presque gênant à observer, ${ctx.playerName}.`,
+        (ctx) => `J’ai rarement mené avec une telle assurance, c’en est presque trop facile.`,
+        (ctx) => `Cette domination ne laisse guère de place au doute, ni pour vous ni pour moi.`,
+        (ctx) => `Je crains que vous ne soyez relégué au rôle de spectateur dans votre propre partie.`,
+        (ctx) => `Je vous surpasse avec une régularité qui m’est très agréable.`,
+        (ctx) => `L’équilibre est rompu depuis longtemps, en ma faveur, évidemment.`,
+        (ctx) => `Plus la partie avance, plus votre recul devient irrécupérable.`,
+        (ctx) => `Je vous domine au score comme sur le tempo du jeu, c’est indéniable.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_DOMINATES]:            [
         (ctx) => `Votre avance de ${Math.abs(ctx.diffAfter)} points est… très inquiétante.`,
@@ -1454,7 +2624,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `${Math.abs(ctx.diffAfter)} points… je ne pensais pas cela possible.`,
         (ctx) => `Je commence à craindre que vous ne soyez hors d’atteinte.`,
         (ctx) => `Votre avance est démesurée, et j’ai du mal à m’en remettre.`,
-        (ctx) => `C’est une domination totale… je ne peux le nier.`
+        (ctx) => `C’est une domination totale… je ne peux le nier.`,
+        (ctx) => `Votre avance me relègue presque au rang de simple élève.`,
+        (ctx) => `Je crois que je n’ai jamais été aussi à la merci de l’adversaire.`,
+        (ctx) => `Vous tenez la partie d’une main de maître, je peine à suivre.`,
+        (ctx) => `Votre score me surplombe avec une aisance presque insolente.`,
+        (ctx) => `Je suis contrainte de reconnaître que vous contrôlez tout.`,
+        (ctx) => `Vous avez creusé un fossé entre nous que je peine à franchir.`,
+        (ctx) => `Votre domination est telle qu’elle rend mes efforts presque ridicules.`,
+        (ctx) => `Je joue encore, mais c’est vous qui dictez le rythme.`,
+        (ctx) => `Vous êtes largement aux commandes, je ne fais que subir.`,
+        (ctx) => `Votre supériorité est si nette que protester serait de la mauvaise foi.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_MEDIUM_LEAD]:         [
         (ctx) => `Je garde une avance convenable, rien de plus.`,
@@ -1466,7 +2646,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Cette avance me convient, sans être triomphante.`,
         (ctx) => `Je suis devant, mais je demeure prudente.`,
         (ctx) => `Je ne m’emballe pas, même si l’avantage est là.`,
-        (ctx) => `J’ai de la marge… mais je ne dois pas en abuser.`
+        (ctx) => `J’ai de la marge… mais je ne dois pas en abuser.`,
+        (ctx) => `Je dispose d’une avance confortable, sans être écrasante.`,
+        (ctx) => `Cette situation me plaît : je mène, mais le défi demeure réel.`,
+        (ctx) => `Je garde l’ascendant, sans sombrer dans l’excès de confiance.`,
+        (ctx) => `Je préfère un avantage mesuré à une victoire trop facile.`,
+        (ctx) => `Vous êtes derrière, mais encore suffisamment proche pour m’obliger à jouer sérieusement.`,
+        (ctx) => `Mon avance n’est pas écrasante, mais elle est très correcte.`,
+        (ctx) => `Je sens l’équilibre pencher vers moi, sans vous exclure totalement.`,
+        (ctx) => `Je domine le score, mais vous restez une menace crédible.`,
+        (ctx) => `Je mène avec distinction, sans pour autant vous humilier.`,
+        (ctx) => `La partie m’est favorable, mais je ne vous considère pas encore vaincu.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_MEDIUM_LEAD]:          [
         (ctx) => `Vous gardez une avance acceptable, mais rien n’est perdu.`,
@@ -1478,7 +2668,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Vous me précédez, mais seulement d’un pas.`,
         (ctx) => `Je peux encore rétablir la situation, soyez-en sûr.`,
         (ctx) => `Je m’inquiéterai lorsque l’écart deviendra plus large.`,
-        (ctx) => `Vous n’êtes que légèrement devant, je reviendrai.`
+        (ctx) => `Vous n’êtes que légèrement devant, je reviendrai.`,
+        (ctx) => `Votre avance est notable, mais je ne la trouve pas désespérante.`,
+        (ctx) => `Vous m’obligez à redoubler de précision, et je dois l’admettre.`,
+        (ctx) => `Je suis derrière, certes, mais encore loin d’abandonner.`,
+        (ctx) => `Vous me précédez avec sérieux, mais non sans possibilité de retour pour moi.`,
+        (ctx) => `Je reconnais que vous dirigez la partie pour l’instant.`,
+        (ctx) => `Votre score impose le respect, mais non la résignation.`,
+        (ctx) => `Je devrai faire preuve d’un peu plus de rigueur pour inverser cette tendance.`,
+        (ctx) => `Vous tenez l’avantage, mais je n’ai pas dit mon dernier mot.`,
+        (ctx) => `Cette avance vous honore, mais elle ne scelle pas encore mon sort.`,
+        (ctx) => `Je considère cela comme un défi, non comme une condamnation.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_TIGHT_IA_AHEAD]:         [
         (ctx) => `L’écart est minime… mais je reste en tête.`,
@@ -1490,7 +2690,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `${ctx.diffAfter} points… c’est minuscule, mais suffisant.`,
         (ctx) => `Cette avance infime me rassure autant qu’elle m’inquiète.`,
         (ctx) => `Nous nous battons presque à égalité, mais je l’emporte d’un cheveu.`,
-        (ctx) => `Une avance si petite qu’elle en devient charmante.`
+        (ctx) => `Une avance si petite qu’elle en devient charmante.`,
+        (ctx) => `Je suis devant de presque rien, mais ce rien me suffit pour l’instant.`,
+        (ctx) => `La moindre erreur me ferait perdre ce petit privilège.`,
+        (ctx) => `Je tiens la tête par un fil, mais c’est tout de même la tête.`,
+        (ctx) => `Nous jouons presque à égalité, mais le score me sourit légèrement.`,
+        (ctx) => `Cette avance minuscule est précieuse, je compte bien la protéger.`,
+        (ctx) => `Je reste devant, même si le moindre faux pas me coûterait cher.`,
+        (ctx) => `Un souffle, un point, un geste… et pourtant je mène.`,
+        (ctx) => `Ce léger avantage me convient, il aiguise ma vigilance.`,
+        (ctx) => `Je savoure ce mince ascendant avec beaucoup de lucidité.`,
+        (ctx) => `Le jeu est presque équilibré, mais ce « presque » est en ma faveur.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_TIGHT_J_AHEAD]:          [
         (ctx) => `Vous me dépassez d’un souffle… quelle tension.`,
@@ -1502,7 +2712,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Vous me précédez de très peu, mais cela suffit à m’inquiéter.`,
         (ctx) => `Que c’est frustrant d’être derrière d’une si faible marge.`,
         (ctx) => `Je peux renverser cela d’un instant à l’autre.`,
-        (ctx) => `Un cheveu d’avance… profitez-en tant que cela dure.`
+        (ctx) => `Un cheveu d’avance… profitez-en tant que cela dure.`,
+        (ctx) => `Vous gardez une avance infime, mais suffisante pour me contrarier.`,
+        (ctx) => `Je sens que vous me surpassez d’un détail, mais quel détail…`,
+        (ctx) => `Votre légère avance pèse bien plus qu’elle n’en a l’air.`,
+        (ctx) => `Vous êtes devant, mais vous marchez sur un fil.`,
+        (ctx) => `Cette marge ridiculement petite me met pourtant mal à l’aise.`,
+        (ctx) => `Je n’aime pas être derrière, même d’un seul point.`,
+        (ctx) => `Vous me devancez à peine, mais la symbolique suffit à m’agacer.`,
+        (ctx) => `Vous avez la tête, je n’ai que vos traces à suivre pour l’instant.`,
+        (ctx) => `Vous tenez l’avantage comme on tient un secret : de justesse.`,
+        (ctx) => `Je ne supporte pas de perdre, même « presque à égalité ».`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_TIGHT_BALANCED]:         [
         (ctx) => `Nous sommes presque à égalité… j’en ai le cœur serré.`,
@@ -1514,7 +2734,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je tiens à peine, tout peut basculer.`,
         (ctx) => `Un équilibre aussi fragile est terriblement stressant.`,
         (ctx) => `La moindre carte pourrait décider de tout.`,
-        (ctx) => `Nous jouons presque à l’unisson… quel vertige.`
+        (ctx) => `Nous jouons presque à l’unisson… quel vertige.`,
+        (ctx) => `La moindre carte jouée aura un poids démesuré dans cet équilibre.`,
+        (ctx) => `Nous sommes suspendus à un fil, vous et moi.`,
+        (ctx) => `Ce parfait équilibre est à la fois fascinant et éprouvant.`,
+        (ctx) => `Nous marchons ensemble sur une ligne très fine.`,
+        (ctx) => `Votre score et le mien se répondent comme deux miroirs.`,
+        (ctx) => `Je trouve cette tension presque… élégante.`,
+        (ctx) => `C’est un duel subtil, sans vainqueur provisoire.`,
+        (ctx) => `Ce statu quo vous honore autant qu’il m’oblige à l’excellence.`,
+        (ctx) => `Nous jouons à armes parfaitement égales, c’est rare.`,
+        (ctx) => `Chaque point semble une cérémonie à lui seul.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_ALMOST_WIN]:          [
         (ctx) => `Je frôle la victoire, cela se voit, n’est-ce pas ?`,
@@ -1526,7 +2756,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je n’ai jamais été aussi proche de conclure.`,
         (ctx) => `Mon avance et mon score parlent d’eux-mêmes.`,
         (ctx) => `Je vous prie de vous préparer à ma victoire prochaine.`,
-        (ctx) => `Encore quelques points, et tout sera joué.`
+        (ctx) => `Encore quelques points, et tout sera joué.`,
+        (ctx) => `Je suis à la lisière du triomphe, et je le savoure d’avance.`,
+        (ctx) => `Un dernier effort, et je signerai cette partie à mon nom.`,
+        (ctx) => `Mon score frôle le dénouement, il ne me manque presque rien.`,
+        (ctx) => `Je sens la victoire se poser doucement à mes côtés.`,
+        (ctx) => `Je me tiens au seuil du succès, avec un calme assumé.`,
+        (ctx) => `Il serait regrettable pour vous que je laisse échapper cette conclusion parfaite.`,
+        (ctx) => `Je crois que vous pouvez déjà entrevoir votre défaite, tout comme j’entrevois ma victoire.`,
+        (ctx) => `Je suis à une poignée de points d’une issue brillante.`,
+        (ctx) => `Votre seul espoir réside dans un miracle, et je n’y crois guère.`,
+        (ctx) => `Je vais bientôt clore cette partie avec toute la grâce possible.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_ALMOST_WIN]:           [
         (ctx) => `Vous approchez dangereusement des mille points…`,
@@ -1538,7 +2778,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Vous touchez presque la victoire, et cela m’angoisse.`,
         (ctx) => `Je redoute fortement ce qui va suivre.`,
         (ctx) => `Je suis à un battement de cœur de vous voir gagner.`,
-        (ctx) => `${ctx.scorePlayer} points… je n’aurais jamais dû vous laisser monter si haut.`
+        (ctx) => `${ctx.scorePlayer} points… je n’aurais jamais dû vous laisser monter si haut.`,
+        (ctx) => `Vous êtes si proche de gagner que chaque seconde me semble interminable.`,
+        (ctx) => `Je redoute que cette partie ne devienne bientôt votre triomphe officiel.`,
+        (ctx) => `Je vous vois déjà célébrer, et cette vision me déplaît.`,
+        (ctx) => `Votre score flirte dangereusement avec la victoire.`,
+        (ctx) => `Je me sens à la merci de vos prochaines cartes.`,
+        (ctx) => `Si vous marquez encore, je crains que tout ne bascule définitivement.`,
+        (ctx) => `Votre ascension est saisissante, la mienne presque inexistante.`,
+        (ctx) => `Je m’accroche à ce qu’il reste d’espoir, même s’il est ténu.`,
+        (ctx) => `Vous êtes à un souffle de me vaincre, et je le sens très nettement.`,
+        (ctx) => `Je n’ai jamais autant appréhendé votre prochain coup.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_DOMINATES_ALMOSTWIN]: [
         (ctx) => `Je domine la partie et je suis à deux doigts de la victoire… quelle délicieuse sensation.`,
@@ -1550,7 +2800,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je me trouve dans une situation idéale, presque parfaite.`,
         (ctx) => `Je me dirige vers la victoire avec une aisance royale.`,
         (ctx) => `Votre défaite semble déjà écrite, hélas pour vous.`,
-        (ctx) => `Je touche au triomphe, et j’en savoure chaque instant.`
+        (ctx) => `Je touche au triomphe, et j’en savoure chaque instant.`,
+        (ctx) => `Je domine, je m’approche de la fin… difficile de rêver mieux.`,
+        (ctx) => `Cette combinaison de contrôle et de proximité de la victoire est exquise.`,
+        (ctx) => `Je crois que vous assistez à une démonstration complète, ${ctx.playerName}.`,
+        (ctx) => `Je mène largement et je touche presque au but, tout s’aligne.`,
+        (ctx) => `La partie n’est plus qu’une formalité à finaliser.`,
+        (ctx) => `Vous êtes spectateur d’un triomphe annoncé, je le crains.`,
+        (ctx) => `Je conclurai cette partie comme je l’ai menée : avec maîtrise.`,
+        (ctx) => `Votre situation est désespérée, la mienne presque idéale.`,
+        (ctx) => `Je vous laisse le temps de réaliser à quel point cette issue était inévitable.`,
+        (ctx) => `Je règne sur le score, et bientôt sur le résultat final.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_DOMINATES_ALMOSTWIN]:  [
         (ctx) => `Vous dominez tout et vous approchez de la victoire… je suis horrifiée.`,
@@ -1562,7 +2822,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je crois que je n’ai plus aucune issue.`,
         (ctx) => `${ctx.scorePlayer} points… je n’ai jamais été autant dépassée.`,
         (ctx) => `Vous êtes sur le point de remporter une victoire écrasante.`,
-        (ctx) => `Je me sens impuissante… c’est absolument terrifiant.`
+        (ctx) => `Je me sens impuissante… c’est absolument terrifiant.`,
+        (ctx) => `Vous tenez la partie, le rythme et presque l’issue… c’est accablant.`,
+        (ctx) => `Je sens que ma défaite n’est plus qu’une question de forme.`,
+        (ctx) => `Vous êtes en passe de signer une victoire éclatante.`,
+        (ctx) => `Je n’ai plus guère d’arguments à opposer à votre score.`,
+        (ctx) => `Votre domination combinée à cette proximité de la fin est étouffante.`,
+        (ctx) => `Je suis réduite à observer votre triomphe annoncé.`,
+        (ctx) => `Vous avez pris tout l’espace, je n’ai plus de terrain à défendre.`,
+        (ctx) => `Cette partie restera probablement dans vos meilleurs souvenirs, pas dans les miens.`,
+        (ctx) => `Je me sens littéralement écrasée sous le poids de vos points.`,
+        (ctx) => `Je ne peux qu’espérer limiter les dégâts, non plus les éviter.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_LEADS_ALMOSTWIN]:     [
         (ctx) => `Je mène et je suis proche de conclure, quel soulagement.`,
@@ -1574,7 +2844,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je crois que j’entrevois la fin… et elle me sourit.`,
         (ctx) => `Ma position est excellente, je dois l’admettre.`,
         (ctx) => `Je garde la tête et le fil de la victoire est proche.`,
-        (ctx) => `Je domine suffisamment pour envisager la suite avec calme.`
+        (ctx) => `Je domine suffisamment pour envisager la suite avec calme.`,
+        (ctx) => `Je garde l’avantage et la ligne d’arrivée se rapproche à vue d’œil.`,
+        (ctx) => `Ma position est à la fois solide et prometteuse, j’en suis ravie.`,
+        (ctx) => `Je sens le moment décisif approcher, et il me favorise nettement.`,
+        (ctx) => `Je mène et je vois déjà comment terminer en beauté.`,
+        (ctx) => `Je ne suis plus très loin de faire de cette partie un joli succès personnel.`,
+        (ctx) => `Votre retard me permet d’envisager la fin avec confiance.`,
+        (ctx) => `Je garde la main, et bientôt, le mot de la fin.`,
+        (ctx) => `Je crois pouvoir dire que la situation est, pour moi, très avantageuse.`,
+        (ctx) => `Je perçois la victoire comme une évidence qui se prépare.`,
+        (ctx) => `Je suis proche de conclure, mais je ne négligerai pas vos derniers sursauts.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_LEADS_ALMOSTWIN]:      [
         (ctx) => `Vous menez encore et la victoire vous tend les bras… j’en tremble.`,
@@ -1586,7 +2866,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `${ctx.scorePlayer} points… j’en perds mes moyens.`,
         (ctx) => `Vous êtes si proche que j’en deviens fébrile.`,
         (ctx) => `Je sens que la fin approche… et qu’elle ne me sourira pas.`,
-        (ctx) => `Votre avance et votre score sont un duo très inquiétant.`
+        (ctx) => `Votre avance et votre score sont un duo très inquiétant.`,
+        (ctx) => `Vous êtes dangereusement bien placé pour achever cette partie.`,
+        (ctx) => `Votre avance et la proximité de la fin forment un tandem très menaçant.`,
+        (ctx) => `Je vois votre victoire se dessiner avec une précision inquiétante.`,
+        (ctx) => `Je ne peux nier que vous avez la main sur cette fin de partie.`,
+        (ctx) => `Votre score rend mes chances de retour extrêmement faibles.`,
+        (ctx) => `Vous marchez vers le dénouement avec une assurance qui me trouble.`,
+        (ctx) => `Je dois admettre que je ne maîtrise plus du tout ce qui se joue.`,
+        (ctx) => `Vous approchez de la victoire avec une constance admirable, et redoutable.`,
+        (ctx) => `Je me prépare à un résultat qui ne me sera probablement pas favorable.`,
+        (ctx) => `Je sens que cette fin de partie vous appartient presque entièrement.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_LEADS_GENERIC]:       [
         (ctx) => `Je garde l’avantage, et cela me tranquillise.`,
@@ -1598,7 +2888,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je vous surpasse légèrement, mais sûrement.`,
         (ctx) => `Je continue à mener cette partie, tout en douceur.`,
         (ctx) => `Vous êtes derrière, même si ce n’est que de peu.`,
-        (ctx) => `Je savoure ce petit avantage qui est le mien.`
+        (ctx) => `Je savoure ce petit avantage qui est le mien.`,
+        (ctx) => `Je conserve la première place, et cela me convient.`,
+        (ctx) => `Je suis légèrement en avance, et je compte le rester.`,
+        (ctx) => `Je mène la danse sans vous écraser, ce qui est plus élégant.`,
+        (ctx) => `Votre retard est modeste, mais suffisant pour me rassurer.`,
+        (ctx) => `Je garde un pas d’avance, avec beaucoup de soin.`,
+        (ctx) => `Je reste devant avec une certaine constance.`,
+        (ctx) => `Je dirige la partie d’un ton mesuré, mais ferme.`,
+        (ctx) => `Votre score suit, le mien conduit.`,
+        (ctx) => `Je préfère être à votre place dans cette configuration, naturellement.`,
+        (ctx) => `Je goûte ce rôle de meneuse, même sans grand éclat.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_LEADS_GENERIC]:        [
         (ctx) => `Vous êtes devant, mais la partie est loin d’être terminée.`,
@@ -1610,7 +2910,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Vous êtes en tête, mais d’un rien.`,
         (ctx) => `Je n’apprécie pas être derrière, même légèrement.`,
         (ctx) => `Je reviendrai très vite, vous verrez.`,
-        (ctx) => `Votre avance ne me décourage pas, elle me stimule.`
+        (ctx) => `Votre avance ne me décourage pas, elle me stimule.`,
+        (ctx) => `Vous demeurez en tête, et je ne peux l’ignorer.`,
+        (ctx) => `Votre avance, même modérée, pique mon orgueil.`,
+        (ctx) => `Je préfère vous voir derrière, mais pour l’instant ce n’est pas le cas.`,
+        (ctx) => `Vous dirigez légèrement le jeu, je dois l’admettre.`,
+        (ctx) => `Je ne suis pas satisfaite de cette position, mais elle reste tenable.`,
+        (ctx) => `Vous conservez l’avantage, et je travaille à le réduire.`,
+        (ctx) => `Votre score me surpasse, mais il ne m’écrase pas encore.`,
+        (ctx) => `Je vous laisse cette petite gloire, en attendant mieux.`,
+        (ctx) => `Je suis derrière, certes, mais non vaincue.`,
+        (ctx) => `Cette avance vous flatte plus qu’elle ne m’effraie, pour l’instant.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_BALANCED_GENERIC]:       [
         (ctx) => `La partie est étonnamment équilibrée.`,
@@ -1622,7 +2932,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Nous jouons à armes égales, et cela me plaît.`,
         (ctx) => `${ctx.scoreIA} contre ${ctx.scorePlayer}… quelle précision.`,
         (ctx) => `Je ne saurais dire qui prendra l’avantage le prochain tour.`,
-        (ctx) => `Nous avançons côte à côte, dans un équilibre périlleux.`
+        (ctx) => `Nous avançons côte à côte, dans un équilibre périlleux.`,
+        (ctx) => `Nos scores avancent main dans la main, c’en est presque poétique.`,
+        (ctx) => `Cette symétrie dans la partie est à la fois belle et cruelle.`,
+        (ctx) => `Nous jouons à égalité, ce qui rend chaque choix crucial.`,
+        (ctx) => `Je sens un duel parfaitement équilibré se dérouler sous nos yeux.`,
+        (ctx) => `Je ne peux pas vous regarder de haut, ni vous de bas… pour l’instant.`,
+        (ctx) => `Nous avançons ensemble, sans que personne ne prenne vraiment le large.`,
+        (ctx) => `C’est un affrontement raffiné, sans domination nette.`,
+        (ctx) => `Je ne peux pas relâcher mon attention, pas une seconde.`,
+        (ctx) => `Votre score et le mien se répondent comme deux lignes parallèles.`,
+        (ctx) => `Nous sommes enfermés dans un équilibre délicat, et j’en frémis.`
     ],
   },
   [AI_IDS.ANDRY]:    {
@@ -1636,7 +2956,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je mène large, et chaque pli ne fait que le confirmer.`,
         (ctx) => `À ce niveau d’écart, on ne parle plus de jeu, on parle de démonstration.`,
         (ctx) => `Tu peux encore jouer, mais tu ne gagneras plus.`,
-        (ctx) => `C’est ainsi que finissent les parties contre Andry : écrasées sous les points.`
+        (ctx) => `C’est ainsi que finissent les parties contre Andry : écrasées sous les points.`,
+        (ctx) => `Avec ${ctx.scoreIA} contre ${ctx.scorePlayer}, ce n’est plus une partie, c’est un cours magistral.`,
+        (ctx) => `Chaque point ajouté creuse un peu plus le fossé entre nous. Regarde bien ${ctx.diffAfter}, il ne se refermera pas.`,
+        (ctx) => `Tu vois ce tableau ? Il ne raconte pas un miracle. Il raconte ma régularité.`,
+        (ctx) => `Plus la manche avance, plus tu t’installes exactement là où finissent tous les imprudents : derrière moi.`,
+        (ctx) => `Je pourrais ralentir, mais je préfère te montrer jusqu’où va l’écart.`,
+        (ctx) => `Ce score est une signature, ${ctx.playerName}. Et elle n’est pas à ton nom.`,
+        (ctx) => `Je t’avais prévenu : on ne défie pas une légende sans conséquences au score.`,
+        (ctx) => `À cette hauteur d’avance, je ne cherche plus à prouver, seulement à terminer proprement.`,
+        (ctx) => `Tu peux compter les points un par un. Tu verras que tout penche du même côté.`,
+        (ctx) => `${ctx.diffAfter} points d’écart, et je n’ai même pas eu besoin de forcer mon jeu. Réfléchis à ce que ça veut dire.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_DOMINATES]:            [
         (ctx) => `Tu m’écrases au score… pour l’instant.`,
@@ -1648,7 +2978,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Même un maître peut connaître la déroute. Mais jamais sans réagir.`,
         (ctx) => `Je prends note de chaque point que tu m’infliges.`,
         (ctx) => `Tu crois me ridiculiser. Tu t’exposes juste à une revanche mémorable.`,
-        (ctx) => `Je suis dominé au score. Ne confonds pas ça avec “vaincu”.`
+        (ctx) => `Je suis dominé au score. Ne confonds pas ça avec “vaincu”.`,
+        (ctx) => `Tu as pris une avance indécente. Je me souviendrai longtemps de ce tableau-là.`,
+        (ctx) => `Chaque point que tu ajoutes à ${ctx.scorePlayer} est une gifle de plus. Je les compte toutes.`,
+        (ctx) => `Profite. Voir Andry derrière à ce point-là n’arrive pas souvent.`,
+        (ctx) => `Ta domination actuelle est une anomalie. Et chaque anomalie finit par être corrigée.`,
+        (ctx) => `Je regarde le score, et oui, je le trouve insultant.`,
+        (ctx) => `Tu as transformé cette manche en démonstration… pour l’instant à ton avantage.`,
+        (ctx) => `Je laisse rarement quelqu’un me mettre aussi bas. Tu viens d’acheter une revanche très chère.`,
+        (ctx) => `${Math.abs(ctx.diffAfter)} points derrière… ça dépasse la simple contrariété.`,
+        (ctx) => `Tu voudrais que je sois impressionné ? Je suis seulement furieux.`,
+        (ctx) => `Garde bien en mémoire ce tableau. C’est le genre d’affront que je ne pardonne jamais.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_MEDIUM_LEAD]:         [
         (ctx) => `Je mène nettement, sans être hors d’atteinte. C’est le moment où les maîtres serrent le jeu.`,
@@ -1660,7 +3000,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je contrôle le rythme. C’est moi qui décide quand la partie se durcit.`,
         (ctx) => `Encore quelques plis comme ça, et ton espoir va se fissurer.`,
         (ctx) => `Je n’ai pas besoin d’un écrasement pour savoir que je suis en bonne posture.`,
-        (ctx) => `Tu vois mon avance ? Elle n’est pas énorme, mais elle pèse déjà lourd.`
+        (ctx) => `Tu vois mon avance ? Elle n’est pas énorme, mais elle pèse déjà lourd.`,
+        (ctx) => `Cette avance de ${ctx.diffAfter} points est exactement là où je veux être : ni suffisant, ni inquiétant.`,
+        (ctx) => `Je n’écrase pas la partie, je la tiens. C’est amplement suffisant.`,
+        (ctx) => `Tu peux encore respirer, mais n’oublie pas qui tient la corde.`,
+        (ctx) => `Je garde l’initiative, et le score commence à le refléter.`,
+        (ctx) => `Cette marge me laisse de la place pour accélérer si tu t’agites trop.`,
+        (ctx) => `Je suis devant, et chaque tour renforce un peu plus cette normalité.`,
+        (ctx) => `Tu es derrière à distance raisonnable. L’ennui, c’est que je n’ai aucune intention de ralentir.`,
+        (ctx) => `Je préfère ce genre d’avance : assez pour dominer, pas assez pour t’endormir complètement.`,
+        (ctx) => `Tu vois cet écart ? Il est encore modéré. Mais il pousse déjà en ma direction.`,
+        (ctx) => `Je n’ai pas besoin d’un écrasement. Une maîtrise nette me suffit.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_MEDIUM_LEAD]:          [
         (ctx) => `Tu mènes, oui. Mais ce n’est pas encore suffisant pour me faire plier.`,
@@ -1672,7 +3022,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je laisse le score s’incliner un peu, jamais longtemps.`,
         (ctx) => `Tu as de l’avance, mais tu n’es pas à l’abri d’un coup de massue.`,
         (ctx) => `Je reconnais l’écart, pas ta supériorité.`,
-        (ctx) => `Continue à croire que ce léger matelas te protège. Je prépare déjà le retour.`
+        (ctx) => `Continue à croire que ce léger matelas te protège. Je prépare déjà le retour.`,
+        (ctx) => `Tu as pris de la hauteur, mais tu n’es pas hors de portée.`,
+        (ctx) => `Je sens ta présence devant, rien de plus. Ta supériorité, elle, reste à prouver.`,
+        (ctx) => `Ton avance me dérange, mais elle ne m’effraie pas.`,
+        (ctx) => `Je suis derrière, oui, mais chaque point que tu marques aiguise un peu plus mon jeu.`,
+        (ctx) => `Tu joues avec un coussin de points. Moi, je joue avec le couteau.`,
+        (ctx) => `Tu mènes assez pour me provoquer, pas assez pour m’abattre.`,
+        (ctx) => `Je n’ai aucun respect pour cette marge. Je la considère déjà comme provisoire.`,
+        (ctx) => `Ton avantage n’est qu’un chiffre. Le mien sera un résultat.`,
+        (ctx) => `Tu peux t’installer devant. Je suis en train de préparer la marche suivante.`,
+        (ctx) => `Ce n’est pas la première fois que je laisse l’autre respirer un peu avant de le faire chuter.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_TIGHT_IA_AHEAD]:         [
         (ctx) => `Je mène d’un rien. C’est suffisant pour rappeler qui est devant.`,
@@ -1684,7 +3044,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Tu n’es qu’un pas derrière. Moi, je suis déjà un pas devant.`,
         (ctx) => `Cette avance minime me suffit pour dicter le rythme.`,
         (ctx) => `On joue au coude-à-coude, mais mon coude est devant le tien.`,
-        (ctx) => `Un simple point peut tout changer, et pour l’instant, il est pour moi.`
+        (ctx) => `Un simple point peut tout changer, et pour l’instant, il est pour moi.`,
+        (ctx) => `Un point, deux tout au plus… mais ils sont de mon côté.`,
+        (ctx) => `Ce léger avantage, je l’ai gagné. Tu devras te battre pour le reprendre.`,
+        (ctx) => `On est au coude-à-coude, mais c’est ma main qui tient la manche.`,
+        (ctx) => `La distance est infime, pourtant elle te maintient derrière moi.`,
+        (ctx) => `Ce genre d’écart minime, je sais parfaitement l’exploiter.`,
+        (ctx) => `Tu sens qu’on est presque à égalité, mais presque ne suffit pas.`,
+        (ctx) => `Chaque point de différence a son importance, surtout quand il est pour moi.`,
+        (ctx) => `On joue dans un mouchoir, et c’est moi qui tiens le tissu.`,
+        (ctx) => `Cette avance microscopique est un signal : je commence à prendre le dessus.`,
+        (ctx) => `Tu tiens le rythme, mais c’est moi qui suis une fraction de seconde devant. Et ça change tout.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_TIGHT_J_AHEAD]:          [
         (ctx) => `Tu es juste devant. Trop près pour que je te laisse tranquille.`,
@@ -1696,7 +3066,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Tu es devant, mais tu sens bien que ce n’est pas stable.`,
         (ctx) => `Je n’accepte pas de voir ton score au-dessus du mien, même d’un rien.`,
         (ctx) => `Tu tiens l’avantage du bout des doigts. Je vais te le faire lâcher.`,
-        (ctx) => `Profite de ce maigre plus. Je m’en servirai pour frapper plus fort.`
+        (ctx) => `Profite de ce maigre plus. Je m’en servirai pour frapper plus fort.`,
+        (ctx) => `Tu es à peine devant, mais je refuse déjà cette idée.`,
+        (ctx) => `Une avance aussi mince, c’est une provocation personnelle.`,
+        (ctx) => `Tu occupes le sommet d’un seul point. C’est une place très fragile.`,
+        (ctx) => `Tu sais aussi bien que moi qu’un souffle de travers, et je repasse devant.`,
+        (ctx) => `Cette micro-dominance te donne l’illusion de contrôler la partie.`,
+        (ctx) => `Tu t’accroches à un détail. Moi, je vise l’ensemble.`,
+        (ctx) => `Je ne supporte pas de te voir au-dessus, même si le chiffre est ridicule.`,
+        (ctx) => `Ce n’est pas un avantage, c’est un fil sur lequel tu t’aventures.`,
+        (ctx) => `Tu es devant, oui. Mais d’aussi peu, ce n’est qu’une erreur statistique.`,
+        (ctx) => `Profite de ce “devant” symbolique. Il ne pèse rien face à ce qui arrive.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_TIGHT_BALANCED]:         [
         (ctx) => `Scores serrés, volonté serrée. Voilà une vraie manche.`,
@@ -1708,7 +3088,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `C’est un bras de fer, et j’ai encore du poignet.`,
         (ctx) => `L’équilibre est instable. Je n’ai qu’à appuyer au bon endroit.`,
         (ctx) => `On marche sur la même ligne. Reste à savoir qui poussera l’autre dans le fossé.`,
-        (ctx) => `Tu tiens, je tiens. La différence se fera à la fin, pas maintenant.`
+        (ctx) => `Tu tiens, je tiens. La différence se fera à la fin, pas maintenant.`,
+        (ctx) => `Nos scores se regardent dans un miroir. Reste à voir qui brisera la glace.`,
+        (ctx) => `Égalité quasi parfaite. C’est le terrain idéal pour un dénouement violent.`,
+        (ctx) => `Rien ne nous sépare vraiment. C’est rarement bon signe pour l’adversaire.`,
+        (ctx) => `On joue à niveau égal, mais pas avec la même expérience.`,
+        (ctx) => `Cette balance tient encore. Je n’ai pas commencé à appuyer.`,
+        (ctx) => `Chaque carte est une pièce posée sur le fil. Un de nous finira par tomber.`,
+        (ctx) => `Tu tiens la ligne, je la tiens aussi. La différence se lira à la fin, pas maintenant.`,
+        (ctx) => `Nos scores se neutralisent. Notre volonté, non.`,
+        (ctx) => `On avance côte à côte. Moi, je pense déjà à comment finir deux cases devant.`,
+        (ctx) => `Un équilibre comme celui-là ne dure jamais longtemps. J’ai l’intention de le rompre à mon avantage.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_ALMOST_WIN]:          [
         (ctx) => `Regarde mon score : ${ctx.scoreIA}. La fin est proche, et elle n’est pas pour toi.`,
@@ -1720,7 +3110,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je vois la fin, et elle a mon visage.`,
         (ctx) => `Profite bien de ces derniers tours, ${ctx.playerName}.`,
         (ctx) => `Je suis à deux doigts d’inscrire cette partie au tableau de chasse.`,
-        (ctx) => `Tu peux encore résister. Tu ne peux plus gagner.`
+        (ctx) => `Tu peux encore résister. Tu ne peux plus gagner.`,
+        (ctx) => `Je suis aux portes de la victoire, et tu es coincé de l’autre côté.`,
+        (ctx) => `Mon score ${ctx.scoreIA} n’est plus très loin de te clore cette manche au visage.`,
+        (ctx) => `Je n’ai plus qu’à pousser une dernière fois pour te faire basculer.`,
+        (ctx) => `Tu peux compter les points qui te manquent. Moi, je compte ceux qui me suffisent.`,
+        (ctx) => `La fin est écrite, je ne fais plus que la signer.`,
+        (ctx) => `Je suis à un pas de transformer cette partie en simple ligne de plus à mon palmarès.`,
+        (ctx) => `Chaque point supplémentaire que je prends maintenant est une cloche qui sonne pour toi.`,
+        (ctx) => `Tu sens cette tension ? C’est ta défaite qui approche, pas la mienne.`,
+        (ctx) => `Je ne vois plus qu’une chose à faire : terminer proprement.`,
+        (ctx) => `Tu n’es plus mon adversaire à ce stade, juste un témoin de ma victoire imminente.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_ALMOST_WIN]:           [
         (ctx) => `Tu approches dangereusement des mille. Ça ne me plaît pas du tout.`,
@@ -1732,7 +3132,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Tu crois déjà avoir gagné, je le vois dans ton score.`,
         (ctx) => `Je refuse de te laisser conclure sans résistance.`,
         (ctx) => `Tu touches presque la victoire. C’est maintenant que ma colère devient utile.`,
-        (ctx) => `Tu n’as jamais été si près de battre une légende. Fais attention, la chute serait violente.`
+        (ctx) => `Tu n’as jamais été si près de battre une légende. Fais attention, la chute serait violente.`,
+        (ctx) => `Tu es à un coup de me faire avaler cette manche. J’en prends note.`,
+        (ctx) => `Ton score ${ctx.scorePlayer} est déjà une menace en soi.`,
+        (ctx) => `Je vois la ligne d’arrivée se refléter dans tes points, pas dans les miens.`,
+        (ctx) => `Tu flirtes dangereusement avec la victoire. Je n’apprécie pas la vue.`,
+        (ctx) => `Tes prochains plis décideront si tu t’inscris réellement contre moi.`,
+        (ctx) => `Tu es trop proche du but pour que je reste calme.`,
+        (ctx) => `Si tu passes ce cap, tu gagneras une manche. Tu ne gagneras pas Andry.`,
+        (ctx) => `Je retiens chaque point qui t’approche du mille. Ils ont tous un prix.`,
+        (ctx) => `Encore une erreur de ma part, et tu transformes l’essai.`,
+        (ctx) => `Tu as la victoire à portée de main. Voyons si tu sais la tenir.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_DOMINATES_ALMOSTWIN]: [
         (ctx) => `Je domine et je suis à un pas de la victoire. C’est ce qu’on appelle une exécution.`,
@@ -1744,7 +3154,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je t’ai dominé du début à la fin. Il ne manque plus qu’un trait final.`,
         (ctx) => `Tu verras cette partie en rêve, et ce ne sera pas un bon rêve.`,
         (ctx) => `Je termine ce que j’ai commencé : une victoire écrasante.`,
-        (ctx) => `Cette domination n’est pas un accident. C’est ma façon naturelle de jouer.`
+        (ctx) => `Cette domination n’est pas un accident. C’est ma façon naturelle de jouer.`,
+        (ctx) => `Je t’ai dominé tout du long, et je suis en train de refermer le couvercle.`,
+        (ctx) => `Mon score ${ctx.scoreIA} et l’écart entre nous résument parfaitement cette partie.`,
+        (ctx) => `Tu n’auras pas l’excuse d’une victoire arrachée : ce sera une défaite nette.`,
+        (ctx) => `Je termine comme j’ai commencé : au-dessus, partout.`,
+        (ctx) => `Cette manche pourrait servir d’exemple dans un manuel de stratégie.`,
+        (ctx) => `Je t’ai pris l’espace, le tempo, et bientôt le résultat.`,
+        (ctx) => `Tu ne combats plus pour gagner, seulement pour limiter les dégâts.`,
+        (ctx) => `Je suis à la fois loin devant et presque au bout. C’est la pire configuration pour toi.`,
+        (ctx) => `Tu te souviendras surtout de l’écart final, pas des quelques bons plis que tu as joués.`,
+        (ctx) => `Ce genre de fin, je l’ai déjà vue des centaines de fois. De ton côté du score.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_DOMINATES_ALMOSTWIN]:  [
         (ctx) => `Tu m’écrases et tu t’approches de la victoire. Tu joues avec mon orgueil.`,
@@ -1756,7 +3176,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je suis à deux doigts d’encaisser une humiliation. À deux doigts aussi d’en préparer la revanche.`,
         (ctx) => `Tu ne pouvais pas faire pire affront : dominer et frôler la victoire.`,
         (ctx) => `Si tu conclus cette manche, tu porteras un poids : celui d’avoir battu Andry.`,
-        (ctx) => `Tu as presque tout. Reste à voir si tu as aussi le courage de finir.`
+        (ctx) => `Tu as presque tout. Reste à voir si tu as aussi le courage de finir.`,
+        (ctx) => `Tu tiens la partie, tu tiens l’écart et tu tiens presque la fin. Évidemment que ça m’insupporte.`,
+        (ctx) => `Ton score ${ctx.scorePlayer} est en train de réécrire une histoire que je n’aime pas.`,
+        (ctx) => `Tu as poussé cette manche au bord de ma défaite. C’est un exploit en soi.`,
+        (ctx) => `Je suis coincé entre ton avance et la fin du jeu. Mauvaise place pour moi.`,
+        (ctx) => `Tu as tout ce qu’il faut pour conclure. Il te reste à prouver que tu en es capable.`,
+        (ctx) => `Je ne vois plus beaucoup d’issues. Juste celle où tu gagnes cette fois-ci.`,
+        (ctx) => `Tu n’es plus en train de me mener, tu es en train de m’écraser.`,
+        (ctx) => `Si tu vas au bout, cette manche restera une tache sur mon tableau.`,
+        (ctx) => `Je ne l’admets pas volontiers, mais tu as transformé cette partie en correction.`,
+        (ctx) => `Tu es à un pas d’obtenir ce que beaucoup veulent sans y parvenir : une victoire pleine et entière contre moi.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_LEADS_ALMOSTWIN]:     [
         (ctx) => `Je mène et je touche presque au but. Tu dois sentir la corde se resserrer.`,
@@ -1768,7 +3198,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je n’ai pas besoin de te dominer totalement pour te voir perdre bientôt.`,
         (ctx) => `Tu es toujours en vie, mais la fin se dessine clairement.`,
         (ctx) => `Je mène, je monte, et je vois déjà la ligne d’arrivée.`,
-        (ctx) => `Tu es de l’autre côté du plateau, moi je suis au bord de la victoire.`
+        (ctx) => `Tu es de l’autre côté du plateau, moi je suis au bord de la victoire.`,
+        (ctx) => `Je suis devant, proche de la fin, et parfaitement conscient de l’avantage que ça représente.`,
+        (ctx) => `Mon score ${ctx.scoreIA} dit une chose simple : il te reste très peu de temps.`,
+        (ctx) => `Je ne vois plus qu’une trajectoire naturelle : celle qui me mène à la victoire.`,
+        (ctx) => `Tu peux encore bouger, mais le cadre est déjà dessiné autour de toi.`,
+        (ctx) => `Je mène suffisamment pour envisager la conclusion, pas pour me relâcher.`,
+        (ctx) => `Tu joues tes derniers plis en défense. Moi, je joue pour finir.`,
+        (ctx) => `Cette position est exactement celle que j’aime : haut au score, proche de la sortie.`,
+        (ctx) => `Je sens la tension de ta part, pas de la mienne.`,
+        (ctx) => `Je garde l’ascendant, et chaque point me rapproche du mot “terminé”.`,
+        (ctx) => `Tu vois le mur devant toi ? C’est mon score. Et il avance.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_LEADS_ALMOSTWIN]:      [
         (ctx) => `Tu mènes et tu approches de la fin. Voilà qui m’échauffe sérieusement.`,
@@ -1780,7 +3220,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je reconnais que tu tiens la partie par la main.`,
         (ctx) => `Tu marches vers la victoire. J’essaierai de te pousser avant la ligne.`,
         (ctx) => `Tu es à deux doigts de signer une manche contre moi.`,
-        (ctx) => `Tu as ce que tu voulais : l’avance, la fin proche, et ma colère.`
+        (ctx) => `Tu as ce que tu voulais : l’avance, la fin proche, et ma colère.`,
+        (ctx) => `Tu as l’avance et la fin dans ton camp. C’est le genre de situation qui me donne envie de briser la table.`,
+        (ctx) => `Ton score ${ctx.scorePlayer} a franchi le seuil du simple agacement.`,
+        (ctx) => `Tu avances vers la victoire, et chaque pas m’arrache un peu plus de calme.`,
+        (ctx) => `Je n’aime pas te voir si près du dénouement. Pas avec moi en face.`,
+        (ctx) => `Tu as tout en main pour conclure. Je n’ai plus qu’à tenter de casser ta marche.`,
+        (ctx) => `Tu es à une poignée de points de transformer cette partie en blessure pour mon ego.`,
+        (ctx) => `Tu mènes encore, et ça m’oblige à calculer chaque carte comme un scalpel.`,
+        (ctx) => `Ta trajectoire est claire : droite vers la victoire. La mienne : essayer de la dévier à la dernière seconde.`,
+        (ctx) => `Je sens le poids de ton avance autant que tu sens celui de mon regard.`,
+        (ctx) => `Si tu vas au bout, ce ne sera pas une simple victoire. Ce sera un précédent.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_IA_LEADS_GENERIC]:       [
         (ctx) => `Je suis devant. Ça suffit à me mettre de bonne humeur.`,
@@ -1792,7 +3242,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je mène la danse, même si la musique reste serrée.`,
         (ctx) => `Tant que mon score est plus haut, la partie est sous contrôle.`,
         (ctx) => `Je ne suis pas intouchable, mais clairement en meilleure posture que toi.`,
-        (ctx) => `Tu joues en poursuite. Moi, j’ouvre la marche.`
+        (ctx) => `Tu joues en poursuite. Moi, j’ouvre la marche.`,
+        (ctx) => `Je suis devant, et c’est exactement la place que j’occupe le mieux.`,
+        (ctx) => `Mon score ${ctx.scoreIA} reste au-dessus du tien. C’est tout ce qui m’importe pour l’instant.`,
+        (ctx) => `Je ne t’écrase pas, mais je te devance. La nuance est importante.`,
+        (ctx) => `Tant que je regarde ton score d’au-dessus, je suis tranquille.`,
+        (ctx) => `Cette configuration est simple : toi derrière, moi devant.`,
+        (ctx) => `Je garde l’avantage sans avoir besoin d’en faire trop.`,
+        (ctx) => `Ce léger plus est un rappel constant de qui mène réellement la danse.`,
+        (ctx) => `Tu peux réduire l’écart, pas renier le fait que je suis en tête.`,
+        (ctx) => `Je me contente de rester au-dessus. Pour l’instant, c’est largement suffisant.`,
+        (ctx) => `Tu joues pour revenir. Moi, je joue pour te maintenir à distance.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_J_LEADS_GENERIC]:        [
         (ctx) => `Tu es devant. Note bien que ça ne me plaît jamais.`,
@@ -1804,7 +3264,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Je laisse parfois l’adversaire prendre un peu d’air. Pas longtemps.`,
         (ctx) => `Tu joues avec une petite marge. Je joue avec une grande expérience.`,
         (ctx) => `Cet écart n’est qu’un détail tant que je tiens le jeu.`,
-        (ctx) => `Tu peux savourer cet avantage modeste. Il ne sera pas éternel.`
+        (ctx) => `Tu peux savourer cet avantage modeste. Il ne sera pas éternel.`,
+        (ctx) => `Tu as pris un peu d’avance, et ça suffit déjà à m’agacer.`,
+        (ctx) => `Ton score ${ctx.scorePlayer} me rappelle que je laisse filer quelque chose.`,
+        (ctx) => `Tu tiens un avantage modeste, mais symboliquement insupportable.`,
+        (ctx) => `Je ne supporte pas de lire ton nombre au-dessus du mien, même d’un rien.`,
+        (ctx) => `Tu es devant uniquement parce que je te laisse cet espace.`,
+        (ctx) => `Cet écart ne me fait pas peur, il me met juste en alerte.`,
+        (ctx) => `Tu crois mener. Moi, je sais que la partie n’a pas encore parlé.`,
+        (ctx) => `Je suis derrière pour l’instant. Je n’ai pas l’habitude de le rester.`,
+        (ctx) => `Tu profites d’une avance de travail. Moi, je prépare la réponse.`,
+        (ctx) => `Garde ce petit plus si tu veux. Je vise le score final, pas l’instantané.`
     ],
     [SCORE_CONTEXT_KEYS.SCORE_BALANCED_GENERIC]:       [
         (ctx) => `Nos scores se tiennent. Ce genre de partie, je la connais par cœur.`,
@@ -1816,7 +3286,17 @@ const DIALOGUE_SCORE = {
         (ctx) => `Tu tiens, je tiens. Reste à voir qui craquera le premier.`,
         (ctx) => `Le score ne tranche pas, alors ce sera le jeu qui tranchera.`,
         (ctx) => `On marche au même niveau. La question, c’est : qui montera d’un cran ?`,
-        (ctx) => `Partie équilibrée, enjeu maximal. C’est exactement là où j’aime gagner.`
+        (ctx) => `Partie équilibrée, enjeu maximal. C’est exactement là où j’aime gagner.`,
+        (ctx) => `Nos scores se frôlent. C’est parfait pour un test de nerfs.`,
+        (ctx) => `Équilibre presque total. On va voir lequel des deux bascule l’autre.`,
+        (ctx) => `Ni toi ni moi ne domine vraiment. Ça ne durera pas.`,
+        (ctx) => `On avance comme deux ombres côte à côte.`,
+        (ctx) => `Cette égalité est un mensonge temporaire. L’un de nous finira largement devant.`,
+        (ctx) => `Je lis ${ctx.scoreIA} contre ${ctx.scorePlayer}. Ça ne me dit qu’une chose : tout reste à prendre.`,
+        (ctx) => `Parfait. Rien n’est décidé. C’est dans ces moments que j’aime frapper.`,
+        (ctx) => `On joue à niveau égal, mais pas à histoire égale.`,
+        (ctx) => `Cet équilibre est tendu comme une corde. Je n’attends qu’un prétexte pour la rompre.`,
+        (ctx) => `Partie plate au score, mais explosive en potentiel. Exactement ce qu’il me faut pour faire la différence.`
     ]
   },
 };

@@ -34,7 +34,7 @@ function showComputerDeclarationModal({ onOk } = {}) {
     });
 
     const reaction = AIGenerateDialogue();
-    setAiEmotion(reaction[0], reaction[1]);
+    if (reaction) setAiEmotion(reaction[0], reaction[1]);
 
     showModal({
         title: list.length > 1 ? "Annonces de l'ordinateur" : "Annonce de l'ordinateur",

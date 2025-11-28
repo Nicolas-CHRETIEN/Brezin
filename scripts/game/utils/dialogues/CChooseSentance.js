@@ -50,6 +50,7 @@ function CChooseSentance () {
 
   // Différence de score (APRÈS prise en compte de l'annonce en cours).
   const diff = scoreIA - scorePlayer;
+  
   const largeVictoire = diff > 300;
   const largeDefaite  = diff < -300;
   const dispute       = diff < 200 && diff > -200;
@@ -209,16 +210,16 @@ function computeScoreContexts({ diff, scoreIA, scorePlayer, IAGagnePresque, Joue
   }
 
   // Partie serrée mais IA légèrement devant
-  if (diff > 0 && diff < 150) {
+  if (diff > 0 && diff < 150 && (scorePlayer > 200 || scoreIA > 200)) {
     keys.push(SCORE_CONTEXT_KEYS.SCORE_TIGHT_IA_AHEAD);
   }
   // Partie serrée mais Joueur légèrement devant
-  else if (diff < 0 && diff > -150) {
+  else if (diff < 0 && diff > -150 && (scorePlayer > 200 || scoreIA > 200)) {
     keys.push(SCORE_CONTEXT_KEYS.SCORE_TIGHT_J_AHEAD);
   }
 
   // Vraiment équilibré mais différent de 0 (sinon certaines phrases ne sont plus cohérentes).
-  if (Math.abs(diff) < 40 && diff !== 0) {
+  if (Math.abs(diff) < 40 && diff !== 0 && (scorePlayer > 200 || scoreIA > 200)) {
     keys.push(SCORE_CONTEXT_KEYS.SCORE_TIGHT_BALANCED);
   }
 
@@ -256,13 +257,13 @@ function computeScoreContexts({ diff, scoreIA, scorePlayer, IAGagnePresque, Joue
 
   // S'assurer que le score n'est pas identique et que la partie est bien entammée
   // Pour la cohérence des phrases.
-  if (diff > 0 && diff !== 0 && S.stack.length < 30) {
+  if (diff > 0 && diff !== 0  && (scorePlayer > 200 || scoreIA > 200)) {
     keys.push(SCORE_CONTEXT_KEYS.SCORE_IA_LEADS_GENERIC);
   }
-  else if (diff < 0) {
+  else if (diff < 0 && (scorePlayer > 200 || scoreIA > 200)) {
     keys.push(SCORE_CONTEXT_KEYS.SCORE_J_LEADS_GENERIC);
   }
-  else {
+  else if (diff !== 0 && (scorePlayer > 200 || scoreIA > 200)) {
     keys.push(SCORE_CONTEXT_KEYS.SCORE_BALANCED_GENERIC);
   }
 
@@ -321,6 +322,8 @@ function computeScoreContexts({ diff, scoreIA, scorePlayer, IAGagnePresque, Joue
     dialogueKey = scoreContextKey;
     valence = SCORE_CONTEXT_VALENCE[scoreContextKey];
   }
+  console.log("dialogueKey: " + dialogueKey);
+  
 
   return {
     dialogueKey, // nom de la clé à utiliser pour choisir le tableau de répliques
