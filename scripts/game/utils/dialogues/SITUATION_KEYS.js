@@ -4,6 +4,7 @@
 
 const SITUATION_KEYS = Object.freeze({
 
+  GAME_START:           'GAME_START',           // Début de partie
   // --- Annonces du joueur ---
   J_STRONG_LEAD:        'J_Strong_Lead',        // Joueur grosse annonce en tête
   J_STRONG_COMEBACK:    'J_Strong_Comeback',    // Joueur grosse annonce en retard

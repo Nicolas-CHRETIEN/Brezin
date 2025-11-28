@@ -117,7 +117,6 @@ const VALENCE_FORCE_TALK = 2; // 2 : gros évènement, 3 : seulement extrême
 function AIGenerateDialogue() {
   if (!showComments) return null;
   const ctx = buildDialogueContext();          // { scoreIA, scorePlayer, diff, annonce, trump, ... }
-  console.log(ctx);
   
   const { dialogueKey, valence } = CChooseSentance(); // { dialogueKey, valence (-3..+3) }
 

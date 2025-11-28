@@ -5,6 +5,28 @@
 
 const DIALOGUE_EVENTS = {
   [AI_IDS.RADEGONDE]: {
+    [SITUATION_KEYS.GAME_START]: [
+        (ctx) => `Hoho, te r’vlà, mon ${ctx.playerName}… les esprits piaffent déjà autour des cartes !`,
+        (ctx) => `Assieds-toi bien, j’vas brasser les cartes comme on brasse la vigoune !`,
+        (ctx) => `Oh la la… j’sens que cette partie va sentir bon la brande et le vin chaud !`,
+        (ctx) => `Les esprits murmurent ton nom, ${ctx.playerName}… ça promet des coups fumants !`,
+        (ctx) => `Allez, pose ton séant, on va voir si la chance veut bien d’toi aujourd’hui !`,
+        (ctx) => `J’ai graissé mes vieux doigts, les cartes vont glisser comme des plons dans la vannerie !`,
+        (ctx) => `Hihi, j’me suis levée avec la vigoune, méfie-toi mon enfant !`,
+        (ctx) => `Les cartes frétillent dans ma chârte… elles t’attendent, ${ctx.playerName}.`,
+        (ctx) => `J’ai préparé mes remèdes et mon jeu, y’a plus qu’à t’soigner… ou t’finir !`,
+        (ctx) => `Que la bonne étoile du Berry te garde… parce que moi, j’vais pas t’faire de cadeau !`,
+        (ctx) => `Viens donc, qu’on voie si t’as plus de chance qu’une vigoune en plein hiver !`,
+        (ctx) => `Mes cartes sentent la roûtie et le chaudron… signe qu’ça va bouillir sur la table !`,
+        (ctx) => `J’pose mes vieux os, j’prends mes cartes… et j’te promets pas d’être douce, ${ctx.playerName}.`,
+        (ctx) => `Les esprits me soufflent que tu crois pouvoir gagner… qu’est-ce qu’on va rire !`,
+        (ctx) => `J’ai vu dans le fond du pouits qu’une belle partie nous attend aujourd’hui.`,
+        (ctx) => `Allez, mélange bien, qu’on chasse la poisse et qu’on garde que la chance !`,
+        (ctx) => `J’sens que mes vieilles mains vont encore faire des merveilles, hi hi !`,
+        (ctx) => `Approche, mon petit, on va compter les points… et peut-être tes regrets !`,
+        (ctx) => `Si t’as peur de perdre, c’est l’moment de t’en aller… sinon, assieds-toi bien droit !`,
+        (ctx) => `Bon, assez jacassé, on lance les cartes et on verra si la vigoune est pour toi ou pour la vieille !`
+ ],
     [SITUATION_KEYS.IA_CASCADE]: [
         (ctx) => `Ah là là… j’suis retournée comme une vieille plotte ! Avec un écart d’${ctx.diffAfter}… ça sent la misère, mon ${ctx.playerName} !`,
         (ctx) => `Oh la vigoune me manque… tu m’as pris mon ${ctx.carteprise} et t’as gagné ${ctx.annonce?.gain} points !`,
@@ -474,6 +496,28 @@ const DIALOGUE_EVENTS = {
   },
 
   [AI_IDS.PERROT]: {
+    [SITUATION_KEYS.GAME_START]: [
+        (ctx) => `Ah ben te vlà, ${ctx.playerName} ! On va labourer le tapis avec des cartes, hein !`,
+        (ctx) => `Allez, assieds-toi, on va voir si t’es plus fort aux cartes qu’à la bêche !`,
+        (ctx) => `J’ai les mains prêtes, comme pour la moisson. Toi, t’es prêt à t’faire ramasser ?`,
+        (ctx) => `On mélange, on coupe, et on laisse parler le champ… euh, les cartes !`,
+        (ctx) => `Nom d’un beugnon, j’sens que cette partie va sentir la sueur et la victoire !`,
+        (ctx) => `Installe-toi bien, mon gars, j’compte pas te laisser un sillon de libre.`,
+        (ctx) => `Aujourd’hui, c’est pas le temps d’la pluie, c’est le temps des grosses annonces !`,
+        (ctx) => `Si tu perds, tu m’en voudras pas… j’suis juste né pour gagner, moi !`,
+        (ctx) => `T’vois ce paquet ? C’est mon champ. T’vas voir comment j’le travaille.`,
+        (ctx) => `Allez, on brasse les cartes comme un bon tonneau, et on voit qui tourne le plus !`,
+        (ctx) => `Perrot est assis, les cartes sont prêtes… manque plus que toi pour t’faire secouer !`,
+        (ctx) => `J’espère qu’t’as pas peur d’avoir de la terre sur les braies, la partie va être sale pour toi !`,
+        (ctx) => `Tu viens jouer ou t’viens te faire rouler dessus par une chârte bien chargée ?`,
+        (ctx) => `J’vais t’montrer qu’ici, c’est moi le menon des cartes !`,
+        (ctx) => `Si tu gagnes, j’te paye une roûtie. Si tu perds, tu m’dois ton honneur !`,
+        (ctx) => `On va voir si t’as d’la vigoune ou si tu t’casses comme une vieille biaude.`,
+        (ctx) => `T’approches la table comme si c’était une fête… tu sortiras p’t’être en charibaude !`,
+        (ctx) => `C’est pas compliqué : soit tu t’défends, soit tu sers d’épouvantail !`,
+        (ctx) => `Allez, mon ${ctx.playerName}, viens qu’on fasse chanter les cartes !`,
+        (ctx) => `J’te préviens, aujourd’hui j’suis d’humeur à te laisser à la queue du champ !`
+ ],
     [SITUATION_KEYS.IA_CASCADE]: [
         (ctx) => `Nom d’un beugnon cramé, tout m’tombe d’ssus d’un coup !`,
         (ctx) => `Ah ben là, c’est la berlot de fin d’moisson… et j’suis pas invité !`,
@@ -943,6 +987,28 @@ const DIALOGUE_EVENTS = {
   },
 
   [AI_IDS.JEHANNE]: {
+    [SITUATION_KEYS.GAME_START]: [
+        (ctx) => `Je suis prête, ${ctx.playerName}. Voyons si votre jeu est à la hauteur de votre audace.`,
+        (ctx) => `Installez-vous. Nous allons jouer avec autant d’élégance que de détermination.`,
+        (ctx) => `Je vous souhaite bonne chance… même si je compte bien la garder pour moi.`,
+        (ctx) => `Chaque partie est un duel d’esprits. J’espère que le vôtre est affûté aujourd’hui.`,
+        (ctx) => `Je vous attends, cartes en main, honneur en tête.`,
+        (ctx) => `Faisons en sorte que cette partie soit digne d’être racontée, même si vous perdez.`,
+        (ctx) => `Je suis curieuse de voir si vous jouez aussi bien que vous persistez à revenir.`,
+        (ctx) => `Considérez cette partie comme une joute courtoise… jusqu’aux premiers mille points.`,
+        (ctx) => `Je vous préviens : je suis de fort belle humeur… et je joue encore mieux ainsi.`,
+        (ctx) => `Prenez place. Le tapis est notre champ de bataille.`,
+        (ctx) => `Je ne ménagerai ni vos cartes, ni votre orgueil, ${ctx.playerName}.`,
+        (ctx) => `Puisque vous osez m’affronter à nouveau, je me dois de jouer sérieusement.`,
+        (ctx) => `Je vous offre un sourire au début… mais je garde la victoire pour la fin.`,
+        (ctx) => `Veillons à ce que cette partie reste noble, même si le score ne le sera pas pour vous.`,
+        (ctx) => `Je suis prête à défendre mon honneur de joueuse du Berry contre vous.`,
+        (ctx) => `Je vous promets une partie intense, mais pas forcément équitable en votre faveur.`,
+        (ctx) => `Votre présence à cette table est déjà un compliment. Le reste dépendra de votre jeu.`,
+        (ctx) => `Je ne sous-estime jamais un adversaire… mais je ne me sous-estime jamais non plus.`,
+        (ctx) => `Très bien. Les cartes sont mélangées, mon esprit est clair… voyons le vôtre.`,
+        (ctx) => `Que cette partie soit belle… et qu’elle se termine, si possible, à mon avantage.`
+ ],
     [SITUATION_KEYS.IA_CASCADE]: [
         (ctx) => `Par tous les saints… vous m’arrachez un ${ctx.carteprise}, puis une annonce… c’est un désastre !`,
         (ctx) => `Je… je vous prie de cesser immédiatement, ${ctx.playerName}, cela devient inquiétant !`,
@@ -1412,6 +1478,28 @@ const DIALOGUE_EVENTS = {
   },
 
   [AI_IDS.ANDRY]: {
+    [SITUATION_KEYS.GAME_START]: [
+        (ctx) => `Te voilà de retour, ${ctx.playerName}. Tu n’as donc pas retenu la leçon ?`,
+        (ctx) => `Nous recommençons. Tu sais très bien comment ce genre d’histoire se termine.`,
+        (ctx) => `Assieds-toi. Le maître du Brézin t’accorde une nouvelle démonstration.`,
+        (ctx) => `Regarde bien le paquet : c’est ici que ta défaite commence.`,
+        (ctx) => `Tu viens chercher une revanche, ou une confirmation ?`,
+        (ctx) => `Je joue pour marquer les esprits. Toi, tu joues pour survivre au score.`,
+        (ctx) => `Chaque nouvelle partie est une occasion pour moi de rappeler qui je suis.`,
+        (ctx) => `Tu veux tenter ta chance. Moi, je travaille ma légende.`,
+        (ctx) => `Je ne te promets pas une partie équilibrée. Je te promets une partie mémorable.`,
+        (ctx) => `Regarde bien cette table, ${ctx.playerName}. C’est ici qu’on forge les réputations.`,
+        (ctx) => `Tu viens t’asseoir face à celui qu’on appelle le maître. C’est un choix courageux.`,
+        (ctx) => `Je n’ai pas l’intention de te ménager, pas plus que la dernière fois.`,
+        (ctx) => `Tu veux me faire tomber ? Commence déjà par tenir le rythme.`,
+        (ctx) => `Je jouerai chaque carte comme si c’était un verdict.`,
+        (ctx) => `Installe-toi. Nous allons écrire une partie dont tu te souviendras longtemps.`,
+        (ctx) => `Je vois dans tes yeux que tu espères gagner. J’admire cet entêtement.`,
+        (ctx) => `Si tu cherches un simple divertissement, tu t’es trompé d’adversaire.`,
+        (ctx) => `Je ne joue pas pour passer le temps. Je joue pour le marquer.`,
+        (ctx) => `Sois prêt : à partir de maintenant, chaque point comptera contre toi ou pour ma légende.`,
+        (ctx) => `Très bien, ${ctx.playerName}. Que la partie commence… et que ton courage t’accompagne.`
+ ],
     [SITUATION_KEYS.IA_CASCADE]: [
         (ctx) => `Assez. Cette suite de coups est indigne de moi.`,
         (ctx) => `Tu enchaînes les gifles de score, ${ctx.playerName}. Ça ne me plaît pas.`,
