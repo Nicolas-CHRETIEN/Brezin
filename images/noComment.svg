@@ -1,0 +1,18 @@
+<svg id="icon-comments-off" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+
+  <!-- Bulle blanche -->
+  <path d="M5 5h10a4 4 0 0 1 4 4v3a4 4 0 0 1-4 4h-4l-4 3v-3H5a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4z"
+        fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Croix rouge très large et décalée à gauche -->
+  <!-- Barres élargies : on part plus à gauche (x=1) et plus à droite (x=17) -->
+  <line x1="1" y1="2" x2="17" y2="22"
+        stroke="#ff4d4d" stroke-width="3" stroke-linecap="round" />
+
+  <line x1="17" y1="2" x2="1" y2="22"
+        stroke="#ff4d4d" stroke-width="3" stroke-linecap="round" />
+
+</svg>
+
+
+
