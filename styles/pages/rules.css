@@ -222,3 +222,22 @@
   height: auto;
   display: block;
 }
+
+.rules ul,
+.rules ol {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.rules h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 1.2em;
+  margin-bottom: 0.4em;
+  color: #ff943d; 
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-left: 4px solid #c9a56d; /* doré doux */
+  padding-left: 8px;
+}

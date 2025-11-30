@@ -93,28 +93,36 @@
   border: 1px solid #a95f1c;
 }
 
-#btnCommentsToggle {
-  background: none;
-  border: none;
-  padding: 4px;
-  cursor: pointer;
-}
-
-#btnCommentsToggle img {
-  width: 24px;     /* ajuste si tu veux */
-  height: 24px;
-  vertical-align: middle;
-}
-
+/* Commentaires */
 #btnCommentsToggle .icon-off {
   display: none;
 }
 
-/* Quand commentaires désactivés */
 #btnCommentsToggle.is-off .icon-on {
   display: none;
 }
 
 #btnCommentsToggle.is-off .icon-off {
   display: inline;
+}
+
+/* IA */
+#btnIaToggle .icon-off {
+  display: none;
+}
+
+#btnIaToggle.is-off .icon-on {
+  display: none;
+}
+
+#btnIaToggle.is-off .icon-off {
+  display: inline;
+}
+
+/* Optionnel : taille des icônes */
+#btnCommentsToggle img,
+#btnIaToggle img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
 }

@@ -115,7 +115,7 @@ const VALENCE_FORCE_TALK = 2; // 2 : gros évènement, 3 : seulement extrême
 
 
 function AIGenerateDialogue() {
-  if (!showComments) return null;
+  if (!showIA) return null;
   const ctx = buildDialogueContext();          // { scoreIA, scorePlayer, diff, annonce, trump, ... }
   
   const { dialogueKey, valence } = CChooseSentance(); // { dialogueKey, valence (-3..+3) }
@@ -134,7 +134,8 @@ function AIGenerateDialogue() {
 
   // Probabilité de parler (seulement si l'évènement n'est pas "obligatoire")
   const pTalk = persoCfg.baseParole || 0.5;
-  if (!mustTalk && Math.random() >= pTalk) {
+  // Ne pas parler a moin d'un évènement important. Ne jamais parler si l'IA est en muet.
+  if ((!mustTalk && Math.random() >= pTalk) || !showComments) {
     const emotionSilence = pickEmotionFromValence(valence);
     return [emotionSilence, ""];
   }

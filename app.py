@@ -1,7 +1,10 @@
 # brezin_app.py
-import json, sys
+import json
+import os
+import sys
 from pathlib import Path
 from datetime import datetime
+
 import webview
 from openpyxl import Workbook, load_workbook
 
@@ -19,43 +22,48 @@ def get_assets_dir():
     - Cas PyInstaller (onefolder) : dossier de l'exécutable
     - Cas développement : dossier du script courant
     """
-    if hasattr(sys, '_MEIPASS'):
+    if hasattr(sys, "_MEIPASS"):
         return Path(sys._MEIPASS)
-    if getattr(sys, 'frozen', False):
+    if getattr(sys, "frozen", False):
         return Path(sys.executable).resolve().parent
     return Path(__file__).resolve().parent
 
-def get_storage_dir():
+
+def get_data_dir():
     """
-    Renvoie le dossier d'écriture (pour le classeur Excel).
-    - En packagé : dossier de l'exécutable (droits d'écriture)
-    - En dev : dossier du script
+    Dossier où stocker les données modifiables (scores, configs…).
+
+    - En version packagée (exe) : %APPDATA%\\Jeu du Brezin
+    - En dev : dossier du script (pour te simplifier la vie)
     """
-    if getattr(sys, 'frozen', False):
-        return Path(sys.executable).resolve().parent
-    return Path(__file__).resolve().parent
+    if getattr(sys, "frozen", False):
+        # Cas exe PyInstaller : données dans le profil utilisateur
+        base = Path(os.getenv("APPDATA")) / APP_NAME
+    else:
+        # Cas développement : à côté du script
+        base = Path(__file__).resolve().parent
+
+    base.mkdir(parents=True, exist_ok=True)
+    return base
+
 
 # --- Chemins calculés ---
-ASSETS_DIR  = get_assets_dir()            # Dossier des assets (lecture)
-STORAGE_DIR = get_storage_dir()           # Dossier de stockage (écriture)
-HTML_PATH   = ASSETS_DIR / HTML_FILE      # Chemin complet vers index.html
-
-if getattr(sys, 'frozen', False):
-    EXCEL_PATH = get_storage_dir() / EXCEL_NAME    # packagé -> à côté de l’exe
-else:
-    EXCEL_PATH = get_assets_dir() / EXCEL_NAME
+ASSETS_DIR  = get_assets_dir()              # Dossier des assets (lecture)
+HTML_PATH   = ASSETS_DIR / HTML_FILE        # Chemin complet vers index.html
+EXCEL_PATH  = get_data_dir() / EXCEL_NAME   # Emplacement du classeur Excel
 
 
 # --- Schéma de colonnes par défaut (évolutif) ---
 HEADERS = [
-    "date","heure","vainqueur","ecart",
-    "score_joueur","score_ordi",
-    "annonces_joueur","annonces_ordi",
-    "nb_as_joueur","nb_dix_joueur","points_10as_joueur",
-    "nb_as_ordi","nb_dix_ordi","points_10as_ordi",
-    "liste_annonces_joueur","liste_annonces_ordi",
-    "_submitted_at","userName",
+    "date", "heure", "vainqueur", "ecart",
+    "score_joueur", "score_ordi",
+    "annonces_joueur", "annonces_ordi",
+    "nb_as_joueur", "nb_dix_joueur", "points_10as_joueur",
+    "nb_as_ordi", "nb_dix_ordi", "points_10as_ordi",
+    "liste_annonces_joueur", "liste_annonces_ordi",
+    "_submitted_at", "userName",
 ]
+
 
 def _num_or_blank(v):
     """
@@ -78,6 +86,7 @@ def _num_or_blank(v):
     except Exception:
         return s
 
+
 # --- API exposée à JavaScript via pywebview (window.pywebview.api) ---
 class Api:
     def save_row(self, payload: str):
@@ -88,7 +97,10 @@ class Api:
         try:
             # 1) Parse + normalisation
             data = json.loads(payload) if payload else {}
-            clean = {k: _num_or_blank(v.strip() if isinstance(v, str) else v) for k, v in data.items()}
+            clean = {
+                k: _num_or_blank(v.strip() if isinstance(v, str) else v)
+                for k, v in data.items()
+            }
             clean["_submitted_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
             # 2) Ouverture (ou création) du classeur + feuille active
@@ -158,7 +170,9 @@ class Api:
             # On ne lit que les N dernières lignes (performance)
             start_row = max(2, ws.max_row - limit + 1)
             rows = []
-            for r in ws.iter_rows(min_row=start_row, max_row=ws.max_row, values_only=True):
+            for r in ws.iter_rows(
+                min_row=start_row, max_row=ws.max_row, values_only=True
+            ):
                 row = {}
                 for i, h in enumerate(headers):
                     if not h:
@@ -169,6 +183,7 @@ class Api:
             return {"ok": True, "rows": rows}
         except Exception as e:
             return {"ok": False, "message": f"Erreur lecture Excel: {e}"}
+
 
 # --- Lancement de la fenêtre pywebview ---
 def main():
@@ -181,11 +196,11 @@ def main():
     # Création d'une unique fenêtre, en FENÊTRE MAXIMISÉE (pas fullscreen)
     window = webview.create_window(
         APP_NAME,
-        url=HTML_PATH.as_uri(),   # as_uri() pour schéma file:// absolu
-        text_select=True,         # autoriser sélection de texte
+        url=HTML_PATH.as_uri(),  # as_uri() pour schéma file:// absolu
+        text_select=True,        # autoriser sélection de texte
         js_api=api,
-        maximized=True,           # ⬅️ fenêtre ouverte en taille écran
-        fullscreen=False          # ⬅️ on force à ne PAS être en plein écran
+        maximized=True,          # fenêtre ouverte en taille écran
+        fullscreen=False,        # on force à ne PAS être en plein écran
     )
 
     def on_loaded():
@@ -194,6 +209,7 @@ def main():
     window.events.loaded += on_loaded
 
     webview.start(debug=False)
+
 
 if __name__ == "__main__":
     main()

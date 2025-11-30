@@ -15,7 +15,11 @@ function buildDialogueContext() {
   const PlayerJustDeclared = hasDecl && S.playFirst === "player";
 
   const annoncePossible = possibleDeclarations(S.handComputer);
-  
+  let meilleurAnnoncePossible = null;
+  if (annoncePossible.length > 0) {
+    annoncePossible.sort((a, b) => b.gain - a.gain);
+    meilleurAnnoncePossible = annoncePossible[0];
+  }
 
   // Ajouter le gain si annonce en cours (simulation de l'état APRÈS l'animation de score).
   if (IAJustDeclared) {
@@ -67,7 +71,7 @@ function buildDialogueContext() {
 
     // Annonce possible de l'IA, mais empéchée par le joueur.
     annoncePossible: annoncePossible.length > 0
-    ? annoncePossible[0]?.name
+    ? meilleurAnnoncePossible.name
     : null,
     
     // Petits flags utiles dans les répliques si tu veux t’en servir plus tard.

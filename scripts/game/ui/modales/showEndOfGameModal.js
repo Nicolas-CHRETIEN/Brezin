@@ -320,7 +320,7 @@ function showEndOfGameModal() {
         // Si le joueur perd  → perso_victoire
         const suffix = (who === "Joueur") ? "defaite" : "victoire";
         const file   = `${perso}_${suffix}.gif`; // ex : "Jehanne_victoire.gif"
-        showEndGif(gifBox, file);
+        if (showIA) showEndGif(gifBox, file);
       }
     }, 450);
   }

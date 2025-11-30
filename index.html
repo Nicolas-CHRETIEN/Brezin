@@ -64,6 +64,11 @@
       <img src="images/comment.svg"    class="icon-comment icon-on">
       <img src="images/noComment.svg" class="icon-comment icon-off">
     </button>
+     <!-- Présence / Réactions IA -->
+    <button id="btnIaToggle" title="Activer/Désactiver la présence des personnages IA">
+      <img src="images/IA.svg"    class="icon-ia icon-on">
+      <img src="images/noIA.svg" class="icon-ia icon-off">
+    </button>
   </div>
 
   <!-- Indicateur connexion -->
@@ -297,70 +302,110 @@
   <!-- ÉCRAN 2 : RÈGLES -->
   <section id="screen-rules" class="screen">
     <div class="rules wrap">
-      <button class="btn" data-goto="game">Lancer le jeu</button>
-      <button class="btn alt" data-goto="home">Retour accueil</button>
+
       <header class="rules__header">
         <h1 id="rules-title">Règles du jeu – Le Brézin</h1>
         <p class="rules__subtitle">Deux joueurs – Deux jeux de 32 cartes – Objectif 1000 points</p>
       </header>
+      <button class="btn" data-goto="game">Lancer le jeu</button>
+      <button class="btn alt" data-goto="home">Retour accueil</button>
 
+      <!-- 1. OBJECTIF -->
       <section class="rules__block" aria-labelledby="rules-objectif">
-        <h2 id="rules-objectif">Objectif</h2>
-        <p>Le vainqueur est le premier joueur qui atteint ou dépasse <strong>1000 points</strong> à la fin d’une partie.</p>
-      </section>
-
-      <section class="rules__block" aria-labelledby="rules-donne-atout">
-        <h2 id="rules-donne-atout">Donne et atout</h2>
+        <h2 id="rules-objectif">1) Objectif</h2>
+        <p>
+          Le Brézin se joue en tête-à-tête. L’objectif est de dépasser les
+          <strong>1000 points</strong> avant votre adversaire, tout en ayant un
+          <strong>score supérieur</strong> au moment où ce seuil est franchi.
+        </p>
+        <p>Deux façons de marquer des points&nbsp;:</p>
         <ul>
-          <li>On utilise <strong>deux jeux de 32 cartes</strong>.</li>
-          <li>On distribue <strong>9 cartes</strong> à chaque joueur, <strong>trois par trois</strong>.</li>
-          <li>La <strong>19<sup>e</sup> carte</strong> est <strong>retournée face visible</strong> : elle détermine la <strong>couleur d’atout</strong> puis est placée <strong>sous le talon</strong> (la pioche).</li>
-          <li>Seule cette carte d’atout est visible au début de la partie.</li>
-          <li><strong>Qui commence :</strong> le joueur qui n’a pas distribué. À la donne suivante, on inverse les rôles.</li>
+          <li>en remportant des plis contenant des <strong>10</strong> et des <strong>As</strong> ;</li>
+          <li>et surtout grâce aux <strong>annonces</strong>, qui rapportent beaucoup plus.</li>
         </ul>
       </section>
 
-      <section class="rules__block" aria-labelledby="rules-phases">
-        <h2 id="rules-phases">Phases du jeu</h2>
-        <ol>
-          <li><a href="#rules-plis">Le jeu des plis</a></li>
-          <li><a href="#rules-annonces">Les annonces</a></li>
-        </ol>
+      <!-- 2. DONNE & ATOUT -->
+      <section class="rules__block" aria-labelledby="rules-donne-atout">
+        <h2 id="rules-donne-atout">2) Donne et atout</h2>
+        <ul>
+          <li>On utilise <strong>deux jeux de 32 cartes</strong>, soit <strong>64 cartes</strong> au total.</li>
+          <li>Chaque paquet contient&nbsp;: 7, 8, 9, Valet, Dame, Roi, 10 et As dans les quatre couleurs.</li>
+          <li>Chaque carte existe donc en <strong>double</strong> (par exemple&nbsp;: deux 7 de Trèfle, deux Dames de Carreau, etc.).</li>
+          <li>On distribue <strong>9 cartes</strong> à chaque joueur, <strong>trois par trois</strong>.</li>
+          <li>Une carte est posée <strong>face visible au centre</strong> : elle détermine la <strong>couleur d’atout</strong> pour toute la manche.</li>
+          <li>Le reste des cartes forme le <strong>talon</strong> (la pioche).</li>
+          <li><strong>Qui commence&nbsp;?</strong> À la première manche, on tire au sort. À la manche suivante, les rôles de donneur et de premier joueur s’inversent.</li>
+        </ul>
       </section>
 
-      <section class="rules__block" aria-labelledby="rules-plis">
-        <h2 id="rules-plis">1) Le jeu des plis</h2>
+      <!-- 3. PHASES DU JEU -->
+      <section class="rules__block" aria-labelledby="rules-phases">
+        <h2 id="rules-phases">3) Phases du jeu</h2>
+        <ul>
+          <li><a href="#rules-plis">1. Le jeu des plis</a></li>
+          <li><a href="#rules-annonces">2. Les annonces</a></li>
+          <li><a href="#rules-fin">3. Fin de manche</a></li>
+        </ul>
+      </section>
 
-        <h3>Déroulement d’un tour</h3>
-        <ol>
-          <li>Le premier joueur <strong>pioche une carte</strong> dans le talon, puis <strong>joue une carte</strong> de son choix.</li>
-          <li>Le second joueur <strong>pioche</strong> à son tour, puis <strong>répond</strong> avec une carte.</li>
-        </ol>
+      <!-- 4. LE JEU DES PLIS -->
+      <section class="rules__block" aria-labelledby="rules-plis">
+        <h2 id="rules-plis">4) Le jeu des plis</h2>
+
+        <h3>Déroulement d’un tour (tant qu’il reste des cartes à piocher)</h3>
+        <ul>
+          <li>Le joueur qui a remporté le pli précédent <strong>pioche une carte</strong> dans le talon, puis <strong>joue une carte</strong> de son choix.</li>
+          <li>Le second joueur <strong>pioche à son tour</strong>, puis joue une carte de son choix.</li>
+          <li>Le pli est attribué, puis le vainqueur entame le tour suivant.</li>
+        </ul>
 
         <h3>Attribution du pli</h3>
         <ul>
           <li>Si les deux cartes sont de la <strong>même couleur</strong>, la <strong>plus forte</strong> remporte le pli.</li>
-          <li>Si deux cartes indentiques sont jouées, la première jouée remporte le pli.</li>
-          <li>Si le second joueur <strong>change de couleur</strong>, il perd le pli, sauf s’il <strong>coupe à l’atout</strong> (dans ce cas il gagne le pli).</li>
-          <li>Le <strong>vainqueur du pli</strong> entame le tour suivant.</li>
+          <li>Si deux cartes identiques sont jouées, la <strong>première jouée</strong> remporte le pli.</li>
+          <li>Si le second joueur change de couleur, il perd le pli, sauf s’il <strong>joue de l’atout</strong> (dans ce cas il gagne le pli).</li>
+          <li>Si les deux joueurs jouent de l’atout, la <strong>plus forte carte d’atout</strong> remporte le pli.</li>
         </ul>
 
         <h3>Ordre des cartes (de la plus faible à la plus forte)</h3>
         <p><code>7 – 8 – 9 – Valet – Dame – Roi – 10 – As</code></p>
+        <p>Cette hiérarchie est la même pour les <strong>atouts</strong>.</p>
 
         <p>Les cartes jouées sont placées face cachée dans le <strong>tas de plis</strong> du joueur qui les a remportées.</p>
       </section>
 
-      <section class="rules__block" aria-labelledby="rules-annonces">
-        <h2 id="rules-annonces">2) Les annonces</h2>
+      <!-- 5. LES POINTS DES PLIS -->
+      <section class="rules__block" aria-labelledby="rules-points-plis">
+        <h2 id="rules-points-plis">5) Points gagnés dans les plis</h2>
+        <ul>
+          <li>Chaque pli contenant un <strong>10</strong> ou un <strong>As</strong> rapporte <strong>10 points</strong> au joueur qui remporte le pli.</li>
+          <li>En fin de manche, on recompte tous les 10 et As des plis ramassés&nbsp;: chaque carte vaut <strong>10 points</strong>.</li>
+        </ul>
+      </section>
 
-        <p>Lorsqu’un joueur <strong>remporte un pli</strong>, il peut <strong>immédiatement</strong> faire <strong>une annonce</strong> (une seule à la fois, sauf mention contraire).</p>
+      <!-- 6. LES ANNONCES : PRINCIPE GENERAL -->
+      <section class="rules__block" aria-labelledby="rules-annonces">
+        <h2 id="rules-annonces">6) Les annonces</h2>
+
+        <p>Les annonces sont des <strong>combinaisons de cartes</strong> qui rapportent beaucoup de points. Elles constituent le cœur stratégique du Brézin.</p>
+
+        <h3>Conditions générales pour annoncer</h3>
+        <ul>
+          <li>On ne peut annoncer qu’<strong>immédiatement après avoir remporté un pli</strong>.</li>
+          <li>Pour annoncer, il faut <strong>conserver les cartes nécessaires dans sa main</strong>, en anticipant les pioches (la main est limitée en pratique à 9 cartes utiles).</li>
+          <li>Pour chaque nouvelle annonce, <strong>au moins une carte</strong> de la combinaison doit être <strong>neuve</strong>, c’est-à-dire <strong>n’avoir encore jamais servi dans une annonce</strong>.</li>
+          <li>Les cartes ayant servi à une annonce sont placées <strong>face visible</strong> devant le joueur, mais elles restent <strong>jouables</strong> plus tard dans les plis.</li>
+          <li>Une carte peut servir à <strong>plusieurs types d’annonces</strong>, mais pas forcément plusieurs fois au même type (voir ci-dessous).</li>
+          <li>Les carrés ont une règle particulière&nbsp;: si un joueur a déjà annoncé un carré d’un rang donné, il lui suffit de posséder <strong>3 nouvelles cartes du même rang</strong> pour annoncer un second carré, en réutilisant <strong>une seule carte</strong> du premier carré.</li>
+        </ul>
 
         <!-- ==================== COUPLES ==================== -->
-        <h3>Couples (Dame + Roi de même couleur)</h3>
+        <h4>Couples (Dame + Roi de même couleur)</h4>
         <ul>
-          <li><strong>20 points</strong></li>
-          <li><strong>40 points</strong> si c’est un <strong>couple d’atout</strong></li>
+          <li><strong>20 points</strong> pour un couple simple.</li>
+          <li><strong>40 points</strong> pour un <strong>couple d’atout</strong>.</li>
+          <li>Une Dame ou un Roi ayant servi dans un couple ne peut plus servir dans un autre couple, mais peut encore servir pour un carré, le 40 de Brézin, le 250 ou le Brézin.</li>
         </ul>
 
         <div class="rules__example">
@@ -386,7 +431,8 @@
         </div>
 
         <!-- ==================== CARRES ==================== -->
-        <h3>Carrés (4 cartes de même rang)</h3>
+        <h4>Carrés (4 cartes de même rang)</h4>
+        <p>Seuls les carrés de Valets, Dames, Rois et As rapportent des points&nbsp;:</p>
         <table class="rules__table">
           <thead>
             <tr><th>Rang</th><th>Points</th></tr>
@@ -398,31 +444,32 @@
             <tr><td>As</td><td>100</td></tr>
           </tbody>
         </table>
-        <p>Les autres carrés ne rapportent <strong>aucun point</strong>.</p>
+        <p>Les autres carrés (7, 8, 9, 10) ne rapportent <strong>aucun point</strong>.</p>
 
         <div class="rules__example">
-          <p class="rules__example-title">Exemple de carré&nbsp;: Carré de Dames (60 points)</p>
+          <p class="rules__example-title">Exemple&nbsp;: Carré de Dames (60 points)</p>
           <div class="rules__cards-row">
             <img class="rules__card" src="images/dame_de_pique.svg"   alt="Dame de Pique">
             <img class="rules__card" src="images/dame_de_coeur.svg"  alt="Dame de Cœur">
             <img class="rules__card" src="images/dame_de_carreau.svg" alt="Dame de Carreau">
             <img class="rules__card" src="images/dame_de_trèfle.svg" alt="Dame de Trèfle">
           </div>
-          <p class="rules__example-title">Un autre exemple&nbsp;: Carré de Rois (80 points)</p>
+
+          <p class="rules__example-title">Autre exemple&nbsp;: Carré de Rois (80 points)</p>
           <div class="rules__cards-row">
-            <img class="rules__card" src="images/roi_de_coeur.svg"   alt="Dame de Pique">
-            <img class="rules__card" src="images/roi_de_coeur.svg"  alt="Dame de Cœur">
-            <img class="rules__card" src="images/roi_de_carreau.svg" alt="Dame de Carreau">
-            <img class="rules__card" src="images/roi_de_trèfle.svg" alt="Dame de Trèfle">
+            <img class="rules__card" src="images/roi_de_pique.svg"   alt="Roi de Pique">
+            <img class="rules__card" src="images/roi_de_coeur.svg"   alt="Roi de Cœur">
+            <img class="rules__card" src="images/roi_de_carreau.svg" alt="Roi de Carreau">
+            <img class="rules__card" src="images/roi_de_trèfle.svg"  alt="Roi de Trèfle">
           </div>
         </div>
 
         <!-- ==================== 7 D'ATOUT ==================== -->
-        <h3>Les 7 d’atout</h3>
+        <h4>Le 7 d’atout</h4>
         <ul>
-          <li>Chaque <strong>7 d’atout</strong> vaut <strong>10 points</strong>.</li>
-          <li>Un 7 d’atout peut être <strong>échangé</strong> contre la <strong>carte visible d’atout</strong> (celle sous le talon), qui rejoint alors les cartes d’annonces <strong>face visible</strong>.</li>
-          <li>Si le <strong>distributeur retourne un 7 d’atout à la donne</strong>, il marque <strong>automatiquement 10 points</strong>.</li>
+          <li>Annoncer un <strong>7 de la couleur d’atout</strong> rapporte <strong>10 points</strong>.</li>
+          <li>Le 7 d’atout permet de <strong>récupérer la carte d’atout visible au centre</strong>, en l’échangeant avec ce 7.</li>
+          <li>Le 7 d’atout est la <strong>seule annonce</strong> pouvant se <strong>cumuler avec une autre annonce</strong> au même moment.</li>
         </ul>
 
         <div class="rules__example">
@@ -433,9 +480,21 @@
           </div>
         </div>
 
+        <!-- ==================== 40 DE BREZIN ==================== -->
+        <h4>Le 40 de Brézin</h4>
+        <p><strong>Valet de Pique + Dame de Carreau</strong> : <strong>40 points</strong>.</p>
+
+        <div class="rules__example">
+          <p class="rules__example-title">Exemple de 40 de Brézin</p>
+          <div class="rules__cards-row">
+            <img class="rules__card" src="images/valet_de_pique.svg"   alt="Valet de Pique">
+            <img class="rules__card" src="images/dame_de_carreau.svg"  alt="Dame de Carreau">
+          </div>
+        </div>
+
         <!-- ==================== 250 ==================== -->
-        <h3>Le 250 (10, Valet, Dame, Roi, As d’atout)</h3>
-        <p><strong>250 points</strong>.</p>
+        <h4>Le 250</h4>
+        <p>Une combinaison de 5 cartes d’atout&nbsp;: <strong>Valet, Dame, Roi, 10 et As d’atout</strong> vaut <strong>250 points</strong>.</p>
 
         <div class="rules__example">
           <p class="rules__example-title">Exemple de 250&nbsp;: Valet, Dame, Roi, 10 et As d’atout (ici Carreau)</p>
@@ -448,21 +507,9 @@
           </div>
         </div>
 
-        <!-- ==================== 40 DE BREZIN ==================== -->
-        <h3>Le 40 de Brézin</h3>
-        <p><strong>Valet de Pique + Dame de Carreau</strong> : <strong>40 points</strong>.</p>
-
-        <div class="rules__example">
-          <p class="rules__example-title">Exemple de 40 de Brézin</p>
-          <div class="rules__cards-row">
-            <img class="rules__card" src="images/valet_de_pique.svg"   alt="Valet de Pique">
-            <img class="rules__card" src="images/dame_de_carreau.svg" alt="Dame de Carreau">
-          </div>
-        </div>
-
         <!-- ==================== BREZIN ==================== -->
-        <h3>Le Brézin</h3>
-        <p><strong>Deux Valets de Pique</strong> et <strong>deux Dames de Carreau</strong> : <strong>500 points</strong>.</p>
+        <h4>Le Brézin</h4>
+        <p>La combinaison la plus rare&nbsp;: <strong>deux Valets de Pique</strong> et <strong>deux Dames de Carreau</strong>. Elle vaut <strong>500 points</strong>.</p>
 
         <div class="rules__example">
           <p class="rules__example-title">Exemple de Brézin</p>
@@ -470,45 +517,72 @@
             <!-- on affiche simplement deux fois chaque carte -->
             <img class="rules__card" src="images/valet_de_pique.svg"   alt="Valet de Pique">
             <img class="rules__card" src="images/valet_de_pique.svg"   alt="Valet de Pique">
-            <img class="rules__card" src="images/dame_de_carreau.svg" alt="Dame de Carreau">
-            <img class="rules__card" src="images/dame_de_carreau.svg" alt="Dame de Carreau">
+            <img class="rules__card" src="images/dame_de_carreau.svg"  alt="Dame de Carreau">
+            <img class="rules__card" src="images/dame_de_carreau.svg"  alt="Dame de Carreau">
           </div>
         </div>
 
-        <p>Il est possible d’annoncer d’abord un <strong>Brézin</strong>, puis un <strong>Grand Brézin</strong>, à condition de <strong>n’avoir joué aucune carte</strong> appartenant au Brézin annoncé.</p>
-
-        <!-- ==================== CARTES EXPOSEES ==================== -->
-        <h3>Cartes exposées et cumul</h3>
+        <!-- ==================== CARTES EXPOSEES & REUTILISATION ==================== -->
+        <h3>Cartes exposées et réutilisation</h3>
         <ul>
-          <li>Les cartes ayant servi à une annonce sont <strong>exposées face visible</strong> et restent jouables plus tard.</li>
-          <li>On ne peut faire <strong>qu’une annonce à la fois</strong>, sauf si l’annonce comporte aussi le <strong>10 d’atout</strong> (cumul autorisé).</li>
-          <li>Les cartes d’un <strong>couple</strong> ne peuvent pas former un autre couple, mais peuvent servir à un <strong>carré</strong>, au <strong>250</strong> ou au <strong>Brézin</strong>, et inversement.</li>
-          <li>Une <strong>carte exposée</strong> peut participer à une nouvelle annonce seulement si <strong>au moins une carte provient de la main du joueur</strong>.</li>
-          <li><strong>Une seule</strong> carte d’un carré annoncé peut être réutilisée pour refaire un carré.</li>
-          <li>Une <strong>carte déjà jouée</strong> ne peut plus être utilisée pour une annonce.</li>
+          <li>Les cartes ayant servi à une annonce restent <strong>exposées face visible</strong>, mais elles peuvent toujours être jouées dans les plis.</li>
+          <li>On ne peut annoncer qu’<strong>une combinaison à la fois</strong>, sauf dans le cas du <strong>7 d’atout</strong> qui peut se cumuler avec une autre annonce.</li>
+          <li>Une carte ayant servi à un <strong>couple</strong> ne peut plus former un autre couple, mais peut servir à un <strong>carré</strong> ou à d’autres annonces (40 de Brézin, 250, Brézin).</li>
+          <li>Pour chaque nouvelle annonce, il doit toujours y avoir <strong>au moins une carte neuve</strong>, n’ayant jamais été annoncée.</li>
+          <li>Pour les <strong>carrés</strong>, une seule carte d’un carré déjà annoncé peut être réutilisée pour un nouveau carré du même rang.</li>
+          <li>Une <strong>carte déjà jouée dans un pli</strong> ne peut plus servir à une annonce.</li>
         </ul>
       </section>
 
+      <!-- 7. FIN DE MANCHE & OBLIGATIONS APRES LA PIOCHE -->
       <section class="rules__block" aria-labelledby="rules-fin">
-        <h2 id="rules-fin">Fin de partie et obligations</h2>
+        <h2 id="rules-fin">7) Fin de manche&nbsp;: épuisement de la pioche</h2>
+
+        <h3>Lorsque l'on arrive a la fin de la pioche</h3>
         <ul>
-          <li>Quand le <strong>talon est épuisé</strong>, les joueurs reprennent leurs cartes exposées en main et la partie se poursuit <strong>sans pioche</strong>.</li>
-          <li>À partir de ce moment, les <strong>annonces ne sont plus autorisées</strong>.</li>
-          <li>On doit <strong>fournir la couleur demandée</strong> si possible ; sinon, on doit <strong>couper à l’atout</strong>.</li>
-          <li>En atout, on est <strong>obligé de monter</strong> (jouer une carte d’atout plus forte si possible).</li>
+          <li>le joueur qui a remporté le dernier pli prend la <strong>dernière carte</strong> de la pioche&nbsp;;</li>
+          <li>l’autre joueur récupère la <strong>carte d’atout visible</strong> dans sa main&nbsp;;</li>
+          <li>toutes les cartes annoncées, posées face visible, <strong>reviennent en main</strong> ;</li>
+          <li>les <strong>annonces ne sont plus possibles</strong> jusqu’à la fin de la manche.</li>
         </ul>
+
+        <h3>Obligations de jeu après épuisement de la pioche</h3>
+        <p>À partir de ce moment, le joueur qui joue en second n’est plus libre de jouer ce qu’il veut&nbsp;:</p>
+        <ul>
+          <li>
+            S’il possède la <strong>couleur demandée</strong>, il doit la fournir,
+            <strong>même si cela l’oblige à jouer un 10 ou un As</strong>.
+          </li>
+          <li>
+            S’il ne possède pas la couleur demandée mais possède de l’<strong>atout</strong>,
+            il doit <strong>couper à l’atout</strong>.
+          </li>
+          <li>
+            Si la première carte jouée est un <strong>atout</strong> et que le second joueur possède
+            un atout plus fort, il doit <strong>surcouper</strong> (jouer un atout plus puissant).
+          </li>
+          <li>
+            S’il ne possède ni la couleur demandée, ni d’atout, il peut jouer la carte de son choix.
+          </li>
+        </ul>
+
+        <p>Les règles pour savoir qui remporte le pli (hiérarchie des cartes, rôle de l’atout) restent identiques&nbsp;: seule l’<strong>obligation de fournir</strong> ou de couper change.</p>
       </section>
 
+      <!-- 8. COMPTAGE FINAL & VICTOIRE -->
       <section class="rules__block" aria-labelledby="rules-scoring">
-        <h2 id="rules-scoring">Comptage des points</h2>
+        <h2 id="rules-scoring">8) Comptage final et victoire</h2>
         <ul>
-          <li>Chaque <strong>10</strong> et chaque <strong>As</strong> remporté dans les plis vaut <strong>10 points</strong>.</li>
-          <li>On y ajoute les <strong>points des annonces</strong>.</li>
-          <li>Le premier joueur qui atteint ou dépasse <strong>1000 points</strong> remporte la partie.</li>
+          <li>À la fin de la manche, on additionne les <strong>points des annonces</strong> et les <strong>points des 10 et As</strong> remportés dans les plis.</li>
+          <li>Ce total est ajouté au <strong>score général</strong> de chaque joueur.</li>
+          <li>Une nouvelle manche commence tant qu’aucun joueur n’a atteint ou dépassé <strong>1000 points</strong>.</li>
+          <li>Si les deux joueurs dépassent 1000 points en même temps et sont à égalité, on joue une <strong>manche de départage</strong>.</li>
+          <li>Le joueur ayant le <strong>score le plus élevé</strong> au moment où le seuil des 1000 points est franchi remporte la partie.</li>
         </ul>
       </section>
     </div>
   </section>
+
 
   <!-- ÉCRAN 3 : JEU (ton écran collé, sans boutons de nav) -->
   <section id="screen-game" class="screen">

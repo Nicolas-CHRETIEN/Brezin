@@ -18,5 +18,9 @@ function getGameStartMessage() {
     const ctx = buildDialogueContext(); 
     const rawFn   = lines[Math.floor(Math.random() * lines.length)];
     const message = (typeof rawFn === "function") ? rawFn(ctx) : rawFn;
-    if (showComments) setAiEmotion("joie", message);
+    if (showIA && showComments) {
+        setAiEmotion("joie", message);
+    } else if (!!showComments) {
+        setAiEmotion("joie", "");
+    }
 }

@@ -345,6 +345,13 @@
 .audio-panel button { cursor:pointer; border:0; background:#374151; color:#fff; padding:6px 10px; border-radius:8px; }
 .audio-panel button:hover { filter:brightness(1.1); }
 
+@media (max-height: 1000px) {
+  .audio-panel {
+    top: auto;
+    bottom: 10px;
+  }
+}
+
 .ai-profile {
   display: flex;
   align-items: center;
