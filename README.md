@@ -2,6 +2,7 @@
 ## Jeu de cartes médiéval berrichon – Version numérique
 
 ## Présentation
+<img width="200" height="908" alt="image" src="https://github.com/user-attachments/assets/3471ef2b-61d3-4812-bd93-617f8b599d79" />
 
 Le **Jeu du Brézin** est une adaptation numérique moderne d’un jeu de cartes traditionnel du Berry, jouable en duel contre une IA.  
 L’application est développée en **HTML**, **CSS** et **JavaScript**, et empaquetée via **Python + PyInstaller** (pywebview) pour fonctionner comme un exécutable Windows autonome.
@@ -13,6 +14,9 @@ L’objectif est d’offrir une expérience fluide, immersive et fidèle à l’
 - des **animations, sons, effets** et de nombreux assets graphiques
 - un **système complet de statistiques** (scores, historiques, graphiques)
 
+<img width="537" height="727" alt="image" src="https://github.com/user-attachments/assets/6b4185e6-9c4b-4e65-8fdd-32d7751d2515" />
+
+
 # Fonctionnalités principales
 
 ## Gameplay
@@ -23,10 +27,20 @@ L’objectif est d’offrir une expérience fluide, immersive et fidèle à l’
 - Animations visuelles lors des annonces (Brézin, 40 de Brézin, 250, couples, carrés…)
 - Interface **responsive** et optimisée
 
+<img width="1918" height="1022" alt="image" src="https://github.com/user-attachments/assets/3155a4ac-6eb6-42a0-ab71-f4d77c5a04d8" />
+
+
 ## Intelligence Artificielle
 
 **4 niveaux de difficulté** :  
 **Radegonde (facile)** – **Perrot (normal)** – **Jehanne (difficile)** – **Andry (expert)**
+
+
+<img width="200" height="736" alt="image" src="https://github.com/user-attachments/assets/e688e57d-bee1-4983-8aa7-715372bf9a60" />
+<img width="200" height="736" alt="image" src="https://github.com/user-attachments/assets/037ee9aa-697d-4531-acc6-8fb20e5f32cd" />
+<img width="200" height="736" alt="image" src="https://github.com/user-attachments/assets/82135c34-9e27-489f-88c4-d9fc559d20d3" />
+<img width="180" height="736" alt="image" src="https://github.com/user-attachments/assets/bbd2cce3-c5c9-40f5-9501-1630a7773670" />
+
 
 Chaque personnage possède :
 
@@ -44,6 +58,12 @@ Chaque personnage possède :
 - Expressions issues du **lexique traditionnel du Berry**
 - Affichage des émotions : **SVG dynamiques**, animations et textes contextualisés
 
+<img width="730" height="247" alt="image" src="https://github.com/user-attachments/assets/895a856a-d206-4c26-b7e6-896f7552a24e" />
+
+<img width="1336" height="668" alt="image" src="https://github.com/user-attachments/assets/d953ca60-0022-4764-82fc-eb61c12c414b" />
+
+
+
 ## Tableau de bord et statistiques
 
 Chaque partie terminée est enregistrée dans le fichier **`brezin_scores.xlsx`**.
@@ -54,6 +74,9 @@ Le tableau de bord affiche :
 - filtres par difficulté
 - graphiques via **Chart.js**
 - historique complet des parties
+
+<img width="1232" height="942" alt="image" src="https://github.com/user-attachments/assets/cf81c3c7-d3b7-4e28-8901-8197e315a3d0" />
+
 
 ## Audio
 
@@ -68,10 +91,7 @@ Le tableau de bord affiche :
 - Exécution **sans installation**
 - Tous les assets intégrés à l’exécutable : HTML, CSS, JS, images, sons
 
-# Structure du projet (résumée)
-
 ## Structure du projet
-
 ```
 appBrezin/
 │
