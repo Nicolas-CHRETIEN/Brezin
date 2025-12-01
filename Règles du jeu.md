@@ -21,6 +21,7 @@ Le Brézin utilise **64 cartes**, soit :
   dans les **4 couleurs** : pique, cœur, carreau, trèfle.
 - Chaque carte existe **en double** (ex. deux 7♣, deux 8♥…).
 
+
 ### Début de la manche
 
 1. Chaque joueur reçoit **9 cartes**.  
@@ -102,6 +103,8 @@ Elles constituent le **cœur stratégique** du Brézin.
 - Permet d’échanger cette carte contre **la carte d’atout visible** au centre.  
 - **Seule annonce cumulable** avec toutes les autres.  
 - Extrêmement stratégique.
+  
+<img width="300" height="300" alt="sept_d&#39;atout" src="https://github.com/user-attachments/assets/706b2d87-832d-45a4-9a05-cf6a7abbe637" />
 
 ---
 
@@ -111,12 +114,18 @@ Elles constituent le **cœur stratégique** du Brézin.
 - **20 points**.  
 - Si le couple est **dans la couleur d’atout** : **40 points**.
 
+<img width="200" height="1536" alt="couple_trèfle" src="https://github.com/user-attachments/assets/55b9f783-604b-4a93-a36a-0efc77e2139b" />
+<img width="200" height="1536" alt="couple d&#39;atout_coeur" src="https://github.com/user-attachments/assets/d0ddadde-182a-4ac4-bbfb-f21e91c39ceb" />
+
+
 ---
 
 ### Le 40 de Brézin
 
 - **Valet de pique + Dame de carreau**.  
 - **40 points**.
+
+<img width="200 height="640" alt="frame_000022" src="https://github.com/user-attachments/assets/ecdd274d-f70c-400a-966f-fbca4939f919" />
 
 ---
 
@@ -132,6 +141,8 @@ Elles constituent le **cœur stratégique** du Brézin.
 Rappel :  
 Un carré déjà annoncé permet de **réutiliser 1 carte** pour faire un **second carré du même rang**.
 
+<img width="300" height="1024" alt="ChatGPT Image 14 nov  2025, 21_25_08" src="https://github.com/user-attachments/assets/2a4c6c97-e8b0-41f6-b9fb-def037f4931b" />
+
 ---
 
 ### Le 250
@@ -139,6 +150,8 @@ Un carré déjà annoncé permet de **réutiliser 1 carte** pour faire un **seco
 - Une combinaison de **5 cartes d’atout** :  
   **Valet, Dame, Roi, 10, As** de la couleur d’atout.  
 - **250 points**.
+
+<img width="300" height="1536" alt="250_trèfle" src="https://github.com/user-attachments/assets/bc7930ca-6d30-4713-a392-ad2e0d625cc8" />
 
 ---
 
@@ -150,6 +163,8 @@ La combinaison la plus rare :
 - les **deux Dames de carreau**.
 
 → **500 points**.
+
+<img width="300" height="1618" alt="brezin" src="https://github.com/user-attachments/assets/ff98b61c-5873-483c-a79b-9afb04d45159" />
 
 ---
 
