@@ -72,7 +72,7 @@ Le tableau de bord affiche :
 
 ## Structure du projet
 
-```text
+```
 appBrezin/
 │
 ├── index.html
@@ -193,7 +193,7 @@ appBrezin/
     - ouvre `index.html` dans une fenêtre native,
     - gère l’accès aux assets packagés,
     - met à jour le fichier Excel des scores.
-
+```
 
 # Technologies utilisées
 
