@@ -1,3 +1,38 @@
+// ======================================================
+// ==========  Réactions & émotions de l'IA  ============
+// ======================================================
+//
+// Rôle du module.
+// ----------------
+// Gérer l’affichage des émotions et répliques de l’IA en cas de loupé sur le module principal de génération de dialogues.
+// Cette fonction dispose d'une génération de dialogues "de secours" moins perfectionnée, moins en lien avec le contexte.
+// en fonction :
+//   - de la difficulté (Radegonde / Perrot / Jehanne / Andry),
+//   - de l’émotion courante (colère, joie, peur, rire, doute,
+//     fierté, surprise, tristesse),
+//   - d’un éventuel texte personnalisé passé par le moteur
+//     de dialogue.
+//
+// Ce que fait le script.
+// ----------------------
+// 1) Déclare AI_DIALOGS : répliques par difficulté et par émotion.
+// 2) Fournit randomItem() pour choisir une réplique au hasard.
+// 3) Fournit setAiEmotion(emotion, definedText?, levelOnly?)
+//    - Choisit le personnage selon S.difficulty (AI_BY_DIFF).
+//    - Met à jour l’image SVG de l’IA (émotion visuelle).
+//    - Choisit une phrase (définie ou tirée de AI_DIALOGS).
+//    - Affiche le bloc #ai-emotion-box pendant 6 secondes,
+//      avec auto-masquage via un timer global.
+//
+// Remarques.
+// ----------
+// - Les données de partie viennent de window.S (S.difficulty).
+// - Ce module ne modifie pas S, il ne fait que lire S.difficulty.
+// - levelOnly permet de cibler une difficulté précise pour
+//   certaines répliques spéciales.
+// ======================================================
+
+
 let aiEmotionHideTimer = null; // timer global pour cacher le bloc
 
 
@@ -238,60 +273,57 @@ const AI_DIALOGS = {
   }
 };
 
-// Petit helper pour prendre un élément au hasard
+// Petit helper pour prendre un élément au hasard dans un tableau.
 function randomItem(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+
 // emotion : "colère", "joie", "peur", "rire", "doute", "fierté", "surprise", "tristesse".
 function setAiEmotion(emotion, definedText = null, levelOnly = null) {
-
   const perso = AI_BY_DIFF[S.difficulty];
 
-  // Permettre a la fonction de n'afficher une réplique que pour 1 niveau de difficulté.
-  if (levelOnly !== null && levelOnly !== perso) {
-    return;
-  }
+  // Permettre à la fonction de n’afficher une réplique que pour 1 niveau de difficulté.
+  if (levelOnly !== null && levelOnly !== perso) return;
 
   const box  = document.getElementById("ai-emotion-box");
   const img  = document.getElementById("ai-emotion-img");
   const text = document.getElementById("ai-emotion-text");
   if (!box || !img || !text) return;
- 
-  
 
+  // Image d’émotion
   img.src = `images/adversaires/emotions/${perso}_${emotion}.svg`;
   img.alt = `${perso} – ${emotion}`;
 
-  // Texte imposé → on ne pioche pas dans les répliques
+  // Texte imposé → on ne pioche pas dans les répliques.
   let line = definedText;
 
   if (line === null) {
     const pack    = AI_DIALOGS[S.difficulty] || {};
     const baseArr = Array.isArray(pack[emotion]) ? pack[emotion] : [];
-
-    let pool = baseArr;
+    let pool      = baseArr;
 
     if (pool.length) {
       line = randomItem(pool);
     } else {
-      line = ""; // fallback
+      line = ""; // fallback silencieux
     }
   }
 
   text.textContent = line;
 
-  // --- Affichage temporaire 4 s ---
-  // on annule un éventuel timer précédent
+  // --- Affichage temporaire (6 s) ---
+
+  // Annule un éventuel timer précédent
   if (aiEmotionHideTimer) {
     clearTimeout(aiEmotionHideTimer);
     aiEmotionHideTimer = null;
   }
 
-  // on montre le bloc
+  // Montre le bloc
   box.classList.add("ai-emotion-box--show");
 
-  // on programme sa disparition
+  // Programme sa disparition
   aiEmotionHideTimer = setTimeout(() => {
     box.classList.remove("ai-emotion-box--show");
     aiEmotionHideTimer = null;

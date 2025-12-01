@@ -4,7 +4,7 @@
 //
 // Rôle.
 // ----
-// Reproduire la logique PHP de `valueCard` : calculer la valeur totale d’une carte
+// Calcule la valeur totale d’une carte
 // pour l’IA en additionnant points de fin de pli, valeurs d’annonces potentielles
 // (couple, carré, petit/Grand Brézin, 250 d’atout), valeur d’atout et un léger bonus de rang.
 //

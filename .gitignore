@@ -1,22 +1,48 @@
+# ============================
+#  Jeu du Brézin — .gitignore
+# ============================
+
 # --- Builds PyInstaller / exécutables ---
 dist/
 build/
+dist_installer/
+*.spec
 *.exe
 *.pkg
 
-# --- Python environment ---
+# --- Environnements Python ---
 .venv/
 venv/
 env/
 __pycache__/
 *.pyc
 
-# --- VS Code ---
-.vscode/
-
 # --- Fichiers générés par l'application ---
 brezin_scores.xlsx
+
+# --- Logs & temporaires ---
+*.log
+*.tmp
+*.bak
+
+# --- VS Code ---
+.vscode/
 
 # --- Système Windows ---
 Thumbs.db
 desktop.ini
+
+# --- Sources médias lourdes (non nécessaires pour jouer) ---
+
+# Projets Audacity (sources montage)
+*.aup3
+
+# Frames d'animations des adversaires
+images/adversaires/Andry/images/
+images/adversaires/Perrot/images/
+images/adversaires/Radegonde/images/
+
+# Frames d'animation du 40 de Brézin
+images/annonces/40_de_brezin/images/
+images/annonces/40_de_brezin/no_bg/
+images/annonces/40_de_brezin/selectionnées/

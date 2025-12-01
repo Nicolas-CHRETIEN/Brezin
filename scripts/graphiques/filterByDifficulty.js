@@ -4,24 +4,31 @@
 //
 // But du fichier.
 // ----------------
-// Gérer l’état de sélection de difficulté (easy/normal/hard/expert) sur l’écran d’accueil,
-// filtrer les lignes de parties par difficulté, et déclencher le rendu du tableau de bord.
+// Gérer l’état de sélection de difficulté (easy / normal / hard / expert)
+// sur l’écran d’accueil, filtrer les parties par difficulté et par session
+// utilisateur, puis déclencher le rendu du tableau de bord (KPI, graphiques,
+// tableau des parties).
 //
 // Ce que fait le script.
 // ----------------------
-// 1) Stocke la difficulté courante dans `localStorage` et dans l’état local `DASH`.
-// 2) Lit les lignes (via pywebview ailleurs dans l’app), les met en cache, filtre par difficulté.
-// 3) Met à jour l’UI des onglets et du <select>, et appelle le rendu des KPI/Graphiques/Tableau.
-// 4) Expose `refreshHomeDashboard()` et `notifyDataUpdated()` pour relancer le rendu.
-// 5) Écoute les signaux multi-onglets (BroadcastChannel et storage) pour se rafraîchir.
+// 1) Stocke la difficulté courante dans `localStorage` + état local `DASH`.
+// 2) Lit les lignes Excel via pywebview, les met en cache, filtre par difficulté
+//    et par utilisateur, puis rend le dashboard.
+// 3) Met à jour l’UI des onglets et du <select> de difficulté.
+// 4) Gère les sessions utilisateur (modale de choix / création, indicateur).
+// 5) Expose `refreshHomeDashboard()` et `notifyDataUpdated()` pour relancer le rendu.
+// 6) Écoute les signaux multi-onglets (BroadcastChannel + storage) pour se rafraîchir.
 //
-// Remarque : les données de jeu globales sont accessibles via `window.S` si nécessaire.
-// Ici, ce module n’invente aucun chemin dans `S`.
+// Remarque :
+// ----------
+// Les données de jeu globales sont accessibles dans `window.S` si besoin,
+// mais ce module ne crée ni n’invente aucun chemin dans `S`.
 
-
-
+// ======================================================
 // ============== A) État & utilitaires =================
-// État local Home.
+// ======================================================
+
+// Résumé IA affiché sur l’écran d’accueil en fonction de la difficulté.
 const AI_HOME_SUMMARY = {
   easy: {
     id: "Radegonde",
@@ -53,50 +60,51 @@ const AI_HOME_SUMMARY = {
   }
 };
 
+// Met à jour la carte de présentation de l’IA sur la page d’accueil.
 function updateAISummary(diff) {
   const data = AI_HOME_SUMMARY[diff];
   if (!data) return;
 
-  const imgEl   = document.getElementById("ai-profile-img");
-  const nameEl  = document.getElementById("ai-profile-name");
-  const subEl   = document.getElementById("ai-profile-subtitle");
-  const descEl  = document.getElementById("ai-profile-desc");
+  const imgEl  = document.getElementById("ai-profile-img");
+  const nameEl = document.getElementById("ai-profile-name");
+  const subEl  = document.getElementById("ai-profile-subtitle");
+  const descEl = document.getElementById("ai-profile-desc");
 
   if (!imgEl || !nameEl || !subEl || !descEl) return;
 
-  imgEl.src = data.img;
-  imgEl.alt = data.name;
+  imgEl.src         = data.img;
+  imgEl.alt         = data.name;
   nameEl.textContent = data.name;
   subEl.textContent  = data.subtitle;
   descEl.textContent = data.desc;
 }
 
-
+// État local du tableau de bord.
 const DASH = {
   diff: (localStorage.getItem("brezin:homeDiff") || "normal"),
-  user: (localStorage.getItem("brezin:userName") || ""), // nom de session courant
-  rowsAll: [] // Toutes les lignes Excel en cache.
+  user: (localStorage.getItem("brezin:userName") || ""),
+  rowsAll: [] // cache de toutes les lignes Excel.
 };
 
-// Passer le nom d'utilisateur en global.
+// Passe le nom d'utilisateur en global.
 window.userName = DASH.user || "";
 
-// Normalise une difficulté arbitraire en valeur attendue.
-function sanitizeDiff(v){
+// Normalise une difficulté quelconque en valeur valide.
+function sanitizeDiff(v) {
   v = String(v || "").toLowerCase();
-  return (["easy","normal","hard","expert"].includes(v) ? v : "normal");
+  return ["easy", "normal", "hard", "expert"].includes(v) ? v : "normal";
 }
 DASH.diff = sanitizeDiff(DASH.diff);
 
 // Filtre les lignes selon la difficulté demandée.
-function filterRowsByDifficulty(rows, diff){
+function filterRowsByDifficulty(rows, diff) {
   const d = sanitizeDiff(diff);
   const toLc = s => (s == null ? "" : String(s).toLowerCase());
   return Array.isArray(rows) ? rows.filter(r => toLc(r.difficulte) === d) : [];
 }
 
 // Filtre les lignes selon l'utilisateur (session).
-function filterRowsByUser(rows, userName){
+function filterRowsByUser(rows, userName) {
   const u = String(userName || "").toLowerCase();
   if (!u) return Array.isArray(rows) ? rows : [];
   return Array.isArray(rows)
@@ -105,32 +113,32 @@ function filterRowsByUser(rows, userName){
 }
 
 // Filtre combiné difficulté + utilisateur.
-function filterRows(rows, diff, userName){
+function filterRows(rows, diff, userName) {
   const byDiff = filterRowsByDifficulty(rows, diff);
   return filterRowsByUser(byDiff, userName);
 }
 
-// Met à jour l’UI des onglets et du <select> pour refléter la difficulté active.
-function applyDiffUI(diff){
+// Met à jour l’UI des onglets + du <select> pour refléter la difficulté active.
+function applyDiffUI(diff) {
   document.querySelectorAll(".diff-tab").forEach(btn => {
     const on = String(btn.dataset.diff || "").toLowerCase() === diff;
     btn.setAttribute("aria-selected", on ? "true" : "false");
   });
+
   const sel = document.getElementById("diff-select");
   if (sel) sel.value = diff;
 }
 
-// Recalcule l’intégralité des KPI/Charts/Tableau à partir d’un sous-ensemble.
-function renderFromRows(rowsSub){
+// Recalcule et rend KPIs / graphiques / tableau à partir d’un sous-ensemble.
+function renderFromRows(rowsSub) {
   const M = buildMetricsFromRows(rowsSub);
   updateKPIs(M);
   ensureCharts(M);
   fillRecentGamesTable(rowsSub);
 }
 
-
-// Retourne la liste des noms d'utilisateurs distincts à partir des lignes.
-function getDistinctUserNames(rows){
+// Renvoie la liste des noms d'utilisateurs distincts.
+function getDistinctUserNames(rows) {
   const set = new Set();
   (rows || []).forEach(r => {
     const name = (r.userName || r.utilisateur || "").trim();
@@ -139,12 +147,12 @@ function getDistinctUserNames(rows){
   return Array.from(set);
 }
 
-// Remplit la liste dans la modale
-function fillSessionModalList(names){
+// Remplit la liste des sessions dans la modale.
+function fillSessionModalList(names) {
   const list = document.getElementById("session-modal_list");
   if (!list) return;
-  list.innerHTML = "";
 
+  list.innerHTML = "";
   const last = (DASH.user || "").toLowerCase();
 
   if (!names.length) {
@@ -164,35 +172,40 @@ function fillSessionModalList(names){
     btn.innerHTML = `
       <span class="session-btn_name">${name}</span>
       <span class="session-btn_hint">
-        ${last && name.toLowerCase() === last ? "Dernière session utilisée" : "Cliquer pour rejoindre cette session"}
+        ${last && name.toLowerCase() === last
+          ? "Dernière session utilisée"
+          : "Cliquer pour rejoindre cette session"}
       </span>
     `;
     list.appendChild(btn);
   });
 }
 
-// Ouvre la modale de session
-function openSessionModal(){
+// Ouvre / ferme la modale de session.
+function openSessionModal() {
   const modal = document.getElementById("session-modal");
   if (!modal) return;
   modal.classList.add("modal-root--open");
 }
 
-// Ferme la modale de session
-function closeSessionModal(){
+function closeSessionModal() {
   const modal = document.getElementById("session-modal");
   if (!modal) return;
   modal.classList.remove("modal-root--open");
   BREZIN_AUDIO.showHome();
 }
 
-// Lecture des lignes + ouverture de la modale au démarrage.
-async function initUserSession(){
+// ======================================================
+// ==========   B) Sessions + rafraîchissement   ========
+// ======================================================
+
+// Lecture des lignes + ouverture modale au démarrage.
+async function initUserSession() {
   const api = await window.getPywebviewApi();
   if (!api) return;
 
   try {
-    const res = await api.read_rows(300); // même plafond que pour le dashboard
+    const res = await api.read_rows(300); // plafond partagé avec le dashboard.
     DASH.rowsAll = res?.ok ? (res.rows || []) : [];
 
     const names = getDistinctUserNames(DASH.rowsAll);
@@ -200,15 +213,14 @@ async function initUserSession(){
     openSessionModal();
   } catch (e) {
     console.error("Erreur initUserSession:", e);
-    // En cas d'erreur, on laisse quand même la possibilité de créer une nouvelle session
     DASH.rowsAll = [];
     fillSessionModalList([]);
     openSessionModal();
   }
 }
 
-// Validation de la session choisie/créée
-function confirmSessionChoice(){
+// Validation de la session choisie / créée (bouton "Valider").
+function confirmSessionChoice() {
   const modal = document.getElementById("session-modal");
   if (!modal) return;
 
@@ -225,90 +237,88 @@ function confirmSessionChoice(){
     return;
   }
 
-  // On enregistre
+  // Enregistrement de la session.
   window.userName = name;
   DASH.user = name;
   try { localStorage.setItem("brezin:userName", name); } catch {}
 
   closeSessionModal();
 
-  // On rend le dashboard avec les lignes déjà en cache + les filtres
   const subset = filterRows(DASH.rowsAll, DASH.diff, DASH.user);
   renderFromRows(subset);
   applyDiffUI(DASH.diff);
 }
 
-// Bouton "Valider" de la modale
+// Bouton "Valider" de la modale principale.
 document.addEventListener("click", (e) => {
   if (e.target.id === "session-modal_confirm") {
     confirmSessionChoice();
   }
 });
 
-// ===== B) Rafraîchissement (lecture + rendu) =========
-async function refreshHomeDashboard(){
+// Rafraîchit le dashboard (relit Excel + rerend).
+async function refreshHomeDashboard() {
   const api = await window.getPywebviewApi();
   if (!api) return;
 
   try {
-    // Lit toutes les lignes une fois et les garde en cache.
-    const res = await api.read_rows(300); // Ajuster le plafond si besoin.
+    const res = await api.read_rows(300);
     DASH.rowsAll = res?.ok ? (res.rows || []) : [];
 
-    // Filtre selon la difficulté active ET la session active.
     const subset = filterRows(DASH.rowsAll, DASH.diff, DASH.user);
     renderFromRows(subset);
     applyDiffUI(DASH.diff);
-    //  garde la carte IA en phase avec la diff actuelle
     updateAISummary(DASH.diff);
-  } catch(e){
+  } catch (e) {
     console.error(e);
   }
 }
-
-// Expose la fonction globalement pour réutilisation.
 window.refreshHomeDashboard = refreshHomeDashboard;
 
-// Notifie les autres vues/onglets qu’une mise à jour des données a eu lieu.
-function notifyDataUpdated(){
-  // a) Événement custom (même document).
-  document.dispatchEvent(new CustomEvent('brezin:rows-updated'));
-  // b) BroadcastChannel (autres onglets du même origin).
-  try { new BroadcastChannel('brezin').postMessage({ type: 'rows-updated' }); } catch {}
-  // c) localStorage (déclenche 'storage' sur les autres onglets).
-  try { localStorage.setItem('BREZIN_GAMES_UPDATED', String(Date.now())); } catch {}
+// Notifie les autres vues / onglets qu’une mise à jour a eu lieu.
+function notifyDataUpdated() {
+  // a) CustomEvent local.
+  document.dispatchEvent(new CustomEvent("brezin:rows-updated"));
+
+  // b) BroadcastChannel (autres onglets même origin).
+  try { new BroadcastChannel("brezin").postMessage({ type: "rows-updated" }); } catch {}
+
+  // c) localStorage (déclenche l’événement "storage" ailleurs).
+  try { localStorage.setItem("BREZIN_GAMES_UPDATED", String(Date.now())); } catch {}
 }
 window.notifyDataUpdated = notifyDataUpdated;
 
-// Écoute les signaux locaux (même document).
-document.addEventListener('brezin:rows-updated', () => {
+// Signal local.
+document.addEventListener("brezin:rows-updated", () => {
   refreshHomeDashboard();
 });
 
-// Écoute les signaux inter-onglets via BroadcastChannel.
+// Signal inter-onglets via BroadcastChannel.
 try {
-  const ch = new BroadcastChannel('brezin');
-  ch.addEventListener('message', (e) => {
-    if (e?.data?.type === 'rows-updated') refreshHomeDashboard();
+  const ch = new BroadcastChannel("brezin");
+  ch.addEventListener("message", (e) => {
+    if (e?.data?.type === "rows-updated") refreshHomeDashboard();
   });
 } catch {}
 
-// Écoute le signal inter-onglets via l’événement 'storage'.
-window.addEventListener('storage', (e) => {
-  if (e.key === 'BREZIN_GAMES_UPDATED') refreshHomeDashboard();
+// Signal inter-onglets via "storage".
+window.addEventListener("storage", (e) => {
+  if (e.key === "BREZIN_GAMES_UPDATED") refreshHomeDashboard();
 });
 
+// ======================================================
 // === C) Sélection de difficulté (onglets + select) ====
-// Modifie la difficulté active, persiste, et déclenche un rendu approprié.
-function selectDifficulty(nextDiff){
+// ======================================================
+
+// Modifie la difficulté active, persiste, relance le rendu.
+function selectDifficulty(nextDiff) {
   const d = sanitizeDiff(nextDiff);
   DASH.diff = d;
   localStorage.setItem("brezin:homeDiff", d);
   applyDiffUI(d);
-  //  MAJ de la carte IA
   updateAISummary(d);
 
-  if (Array.isArray(DASH.rowsAll) && DASH.rowsAll.length){
+  if (Array.isArray(DASH.rowsAll) && DASH.rowsAll.length) {
     const subset = filterRows(DASH.rowsAll, d, DASH.user);
     renderFromRows(subset);
   } else {
@@ -320,17 +330,19 @@ function selectDifficulty(nextDiff){
 document.addEventListener("click", (e) => {
   const btn = e.target.closest(".diff-tab");
   if (!btn) return;
+
   const diff = btn.dataset.diff;
   if (!diff) return;
+
   selectDifficulty(diff);
 });
 
-// Changement via <select id="diff-select"> si présent.
+// Changement via <select id="diff-select">.
 document.getElementById("diff-select")?.addEventListener("change", (e) => {
   selectDifficulty(e.target.value);
 });
 
-// Clic sur un bouton de session existante
+// Clic sur un bouton de session existante.
 document.addEventListener("click", (e) => {
   const btn = e.target.closest(".session-btn");
   if (!btn) return;
@@ -338,14 +350,11 @@ document.addEventListener("click", (e) => {
   const name = btn.dataset.username || "";
   if (!name) return;
 
-  // On choisit directement la session au clic
   window.userName = name;
   DASH.user = name;
   try { localStorage.setItem("brezin:userName", name); } catch {}
 
-  // Met à jour l’indicateur visuel
   updateSessionIndicator(name);
-
   closeSessionModal();
 
   const subset = filterRows(DASH.rowsAll, DASH.diff, DASH.user);
@@ -353,12 +362,13 @@ document.addEventListener("click", (e) => {
   applyDiffUI(DASH.diff);
 });
 
-// Affichage du formulaire de création
+// Affichage / masquage du formulaire de création de session.
 document.addEventListener("click", (e) => {
   if (e.target.id !== "session-modal_newBtn") return;
 
   const form = document.getElementById("session-modal_newForm");
   if (!form) return;
+
   form.classList.toggle("is-open");
 
   const input = document.getElementById("session-modal_newName");
@@ -367,7 +377,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// Validation de la nouvelle session
+// Validation d’une nouvelle session (création).
 document.addEventListener("click", (e) => {
   if (e.target.id !== "session-modal_confirmNew") return;
 
@@ -384,9 +394,7 @@ document.addEventListener("click", (e) => {
   DASH.user = name;
   try { localStorage.setItem("brezin:userName", name); } catch {}
 
-  // Met à jour l’indicateur visuel
   updateSessionIndicator(name);
-
   closeSessionModal();
 
   const subset = filterRows(DASH.rowsAll, DASH.diff, DASH.user);
@@ -394,16 +402,18 @@ document.addEventListener("click", (e) => {
   applyDiffUI(DASH.diff);
 });
 
+// Bouton "Changer de session".
 const btn = document.getElementById("btn-session-switch");
-
-btn.addEventListener("click", (e) => {
-  // Recharge les sessions depuis Excel
+btn.addEventListener("click", () => {
   initUserSession();
 });
 
-// Mettre a jour le nom de l'utilisateur connecté
+// ======================================================
+// ============  Session : indicateur & nom  ============
+// ======================================================
+
+// Renvoie le nom d’utilisateur courant (priorité : window → localStorage → "Invité").
 function getCurrentUserName() {
-  // priorité : window.userName, sinon localStorage, sinon "Invité"
   const fromWin = (window.userName || "").trim();
   if (fromWin) return fromWin;
 
@@ -415,6 +425,7 @@ function getCurrentUserName() {
   return "Invité";
 }
 
+// Met à jour l’indicateur de session dans l’UI.
 function updateSessionIndicator() {
   const el = document.getElementById("session-indicator_name");
   if (!el) return;
@@ -427,21 +438,26 @@ function updateSessionIndicator() {
   el.parentElement.title = `Session en cours : ${finalName}`;
 }
 
+// ======================================================
+// ===============  D) Initialisation Home  =============
+// ======================================================
+
 document.addEventListener("DOMContentLoaded", () => {
-  // Applique l’état de la difficulté au chargement.
+  // Applique la difficulté courante à l’UI.
   applyDiffUI(DASH.diff);
 
-  //  Initialise la carte IA avec la diff actuelle
+  // Initialisation de la carte IA.
   updateAISummary(DASH.diff);
 
-  // Configure le bouton "Changer de session"
+  // Configure le bouton "Changer de session".
   wireSessionSwitchButton();
 
-  // Met à jour l’indicateur de session avec les infos actuelles
+  // Met à jour l’indicateur de session.
   updateSessionIndicator();
 
-  // Ouvre la modale + lit les lignes pour la première fois
+  // Première lecture des lignes + ouverture de la modale.
   initUserSession();
 });
 
+// (appel redondant conservé pour rester 100% fidèle au comportement existant)
 initUserSession();

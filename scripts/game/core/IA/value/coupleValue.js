@@ -1,21 +1,4 @@
-function coupleValue(currentCard, numberNeededForGain) {
-    const rank = getRankNum(currentCard);
-    const suit = currentCard.couleur;
-    let goodInStack = 0;
-
-    if (rank !== 5 && rank !== 6) {
-    return 0; // seulement Q(5) ou K(6)
-    }
-    if (rank === 5) { // queen -> cherche king de même couleur
-    goodInStack = S.stack.filter(c => getRankNum(c) === 6 && c.couleur === suit).length;
-    } else { // king -> cherche queen même couleur
-    goodInStack = S.stack.filter(c => getRankNum(c) === 5 && c.couleur === suit).length;
-    }
-
-    const N = S.stack.length;
-    const base = (suit === S.trump.couleur) ? 40 : 20;
-    return base * probabilityGain(N, goodInStack, numberNeededForGain);
-}// ======================================================
+// ======================================================
 // ===============  Calcul de la valeur d’un couple  ===============
 // ======================================================
 //

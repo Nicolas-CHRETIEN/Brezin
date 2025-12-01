@@ -1,82 +1,101 @@
+// ======================================================
+// ============  Contexte pour dialogues IA  ============
+// ======================================================
+//
+// Rôle.
+// -----
+// Construire un objet compact décrivant l’état du jeu pour
+// le moteur dialogue : scores, annonces, atout, cartes jouées,
+// IA active, etc.
+//
+// Ce que fait la fonction.
+// ------------------------
+// 1) Lit les scores bruts affichés à l’écran (player1 / player2).
+// 2) Identifie si une annonce vient d’être faite (lastDeclaration).
+// 3) Simule les scores APRÈS prise en compte du gain (utile pour IA).
+// 4) Analyse les annonces possibles pour l’IA à cet instant.
+// 5) Retourne un objet complet utilisé par :
+//        · CChooseSentance()
+//        · pickEmotionFromValence()
+//        · AIGenerateDialogue()
+//
+// Remarque.
+// ---------
+// Toutes les données proviennent uniquement de window.S.
+// Aucune vérification inutile n’est ajoutée.
+//
+
+
 function buildDialogueContext() {
-  
-  // Scores bruts affichés (avant prise en compte du gain de l'annonce en cours).
+
+  // --- Scores bruts (affichage actuel) ---
   const rawScoreIA     = Number(S.score.player2) || 0;
   const rawScorePlayer = Number(S.score.player1) || 0;
-  
-  const hasDecl = Array.isArray(S.score.lastDeclaration) && S.score.lastDeclaration.length > 0;
 
-  // Copie de travail pour simuler l'état APRÈS annonce.
+  // Annonce en cours ?
+  const hasDecl = Array.isArray(S.score.lastDeclaration) &&
+                  S.score.lastDeclaration.length > 0;
+
+  // --- Scores simulés après ajout du gain d'annonce ---
   let scoreIA     = rawScoreIA;
   let scorePlayer = rawScorePlayer;
 
-  // Quelqu'un vient d'annoncer ?
   const IAJustDeclared     = hasDecl && S.playFirst === "computer";
   const PlayerJustDeclared = hasDecl && S.playFirst === "player";
 
-  const annoncePossible = possibleDeclarations(S.handComputer);
-  let meilleurAnnoncePossible = null;
-  if (annoncePossible.length > 0) {
+  if (IAJustDeclared)     scoreIA     += S.score.lastDeclaration[0].gain || 0;
+  if (PlayerJustDeclared) scorePlayer += S.score.lastDeclaration[0].gain || 0;
+
+  // --- Meilleure annonce que l’IA aurait pu faire ---
+  const annoncePossible        = possibleDeclarations(S.handComputer);
+  let meilleurAnnoncePossible  = null;
+
+  if (annoncePossible.length) {
     annoncePossible.sort((a, b) => b.gain - a.gain);
     meilleurAnnoncePossible = annoncePossible[0];
   }
 
-  // Ajouter le gain si annonce en cours (simulation de l'état APRÈS l'animation de score).
-  if (IAJustDeclared) {
-    scoreIA += S.score.lastDeclaration[0]?.gain || 0;
-  }
-  if (PlayerJustDeclared) {
-    scorePlayer += S.score.lastDeclaration[0]?.gain || 0;
-  }
-
+  // --- Contexte retourné au moteur dialogue ---
   return {
-    // --- Scores AVANT annonce (état visuel actuel) ---
-    scoreIA: rawScoreIA,
+
+    // Scores visibles
+    scoreIA:     rawScoreIA,
     scorePlayer: rawScorePlayer,
-    diff: rawScoreIA - rawScorePlayer,
+    diff:        rawScoreIA - rawScorePlayer,
 
-    // --- Scores APRÈS annonce (état "logique" simulé) ---
-    scoreIAAfter: scoreIA,
+    // Scores simulés (après l’annonce)
+    scoreIAAfter:     scoreIA,
     scorePlayerAfter: scorePlayer,
-    diffAfter: scoreIA - scorePlayer,
+    diffAfter:        scoreIA - scorePlayer,
 
-    // Dernière annonce.
-    annonce: Array.isArray(S.score?.lastDeclaration)
-      ? S.score.lastDeclaration[0]
-      : null,
+    // Dernière annonce (ou null)
+    annonce: hasDecl ? S.score.lastDeclaration[0] : null,
 
-    // Atout retourné.
-    trump: typeof returnedTrumpCard !== "undefined"
-      ? returnedTrumpCard
-      : null,
+    // Atout retourné (vient de ta logique existante)
+    trump: (typeof returnedTrumpCard !== "undefined") ? returnedTrumpCard : null,
 
     playFirst: S.playFirst,
 
-    // IA actuelle (via ta logique AI_BY_DIFF ailleurs).
+    // IA sélectionnée selon S.difficulty
     aiId: getCurrentAIId(),
 
-    // Nom du joueur (assure-toi que userName existe bien dans ce scope).
-    playerName: typeof userName !== "undefined" ? userName : "Joueur",
-    
+    // Nom de session utilisateur
+    playerName: (typeof userName !== "undefined") ? userName : "Joueur",
 
-    // Carte jouée par le joueur sur le pli (utile pour volDix, etc.).
-    cartevolee: typeof S.playerCardPlayed !== "undefined" && S.playerCardPlayed !== null
-      ? S.playerCardPlayed.rang // "10" ou "as"
+    // Carte jouée par le joueur (10 / as)
+    cartevolee: S.playerCardPlayed?.rang || null,
+
+    // Carte jouée par l’IA
+    carteprise: S.computerCardPlayed?.rang || null,
+
+    // Annonce IA disponible mais empêchée (si pertinente pour tes lignes)
+    annoncePossible: meilleurAnnoncePossible
+      ? meilleurAnnoncePossible.name
       : null,
 
-    // Carte jouée par l'IA sur le pli.
-    carteprise: typeof S.computerCardPlayed !== "undefined" && S.computerCardPlayed !== null
-      ? S.computerCardPlayed.rang // "10" ou "as"
-      : null,
-
-    // Annonce possible de l'IA, mais empéchée par le joueur.
-    annoncePossible: annoncePossible.length > 0
-    ? meilleurAnnoncePossible.name
-    : null,
-    
-    // Petits flags utiles dans les répliques si tu veux t’en servir plus tard.
+    // Flags d’état utiles pour les répliques
     IAJustDeclared,
     PlayerJustDeclared,
-    hasDecl,
+    hasDecl
   };
 }

@@ -1,5 +1,104 @@
 // ======================================================
-// ==========  Dialogues d'événements par IA  ===========
+// ================   Bibliothèque de dialogues   =======
+// ======================================================
+//
+// Rôle du fichier.
+// ----------------
+// Contient toutes les répliques parlées par les IA du Brézin,
+// classées par personnage et par contexte de jeu.
+//
+// Deux grandes familles de dialogues sont définies :
+//
+// 1) DIALOGUE_EVENTS
+//    ----------------
+//    Dialogues déclenchés par des ÉVÈNEMENTS ponctuels,
+//    détectés directement via CChooseSentance(), par exemple :
+//       - IA_FLIP               → renversement où l’IA repasse devant
+//       - J_FLIP                → renversement où le joueur repasse devant
+//       - IA_CASCADE            → énorme catastrophe contre l’IA
+//       - IA_STEALS_TRUMP       → l’IA vole le 7 d’atout
+//       - J_STEALS_10A          → le joueur capture un 10/As
+//       - IA_BLOCKED            → le joueur empêche une annonce
+//       - IA_ALMOST / J_ALMOST  → rattrapage partiel
+//       - GAME_START            → début de partie
+//       - GAME_END_WIN/LOSE     → fin de partie / victoire / défaite
+//
+//    Chaque entrée associe :
+//       IA → { eventKey → tableau de fonctions(messageCtx) OU chaînes }
+//    Le choix final est effectué par AIGenerateDialogue().
+//
+//
+// 2) DIALOGUE_SCORE
+//    ----------------
+//    Dialogues déclenchés par l’ÉTAT GLOBAL DU SCORE,
+//    déterminé via computeScoreContexts().
+//    Ces clés décrivent les situations de score, par exemple :
+//
+//       - SCORE_IA_DOMINATES             → IA mène de très loin  (≥ +300)
+//       - SCORE_J_DOMINATES              → Joueur mène de très loin
+//       - SCORE_IA_MEDIUM_LEAD           → IA mène modérément
+//       - SCORE_J_MEDIUM_LEAD            → Joueur mène modérément
+//       - SCORE_TIGHT_IA_AHEAD           → Partie serrée, IA légèrement devant
+//       - SCORE_TIGHT_J_AHEAD            → Serré, joueur légèrement devant
+//       - SCORE_TIGHT_BALANCED           → Écart < 40, très équilibré
+//
+//       Fin de partie :
+//       - SCORE_IA_ALMOST_WIN
+//       - SCORE_J_ALMOST_WIN
+//       - SCORE_IA_DOMINATES_ALMOSTWIN
+//       - SCORE_J_DOMINATES_ALMOSTWIN
+//       - SCORE_IA_LEADS_ALMOSTWIN
+//       - SCORE_J_LEADS_ALMOSTWIN
+//
+//       Fallback génériques :
+//       - SCORE_IA_LEADS_GENERIC
+//       - SCORE_J_LEADS_GENERIC
+//       - SCORE_BALANCED_GENERIC
+//
+//    Ces dialogues reflètent plutôt l’ambiance générale de la partie,
+//    indépendamment d'un évènement ponctuel.
+//
+//
+// Structure générale.
+// -------------------
+//
+// const DIALOGUE_EVENTS = {
+//   [AI_IDS.RADEGONDE]: {
+//     [SITUATION_KEYS.GAME_START]: [ ...répliques... ],
+//     [SITUATION_KEYS.IA_FLIP]:    [ ... ],
+//     ...
+//   },
+//   [AI_IDS.PERROT]: { ... },
+//   [AI_IDS.JEHANNE]: { ... },
+//   [AI_IDS.ANDRY]:   { ... }
+// };
+//
+// const DIALOGUE_SCORE = {
+//   [AI_IDS.RADEGONDE]: {
+//     [SCORE_CONTEXT_KEYS.SCORE_IA_DOMINATES]: [ ... ],
+//     [SCORE_CONTEXT_KEYS.SCORE_TIGHT_BALANCED]: [ ... ],
+//     ...
+//   },
+//   [AI_IDS.PERROT]: { ... },
+//   [AI_IDS.JEHANNE]: { ... },
+//   [AI_IDS.ANDRY]:   { ... }
+// };
+//
+//
+// Fonctionnement.
+// ---------------
+// - CChooseSentance() choisit d’abord une clé événementielle (eventKey).
+// - Si aucun évènement ne s’applique, il sélectionne un contexte de score.
+// - AIGenerateDialogue() pioche ensuite une réplique dans
+//   DIALOGUE_EVENTS[aiId][eventKey]
+//   OU
+//   DIALOGUE_SCORE[aiId][scoreContextKey].
+//
+// - Les répliques peuvent être :
+//     • une chaîne de texte,
+//     • une fonction ctx => "phrase" (contenant valeur ${lastDecl}, etc.)
+//
+// - L’émotion affichée est déterminée séparément via pickEmotionFromValence().
 // ======================================================
 //
 
